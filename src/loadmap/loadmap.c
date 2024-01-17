@@ -5,6 +5,17 @@
 #include "../../libs/libft/include/libft.h"
 #include "../../libs/libft/include/get_next_line.h"
 
+int get_arr_len(char **arr)
+{
+    int i;
+
+    i = 0;
+    while(arr[i])
+        i++;
+    printf("arr len: %i\n", i);
+    return (i); 
+}
+
 int get_line_count(char *file)
 {
     int fd;
@@ -42,7 +53,7 @@ void show_arr(char **arr)
         printf("i: %i  >%s<\n", i, arr[i]);
         i++;
     }
-    printf("--- End ---\n");
+    printf("--- End ---\n\n");
 }
 void replace_char_in_arr(char **arr, char find, char replace)
 {
@@ -108,14 +119,105 @@ char **J_load_file(char *file)
     show_arr(tmp);
     
     close(fd);
-    return (NULL);
+    return (tmp);
 }
+///////////////////////////////////
+//int find_str_in_str()
+
+int get_line_of(char **arr, char *find)
+{
+    int line;
+    int found;
+    int i;
+
+    found = 0;
+    i = 0;
+    line = -1;
+    while(arr[i])
+    {
+        if (ft_strnstr(arr[i], find, ft_strlen(arr[i])) != NULL)
+        {
+            found++;
+            line = i;
+        }
+        i++;
+    }
+
+    if (found > 1)
+        printf("found more than one !!!\n");
+
+    return (line);
+}
+
+int get_max_of_strlen(char *s1, char *s2)
+{
+    int len1;
+    int len2;
+    
+    len1 = ft_strlen(s1);
+    len2 = ft_strlen(s2);
+
+    if (len1 > len2)
+        return (len1);
+    else
+        return (len2);
+}
+
+// return the path of of the find argument, size is the array size i.e. 2 if ("NO ./texure")
+char *get_text_path(char **arr, char *find)
+{
+     printf("\nget_text_path of: %s\n", find);
+    /*
+    1. Split ' ' 
+    2. wenn array len != 2 ist --> Error
+    3. wenn array len == 2 ist und in arr[0] nicht das gesuchte Element ist --> Error
+    4. wenn arr[0] pfad keine Datei ist   ... vielleicht besser später machen */
+
+    char **split;
+    char *ret;
+    int fd;
+    int line;
+
+    line = get_line_of(arr, "NO");
+    split = ft_split(arr[line], ' ');
+    show_arr(split);
+
+    //checks if size is ok
+    if (get_arr_len(split) != 2)
+        printf("Error\nelement has more then 2 information in the line\n");
+    
+    //checks if elemtent name is ok
+    if (ft_strncmp(find, split[0], get_max_of_strlen(find, split[0])) != 0)
+        printf("Error\nelement is not in the right order or has more characters\n");
+
+    // checks the file of the element
+    fd = open(split[1], O_RDONLY);
+    if (fd == -1)
+        printf("Error\ntexture file: %s is not valid\n", split[1]);
+    close(fd);
+
+    // copy file to output
+    ret = ft_strdup(split[1]);
+    printf("ret: >%s<\n", ret);
+
+    // freeing split TODO
+    return (ret);
+}
+
 
 int main(int argc, char **argv)
 {   
     printf("huhu\n");
     char **splitted_file = J_load_file(argv[1]);
-    
+    printf("NO >%s<\n", get_text_path(splitted_file, "NO"));
+    printf("EA >%s<\n", get_text_path(splitted_file, "EA"));
+    printf("SO >%s<\n", get_text_path(splitted_file, "SO"));
+    printf("WE >%s<\n", get_text_path(splitted_file, "WE"));
+
+    /* TODO:
+    get_text_path   gibt bei ERROR NULL zurück, das später gecheckt wird
+    */
+
     return(0);
 }
 
