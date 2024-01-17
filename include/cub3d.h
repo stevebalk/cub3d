@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/17 15:47:56 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/17 15:54:35 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,11 +248,11 @@ double	get_player_old_time(t_player *player);
 
 void	init_mlx_hooks(t_cub *cub);
 int		key_press(int keycode, t_cub *cub);
-// int		key_release(int keycode, t_cub *cub);
-// int		mouse_press(int button, int x, int y, t_cub *cub);
-// int		mouse_release(int button, int x, int y, t_cub *cub);
-// int		mouse_move(int x, int y, t_cub *cub);
-int	close_window(t_cub *cub);
+int		key_release(int keycode, t_cub *cub);
+int		mouse_press(int button, int x, int y, t_cub *cub);
+int		mouse_release(int button, int x, int y, t_cub *cub);
+int		mouse_move(int x, int y, t_cub *cub);
+int		close_window(t_cub *cub);
 
 /********************************************************************/
 /*                          ERROR                                   */
