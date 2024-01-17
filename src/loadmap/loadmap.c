@@ -166,7 +166,7 @@ int get_max_of_strlen(char *s1, char *s2)
 // return the path of of the find argument, size is the array size i.e. 2 if ("NO ./texure")
 char *get_text_path(char **arr, char *find)
 {
-     printf("\nget_text_path of: %s\n", find);
+    printf("\nget_text_path of: %s\n", find);
     /*
     1. Split ' ' 
     2. wenn array len != 2 ist --> Error
@@ -178,22 +178,32 @@ char *get_text_path(char **arr, char *find)
     int fd;
     int line;
 
-    line = get_line_of(arr, "NO");
+    line = get_line_of(arr, find);
     split = ft_split(arr[line], ' ');
     show_arr(split);
 
     //checks if size is ok
     if (get_arr_len(split) != 2)
+    {
         printf("Error\nelement has more then 2 information in the line\n");
-    
+        //todo free split
+        return (NULL);
+    }
     //checks if elemtent name is ok
     if (ft_strncmp(find, split[0], get_max_of_strlen(find, split[0])) != 0)
+    {
         printf("Error\nelement is not in the right order or has more characters\n");
-
+        //todo free split
+        return (NULL);
+    }
     // checks the file of the element
     fd = open(split[1], O_RDONLY);
     if (fd == -1)
+    {
         printf("Error\ntexture file: %s is not valid\n", split[1]);
+        //todo free split
+        return (NULL);
+    }
     close(fd);
 
     // copy file to output
@@ -204,20 +214,43 @@ char *get_text_path(char **arr, char *find)
     return (ret);
 }
 
+enum e_tex
+{
+    NO,
+    EA,
+    SO,
+    WE
+};
 
+char *tex_names[5] = {"NO","EA","SO","WE", NULL};
+
+// return 1 if all entry till arr_len are !NULL
+int check_if_arr_entrys_valid(char **arr, int arr_len)
+{
+    int i;
+
+    i = -1;
+    while (i++, i < arr_len)
+    {
+        if (!arr[i])
+            return (0);
+    }
+    return (1);
+}
+ 
 int main(int argc, char **argv)
 {   
     printf("huhu\n");
     char **splitted_file = J_load_file(argv[1]);
-    printf("NO >%s<\n", get_text_path(splitted_file, "NO"));
-    printf("EA >%s<\n", get_text_path(splitted_file, "EA"));
-    printf("SO >%s<\n", get_text_path(splitted_file, "SO"));
-    printf("WE >%s<\n", get_text_path(splitted_file, "WE"));
 
-    /* TODO:
-    get_text_path   gibt bei ERROR NULL zurück, das später gecheckt wird
-    */
+    char *tex_paths[5];
+    int i = -1;
+    while(i++, i < 5)
+        tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
 
+    tex_paths[i] = NULL;
+    show_arr(tex_paths);
+    printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
     return(0);
 }
 
