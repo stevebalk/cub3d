@@ -35,10 +35,39 @@ int get_line_count(char *file)
 
 void show_arr(char **arr)
 {
-    int i = -1;
-    printf("show array \n");
-    while(i++, arr[i])
+    int i = 0;
+    printf("\nshow array \n");
+    while(arr[i] != NULL)
+    {
         printf("i: %i  >%s<\n", i, arr[i]);
+        i++;
+    }
+    printf("--- End ---\n");
+}
+void replace_char_in_arr(char **arr, char find, char replace)
+{
+    int i;
+    int j;
+    printf("\nreplace_char_in_arr   find: %c   replace: %c \n", find, replace);
+    i = 0;
+    while(arr[i])
+    {
+        j = 0;
+        while(j < ft_strlen(arr[i]))
+        {
+            printf("i: %i   j: %i \n", i, j);
+            if (arr[i][j] == find)
+            {
+                arr[i][j] = replace;
+                break;
+            }
+            if (arr[i][j] == '\0' || arr[i][j] == NULL)
+                break;
+            j++;
+        }
+        i++;
+    }
+    printf("--- End ---\n");
 }
 
 char **J_load_file(char *file)
@@ -66,16 +95,17 @@ char **J_load_file(char *file)
     char *test;
     while(i < line_count)
     {
-        printf("fd: %i\n", fd);
+        //printf("fd: %i\n", fd);
         tmp[i] = get_next_line(fd);
-        printf("line: %i  >%s<\n", i, tmp[i]);
+        //printf("line: %i  >%s<\n", i, tmp[i]);
         if (tmp[i] == NULL)
             break;
         i++;
     }
     tmp[i] = NULL;
     show_arr(tmp);
-    //tmp = get_next_line(fd);
+    replace_char_in_arr(tmp, '\n', '\0');
+    show_arr(tmp);
     
     close(fd);
     return (NULL);
