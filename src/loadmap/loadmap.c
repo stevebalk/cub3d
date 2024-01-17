@@ -259,4 +259,5 @@ int main(int argc, char **argv)
 
 /*
 cc -D BUFFER_SIZE=1 loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
+cc -D BUFFER_SIZE=1 loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
 */ 
