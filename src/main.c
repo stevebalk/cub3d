@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/17 15:35:55 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/17 16:08:13 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	main(void)
 	t_cub cub;
 
 	init_cub(&cub);
-	// mlx_put_image_to_window(cub.mlx, cub.win, cub.img->img, 0, 0);
+	draw_line(cub.img, (t_vec2i){0, 0}, (t_vec2i){100, 100}, 0x00FF0000);
+	mlx_put_image_to_window(cub.mlx, cub.win, cub.img->img, 0, 0);
 	mlx_loop(cub.mlx);
 	return (0);
 }

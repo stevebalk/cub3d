@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/17 15:54:35 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/17 16:06:43 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,17 @@
 /*                          OWN STRUCTS                             */
 /********************************************************************/
 
+/* For line calculation */ //DEBUG
+typedef struct s_line
+{
+	int	dx;
+	int	sx;
+	int	dy;
+	int	sy;
+	int	err;
+	int	err2;
+}				t_line;
+
 /* Vector 2 floating point */
 typedef struct s_vec2
 {
@@ -214,7 +225,8 @@ void	init_cub(t_cub *cub);
 /*                          DRAWING                                 */
 /********************************************************************/
 
-void	put_pixel(t_data *data, t_vec2i pos, int color);
+void	put_pixel(t_data *img, t_vec2i pos, int color);
+void	draw_line(t_data *img, t_vec2i start, t_vec2i end, int color); //DEBUG
 
 /********************************************************************/
 /*                          PLAYER                                  */
