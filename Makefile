@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/17 11:20:39 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/17 15:12:21 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,18 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 SRC_FILES	=	main \
+				init/init_cub \
+				init/init_mlx \
+				init/init_player \
+				draw/draw \
+				player/getters \
+				player/setters \
+				error/error \
+				
 
 SRC				=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ				=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-
+OBJ_DIRS		=	$(addprefix $(OBJ_DIR), $(SRC_FILES))
 
 all:		$(NAME)
 
@@ -53,7 +61,7 @@ $(NAME):	$(OBJ)
 			@echo "$(GREEN)Created $(NAME)!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-			@mkdir -p $(OBJ_DIR)
+			@mkdir -p $(OBJ_DIRS)
 #			@mkdir -p $(OBJ_DIR)/user_input
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
