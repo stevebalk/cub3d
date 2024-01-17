@@ -177,6 +177,9 @@ char *get_text_path(char **arr, char *find)
     char *ret;
     int fd;
     int line;
+    
+    if (arr == NULL || find == NULL)
+        return (NULL);
 
     line = get_line_of(arr, find);
     split = ft_split(arr[line], ' ');
@@ -245,7 +248,7 @@ int main(int argc, char **argv)
 
     char *tex_paths[5];
     int i = -1;
-    while(i++, i < 5)
+    while(i++, i < 4)
         tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
 
     tex_paths[i] = NULL;
