@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/17 15:11:09 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/17 15:47:56 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 # define CUB3D_H
 # include "libft.h"
 # include "mlx.h"
+# include "mlx_int.h"
 # include <math.h>
 # include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include <errno.h>
 
 # define KEY_ESC 53
@@ -144,8 +142,8 @@
 
 #define MAP_WIDTH 24
 #define MAP_HEIGHT 24
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
+#define WIN_WIDTH 640
+#define WIN_HEIGHT 480
 
 /********************************************************************/
 /*                          OWN STRUCTS                             */
@@ -166,15 +164,15 @@ typedef struct s_vec2i
 }				t_vec2i;
 
 /* Image data for the mlx lib*/
-typedef struct s_img
+typedef struct s_data
 {
 	void		*img;
 	char		*addr;
 	int			bpp;
 	int			line_length;
-	int			endian;
 	t_vec2i		win_size;
-}				t_img;
+	int			endian;
+}				t_data;
 
 typedef struct s_player
 {
@@ -183,11 +181,11 @@ typedef struct s_player
 	t_vec2			plane;
 	double			time;
 	double			old_time;
-	int			turn_direction;
-	int			walk_direction;
-	double		rotation_angle;
-	double		walk_speed;
-	double		turn_speed;
+	int				turn_direction;
+	int				walk_direction;
+	double			rotation_angle;
+	double			walk_speed;
+	double			turn_speed;
 }					t_player;
 
 /* FdF main struct, data that 
@@ -196,7 +194,7 @@ typedef struct s_cub
 {
 	void			*mlx;
 	void			*win;
-	t_img			*img;
+	t_data			*img;
 	t_vec2i			win_size;
 	t_vec2i			map_size;
 	t_vec2i			win_center;
@@ -208,10 +206,15 @@ typedef struct s_cub
 /********************************************************************/
 
 void	init_mlx_window(t_cub *cub);
-void	init_mlx_image(t_cub *cub, t_img **img, t_vec2i size);
+void	init_mlx_image(t_cub *cub, t_data **img, t_vec2i size);
 void	init_mlx(t_cub *cub);
-void	put_pixel(t_img *data, t_vec2i pos, int color);
 void	init_cub(t_cub *cub);
+
+/********************************************************************/
+/*                          DRAWING                                 */
+/********************************************************************/
+
+void	put_pixel(t_data *data, t_vec2i pos, int color);
 
 /********************************************************************/
 /*                          PLAYER                                  */
@@ -238,7 +241,18 @@ t_vec2	get_player_dir(t_player *player);
 t_vec2	get_player_plane(t_player *player);
 double	get_player_time(t_player *player);
 double	get_player_old_time(t_player *player);
-#endif
+
+/********************************************************************/
+/*                          INPUT HANDLING                          */
+/********************************************************************/
+
+void	init_mlx_hooks(t_cub *cub);
+int		key_press(int keycode, t_cub *cub);
+// int		key_release(int keycode, t_cub *cub);
+// int		mouse_press(int button, int x, int y, t_cub *cub);
+// int		mouse_release(int button, int x, int y, t_cub *cub);
+// int		mouse_move(int x, int y, t_cub *cub);
+int	close_window(t_cub *cub);
 
 /********************************************************************/
 /*                          ERROR                                   */
@@ -246,3 +260,5 @@ double	get_player_old_time(t_player *player);
 
 void	error_msg(t_cub *cub, char *msg, int use_errno, int shall_exit);
 
+
+#endif

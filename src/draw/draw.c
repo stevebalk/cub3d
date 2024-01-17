@@ -6,13 +6,13 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:55:24 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/17 15:11:32 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/17 15:46:59 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	put_pixel(t_img *data, t_vec2i pos, int color)
+void	put_pixel(t_data *data, t_vec2i pos, int color)
 {
 	char	*dst;
 
