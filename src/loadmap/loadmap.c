@@ -66,13 +66,13 @@ void replace_char_in_arr(char **arr, char find, char replace)
         j = 0;
         while(j < ft_strlen(arr[i]))
         {
-            printf("i: %i   j: %i \n", i, j);
+            //printf("i: %i   j: %i \n", i, j);
             if (arr[i][j] == find)
             {
                 arr[i][j] = replace;
                 break;
             }
-            if (arr[i][j] == '\0' || arr[i][j])
+            if (arr[i][j] == '\0' )//|| arr[i])
                 break;
             j++;
         }
@@ -95,7 +95,7 @@ char **J_load_file(char *file)
         // exit
     }
     line_count = get_line_count(file);
-    printf("nach linecount fd: %i    linecount: %i\n",fd, line_count);
+    //printf("nach linecount fd: %i    linecount: %i\n",fd, line_count);
 
     if (line_count < 8)
     {
@@ -103,7 +103,7 @@ char **J_load_file(char *file)
     }
     tmp =(char **)malloc((line_count + 1) * sizeof(char *));
     i = 0;
-    char *test;
+    //char *test;
     while(i < line_count)
     {
         //printf("fd: %i\n", fd);
@@ -254,21 +254,99 @@ typedef struct s_color
     int a;
 }   t_color;
 
-
-t_color get_color_from_str(char **arr, char *find)
+int count_char_in_str(char *str, char c)
 {
+    int i;
+    int count;
+
+    i = 0;
+    count = 0;
+    while(str[i])
+    {
+        if (str[i] == c)
+            count++;
+        i++;
+    }
+    return (count);
+}
+
+t_color get_color(int r, int g, int b, int a)
+{
+    t_color color;
+
+    color.r = r;
+    color.g = g;
+    color.b = b;
+    color.a = a;
+    return (color);
+}
+
+void show_color(t_color color)
+{
+    printf("show color\n");
+    printf(" R: %i\n", color.r);
+    printf(" G: %i\n", color.g);
+    printf(" B: %i\n", color.b);
+    printf(" A: %i\n\n", color.a);
+}
+
+int check_color(t_color color)
+{
+    printf("check color()\n");
+
+    if (color.r < 0 || color.r > 255)
+        return (0);
+    if (color.g < 0 || color.g > 255)
+        return (0);
+    if (color.b < 0 || color.b > 255)
+        return (0);
+    if (color.a < 0 || color.a > 255)
+        return (0);
+    return (1);    
+}
+
+t_color get_color_from_str(char **arr, char find)
+{
+    printf("get_color_from_str()  find: %c \n", find);
     /*
     F 220,100,0
     F 220 , 100, 0
     1. Split ' '
     2. Split ','
     3. del ' '
-    
+
     */
     int line;
-    line = get_line_of(arr, find);
+    char str[2];
+    str[0] = find;
+    str[1] = '\0';
+    
+    t_color color;
+    line = get_line_of(arr, str);
+    printf("  > line: %i \n", line);
+    // Check if line contains the find char ('F' or 'c') and 3 ','
+    if ((count_char_in_str(arr[line], ',') != 2) || (count_char_in_str(arr[line], find) != 1))
+    {
+        printf("Line of >%c< contains not 2 Comma and 1 %c  line >%s<\n", find, find, arr[line]);
+        return (get_color(-1, -1, -1, -1));
+    }
 
+    // char **split1;
+    // split1 = ft_split(arr[line],' ');
+    // show_arr(split1);
+    
 
+    char **split2;
+    char *tmp_line;
+    tmp_line = ft_strchr(arr[line],find);
+    split2 = ft_split(++tmp_line, ',');
+    show_arr(split2);
+    color.r = ft_atoi(split2[0]);
+    color.g = ft_atoi(split2[1]);
+    color.b = ft_atoi(split2[2]);
+    color.a = 0;
+
+    return (color);
 }
 
 int main(int argc, char **argv)
@@ -283,7 +361,14 @@ int main(int argc, char **argv)
 
     tex_paths[i] = NULL;
     show_arr(tex_paths);
+    
     printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
+
+    t_color f_color = get_color_from_str(splitted_file, 'F');
+    show_color(f_color);
+    if (!check_color(f_color))
+        printf("Error\ninvalid color\n");
+
     return(0);
 }
 
