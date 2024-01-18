@@ -254,10 +254,19 @@ typedef struct s_color
     int a;
 }   t_color;
 
-// returns the color of "F 220,100,0"
 
-t_color get_color_from_str(char **str)
+t_color get_color_from_str(char **arr, char *find)
 {
+    /*
+    F 220,100,0
+    F 220 , 100, 0
+    1. Split ' '
+    2. Split ','
+    3. del ' '
+    
+    */
+    int line;
+    line = get_line_of(arr, find);
 
 
 }
