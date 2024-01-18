@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/17 16:06:43 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 11:08:30 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,11 @@ void	init_cub(t_cub *cub);
 /********************************************************************/
 
 void	put_pixel(t_data *img, t_vec2i pos, int color);
-void	draw_line(t_data *img, t_vec2i start, t_vec2i end, int color); //DEBUG
+void	draw_line(t_data *img, t_vec2i start, t_vec2i end, int color);
+void	draw_square(t_data *img, t_vec2i pos, int size, int color);
+void	draw_rectangle(t_data *img, t_vec2i pos, t_vec2i size, int color);
+void	draw_circle(t_data *img, t_vec2i pos, int radius, int color);
+void	draw_triangle(t_data *img, t_vec2i pos, int size, int color);
 
 /********************************************************************/
 /*                          PLAYER                                  */

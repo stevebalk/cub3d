@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/17 15:55:31 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/18 11:07:21 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ SRC_FILES	=	main \
 				init/init_mlx \
 				init/init_player \
 				draw/draw \
+				draw/line \
+				draw/basic_shapes \
 				player/getters \
 				player/setters \
 				error/error \
