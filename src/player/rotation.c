@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:57:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 15:02:21 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 16:57:01 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,4 @@ void	rotate_player(t_cub *cub, double angle)
 		+ cub->player.plane.y * cos(angle);
 	cub->player.dir = new_dir;
 	cub->player.plane = new_plane;
-	printf("dir.x: %f\n", cub->player.dir.x);
-	printf("dir.y: %f\n", cub->player.dir.y);
 }

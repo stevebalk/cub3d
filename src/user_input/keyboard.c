@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:59 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 16:32:55 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 17:00:01 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 int	key_press(int keycode, t_cub *cub)
 {
 	if (keycode == XK_w)
-		move_forward(cub);
+		cub->key.w = 1;
 	if (keycode == XK_s)
-		move_backward(cub);
+		cub->key.s = 1;
 	if (keycode == XK_a)
-		move_left(cub);
+		cub->key.a = 1;
 	if (keycode == XK_d)
-		move_right(cub);
-	printf("keycode: %d\n", keycode);
+		cub->key.d = 1;
 	if (keycode == XK_Escape)
 		close_window(cub);
 	return (0);
@@ -30,7 +29,13 @@ int	key_press(int keycode, t_cub *cub)
 
 int	key_release(int keycode, t_cub *cub)
 {
-	(void)cub;
-	printf("keycode: %d\n", keycode);
+	if (keycode == XK_w)
+		cub->key.w = 0;
+	if (keycode == XK_s)
+		cub->key.s = 0;
+	if (keycode == XK_a)
+		cub->key.a = 0;
+	if (keycode == XK_d)
+		cub->key.d = 0;
 	return (0);
 }

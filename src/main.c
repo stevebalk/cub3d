@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 16:17:35 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 17:05:07 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ int	render_loop(t_cub *cub)
 	t_vec2i	player_pos;
 	t_vec2i	player_dir;
 
+	input_handler(cub);
 	player_pos.x = cub->player.pos.x * TILE_SIZE_HALF;
 	player_pos.y = cub->player.pos.y * TILE_SIZE_HALF;
 	player_dir = add_vec2i(player_pos, v2_to_v2i(scale_vec2(cub->player.dir, 60)));

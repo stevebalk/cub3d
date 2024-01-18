@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 16:34:53 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 17:05:56 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@
 #define TEST_MAP_SIZE_X 24
 #define TEST_MAP_SIZE_Y 24
 #define MOUSE_SENSITIVITY 0.1
-#define MOVE_SPEED 1
+#define MOVE_SPEED 0.1
 #define ROT_SPEED 0.1
 
 /********************************************************************/
@@ -206,6 +206,14 @@ typedef struct s_mouse
 	int				y;
 }					t_mouse;
 
+typedef struct s_key
+{
+	int				w;
+	int				a;
+	int				s;
+	int				d;
+}					t_key;
+
 /* FdF main struct, data that 
 is used everywhere */
 typedef struct s_cub
@@ -219,6 +227,7 @@ typedef struct s_cub
 	t_vec2i			win_center;
 	t_player		player;
 	t_mouse			mouse;
+	t_key			key;
 }					t_cub;
 
 /********************************************************************/
@@ -281,10 +290,14 @@ double	get_player_old_time(t_player *player);
 /*                          INPUT HANDLING                          */
 /********************************************************************/
 
-/* INIT */
+/* Init */
 
 void	init_mlx_hooks(t_cub *cub);
 void	init_mouse(t_cub *cub);
+
+/* Handler */
+
+void	input_handler(t_cub *cub);
 
 /* Keyboard */
 
