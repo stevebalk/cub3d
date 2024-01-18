@@ -6,13 +6,13 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 11:13:46 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 12:11:19 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int worldMap[MAP_WIDTH][MAP_HEIGHT]= {
+int worldMap[TEST_MAP_SIZE_X][TEST_MAP_SIZE_Y]= {
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -109,11 +109,32 @@ int worldMap[MAP_WIDTH][MAP_HEIGHT]= {
 // 	return (0);
 // }
 
+void	transfers_map(t_cub *cub)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < TEST_MAP_SIZE_X)
+	{
+		j = 0;
+		while (j < TEST_MAP_SIZE_Y)
+		{
+			cub->map[i][j] = worldMap[i][j];
+			j++;
+		}
+		i++;
+	}
+}
+
 int	main(void)
 {
 	t_cub cub;
 
+	ft_bzero(&cub, sizeof(t_cub));
 	init_cub(&cub);
+	transfers_map(&cub);
+	draw_map(&cub);
 	// draw_circle(cub.img, cub.win_center, 100, 0x00FF0000);
 	// draw_rectangle(cub.img, (t_vec2i) {0, 0}, (t_vec2i) {200, 100}, 0x00FF0000);
 	// draw_square(cub.img, cub.win_center, 100, 0x00FF0000);

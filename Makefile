@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/18 11:07:21 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/18 12:13:00 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,12 +36,14 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 SRC_FILES	=	main \
-				init/init_cub \
-				init/init_mlx \
-				init/init_player \
+				init/cub \
+				init/mlx \
+				init/player \
+				init/map \
 				draw/draw \
 				draw/line \
 				draw/basic_shapes \
+				draw/map \
 				player/getters \
 				player/setters \
 				error/error \

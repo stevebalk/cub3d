@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 11:08:30 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 12:10:40 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,8 @@
 #define MAP_HEIGHT 24
 #define WIN_WIDTH 640
 #define WIN_HEIGHT 480
+#define TEST_MAP_SIZE_X 24
+#define TEST_MAP_SIZE_Y 24
 
 /********************************************************************/
 /*                          OWN STRUCTS                             */
@@ -206,6 +208,7 @@ typedef struct s_cub
 	void			*mlx;
 	void			*win;
 	t_data			*img;
+	int				**map;
 	t_vec2i			win_size;
 	t_vec2i			map_size;
 	t_vec2i			win_center;
@@ -219,6 +222,7 @@ typedef struct s_cub
 void	init_mlx_window(t_cub *cub);
 void	init_mlx_image(t_cub *cub, t_data **img, t_vec2i size);
 void	init_mlx(t_cub *cub);
+void	init_map(t_cub *cub);
 void	init_cub(t_cub *cub);
 
 /********************************************************************/
@@ -231,6 +235,7 @@ void	draw_square(t_data *img, t_vec2i pos, int size, int color);
 void	draw_rectangle(t_data *img, t_vec2i pos, t_vec2i size, int color);
 void	draw_circle(t_data *img, t_vec2i pos, int radius, int color);
 void	draw_triangle(t_data *img, t_vec2i pos, int size, int color);
+void	draw_map(t_cub *cub);
 
 /********************************************************************/
 /*                          PLAYER                                  */
