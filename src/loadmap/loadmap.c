@@ -308,14 +308,7 @@ int check_color(t_color color)
 t_color get_color_from_str(char **arr, char find)
 {
     printf("get_color_from_str()  find: %c \n", find);
-    /*
-    F 220,100,0
-    F 220 , 100, 0
-    1. Split ' '
-    2. Split ','
-    3. del ' '
 
-    */
     int line;
     char str[2];
     str[0] = find;
@@ -331,19 +324,14 @@ t_color get_color_from_str(char **arr, char find)
         return (get_color(-1, -1, -1, -1));
     }
 
-    // char **split1;
-    // split1 = ft_split(arr[line],' ');
-    // show_arr(split1);
-    
-
-    char **split2;
+    char **split;
     char *tmp_line;
     tmp_line = ft_strchr(arr[line],find);
-    split2 = ft_split(++tmp_line, ',');
-    show_arr(split2);
-    color.r = ft_atoi(split2[0]);
-    color.g = ft_atoi(split2[1]);
-    color.b = ft_atoi(split2[2]);
+    split = ft_split(++tmp_line, ',');
+    show_arr(split);
+    color.r = ft_atoi(split[0]);
+    color.g = ft_atoi(split[1]);
+    color.b = ft_atoi(split[2]);
     color.a = 0;
 
     return (color);
@@ -371,6 +359,7 @@ int main(int argc, char **argv)
 
     return(0);
 }
+
 
 /*
 cc -D BUFFER_SIZE=1 loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
