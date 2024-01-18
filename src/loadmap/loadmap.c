@@ -72,7 +72,7 @@ void replace_char_in_arr(char **arr, char find, char replace)
                 arr[i][j] = replace;
                 break;
             }
-            if (arr[i][j] == '\0' || arr[i][j] == NULL)
+            if (arr[i][j] == '\0' || arr[i][j])
                 break;
             j++;
         }
@@ -124,11 +124,17 @@ char **J_load_file(char *file)
 ///////////////////////////////////
 //int find_str_in_str()
 
+// returns the line NR
 int get_line_of(char **arr, char *find)
 {
     int line;
     int found;
     int i;
+    char *tmp_find;
+
+    tmp_find = ft_strdup(find);
+    ft_strlcat(tmp_find, " \0", ft_strlen(find) + 2);
+    printf ("get_line_of  tmp_find >%s< \n", tmp_find);
 
     found = 0;
     i = 0;
@@ -240,7 +246,22 @@ int check_if_arr_entrys_valid(char **arr, int arr_len)
     }
     return (1);
 }
- 
+typedef struct s_color
+{
+    int r;
+    int g;
+    int b;
+    int a;
+}   t_color;
+
+// returns the color of "F 220,100,0"
+
+t_color get_color_from_str(char **str)
+{
+
+
+}
+
 int main(int argc, char **argv)
 {   
     printf("huhu\n");
