@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/18 12:47:14 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/18 15:05:01 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ SRC_FILES	=	main \
 				draw/map \
 				player/getters \
 				player/setters \
+				player/rotation \
+				player/movement \
 				error/error \
 				user_input/keyboard \
 				user_input/mouse \

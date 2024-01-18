@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 13:41:14 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 15:04:21 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,9 @@
 #define TILE_SIZE_HALF 16
 #define TEST_MAP_SIZE_X 24
 #define TEST_MAP_SIZE_Y 24
+#define MOUSE_SENSITIVITY 0.1
+#define MOVE_SPEED 10
+#define ROT_SPEED 0.1
 
 /********************************************************************/
 /*                          OWN STRUCTS                             */
@@ -250,6 +253,14 @@ void	draw_map(t_cub *cub, t_vec2i position);
 /* INIT */
 
 void	init_player(t_player *player);
+
+/* TRANSFORMATION, ROTATION */
+
+void	move_forward(t_cub *cub);
+void	move_backward(t_cub *cub);
+void	move_left(t_cub *cub);
+void	move_right(t_cub *cub);
+void	rotate_player(t_cub *cub, double angle);
 
 /* SETTERS */
 
