@@ -6,17 +6,17 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 12:14:44 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 12:28:31 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_map(t_cub *cub)
+void draw_map(t_cub *cub, t_vec2i pos)
 {
 	t_vec2i	i;
 	t_vec2i	j;
-	t_vec2i	pos;
+	t_vec2i	local_pos;
 	int		color;
 
 	i.x = 0;
@@ -28,10 +28,15 @@ void	draw_map(t_cub *cub)
 		i.y = 0;
 		while (i.y < j.y)
 		{
-			pos.x = i.x * 10;
-			pos.y = i.y * 10;
-			color = cub->map[i.x][i.y] == 1 ? 0x00FFFFFF : 0x00000000;
-			draw_square(cub->img, pos, 10, color);
+			local_pos.x = i.x * TILE_SIZE_HALF;
+			local_pos.y = i.y * TILE_SIZE_HALF;
+			if (cub->map[i.x][i.y] == 1)
+				color = 0x00FFFFFF;
+			else if (cub->map[i.x][i.y] >= 2)
+				color = 0x00FF0000;
+			else
+				color = 0x00000000;
+			draw_square(cub->img, local_pos + pos, TILE_SIZE_HALF, color);
 			i.y++;
 		}
 		i.x++;

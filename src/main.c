@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 12:11:19 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 12:23:48 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ int	main(void)
 	ft_bzero(&cub, sizeof(t_cub));
 	init_cub(&cub);
 	transfers_map(&cub);
-	draw_map(&cub);
+	draw_map(&cub, (t_vec2i){0, 0});
 	// draw_circle(cub.img, cub.win_center, 100, 0x00FF0000);
 	// draw_rectangle(cub.img, (t_vec2i) {0, 0}, (t_vec2i) {200, 100}, 0x00FF0000);
 	// draw_square(cub.img, cub.win_center, 100, 0x00FF0000);

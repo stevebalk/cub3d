@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 12:10:40 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 12:34:01 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@
 # define FOV_RAD 1.0471975512
 # define FOV_HALF 30
 # define FOV_HALF_RAD 0.52359877559
-
-# define TILE_SIZE 64
-# define TILE_SIZE_HALF 32
 
 # define MINIMAP_SCALE 0.2
 
@@ -144,6 +141,8 @@
 #define MAP_HEIGHT 24
 #define WIN_WIDTH 640
 #define WIN_HEIGHT 480
+#define TILE_SIZE 32
+#define TILE_SIZE_HALF 16
 #define TEST_MAP_SIZE_X 24
 #define TEST_MAP_SIZE_Y 24
 
@@ -235,7 +234,7 @@ void	draw_square(t_data *img, t_vec2i pos, int size, int color);
 void	draw_rectangle(t_data *img, t_vec2i pos, t_vec2i size, int color);
 void	draw_circle(t_data *img, t_vec2i pos, int radius, int color);
 void	draw_triangle(t_data *img, t_vec2i pos, int size, int color);
-void	draw_map(t_cub *cub);
+void	draw_map(t_cub *cub, t_vec2i position);
 
 /********************************************************************/
 /*                          PLAYER                                  */
@@ -274,6 +273,24 @@ int		mouse_press(int button, int x, int y, t_cub *cub);
 int		mouse_release(int button, int x, int y, t_cub *cub);
 int		mouse_move(int x, int y, t_cub *cub);
 int		close_window(t_cub *cub);
+
+/********************************************************************/
+/*                          MATH                                    */
+/********************************************************************/
+
+/* VECTOR 2 */
+t_vec2	add_vec2(t_vec2 a, t_vec2 b);
+t_vec2	sub_vec2(t_vec2 a, t_vec2 b);
+t_vec2	mult_vec2(t_vec2 a, t_vec2 b);
+t_vec2	div_vec2(t_vec2 a, t_vec2 b);
+t_vec2	mod_vec2(t_vec2 a, t_vec2 b);
+
+/* VECTOR 2 INTEGER */
+t_vec2i	add_vec2i(t_vec2i a, t_vec2i b);
+t_vec2i	sub_vec2i(t_vec2i a, t_vec2i b);
+t_vec2i	mult_vec2i(t_vec2i a, t_vec2i b);
+t_vec2i	div_vec2i(t_vec2i a, t_vec2i b);
+t_vec2i	mod_vec2i(t_vec2i a, t_vec2i b);
 
 /********************************************************************/
 /*                          ERROR                                   */
