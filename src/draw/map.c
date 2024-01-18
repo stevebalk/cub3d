@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 12:28:31 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 12:46:45 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void draw_map(t_cub *cub, t_vec2i pos)
 				color = 0x00FF0000;
 			else
 				color = 0x00000000;
-			draw_square(cub->img, local_pos + pos, TILE_SIZE_HALF, color);
+			draw_square(cub->img, add_vec2i(local_pos, pos), TILE_SIZE_HALF, color);
 			i.y++;
 		}
 		i.x++;

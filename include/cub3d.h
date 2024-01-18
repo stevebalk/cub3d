@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 12:34:01 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 13:41:14 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,12 @@ typedef struct s_player
 	double			turn_speed;
 }					t_player;
 
+typedef struct s_mouse
+{
+	int				x;
+	int				y;
+}					t_mouse;
+
 /* FdF main struct, data that 
 is used everywhere */
 typedef struct s_cub
@@ -212,6 +218,7 @@ typedef struct s_cub
 	t_vec2i			map_size;
 	t_vec2i			win_center;
 	t_player		player;
+	t_mouse			mouse;
 }					t_cub;
 
 /********************************************************************/
@@ -266,12 +273,25 @@ double	get_player_old_time(t_player *player);
 /*                          INPUT HANDLING                          */
 /********************************************************************/
 
+/* INIT */
+
 void	init_mlx_hooks(t_cub *cub);
+void	init_mouse(t_cub *cub);
+
+/* Keyboard */
+
 int		key_press(int keycode, t_cub *cub);
 int		key_release(int keycode, t_cub *cub);
+
+/* Mouse */
+
 int		mouse_press(int button, int x, int y, t_cub *cub);
 int		mouse_release(int button, int x, int y, t_cub *cub);
 int		mouse_move(int x, int y, t_cub *cub);
+void	move_mouse_to_center(t_cub *cub);
+t_vec2i	get_relative_mouse_pos(t_cub *cub);
+
+/* Window */
 int		close_window(t_cub *cub);
 
 /********************************************************************/

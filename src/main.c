@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 12:23:48 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 13:40:05 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,20 @@ void	transfers_map(t_cub *cub)
 	}
 }
 
+void	draw_player(t_cub *cub)
+{
+	t_vec2i	pos;
+	t_vec2i	size;
+	int		color;
+
+	pos.x = cub->player.pos.x * TILE_SIZE_HALF;
+	pos.y = cub->player.pos.y * TILE_SIZE_HALF;
+	size.x = TILE_SIZE_HALF;
+	size.y = TILE_SIZE_HALF;
+	color = 0x00FFFFFF;
+	draw_circle(cub->img, pos, size.x / 2, color);
+}
+
 int	main(void)
 {
 	t_cub cub;
@@ -135,11 +149,9 @@ int	main(void)
 	init_cub(&cub);
 	transfers_map(&cub);
 	draw_map(&cub, (t_vec2i){0, 0});
-	// draw_circle(cub.img, cub.win_center, 100, 0x00FF0000);
-	// draw_rectangle(cub.img, (t_vec2i) {0, 0}, (t_vec2i) {200, 100}, 0x00FF0000);
-	// draw_square(cub.img, cub.win_center, 100, 0x00FF0000);
-	// draw_line(cub.img, cub.win_center, (t_vec2i){cub.win_center.x + 100, cub.win_center.y + 100}, 0x00FF0000);
-	// draw_triangle(cub.img, cub.win_center, 100, 0x00FF0000);
+	init_mouse(&cub);
+	draw_player(&cub);
+	move_mouse_to_center(&cub);
 	mlx_put_image_to_window(cub.mlx, cub.win, cub.img->img, 0, 0);
 	mlx_loop(cub.mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:04:48 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 11:09:57 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 12:40:07 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,18 +97,4 @@ void	draw_triangle(t_data *img, t_vec2i pos, int size, int color)
 		i.x++;
 	}
 }
-
-// void	draw_line(t_data *img, t_vec2i start, t_vec2i end, int color)
-// {
-// 	t_line	line;
-
-// 	line.dx = abs(end.x - start.x);
-// 	line.sx = ft_sign(start.x - end.x) * -1;
-// 	line.dy = -abs(end.y - start.y);
-// 	line.sy = ft_sign(start.y - end.y) * -1;
-// 	line.err = line.dx + line.dy;
-// 	put_pixel(img, start, color);
-// 	while (get_next_point(&line, &start, end))
-// 		put_pixel(img, start, color);
-// }
 
