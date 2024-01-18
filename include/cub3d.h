@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 15:04:21 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 16:34:53 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@
 # define FOV_HALF_RAD 0.52359877559
 
 # define MINIMAP_SCALE 0.2
-
-# define MOVE_SPEED 10
-# define ROT_SPEED 0.1
 
 # define TEXTURE_WIDTH 64
 # define TEXTURE_HEIGHT 64
@@ -146,7 +143,7 @@
 #define TEST_MAP_SIZE_X 24
 #define TEST_MAP_SIZE_Y 24
 #define MOUSE_SENSITIVITY 0.1
-#define MOVE_SPEED 10
+#define MOVE_SPEED 1
 #define ROT_SPEED 0.1
 
 /********************************************************************/
@@ -303,25 +300,35 @@ void	move_mouse_to_center(t_cub *cub);
 t_vec2i	get_relative_mouse_pos(t_cub *cub);
 
 /* Window */
+
 int		close_window(t_cub *cub);
 
 /********************************************************************/
 /*                          MATH                                    */
 /********************************************************************/
 
-/* VECTOR 2 */
+/* VECTOR 2 DOUBLE */
+
 t_vec2	add_vec2(t_vec2 a, t_vec2 b);
 t_vec2	sub_vec2(t_vec2 a, t_vec2 b);
 t_vec2	mult_vec2(t_vec2 a, t_vec2 b);
 t_vec2	div_vec2(t_vec2 a, t_vec2 b);
 t_vec2	mod_vec2(t_vec2 a, t_vec2 b);
+t_vec2	scale_vec2(t_vec2 a, double scale);
 
 /* VECTOR 2 INTEGER */
+
 t_vec2i	add_vec2i(t_vec2i a, t_vec2i b);
 t_vec2i	sub_vec2i(t_vec2i a, t_vec2i b);
 t_vec2i	mult_vec2i(t_vec2i a, t_vec2i b);
 t_vec2i	div_vec2i(t_vec2i a, t_vec2i b);
 t_vec2i	mod_vec2i(t_vec2i a, t_vec2i b);
+t_vec2i	scale_vec2i(t_vec2i a, int scale);
+
+/* CONVERT */
+
+t_vec2	v2i_to_v2(t_vec2i vec);
+t_vec2i	v2_to_v2i(t_vec2 vec);
 
 /********************************************************************/
 /*                          ERROR                                   */

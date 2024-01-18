@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/18 15:05:01 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/18 15:16:53 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC_FILES	=	main \
 				error/error \
 				user_input/keyboard \
 				user_input/mouse \
+				vector_utils/convert \
 				vector_utils/vec2 \
 				vector_utils/vec2i \
 

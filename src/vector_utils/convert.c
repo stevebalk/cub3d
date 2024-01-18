@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard.c                                         :+:      :+:    :+:   */
+/*   convert.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 15:55:59 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 16:32:55 by sbalk            ###   ########.fr       */
+/*   Created: 2024/01/18 15:09:17 by sbalk             #+#    #+#             */
+/*   Updated: 2024/01/18 15:12:44 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	key_press(int keycode, t_cub *cub)
+/* Convert vec2i into a vec2 */
+t_vec2	v2i_to_v2(t_vec2i vec)
 {
-	if (keycode == XK_w)
-		move_forward(cub);
-	if (keycode == XK_s)
-		move_backward(cub);
-	if (keycode == XK_a)
-		move_left(cub);
-	if (keycode == XK_d)
-		move_right(cub);
-	printf("keycode: %d\n", keycode);
-	if (keycode == XK_Escape)
-		close_window(cub);
-	return (0);
+	t_vec2	new;
+
+	new.x = (double)vec.x;
+	new.y = (double)vec.y;
+	return (new);
 }
 
-int	key_release(int keycode, t_cub *cub)
+/* Convert vec2 into a vec2i */
+t_vec2i	v2_to_v2i(t_vec2 vec)
 {
-	(void)cub;
-	printf("keycode: %d\n", keycode);
-	return (0);
+	t_vec2i	new;
+
+	new.x = (int)round(vec.x);
+	new.y = (int)round(vec.y);
+	return (new);
 }

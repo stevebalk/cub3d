@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 13:40:05 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/18 16:17:35 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,24 @@ void	draw_player(t_cub *cub)
 	draw_circle(cub->img, pos, size.x / 2, color);
 }
 
+int	render_loop(t_cub *cub)
+{
+	t_vec2i	player_pos;
+	t_vec2i	player_dir;
+
+	player_pos.x = cub->player.pos.x * TILE_SIZE_HALF;
+	player_pos.y = cub->player.pos.y * TILE_SIZE_HALF;
+	player_dir = add_vec2i(player_pos, v2_to_v2i(scale_vec2(cub->player.dir, 60)));
+
+	ft_bzero(cub->img->addr, cub->img->line_length * WIN_HEIGHT);
+	draw_map(cub, (t_vec2i){0, 0});
+	draw_player(cub);
+	draw_line(cub->img, player_pos, player_dir, 0x00FFFF00);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->img->img, 0, 0);
+
+	return (0);
+}
+
 int	main(void)
 {
 	t_cub cub;
@@ -148,11 +166,9 @@ int	main(void)
 	ft_bzero(&cub, sizeof(t_cub));
 	init_cub(&cub);
 	transfers_map(&cub);
-	draw_map(&cub, (t_vec2i){0, 0});
 	init_mouse(&cub);
-	draw_player(&cub);
 	move_mouse_to_center(&cub);
-	mlx_put_image_to_window(cub.mlx, cub.win, cub.img->img, 0, 0);
+	mlx_loop_hook(cub.mlx, render_loop, &cub);
 	mlx_loop(cub.mlx);
 	return (0);
 }
