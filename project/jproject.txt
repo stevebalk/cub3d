@@ -1,3 +1,19 @@
+/* Todo:
+- save lines of found elements 
+---> check other lines if they contain only space or tabs ... but no idea if 
+     its needed 
+     
+- find line with one of ( 01NESW )    find last line with these characters
+    -> look if the following lines contais other characters
+        -> if yes error
+        -> if not copy map to new map (or may do a pointer to that line?)
+
+
+knowing issues:
+  F    220,  100  ,  3 2    >> no error, not shure if the "2" is legal at the end
+        --> number checker, if more than 3 number --> error
+*/
+
 
 
 First argument ...  *.cub     map
@@ -17,7 +33,7 @@ elements:
 - F 220,100,0       same with C 
 - can be separated by one or more empty lines 
 - can have different order 
-- each type of informaion from an element can be seperated spaces 
+- each type of information from an element can be seperated spaces 
 
 ====
 If problems with the map:
