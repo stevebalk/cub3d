@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:59 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 17:00:01 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 20:25:11 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int	key_press(int keycode, t_cub *cub)
 		cub->key.a = 1;
 	if (keycode == XK_d)
 		cub->key.d = 1;
+	if (keycode == XK_Right)
+		cub->key.right = 1;
+	if (keycode == XK_Left)
+		cub->key.left = 1;
 	if (keycode == XK_Escape)
 		close_window(cub);
 	return (0);
@@ -37,5 +41,9 @@ int	key_release(int keycode, t_cub *cub)
 		cub->key.a = 0;
 	if (keycode == XK_d)
 		cub->key.d = 0;
+	if (keycode == XK_Right)
+		cub->key.right = 0;
+	if (keycode == XK_Left)
+		cub->key.left = 0;
 	return (0);
 }

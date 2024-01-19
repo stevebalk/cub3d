@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 20:04:27 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 20:27:15 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@
 #define MOUSE_SENSITIVITY 0.1
 #define FOV 66
 #define MOVE_SPEED 0.05
-#define ROT_SPEED 0.1
+#define ROT_SPEED 0.01
 #define DEBUG 1
 
 /********************************************************************/
@@ -214,6 +214,8 @@ typedef struct s_key
 	int				a;
 	int				s;
 	int				d;
+	int				left;
+	int				right;
 }					t_key;
 
 /* FdF main struct, data that 

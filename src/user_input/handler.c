@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:00:25 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 17:03:51 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 20:24:21 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ static void	key_handler(t_cub *cub)
 		move_left(cub);
 	if (cub->key.d)
 		move_right(cub);
+	if (cub->key.right)
+		rotate_player(cub, ROT_SPEED);
+	if (cub->key.left)
+		rotate_player(cub, -ROT_SPEED);
 }
 
 void	input_handler(t_cub *cub)
