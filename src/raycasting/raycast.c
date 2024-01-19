@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 14:13:11 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 14:53:22 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 	step.y = 0;
 	map_check.x = start_pos.x;
 	map_check.y = start_pos.y;
-	step_size.x = sqrt(1 + (dir.y / dir.x) * (dir.y / dir.x));
-	step_size.y = sqrt(1 + (dir.x / dir.y) * (dir.x / dir.y));
+	// step_size.x = sqrt(1 + (dir.y / dir.x) * (dir.y / dir.x));
+	// step_size.y = sqrt(1 + (dir.x / dir.y) * (dir.x / dir.y));
+	step_size.x = fabs(1 / dir.x);
+	step_size.y = fabs(1 / dir.y);
 	if (dir.x < 0)
 	{
 		step.x = -1;
@@ -58,13 +60,13 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 		if (ray_length.x < ray_length.y)
 		{
 			map_check.x += step.x;
-			dist += ray_length.x;
+			dist = ray_length.x;
 			ray_length.x += step_size.x;
 		}
 		else
 		{
 			map_check.y += step.y;
-			dist += ray_length.y;
+			dist = ray_length.y;
 			ray_length.y += step_size.y;
 		}
 		if ( map_check.x >= 0 && map_check.x < cub->map_size.x && map_check.y >= 0 && map_check.y < cub->map_size.y)
@@ -79,12 +81,21 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 			}
 		}
 	}
+
+	if (hit)
+	{
+		t_vec2	intersection;
+
+		intersection.x = start_pos.x + dir.x * dist;
+		intersection.y = start_pos.y + dir.y * dist;
+		draw_circle(cub->img, v2_to_v2i(scale_vec2(intersection, TILE_SIZE)), TILE_SIZE / 4, 0x00FFFF00);
+	}
 	t_vec2i	coord;
 	t_vec2i	target;
 
 	coord.x = start_pos.x * TILE_SIZE;
 	coord.y = start_pos.y * TILE_SIZE;
-	target = add_vec2i(coord, v2_to_v2i(scale_vec2(dir, max_dist)));
+	target = add_vec2i(coord, v2_to_v2i(scale_vec2(dir, dist * TILE_SIZE)));
 	draw_line(cub->img, coord, target, 0x00FFFF00);
 
 }
