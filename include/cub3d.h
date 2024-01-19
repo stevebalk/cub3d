@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 17:05:56 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 11:35:09 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,8 +138,7 @@
 #define MAP_HEIGHT 24
 #define WIN_WIDTH 640
 #define WIN_HEIGHT 480
-#define TILE_SIZE 32
-#define TILE_SIZE_HALF 16
+#define TILE_SIZE 16
 #define TEST_MAP_SIZE_X 24
 #define TEST_MAP_SIZE_Y 24
 #define MOUSE_SENSITIVITY 0.1
@@ -251,6 +250,7 @@ void	draw_rectangle(t_data *img, t_vec2i pos, t_vec2i size, int color);
 void	draw_circle(t_data *img, t_vec2i pos, int radius, int color);
 void	draw_triangle(t_data *img, t_vec2i pos, int size, int color);
 void	draw_map(t_cub *cub, t_vec2i position);
+void	draw_background(t_data *data, t_vec2i size, int color);
 
 /********************************************************************/
 /*                          PLAYER                                  */
