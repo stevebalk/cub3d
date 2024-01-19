@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 14:51:42 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 16:35:57 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,76 +39,6 @@ int worldMap[TEST_MAP_SIZE_X][TEST_MAP_SIZE_Y]= {
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 		};
 
-// int	main(void)
-// {
-// 	t_cub cub;
-// 	double cameraX;
-// 	double rayDirX;
-// 	double rayDirY;
-// 	int mapX;
-// 	int mapY;
-	// double sideDistX;
-	// double sideDistY;
-	// double deltaDistX;
-	// double deltaDistY;
-	// double perpWallDist;
-	// int stepX;
-	// int stepY;
-	// int hit;
-	// int side;
-	// int lineHeight;
-	// int drawStart;
-	// int drawEnd;
-	// int color;
-	// int x;
-	// int y;
-	// int i;
-	// int w;
-
-	// i = 0;
-	// w = 100;
-	// init_cub(&cub);
-
-	// while (i < w)
-	// {
-		//calculate ray position and direction
-		// cameraX = 2 * i / (double)cub.win_size.x - 1; //x-coordinate in camera space
-		// rayDirX = cub.player.dir.x + cub.player.plane.x * cameraX;
-		// rayDirY = cub.player.dir.y + cub.player.plane.y * cameraX;
-		//which box of the map we're in
-		// mapX = (int)cub.player.pos.x;
-		// mapY = (int)cub.player.pos.y;
-		//length of ray from current position to next x or y-side
-		// double sideDistX;
-		// double sideDistY;
-		//length of ray from one x or y-side to next x or y-side
-		// double deltaDistX;
-		// double deltaDistY;
-		//perpWallDist;
-		//what direction to step in x or y-direction (either +1 or -1)
-		// int stepX;
-		// int stepY;
-		//was there a wall hit?
-		// int hit;
-		//was a NS or a EW wall hit?
-		// int side;
-		//calculate step and initial sideDist
-		// if (rayDirX < 0)
-		// {
-			// stepX = -1;
-			// sideDistX = (cub.player.pos.x - mapX) * deltaDistX;
-		// }
-		// else
-		// {
-			// stepX = 1;
-			// sideDistX = (mapX + 1.0 - cub.player.pos.x) * deltaDistX;
-		// }
-// 	}
-// 	mlx_put_image_to_window(cub.mlx, cub.win, cub.img->img, 0, 0);
-// 	mlx_loop(cub.mlx);
-// 	return (0);
-// }
-
 void	transfers_map(t_cub *cub)
 {
 	int i;
@@ -132,24 +62,29 @@ void	draw_player(t_cub *cub)
 	t_vec2i	pos;
 	t_vec2i	size;
 	int		color;
+	t_vec2i	target;
 
-	pos.x = cub->player.pos.x * TILE_SIZE;
-	pos.y = cub->player.pos.y * TILE_SIZE;
-	size.x = TILE_SIZE;
-	size.y = TILE_SIZE;
+	pos.x = cub->player.pos.x * TILE_SIZE / 2 + 400;
+	pos.y = cub->player.pos.y * TILE_SIZE / 2;
+	size.x = TILE_SIZE / 2;
+	size.y = TILE_SIZE / 2;
 	color = 0x00FFFFFF;
+
+	target = add_vec2i(pos, v2_to_v2i(scale_vec2(cub->player.dir, 30)));
+	draw_line(cub->img, pos, target, 0x00FFFF00);
 	draw_circle(cub->img, pos, size.x / 2, color);
 }
 
 int	render_loop(t_cub *cub)
 {
-
 	input_handler(cub);
 	ft_bzero(cub->img->addr, cub->img->line_length * WIN_HEIGHT);
-	draw_background(cub->img,cub->win_size, 0x00990099);
-	draw_map(cub, (t_vec2i){0, 0});
-	draw_player(cub);
+	draw_rectangle(cub->img, (t_vec2i){0, 0}, (t_vec2i){cub->win_size.x, cub->win_size.y / 2}, 0x00000000);
+	draw_rectangle(cub->img, (t_vec2i){0, cub->win_size.y / 2}, (t_vec2i){cub->win_size.x, cub->win_size.y}, 0x005555FF);
 	raycast(cub, cub->player.pos, cub->player.dir);
+	draw_map(cub, (t_vec2i){400, 0});
+	draw_player(cub);
+
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img->img, 0, 0);
 
 	return (0);
