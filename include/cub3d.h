@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 16:42:20 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 20:04:27 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define PI 3.14159265359
 # define TWO_PI 6.28318530718
 
-# define FOV 60
 # define FOV_RAD 1.0471975512
 # define FOV_HALF 30
 # define FOV_HALF_RAD 0.52359877559
@@ -136,14 +135,18 @@
 
 #define MAP_WIDTH 24
 #define MAP_HEIGHT 24
-#define WIN_WIDTH 1920
-#define WIN_HEIGHT 1080
+// #define WIN_WIDTH 1920
+// #define WIN_HEIGHT 1080
+#define WIN_WIDTH 640
+#define WIN_HEIGHT 480
 #define TILE_SIZE 16
 #define TEST_MAP_SIZE_X 24
 #define TEST_MAP_SIZE_Y 24
 #define MOUSE_SENSITIVITY 0.1
+#define FOV 66
 #define MOVE_SPEED 0.05
 #define ROT_SPEED 0.1
+#define DEBUG 1
 
 /********************************************************************/
 /*                          OWN STRUCTS                             */
@@ -227,6 +230,11 @@ typedef struct s_cub
 	t_player		player;
 	t_mouse			mouse;
 	t_key			key;
+	int				frames;
+	int				fps;
+	time_t			start_time;
+	time_t			current_time;
+	double			delta_time;
 }					t_cub;
 
 /********************************************************************/
@@ -251,6 +259,9 @@ void	draw_circle(t_data *img, t_vec2i pos, int radius, int color);
 void	draw_triangle(t_data *img, t_vec2i pos, int size, int color);
 void	draw_map(t_cub *cub, t_vec2i position);
 void	draw_background(t_data *data, t_vec2i size, int color);
+
+/* Debug overlay */
+void	draw_debug_overlay(t_cub *cub, t_vec2i pos);
 
 /********************************************************************/
 /*                          PLAYER                                  */

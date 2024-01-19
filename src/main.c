@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 16:35:57 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 20:04:56 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	render_loop(t_cub *cub)
 	draw_player(cub);
 
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img->img, 0, 0);
+	if (DEBUG)
+		draw_debug_overlay(cub, (t_vec2i){0, 0});
 
 	return (0);
 }
