@@ -14,6 +14,9 @@
 int check_color(t_color color);
 t_color get_color_from_str(char **arr, char find);
 
+// get_map
+void get_map(char **arr);
+
 // get_textures
 char *get_text_path(char **arr, char *find);
 

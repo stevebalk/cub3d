@@ -65,6 +65,8 @@ int main(int argc, char **argv)
     if (!check_color(f_color))
         printf("Error\ninvalid color\n");
 
+	get_map(splitted_file);
+
     return(0);
 }
 
