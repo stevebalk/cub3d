@@ -6,11 +6,86 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 17:49:29 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 23:03:08 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// int	raycast_new(t_cub *cub, t_vec2 start_pos, t_vec2 dir, double length)
+// {
+// 	t_vec2	step_size;
+// 	t_vec2i	step;
+// 	t_vec2i	map_check;
+// 	t_vec2	ray_length;
+// 	int		hit;
+// 	double	max_dist;
+// 	double	dist;
+
+// 	step.x = 0;
+// 	step.y = 0;
+// 	map_check.x = (int)start_pos.x;
+// 	map_check.y = (int)start_pos.y;
+
+// 	if (dir.x == 0)
+// 		step_size.x = 1e30;
+// 	else
+// 		step_size.x = fabs(1 / dir.x);
+// 	if (dir.y == 0)
+// 		step_size.y = 1e30;
+// 	else
+// 		step_size.y = fabs(1 / dir.y);
+// 	if (dir.x < 0)
+// 	{
+// 		step.x = -1;
+// 		ray_length.x = (start_pos.x - map_check.x) * step_size.x;
+// 	}
+// 	else
+// 	{
+// 		step.x = 1;
+// 		ray_length.x = (map_check.x + 1.0f - start_pos.x) * step_size.x;
+// 	}
+// 	if (dir.y < 0)
+// 	{
+// 		step.y = -1;
+// 		ray_length.y = (start_pos.y - map_check.y) * step_size.y;
+// 	}
+// 	else
+// 	{
+// 		step.y = 1;
+// 		ray_length.y = (map_check.y + 1.0f - start_pos.y) * step_size.y;
+// 	}
+
+// 	hit = 0;
+// 	max_dist = length;
+// 	dist = 0;
+// 	while (!hit && dist < max_dist)
+// 	{
+// 		if (ray_length.x < ray_length.y)
+// 		{
+// 			map_check.x += step.x;
+// 			dist = ray_length.x;
+// 			ray_length.x += step_size.x;
+// 			side = 0;
+// 		}
+// 		else
+// 		{
+// 			map_check.y += step.y;
+// 			dist = ray_length.y;
+// 			ray_length.y += step_size.y;
+// 			side = 1;
+// 		}
+// 	}
+// 	if ( map_check.x >= 0 && map_check.x < cub->map_size.x && map_check.y >= 0 && map_check.y < cub->map_size.y)
+// 	{
+// 		if (cub->map[map_check.y][map_check.x] >= 1)
+// 		{
+// 			printf("Hit!\n");
+// 			hit = 1;
+// 		}
+// 	}
+// 	return (hit);
+// }
 
 void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 {
@@ -38,10 +113,6 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 		step.y = 0;
 		map_check.x = (int)start_pos.x;
 		map_check.y = (int)start_pos.y;
-		// step_size.x = sqrt(1 + (dir.y / dir.x) * (dir.y / dir.x));
-		// step_size.y = sqrt(1 + (dir.x / dir.y) * (dir.x / dir.y));
-		// step_size.x = fabs(1 / dir.x);
-		// step_size.y = fabs(1 / dir.y);
 
 		if (ray_dir_x == 0)
 			step_size.x = 1e30;

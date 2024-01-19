@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 20:27:15 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 23:41:33 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ typedef struct s_player
 {
 	t_vec2			pos;
 	t_vec2			dir;
+	t_vec2			velocity;
 	t_vec2			plane;
 	double			time;
 	double			old_time;
@@ -232,6 +233,8 @@ typedef struct s_cub
 	t_player		player;
 	t_mouse			mouse;
 	t_key			key;
+	int				ceilling_color;
+	int				floor_color;
 	int				frames;
 	int				fps;
 	time_t			start_time;
@@ -259,8 +262,10 @@ void	draw_square(t_data *img, t_vec2i pos, int size, int color);
 void	draw_rectangle(t_data *img, t_vec2i pos, t_vec2i size, int color);
 void	draw_circle(t_data *img, t_vec2i pos, int radius, int color);
 void	draw_triangle(t_data *img, t_vec2i pos, int size, int color);
-void	draw_map(t_cub *cub, t_vec2i position);
+void	draw_minimap(t_cub *cub, t_vec2i position);
 void	draw_background(t_data *data, t_vec2i size, int color);
+void	draw_ceilling(t_cub *cub);
+void	draw_floor(t_cub *cub);
 
 /* Debug overlay */
 void	draw_debug_overlay(t_cub *cub, t_vec2i pos);
@@ -280,6 +285,7 @@ void	move_backward(t_cub *cub);
 void	move_left(t_cub *cub);
 void	move_right(t_cub *cub);
 void	rotate_player(t_cub *cub, double angle);
+void	move(t_cub *cub);
 
 /* SETTERS */
 

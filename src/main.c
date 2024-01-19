@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 20:04:56 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 23:38:47 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int worldMap[TEST_MAP_SIZE_X][TEST_MAP_SIZE_Y]= {
 		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 		};
+
+int		celling_color = 0x00000099;
+int		floor_color = 0x00111111;
 
 void	transfers_map(t_cub *cub)
 {
@@ -79,10 +82,11 @@ int	render_loop(t_cub *cub)
 {
 	input_handler(cub);
 	ft_bzero(cub->img->addr, cub->img->line_length * WIN_HEIGHT);
-	draw_rectangle(cub->img, (t_vec2i){0, 0}, (t_vec2i){cub->win_size.x, cub->win_size.y / 2}, 0x00000000);
-	draw_rectangle(cub->img, (t_vec2i){0, cub->win_size.y / 2}, (t_vec2i){cub->win_size.x, cub->win_size.y}, 0x005555FF);
+	draw_ceilling(cub);
+	draw_floor(cub);
+	move(cub);
 	raycast(cub, cub->player.pos, cub->player.dir);
-	draw_map(cub, (t_vec2i){400, 0});
+	// draw_minimap(cub, (t_vec2i){400, 0});
 	draw_player(cub);
 
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img->img, 0, 0);
@@ -98,6 +102,8 @@ int	main(void)
 
 	ft_bzero(&cub, sizeof(t_cub));
 	init_cub(&cub);
+	cub.ceilling_color = celling_color;
+	cub.floor_color = floor_color;
 	transfers_map(&cub);
 	init_mouse(&cub);
 	move_mouse_to_center(&cub);
