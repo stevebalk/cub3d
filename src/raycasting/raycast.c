@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 13:06:48 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 14:13:11 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,19 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 			if (cub->map[map_check.y][map_check.x] >= 1)
 			{
 				t_vec2i	coord;
-				coord.x = map_check.x * TILE_SIZE;
-				coord.y = map_check.y * TILE_SIZE;
-				printf("map_check.x: %d map_chech.y: %d\n", map_check.x, map_check.y);
+
+				coord = scale_vec2i(map_check, TILE_SIZE);
 				draw_square(cub->img, coord, TILE_SIZE, 0x00FF00FF);
 				hit = 1;
 			}
 		}
 	}
+	t_vec2i	coord;
+	t_vec2i	target;
+
+	coord.x = start_pos.x * TILE_SIZE;
+	coord.y = start_pos.y * TILE_SIZE;
+	target = add_vec2i(coord, v2_to_v2i(scale_vec2(dir, max_dist)));
+	draw_line(cub->img, coord, target, 0x00FFFF00);
 
 }

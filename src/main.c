@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 12:54:46 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/19 14:14:46 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,22 +143,12 @@ void	draw_player(t_cub *cub)
 
 int	render_loop(t_cub *cub)
 {
-	t_vec2i	player_pos;
-	t_vec2i	player_dir;
 
 	input_handler(cub);
-	player_pos.x = cub->player.pos.x * TILE_SIZE;
-	player_pos.y = cub->player.pos.y * TILE_SIZE;
-	player_dir = add_vec2i(player_pos, v2_to_v2i(scale_vec2(cub->player.dir, 60)));
-
-	// printf("Grid_pos.x: %d\n", player_pos.x / TILE_SIZE);
-	// printf("Grid_pos.y: %d\n", player_pos.y / TILE_SIZE);
-	
 	ft_bzero(cub->img->addr, cub->img->line_length * WIN_HEIGHT);
 	draw_background(cub->img,cub->win_size, 0x00990099);
 	draw_map(cub, (t_vec2i){0, 0});
 	draw_player(cub);
-	draw_line(cub->img, player_pos, player_dir, 0x00FFFF00);
 	raycast(cub, cub->player.pos, cub->player.dir);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img->img, 0, 0);
 
