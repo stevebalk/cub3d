@@ -1,4 +1,10 @@
 
+typedef struct s_map_lines
+{
+	int start;
+	int end;
+}	t_map_lines;
+
 enum e_tex
 {
     NO,
