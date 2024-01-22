@@ -38,7 +38,12 @@ t_color get_color_from_str(char **arr, char find)
     str[1] = '\0';
     
     t_color color;
-    line = get_line_of(arr, str);
+	if (get_line_of(arr, str, 0) == get_line_of(arr, str, 0))
+	    line = get_line_of(arr, str, 0);
+	else
+		printf("Error!\there are to lines with >%s< \n", str);
+
+    //line = get_line_of(arr, str);
     printf("  > line: %i \n", line);
     // Check if line contains the find char ('F' or 'c') and 3 ','
     if ((count_char_in_str(arr[line], ',') != 2) || (count_char_in_str(arr[line], find) != 1))

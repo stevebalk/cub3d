@@ -41,34 +41,40 @@ int get_line_count(char *file)
 }
 
 // returns the line NR where find is in
-int get_line_of(char **arr, char *find)
+int get_line_of(char **arr, char *find, int rev)
 {
-    int line;
-    int found;
     int i;
     char *tmp_find;
+	int step;
 
     tmp_find = ft_strdup(find);
     ft_strlcat(tmp_find, " \0", ft_strlen(find) + 2);
     printf ("get_line_of  tmp_find >%s< \n", tmp_find);
 
-    found = 0;
     i = 0;
-    line = -1;
+
+	step = 1;
+	if (rev)
+	{
+		i = get_arr_len(arr) - 1;
+		step = -1;
+	}
+	else
+		i = 0;
+
     while(arr[i])
     {
         if (ft_strnstr(arr[i], find, ft_strlen(arr[i])) != NULL)
-        {
-            found++;
-            line = i;
-        }
-        i++;
+			return (i);
+        i += step;
     }
 
-    if (found > 1)
-        printf("found more than one !!!\n");
+    // if (found > 1)
+    //     printf("found more than one !!!\n");
+	// if (found == 0)
+	// 	printf("found NO!!!\n");
 
-    return (line);
+    return (-1);
 }
 
 // returns the bigger strlen of s1 or s2

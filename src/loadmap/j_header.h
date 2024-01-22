@@ -27,7 +27,7 @@ void show_color(t_color color);
 // util 
 int get_arr_len(char **arr);
 int get_line_count(char *file);
-int get_line_of(char **arr, char *find);
+int get_line_of(char **arr, char *find, int rev);
 int get_max_of_strlen(char *s1, char *s2);
 int check_if_arr_entrys_valid(char **arr, int arr_len);
 int count_char_in_str(char *str, char c);

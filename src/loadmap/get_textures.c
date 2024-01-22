@@ -3,7 +3,7 @@
 // return the path of of the find argument, size is the array size i.e. 2 if ("NO ./texure")
 char *get_text_path(char **arr, char *find)
 {
-    printf("\nget_text_path of: %s\n", find);
+    c_yellow(); printf("\nget_text_path of: %s\n", find); c_reset();
     /*
     1. Split ' ' 
     2. wenn array len != 2 ist --> Error
@@ -17,8 +17,14 @@ char *get_text_path(char **arr, char *find)
     
     if (arr == NULL || find == NULL)
         return (NULL);
-
-    line = get_line_of(arr, find);
+	// if get_line_of   reverse and not reverse are the same line, than there is only 1 occurence --> good
+	if (get_line_of(arr, find, 0) == get_line_of(arr, find, 1))
+    	line = get_line_of(arr, find, 0);
+	else
+	{
+		c_red();
+		printf("Error!\nhere are 2 lines with >%s< \n", find); c_reset();
+	}
     split = ft_split(arr[line], ' ');
     show_arr(split);
 
@@ -32,7 +38,9 @@ char *get_text_path(char **arr, char *find)
     //checks if elemtent name is ok
     if (ft_strncmp(find, split[0], get_max_of_strlen(find, split[0])) != 0)
     {
+		c_red();
         printf("Error\nelement is not in the right order or has more characters\n");
+		c_reset();
         //todo free split
         return (NULL);
     }
@@ -40,7 +48,9 @@ char *get_text_path(char **arr, char *find)
     fd = open(split[1], O_RDONLY);
     if (fd == -1)
     {
+		c_red();
         printf("Error\ntexture file: %s is not valid\n", split[1]);
+		c_reset();
         //todo free split
         return (NULL);
     }
