@@ -15,6 +15,19 @@ int check_color(t_color color)
     return (1);    
 }
 
+// checks if more elements than 1 are i a splittet , , section. 
+int check_color_section(char *str)
+{
+	char **tmp;
+	tmp = ft_split(str, ' ');
+	c_cyan();printf("check_color_section() >%s<\n", str);c_reset();
+	show_arr(tmp);
+	if (get_arr_len(tmp) > 1)
+		return (0);
+	else
+		return (1);
+}
+
 t_color get_color_from_str(char **arr, char find)
 {
     printf("get_color_from_str()  find: %c \n", find);
@@ -39,9 +52,12 @@ t_color get_color_from_str(char **arr, char find)
     tmp_line = ft_strchr(arr[line],find);
     split = ft_split(++tmp_line, ',');
     show_arr(split);
-    color.r = ft_atoi(split[0]);
-    color.g = ft_atoi(split[1]);
-    color.b = ft_atoi(split[2]);
+	if (check_color_section(split[0]))
+    	color.r = ft_atoi(split[0]);
+	if (check_color_section(split[1]))
+    	color.g = ft_atoi(split[1]);
+	if (check_color_section(split[2]))
+    	color.b = ft_atoi(split[2]);
     color.a = 0;
 
     return (color);
