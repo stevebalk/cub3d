@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/19 19:49:16 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/22 19:23:25 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC_FILES	=	main \
 				draw/line \
 				draw/map \
 				error/error \
+				math/math \
 				player/getters \
 				player/setters \
 				player/rotation \

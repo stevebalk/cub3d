@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 23:38:47 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/22 19:26:17 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	render_loop(t_cub *cub)
 	draw_floor(cub);
 	move(cub);
 	raycast(cub, cub->player.pos, cub->player.dir);
-	// draw_minimap(cub, (t_vec2i){400, 0});
+	draw_minimap(cub, (t_vec2i){400, 0});
 	draw_player(cub);
 
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img->img, 0, 0);
@@ -101,6 +101,7 @@ int	main(void)
 	t_cub cub;
 
 	ft_bzero(&cub, sizeof(t_cub));
+	cub.player.start_direction = EAST;
 	init_cub(&cub);
 	cub.ceilling_color = celling_color;
 	cub.floor_color = floor_color;

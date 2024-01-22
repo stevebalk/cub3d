@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 23:03:08 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/22 19:36:24 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,28 +101,31 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 	double	ray_dir_y;
 	
 	i = 0;
-	while (i < cub->win_size.x)
+	while (i < cub->win_size.x) // For each x axis pixel on the screen
 	{
-		camera_x = 2 * i / (double)cub->win_size.x - 1;
+		camera_x = 2 * i / (double)cub->win_size.x - 1; // x-coordinate in camera space, normalized device coordinates (NDC) [-1, 1] 
 		ray_dir_x = cub->player.dir.x + cub->player.plane.x * camera_x;
 		ray_dir_y = cub->player.dir.y + cub->player.plane.y * camera_x;
 
+		// printf("camera_x: %f\n", camera_x);
+		// printf("Raydirs x: %f y: %f\n", ray_dir_x, ray_dir_y);
 		int		side;
 
 		step.x = 0;
 		step.y = 0;
+		side = -1;
 		map_check.x = (int)start_pos.x;
 		map_check.y = (int)start_pos.y;
 
-		if (ray_dir_x == 0)
+		if (ray_dir_x == 0) // Prevents division by 0
 			step_size.x = 1e30;
 		else
-			step_size.x = fabs(1 / ray_dir_x);
-		if (ray_dir_y == 0)
+			step_size.x = fabs(1 / ray_dir_x); 
+		if (ray_dir_y == 0) // Prevents division by 0
 			step_size.y = 1e30;
 		else
 			step_size.y = fabs(1 / ray_dir_y);
-		if (ray_dir_x < 0)
+		if (ray_dir_x < 0.0)
 		{
 			step.x = -1;
 			ray_length.x = (start_pos.x - map_check.x) * step_size.x;
@@ -132,7 +135,7 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 			step.x = 1;
 			ray_length.x = (map_check.x + 1.0f - start_pos.x) * step_size.x;
 		}
-		if (ray_dir_y < 0)
+		if (ray_dir_y < 0.0)
 		{
 			step.y = -1;
 			ray_length.y = (start_pos.y - map_check.y) * step_size.y;
@@ -142,7 +145,10 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 			step.y = 1;
 			ray_length.y = (map_check.y + 1.0f - start_pos.y) * step_size.y;
 		}
-
+		// printf("Mapcheck x %d y %d\n", map_check.x, map_check.y);
+		// printf("Step x %d y %d\n", step.x, step.y);
+		// printf("Raylength x %f y %f\n", ray_length.x, ray_length.y);
+		// printf("Stepsize x %f y %f\n", step_size.x, step_size.y);
 		int		hit;
 		double	max_dist;
 		double	dist;
@@ -152,7 +158,7 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 		dist = 0;
 		while (!hit && dist < max_dist)
 		{
-			if (ray_length.x < ray_length.y)
+			if (ray_length.x < ray_length.y) // Horizontal 
 			{
 				map_check.x += step.x;
 				dist = ray_length.x;
@@ -184,6 +190,7 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 				}
 			}
 		}
+		// exit(0);
 
 		if (hit)
 		{
@@ -205,8 +212,14 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 			int draw_end = line_height / 2 + cub->win_size.y / 2;
 			if(draw_end >= cub->win_size.y)
 				draw_end = cub->win_size.y - 1;
-			draw_line(cub->img, (t_vec2i){cub->win_size.x - i, draw_start}, (t_vec2i){cub->win_size.x - i, draw_end}, 0x00FFFF00);
+			int draw_color;
+			if (side == 0)
+				draw_color = 0x00FF0000; // Red for the North side
+			else if (side == 1)
+				draw_color = 0x0000FF00; // Green for the South side
+			draw_line(cub->img, (t_vec2i){i, draw_start}, (t_vec2i){i, draw_end}, draw_color);
 		}
 		i++;
 	}
+	// exit(0);
 }

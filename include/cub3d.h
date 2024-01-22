@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 23:41:33 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/22 19:24:28 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@
 # define KEY_RIGHT 124
 # define KEY_UP 126
 # define KEY_DOWN 125
-
-# define PI 3.14159265359
-# define TWO_PI 6.28318530718
 
 # define FOV_RAD 1.0471975512
 # define FOV_HALF 30
@@ -54,11 +51,6 @@
 
 # define ERROR -1
 # define SUCCESS 0
-
-# define NORTH 0
-# define SOUTH 1
-# define EAST 2
-# define WEST 3
 
 # define SPRITE_SCALE 0.5
 
@@ -147,6 +139,13 @@
 #define MOVE_SPEED 0.05
 #define ROT_SPEED 0.01
 #define DEBUG 1
+#define EAST 0
+#define SOUTH 1
+#define WEST 2
+#define NORTH 3
+
+# define PI 3.14159265359
+# define TWO_PI 6.28318530718
 
 /********************************************************************/
 /*                          OWN STRUCTS                             */
@@ -192,6 +191,7 @@ typedef struct s_player
 {
 	t_vec2			pos;
 	t_vec2			dir;
+	int				start_direction;
 	t_vec2			velocity;
 	t_vec2			plane;
 	double			time;
@@ -276,7 +276,7 @@ void	draw_debug_overlay(t_cub *cub, t_vec2i pos);
 
 /* INIT */
 
-void	init_player(t_player *player);
+void	init_player(t_cub *cub);
 
 /* TRANSFORMATION, ROTATION */
 
@@ -367,6 +367,8 @@ t_vec2i	scale_vec2i(t_vec2i a, int scale);
 
 t_vec2	v2i_to_v2(t_vec2i vec);
 t_vec2i	v2_to_v2i(t_vec2 vec);
+double	deg_to_rad(double deg);
+double	rad_to_deg(double rad);
 
 /********************************************************************/
 /*                          ERROR                                   */
