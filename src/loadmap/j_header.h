@@ -19,6 +19,7 @@ void get_map(char **arr);
 
 // get_textures
 char *get_text_path(char **arr, char *find);
+int get_text_paths_master(char **tex_paths, char **splitted_file);
 
 // show
 void show_arr(char **arr);

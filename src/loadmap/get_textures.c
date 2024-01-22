@@ -1,5 +1,7 @@
 #include "j_header.h"
 
+static char *tex_names[5] = {"NO","EA","SO","WE", NULL};
+
 int check_path(char *path)
 {
 	int res;
@@ -67,20 +69,7 @@ char *get_text_path(char **arr, char *find)
         return (NULL);
     }
 
-	
-    // // checks the file of the element
-    // fd = open(split[1], O_RDONLY);
-    // if (fd == -1)
-    // {
-	// 	c_red();
-    //     printf("Error\ntexture file: %s is not valid\n", split[1]);
-	// 	c_reset();
-    //     //todo free split
-    //     return (NULL);
-    // }
-    // close(fd);
-
-    // copy file to output
+    // copy file to output if path is valid
 	if (check_path(split[1]))
 	{
 		ret = ft_strdup(split[1]);
@@ -91,4 +80,19 @@ char *get_text_path(char **arr, char *find)
 		return (NULL);
 
     // freeing split TODO
+}
+
+// fills a array of texture paths
+int get_text_paths_master(char *tex_paths[5], char **splitted_file)
+{
+ 	//char *tmp_tex_paths[5];
+    int i = -1;
+    while(i++, i < 4)
+        tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
+
+    tex_paths[i] = NULL;
+    show_arr(tex_paths);
+    
+    printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
+	return(check_if_arr_entrys_valid(tex_paths, 4));
 }

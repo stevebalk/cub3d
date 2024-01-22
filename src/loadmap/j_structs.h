@@ -5,13 +5,13 @@ typedef struct s_map_lines
 	int end;
 }	t_map_lines;
 
-enum e_tex
+typedef enum e_tex
 {
     NO,
     EA,
     SO,
     WE
-};
+} t_tex;
 
 typedef struct s_color
 {
@@ -20,3 +20,14 @@ typedef struct s_color
     int b;
     int a;
 }   t_color;
+
+typedef struct s_map
+{
+	t_color	F;
+	t_color	C;
+
+	t_tex	e_texures;
+	char	*textures[5];
+
+	char	**map;
+}	t_map;

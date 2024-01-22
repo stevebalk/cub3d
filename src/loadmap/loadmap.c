@@ -1,6 +1,6 @@
 #include "j_header.h"
 
-char *tex_names[5] = {"NO","EA","SO","WE", NULL};
+static char *tex_names[5] = {"NO","EA","SO","WE", NULL};
 
 char **J_load_file(char *file)
 {
@@ -35,7 +35,7 @@ char **J_load_file(char *file)
         i++;
     }
     tmp[i] = NULL;
-    show_arr(tmp);
+    //show_arr(tmp);
     replace_char_in_arr(tmp, '\n', '\0');
     show_arr(tmp);
     
@@ -44,21 +44,16 @@ char **J_load_file(char *file)
 }
 ///////////////////////////////////
 
+int load_map(t_map *map, char **argv)
+{
+	//
 
-int main(int argc, char **argv)
-{   
-    printf("huhu\n");
     char **splitted_file = J_load_file(argv[1]);
 
-    char *tex_paths[5];
-    int i = -1;
-    while(i++, i < 4)
-        tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
-
-    tex_paths[i] = NULL;
-    show_arr(tex_paths);
-    
-    printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
+	if (!get_text_paths_master(map->textures, splitted_file))
+	{
+		printf("Error!\ntexture paths are not valid\n");
+	}
 
     // t_color f_color = get_color_from_str(splitted_file, 'F');
 	// t_color c_color = get_color_from_str(splitted_file, 'C');
@@ -71,6 +66,15 @@ int main(int argc, char **argv)
     //     printf("Error\ninvalid ceil color\n");
 
 	//get_map(splitted_file);
+
+	return (1);
+}
+
+int main(int argc, char **argv)
+{   
+    printf("huhu\n");
+	t_map map;
+	load_map(&map, argv);
 
     return(0);
 }
