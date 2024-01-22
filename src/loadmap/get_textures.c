@@ -1,5 +1,26 @@
 #include "j_header.h"
 
+int check_path(char *path)
+{
+	int res;
+	int fd;
+
+    // checks the file of the element
+    fd = open(path, O_RDONLY);
+    if (fd == -1)
+    {
+		c_red();
+        printf("Error\ntexture file: %s is not valid\n", path);
+		c_reset();
+        res = 0;
+    }
+	else
+		res = 1;
+    close(fd);
+	return (res);
+}
+
+
 // return the path of of the find argument, size is the array size i.e. 2 if ("NO ./texure")
 char *get_text_path(char **arr, char *find)
 {
@@ -24,6 +45,7 @@ char *get_text_path(char **arr, char *find)
 	{
 		c_red();
 		printf("Error!\nhere are 2 lines with >%s< \n", find); c_reset();
+		return (NULL);
 	}
     split = ft_split(arr[line], ' ');
     show_arr(split);
@@ -44,22 +66,29 @@ char *get_text_path(char **arr, char *find)
         //todo free split
         return (NULL);
     }
-    // checks the file of the element
-    fd = open(split[1], O_RDONLY);
-    if (fd == -1)
-    {
-		c_red();
-        printf("Error\ntexture file: %s is not valid\n", split[1]);
-		c_reset();
-        //todo free split
-        return (NULL);
-    }
-    close(fd);
+
+	
+    // // checks the file of the element
+    // fd = open(split[1], O_RDONLY);
+    // if (fd == -1)
+    // {
+	// 	c_red();
+    //     printf("Error\ntexture file: %s is not valid\n", split[1]);
+	// 	c_reset();
+    //     //todo free split
+    //     return (NULL);
+    // }
+    // close(fd);
 
     // copy file to output
-    ret = ft_strdup(split[1]);
-    printf("ret: >%s<\n", ret);
+	if (check_path(split[1]))
+	{
+		ret = ft_strdup(split[1]);
+		printf("ret: >%s<\n", ret);
+		return (ret);
+	}
+	else 
+		return (NULL);
 
     // freeing split TODO
-    return (ret);
 }

@@ -123,6 +123,7 @@ int count_char_in_str(char *str, char c)
     return (count);
 }
 
+// builds a t_color from ints
 t_color get_color(int r, int g, int b, int a)
 {
     t_color color;
