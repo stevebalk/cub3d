@@ -153,3 +153,45 @@ void replace_char_in_arr(char **arr, char find, char replace)
     }
     printf("--- End ---\n");
 }
+
+// returns 0 if c != one of the charset
+int check_char_in_chars(char c, char *charset)
+{
+	//c_yellow(); printf("     > check_char_in_chars() \n"); 
+	c_reset();
+
+	int i;
+
+	i = 0;
+	while (charset[i])
+	{
+		if (charset[i] == c)
+			return (printf("     > ret 1\n"), 1);
+		i++;
+	}
+	c_red();
+	return (printf("     > ret 0\n"), 0);
+}
+
+// checks every char in the string; if it is not one of the charset --> return 0;
+int check_line_for_chars(char *line, char *charset)
+{
+	int i;
+	//c_yellow(); printf("  > check_line_for_chars() "); 
+	//c_purple(); printf(" >%s<  ", line);
+	//c_cyan(); printf(" >%s<  \n", charset); 
+	c_reset();
+
+	if (ft_strlen(line) == 0)
+		return (printf("  > ret 0\n"), 0);
+
+	i = 0;
+	while(line[i])
+	{
+			//printf("  > i: %i      c >%c<      charset >%s<\n", i, line[i], charset);
+		if (!check_char_in_chars(line[i], charset))
+			return (printf("  > ret 0\n"), 0);
+		i++;
+	}
+	return (printf("  > ret 1\n"), 1);
+}

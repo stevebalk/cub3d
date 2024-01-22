@@ -33,6 +33,8 @@ int check_if_arr_entrys_valid(char **arr, int arr_len);
 int count_char_in_str(char *str, char c);
 t_color get_color(int r, int g, int b, int a);
 void replace_char_in_arr(char **arr, char find, char replace);
+int check_char_in_chars(char c, char *charset);
+int check_line_for_chars(char *line, char *charset);
 
 // colors
 void	c_red(void);
