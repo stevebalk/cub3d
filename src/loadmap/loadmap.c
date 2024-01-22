@@ -61,11 +61,16 @@ int main(int argc, char **argv)
     printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
 
     t_color f_color = get_color_from_str(splitted_file, 'F');
+	t_color c_color = get_color_from_str(splitted_file, 'C');
     show_color(f_color);
-    if (!check_color(f_color))
-        printf("Error\ninvalid color\n");
+	show_color(c_color);
 
-	get_map(splitted_file);
+    if (!check_color(f_color))
+        printf("Error\ninvalid floor color\n");
+	if (!check_color(c_color))
+        printf("Error\ninvalid ceil color\n");
+
+	//get_map(splitted_file);
 
     return(0);
 }

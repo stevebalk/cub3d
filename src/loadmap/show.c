@@ -15,8 +15,8 @@ void show_arr(char **arr)
 void show_color(t_color color)
 {
     printf("show color\n");
-    printf(" R: %i\n", color.r);
-    printf(" G: %i\n", color.g);
-    printf(" B: %i\n", color.b);
+    c_red();printf(" R: %i\n", color.r);
+    c_green();printf(" G: %i\n", color.g);
+    c_blue();printf(" B: %i\n", color.b); c_reset();
     printf(" A: %i\n\n", color.a);
 }
