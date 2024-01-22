@@ -128,22 +128,16 @@ int check_map_lines(char **arr, t_map_lines map_lines, char *charset, char *char
 void get_map(char **arr)
 {
 	c_yellow();printf("get_map\n"); c_reset();
-
-	// int map_line_first = -11;
-	// int map_line_last = -11;
-	
-	// map_line_first = get_line_of_chars(arr, " 01NESW", "01NESW", 0);
-	// map_line_last = get_line_of_chars(arr, " 01NESW", "01NESW", 1);
 	t_map_lines map_lines;
 	map_lines = get_map_lines(arr, " 01NESW", "01NESW");
 
 	c_green(); 
 	printf("first map line: %i\nlast  map line: %i\n", map_lines.start, map_lines.end);
-	c_reset();
-	
-	c_cyan(); 
 	printf("check map from line: %i till %i\n", map_lines.start, map_lines.end);
 	c_reset();
 
-	check_map_lines(arr, map_lines, " 01NESW", "01NESW");
+	if (!check_map_lines(arr, map_lines, " 01NESW", "01NESW"))
+	{
+		printf("Error!\nMap not valid\n");
+	}
 }
