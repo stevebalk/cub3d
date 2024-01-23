@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:27:31 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:43:20 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void free_s_map(t_map *s_map)
 {
 	free_n_null((void **)s_map->textures);
 	free_n_null_2D((void ***)s_map->map);
-
 }
 
 int load_map(t_map *s_map, char **argv)
@@ -86,7 +85,7 @@ int load_map(t_map *s_map, char **argv)
 	{
 		printf("Error!\nmap is not valid\n");
 	}	
-	free_n_null((void **)splitted_file);
+	free_n_null_2D((void ***)splitted_file);
 	return (1);
 }
 
@@ -103,6 +102,8 @@ int main(int argc, char **argv)
 	// show_color(map.F);
 
 	free_s_map(&map);
+
+	
     return(0);
 }
 

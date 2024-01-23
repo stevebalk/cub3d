@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:16:56 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:38:22 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char *get_text_path(char **arr, char *find)
     if (get_arr_len(split) != 2)
     {
         printf("Error\nelement has more then 2 information in the line\n");
-		free_n_null((void **)split);
+		free_n_null_2D((void ***)split);
         return (NULL);
     }
     //checks if elemtent name is ok
@@ -77,7 +77,7 @@ char *get_text_path(char **arr, char *find)
 		c_red();
         printf("Error\nelement is not in the right order or has more characters\n");
 		c_reset();
-		free_n_null((void **)split);
+		free_n_null_2D((void ***)split);
         return (NULL);
     }
 
@@ -86,12 +86,12 @@ char *get_text_path(char **arr, char *find)
 	{
 		ret = ft_strdup(split[1]);
 		printf("ret: >%s<\n", ret);
-		free_n_null((void **)split);
+		free_n_null_2D((void ***)split);
 		return (ret);
 	}
 	else 
 	{
-		free_n_null((void **)split);
+		free_n_null_2D((void ***)split);
 		return (NULL);
 	}
 
