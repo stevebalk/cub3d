@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:34:15 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:10:36 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ int get_line_count(char *file)
 int get_line_of(char **arr, char *find, int rev)
 {
     int i;
-    char *tmp_find;
+    //char *tmp_find;
 	int step;
 
-    tmp_find = ft_strdup(find);
-    ft_strlcat(tmp_find, " \0", ft_strlen(find) + 2);
-    printf ("get_line_of  tmp_find >%s< \n", tmp_find);
+    // tmp_find = ft_strdup(find);
+    // ft_strlcat(tmp_find, " \0", ft_strlen(find) + 2);
+    // printf ("get_line_of  tmp_find >%s< \n", tmp_find);
 
     i = 0;
 
@@ -85,7 +85,7 @@ int get_line_of(char **arr, char *find, int rev)
     //     printf("found more than one !!!\n");
 	// if (found == 0)
 	// 	printf("found NO!!!\n");
-
+	
     return (-1);
 }
 
@@ -235,7 +235,10 @@ int get_max_line(char **arr, int start, int end)
 void	free_n_null(void **ptr)
 {
 	if (*ptr)
+	{
+		printf("free 1D    >%s<\n",  (char*)ptr);
 		free(*ptr);
+	}
 	*ptr = NULL;
 }
 
@@ -247,6 +250,8 @@ void	free_n_null_2D(void ***ptr)
 	i = 0;
     for (int i = 0; ptr[i] != NULL; i++) 
 	{
+		printf("free 2D  i: %i   >%s<\n", i, (char*)ptr[i]);
+
         free(ptr[i]);
     }
 	// while(ptr[i] != NULL)

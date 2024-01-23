@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:53:48 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:13:50 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ char **J_load_file(char *file)
 void free_s_map(t_map *s_map)
 {
 	free_n_null_2D((void ***)s_map->textures);
-	//free_n_null_2D((void ***)s_map->map);
+	//free(s_map->textures);
+	free_n_null_2D((void ***)s_map->map);
 }
 
 int load_map(t_map *s_map, char **argv)
@@ -71,20 +72,20 @@ int load_map(t_map *s_map, char **argv)
 		printf("Error!\ntexture paths are not valid\n");
 	}
 
-    // s_map->F = get_color_from_str(splitted_file, 'F');
-	// s_map->C = get_color_from_str(splitted_file, 'C');
+    s_map->F = get_color_from_str(splitted_file, 'F');
+	s_map->C = get_color_from_str(splitted_file, 'C');
 
-    // if (!check_color(s_map->F))
-    //    printf("Error\ninvalid floor color\n");
-	// if (!check_color(s_map->C))
-    //    printf("Error\ninvalid ceil color\n");
-	// show_color(s_map->F);
-	// show_color(s_map->C);
+    if (!check_color(s_map->F))
+       printf("Error\ninvalid floor color\n");
+	if (!check_color(s_map->C))
+       printf("Error\ninvalid ceil color\n");
+	show_color(s_map->F);
+	show_color(s_map->C);
 
-	// if (!get_map(s_map, splitted_file))
-	// {
-	// 	printf("Error!\nmap is not valid\n");
-	// }	
+	if (!get_map(s_map, splitted_file))
+	{
+		printf("Error!\nmap is not valid\n");
+	}	
 	free_n_null_2D((void ***)splitted_file);
 	return (1);
 }
@@ -94,9 +95,9 @@ void ini_map(t_map *s_map)
 	int i;
 
 	i = 0;
+	s_map->textures = (char **)malloc(sizeof(char *) *5);
 	while(i <= 5)
 	{
-		s_map->textures = (char **)malloc(sizeof(char *) *5);
 		s_map->textures[i] = NULL;
 		i++;
 	}

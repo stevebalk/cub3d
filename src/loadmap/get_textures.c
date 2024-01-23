@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 15:03:21 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:13:30 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char *get_text_path(char **arr, char *find)
     char *ret;
     int fd;
     int line;
+
+	ret = NULL;
     
     if (arr == NULL || find == NULL)
         return (NULL);
@@ -104,12 +106,12 @@ int get_text_paths_master(char **tex_paths, char **splitted_file)
 {
  	//char *tmp_tex_paths[5];
     int i = -1;
-    while(i++, i < 1)
+    while(i++, i < 4)
         tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
 
     tex_paths[i] = NULL;
     show_arr(tex_paths);
     
-    printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 1));
+    printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
 	return(check_if_arr_entrys_valid(tex_paths, 4));
 }
