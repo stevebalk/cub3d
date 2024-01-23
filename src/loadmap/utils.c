@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
+/*   Updated: 2024/01/23 14:05:27 by jopeters         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "j_header.h"
 
 int get_arr_len(char **arr)
@@ -217,4 +229,12 @@ int get_max_line(char **arr, int start, int end)
 	}
 	printf("get_max_line: %i\n", max);
 	return (max);
+}
+
+// emptys the pointer and set it to NULL
+void	free_n_null(void **ptr)
+{
+	if (*ptr)
+		free(*ptr);
+	*ptr = NULL;
 }

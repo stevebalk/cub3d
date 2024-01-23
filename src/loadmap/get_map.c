@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_map.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
+/*   Updated: 2024/01/23 14:07:55 by jopeters         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "j_header.h"
-
-
 
 // return 1; if 1 charset character is in line
 int has_at_least_one_occurence_of_charset(char *line, char *charset)
@@ -73,7 +84,7 @@ int check_map_lines(char **arr, t_map_lines map_lines, char *charset, char *char
 	i= map_lines.start;
 	while(i < map_lines.end && arr[i])
 	{
-		c_purple();printf("\n%i >%s<\n", i, arr[i]);c_reset();
+		//c_purple();printf("\n%i >%s<\n", i, arr[i]);c_reset();
 		if (!check_line_for_chars(arr[i], charset) || !has_at_least_one_occurence_of_charset(arr[i], charset2))
 		{
 			res = 0;
@@ -95,7 +106,7 @@ int get_spaces_from_beginning(char *line)
 	i = 0;
 	while(line[i] == ' ' && line[i])
 		i++;
-	printf("spaces: %i\n", i);
+	//printf("spaces: %i\n", i);
 	return (i);
 }
 
@@ -127,9 +138,9 @@ void copy_arr_to_map(char **arr, t_map *s_map, t_map_lines lines, int offset)
 	i = 0;
 	while(i < (lines.end - lines.start + 1))
 	{
-		printf("i: %i   >%s< \n", i, arr[lines.start + i] + offset);
+		//printf("i: %i   >%s< \n", i, arr[lines.start + i] + offset);
 		s_map->map[i] = ft_strdup(arr[lines.start + i] + offset);
-		printf("map[%i] >%s<\n", i, s_map->map[i]);
+		//printf("map[%i] >%s<\n", i, s_map->map[i]);
 		i++;
 	}
 	s_map->map[i] = NULL;

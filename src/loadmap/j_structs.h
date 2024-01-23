@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   j_structs.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/23 14:03:35 by jopeters          #+#    #+#             */
+/*   Updated: 2024/01/23 14:03:37 by jopeters         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 typedef struct s_map_lines
 {
@@ -36,6 +47,8 @@ typedef struct s_map
 
 	t_tex	e_texures;
 	char	*textures[5];
+
+	t_player_pos player_start_pos;
 
 	char	**map;
 }	t_map;

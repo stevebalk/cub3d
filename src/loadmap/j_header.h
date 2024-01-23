@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   j_header.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
+/*   Updated: 2024/01/23 14:06:03 by jopeters         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef J_HEADER_H
 # define J_HEADER_H
@@ -37,6 +48,8 @@ void replace_char_in_arr(char **arr, char find, char replace);
 int check_char_in_chars(char c, char *charset);
 int check_line_for_chars(char *line, char *charset);
 int get_max_line(char **arr, int start, int end);
+
+void	free_n_null(void **ptr);
 
 // colors
 void	c_red(void);

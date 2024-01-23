@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   loadmap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
+/*   Updated: 2024/01/23 14:10:09 by jopeters         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "j_header.h"
 
 static char *tex_names[5] = {"NO","EA","SO","WE", NULL};
@@ -46,8 +58,6 @@ char **J_load_file(char *file)
 
 int load_map(t_map *s_map, char **argv)
 {
-	//
-
     char **splitted_file = J_load_file(argv[1]);
 
 	if (!get_text_paths_master(s_map->textures, splitted_file))
@@ -57,13 +67,13 @@ int load_map(t_map *s_map, char **argv)
 
     s_map->F = get_color_from_str(splitted_file, 'F');
 	s_map->C = get_color_from_str(splitted_file, 'C');
-    // show_color(f_color);
-	// show_color(c_color);
 
     if (!check_color(s_map->F))
        printf("Error\ninvalid floor color\n");
 	if (!check_color(s_map->C))
        printf("Error\ninvalid ceil color\n");
+	show_color(s_map->F);
+	show_color(s_map->C);
 
 	if (!get_map(s_map, splitted_file))
 	{
@@ -91,5 +101,7 @@ int main(int argc, char **argv)
 
 /*
 cc -D BUFFER_SIZE=1 loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
-cc -D BUFFER_SIZE=1 loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
+cc loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
+
+leaks -atExit -- ./a.out map1.cub
 */ 
