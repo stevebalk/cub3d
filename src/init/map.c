@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:58:39 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 11:59:58 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:29:03 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ void	init_map(t_cub *cub)
 	int		j;
 
 	i = 0;
-	map = (int **)malloc(sizeof(int *) * cub->map_size.x);
+	map = (int **)ft_calloc(cub->map_size.x + 1, sizeof(int *));
+	if (!map)
+		exit_error(cub, 1, "Malloc failed");
 	while (i < cub->map_size.x)
 	{
 		j = 0;
-		map[i] = (int *)malloc(sizeof(int) * cub->map_size.y);
+		map[i] = (int *)ft_calloc(cub->map_size.y + 1, sizeof(int));
+		if (!map[i])
+			exit_error(cub, 1, "Malloc failed");
 		while (j < cub->map_size.y)
 		{
 			map[i][j] = 0;

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/23 17:03:55 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:06:41 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,5 @@ int	main(void)
 	// copy_texture_pixels_to_position(&cub.wall_textures[3], cub.img, 192, 0);
 	// mlx_put_image_to_window(cub.mlx, cub.win, cub.img->img, 0, 0);
 	mlx_loop(cub.mlx);
-
 	return (0);
 }

@@ -6,11 +6,18 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:52:59 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/23 16:56:40 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:25:07 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	close_window(t_cub *cub)
+{
+	free_everything(cub);
+	exit(0);
+	return (0);
+}
 
 void	free_everything(t_cub *cub)
 {
@@ -20,7 +27,10 @@ void	free_everything(t_cub *cub)
 	while (i < 4)
 	{
 		if (cub->wall_textures[i].img)
+		{
 			mlx_destroy_image(cub->mlx, cub->wall_textures[i].img);
+			printf("Texture %d freed\n", i);
+		}
 		i++;
 	}
 	if (cub->mlx && cub->win)

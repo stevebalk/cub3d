@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/23 16:57:55 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:28:39 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -389,7 +389,7 @@ double	rad_to_deg(double rad);
 /********************************************************************/
 
 void	error_msg(t_cub *cub, char *msg, int use_errno, int shall_exit);
-void	exit_error(t_cub *cub, char *msg);
+void	exit_error(t_cub *cub, int use_errno, char *msg);
 
 /********************************************************************/
 /*                          FREEING/EXIT                            */

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:53:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 13:57:59 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:13:12 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,6 @@ void	init_mlx(t_cub *cub)
 		error_msg(cub, "Error: mlx_init failed", 1, 1);
 	init_mlx_window(cub);
 	init_mlx_image(cub, &cub->img, cub->win_size);
-}
-
-int	close_window(t_cub *cub)
-{
-	mlx_destroy_window(cub->mlx, cub->win);
-	exit(0);
-	return (0);
 }
 
 void	init_mlx_hooks(t_cub *cub)

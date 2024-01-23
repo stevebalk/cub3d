@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:40:33 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/23 16:50:13 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:29:18 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_textures(t_cub *cub)
 	while (i < 4)
 	{
 		if (!init_texture(cub, &cub->wall_textures[i], cub->wall_texture_paths[i]))
-			exit_error(cub, "Error\nTexture corrupted!\n");
+			exit_error(cub, 0, "Error\nTexture corrupted!\n");
 		i++;
 	}
 }

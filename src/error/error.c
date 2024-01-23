@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:08:47 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/23 17:00:23 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:29:26 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	error_msg(t_cub *cub, char *msg, int use_errno, int shall_exit)
 	}
 }
 
-void	exit_error(t_cub *cub, char *msg)
+void	exit_error(t_cub *cub, int use_errno, char *msg)
 {
-	error_msg(cub, msg, 0, 1);
+	error_msg(cub, msg, use_errno, 1);
 }
