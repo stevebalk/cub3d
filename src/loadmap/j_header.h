@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:06:03 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:26:30 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int check_line_for_chars(char *line, char *charset);
 int get_max_line(char **arr, int start, int end);
 
 void	free_n_null(void **ptr);
+void	free_n_null_2D(void ***ptr);
 
 // colors
 void	c_red(void);

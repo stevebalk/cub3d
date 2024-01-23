@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:04:19 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:37:11 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,15 @@ int check_color(t_color color)
 int check_color_section(char *str)
 {
 	char **tmp;
+	int arr_len;
+	
 	tmp = ft_split(str, ' ');
 	c_cyan();printf("check_color_section() >%s<\n", str);c_reset();
 	show_arr(tmp);
-	if (get_arr_len(tmp) > 1)
+	arr_len = get_arr_len(tmp);
+
+	free_n_null_2D((void ***)tmp);
+	if (arr_len > 1)
 		return (0);
 	else
 		return (1);
@@ -46,6 +51,8 @@ t_color get_color_from_str(char **arr, char find)
 
     int line;
     char str[2];
+	char **split;
+    char *tmp_line;
     str[0] = find;
     str[1] = '\0';
     
@@ -64,8 +71,7 @@ t_color get_color_from_str(char **arr, char find)
         return (get_color(-1, -1, -1, -1));
     }
 
-    char **split;
-    char *tmp_line;
+
     tmp_line = ft_strchr(arr[line],find);
     split = ft_split(++tmp_line, ',');
     show_arr(split);
@@ -77,5 +83,7 @@ t_color get_color_from_str(char **arr, char find)
     	color.b = ft_atoi(split[2]);
     color.a = 0;
 
+	//free_n_null((void **)tmp_line);
+	free_n_null_2D((void ***)split);
     return (color);
 }

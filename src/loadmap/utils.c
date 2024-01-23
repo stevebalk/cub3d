@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:05:27 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:34:15 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,4 +237,27 @@ void	free_n_null(void **ptr)
 	if (*ptr)
 		free(*ptr);
 	*ptr = NULL;
+}
+
+// emptys the pointer and set it to NULL
+void	free_n_null_2D(void ***ptr)
+{
+	int i;
+
+	i = 0;
+    for (int i = 0; ptr[i] != NULL; i++) 
+	{
+        free(ptr[i]);
+    }
+	// while(ptr[i] != NULL)
+	// {
+	// 	free_n_null(ptr[i]);
+	// 	i++;
+	// }
+
+    // Free the array itself
+    free(ptr);
+
+    // Set the original pointer to NULL
+    *ptr = NULL;
 }
