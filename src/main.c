@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/23 17:06:41 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/23 22:18:59 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,21 +123,40 @@ void process_texture(t_texture *texture)
 
 void copy_texture_pixels_to_position(t_texture *src_texture, t_data *dst_texture, int target_x, int target_y)
 {
-    for (int y = 0; y < src_texture->height; ++y)
-    {
-        for (int x = 0; x < src_texture->width; ++x)
-        {
-            // Calculate the offset for the current pixel in both source and destination textures
-            int src_offset = (y * src_texture->line_length) + (x * (src_texture->bpp / 8));
-            int dst_offset = ((y + target_y) * dst_texture->line_length) + ((x + target_x) * (dst_texture->bpp / 8));
+	for (int y = 0; y < src_texture->height; ++y)
+	{
+		for (int x = 0; x < src_texture->width; ++x)
+		{
+			// Calculate the offset for the current pixel in both source and destination textures
+			int src_offset = (y * src_texture->line_length) + (x * (src_texture->bpp / 8));
+			int dst_offset = ((y + target_y) * dst_texture->line_length) + ((x + target_x) * (dst_texture->bpp / 8));
 
-            // Copy the pixel values from source to destination
-            for (int byte = 0; byte < (src_texture->bpp / 8); ++byte)
-            {
-                dst_texture->addr[dst_offset + byte] = src_texture->addr[src_offset + byte];
-            }
-        }
-    }
+			// Copy the pixel values from source to destination
+			for (int byte = 0; byte < (src_texture->bpp / 8); ++byte)
+			{
+				dst_texture->addr[dst_offset + byte] = src_texture->addr[src_offset + byte];
+			}
+		}
+	}
+}
+
+int get_pixel_color_int(t_texture *texture, int x, int y)
+{
+	int color = 0;
+
+	// Ensure the coordinates are within the bounds of the texture
+	if (x >= 0 && x < texture->width && y >= 0 && y < texture->height)
+	{
+		// Calculate the offset for the current pixel
+		int offset = (y * texture->line_length) + (x * (texture->bpp / 8));
+
+		// Read the color as a 32-bit integer
+		color |= ((unsigned char)texture->addr[offset + 2]) << 16; // Red
+		color |= ((unsigned char)texture->addr[offset + 1]) << 8;  // Green
+		color |= ((unsigned char)texture->addr[offset]);           // Blue
+	}
+
+	return color;
 }
 
 int	main(void)
