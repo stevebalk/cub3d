@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:37:11 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:51:32 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ t_color get_color_from_str(char **arr, char find)
     color.a = 0;
 
 	//free_n_null((void **)tmp_line);
+	//tmp_line = NULL;
 	free_n_null_2D((void ***)split);
     return (color);
 }

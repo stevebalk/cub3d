@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:38:22 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:03:21 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ char *get_text_path(char **arr, char *find)
 		return (NULL);
 	}
     split = ft_split(arr[line], ' ');
+	c_red();
     show_arr(split);
+	c_reset();
 
     //checks if size is ok
     if (get_arr_len(split) != 2)
@@ -98,16 +100,16 @@ char *get_text_path(char **arr, char *find)
 }
 
 // fills a array of texture paths
-int get_text_paths_master(char *tex_paths[5], char **splitted_file)
+int get_text_paths_master(char **tex_paths, char **splitted_file)
 {
  	//char *tmp_tex_paths[5];
     int i = -1;
-    while(i++, i < 4)
+    while(i++, i < 1)
         tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
 
     tex_paths[i] = NULL;
     show_arr(tex_paths);
     
-    printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
+    printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 1));
 	return(check_if_arr_entrys_valid(tex_paths, 4));
 }
