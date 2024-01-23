@@ -13,6 +13,14 @@ typedef enum e_tex
     WE
 } t_tex;
 
+// coordinates of the player; view in °   0° is norh  90° is east etc.
+typedef struct s_player_pos
+{
+	int x;
+	int y;
+	int view;
+}	t_player_pos;
+
 typedef struct s_color
 {
     int r;
