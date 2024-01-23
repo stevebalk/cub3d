@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 15:13:50 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:15:41 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,7 @@ char **J_load_file(char *file)
 }
 ///////////////////////////////////
 
-void free_s_map(t_map *s_map)
-{
-	free_n_null_2D((void ***)s_map->textures);
-	//free(s_map->textures);
-	free_n_null_2D((void ***)s_map->map);
-}
+
 
 int load_map(t_map *s_map, char **argv)
 {

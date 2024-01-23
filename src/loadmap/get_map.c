@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:07:55 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:17:44 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int has_at_least_one_occurence_of_charset(char *line, char *charset)
 
 	res = 0;
 	if (ft_strlen(line) == 0)
-		return (printf("     > ret 0\n"), 0);
+		return (/*printf("     > ret 0\n"),*/ 0);
 
 	i = 0;
 	while(line[i])
@@ -36,7 +36,7 @@ int has_at_least_one_occurence_of_charset(char *line, char *charset)
 		i++;
 	}
 	c_cyan();
-	return (printf("     > ret %i\n", i), 1);
+	return (/*printf("     > ret %i\n", i),*/ 1);
 }
 
 // searches the arr; return the line number of the first line having only chars of the charset and at least 1 char of charset2
@@ -58,10 +58,10 @@ int get_line_of_chars(char **arr, char *charset, char *charset2, int rev)
 	while(arr[i])
 	{
 		if (check_line_for_chars(arr[i], charset) && has_at_least_one_occurence_of_charset(arr[i], charset2))
-			return (printf("> ret %i\n", i), i);
+			return (/*printf("> ret %i\n", i),*/ i);
 		i += step;
 	}
-	return (printf("> ret -1\n"), -1);
+	return (/*printf("> ret -1\n"),*/ -1);
 }
 
 // returns the start and end line number of the map

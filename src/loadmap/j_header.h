@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:26:30 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:15:56 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int check_char_in_chars(char c, char *charset);
 int check_line_for_chars(char *line, char *charset);
 int get_max_line(char **arr, int start, int end);
 
+// mem
+void	free_s_map(t_map *s_map);
 void	free_n_null(void **ptr);
 void	free_n_null_2D(void ***ptr);
 
