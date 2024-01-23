@@ -15,7 +15,7 @@ int check_color(t_color color);
 t_color get_color_from_str(char **arr, char find);
 
 // get_map
-void get_map(char **arr);
+int get_map(t_map *s_map, char **arr);
 
 // get_textures
 char *get_text_path(char **arr, char *find);
@@ -36,6 +36,7 @@ t_color get_color(int r, int g, int b, int a);
 void replace_char_in_arr(char **arr, char find, char replace);
 int check_char_in_chars(char c, char *charset);
 int check_line_for_chars(char *line, char *charset);
+int get_max_line(char **arr, int start, int end);
 
 // colors
 void	c_red(void);

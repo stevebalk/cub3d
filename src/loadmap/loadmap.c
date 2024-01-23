@@ -44,28 +44,31 @@ char **J_load_file(char *file)
 }
 ///////////////////////////////////
 
-int load_map(t_map *map, char **argv)
+int load_map(t_map *s_map, char **argv)
 {
 	//
 
     char **splitted_file = J_load_file(argv[1]);
 
-	if (!get_text_paths_master(map->textures, splitted_file))
+	if (!get_text_paths_master(s_map->textures, splitted_file))
 	{
 		printf("Error!\ntexture paths are not valid\n");
 	}
 
-    // t_color f_color = get_color_from_str(splitted_file, 'F');
-	// t_color c_color = get_color_from_str(splitted_file, 'C');
+    s_map->F = get_color_from_str(splitted_file, 'F');
+	s_map->C = get_color_from_str(splitted_file, 'C');
     // show_color(f_color);
 	// show_color(c_color);
 
-    // if (!check_color(f_color))
-    //     printf("Error\ninvalid floor color\n");
-	// if (!check_color(c_color))
-    //     printf("Error\ninvalid ceil color\n");
+    if (!check_color(s_map->F))
+       printf("Error\ninvalid floor color\n");
+	if (!check_color(s_map->C))
+       printf("Error\ninvalid ceil color\n");
 
-	//get_map(splitted_file);
+	if (!get_map(s_map, splitted_file))
+	{
+		printf("Error!\nmap is not valid\n");
+	}	
 
 	return (1);
 }
@@ -75,6 +78,12 @@ int main(int argc, char **argv)
     printf("huhu\n");
 	t_map map;
 	load_map(&map, argv);
+
+	c_cyan(); printf("--- after load map ---\n"); c_reset();
+	//show_arr(map.map);
+	// show_arr(map.textures);
+	// show_color(map.C);
+	// show_color(map.F);
 
     return(0);
 }

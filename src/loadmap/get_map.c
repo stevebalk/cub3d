@@ -24,6 +24,7 @@ int has_at_least_one_occurence_of_charset(char *line, char *charset)
 			res++;
 		i++;
 	}
+	c_cyan();
 	return (printf("     > ret %i\n", i), 1);
 }
 
@@ -52,6 +53,7 @@ int get_line_of_chars(char **arr, char *charset, char *charset2, int rev)
 	return (printf("> ret -1\n"), -1);
 }
 
+// returns the start and end line number of the map
 t_map_lines get_map_lines(char **arr, char *charset, char *charset2)
 {
 	t_map_lines lines;
@@ -61,6 +63,7 @@ t_map_lines get_map_lines(char **arr, char *charset, char *charset2)
 	return (lines);
 }
 
+// checks between the map start and end 
 int check_map_lines(char **arr, t_map_lines map_lines, char *charset, char *charset2)
 {
 	int i;
@@ -80,15 +83,64 @@ int check_map_lines(char **arr, t_map_lines map_lines, char *charset, char *char
 		}
 		i++;
 	}
-	c_red();
-	printf("check_map_lines  line: %i   res: %i\n", i, res);
+	//c_red();
+	//printf("check_map_lines  line: %i   res: %i\n", i, res);
 	return (res);
 }
 
-void get_map(char **arr)
+// returns the space count before a different character 
+int get_spaces_from_beginning(char *line)
+{
+	int i;
+	i = 0;
+	while(line[i] == ' ' && line[i])
+		i++;
+	printf("spaces: %i\n", i);
+	return (i);
+}
+
+// returns the spaces before the map starts (spaces has to be in alle lines of the map!s)
+int get_map_offset(char **arr, int start, int end)
+{
+	int offset;
+	int i;
+
+	offset = 99999999;
+	i = 0;
+
+	while(start < end && arr[start])
+	{
+		if (get_spaces_from_beginning(arr[start]) < offset)
+			offset = get_spaces_from_beginning(arr[start]);
+		start++;
+	}
+	printf("map offset: %i \n", offset);
+	return (offset);
+}
+
+void copy_arr_to_map(char **arr, t_map *s_map, t_map_lines lines, int offset)
+{
+	int i;
+	c_yellow();printf("copy_arr_to_map  (line start: %i  end: %i)   offset: %i\n", lines.start, lines.end, offset); c_reset();
+
+	s_map->map = (char **)(ft_calloc(lines.end - lines.start + 2, sizeof(char *)));
+	i = 0;
+	while(i < (lines.end - lines.start + 1))
+	{
+		printf("i: %i   >%s< \n", i, arr[lines.start + i] + offset);
+		s_map->map[i] = ft_strdup(arr[lines.start + i] + offset);
+		printf("map[%i] >%s<\n", i, s_map->map[i]);
+		i++;
+	}
+	s_map->map[i] = NULL;
+}
+
+// returns 1 if map is ok; handles alle map loading
+int get_map(t_map *s_map, char **arr)
 {
 	c_yellow();printf("get_map\n"); c_reset();
 	t_map_lines map_lines;
+	t_map_lines offset;
 	map_lines = get_map_lines(arr, " 01NESW", "01NESW");
 
 	c_green(); 
@@ -99,5 +151,13 @@ void get_map(char **arr)
 	if (!check_map_lines(arr, map_lines, " 01NESW", "01NESW"))
 	{
 		printf("Error!\nMap not valid\n");
+		return (0);
 	}
+	
+	offset.start = get_map_offset(arr, map_lines.start, map_lines.end);
+	offset.end = get_max_line(arr, map_lines.start, map_lines.end);
+	
+	copy_arr_to_map(arr, s_map, map_lines, offset.start);
+	show_arr(s_map->map);
+	return (1);
 }

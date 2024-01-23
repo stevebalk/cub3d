@@ -139,7 +139,7 @@ void replace_char_in_arr(char **arr, char find, char replace)
 {
     int i;
     int j;
-    printf("\nreplace_char_in_arr   find: %c   replace: %c \n", find, replace);
+    //printf("\nreplace_char_in_arr   find: %c   replace: %c \n", find, replace);
     i = 0;
     while(arr[i])
     {
@@ -158,7 +158,7 @@ void replace_char_in_arr(char **arr, char find, char replace)
         }
         i++;
     }
-    printf("--- End ---\n");
+    //printf("--- End ---\n");
 }
 
 // returns 0 if c != one of the charset
@@ -173,11 +173,11 @@ int check_char_in_chars(char c, char *charset)
 	while (charset[i])
 	{
 		if (charset[i] == c)
-			return (printf("     > ret 1\n"), 1);
+			return (/*printf("     > ret 1\n"),*/ 1);
 		i++;
 	}
-	c_red();
-	return (printf("     > ret 0\n"), 0);
+	//c_red();
+	return (/*printf("     > ret 0\n"), */0);
 }
 
 // checks every char in the string; if it is not one of the charset --> return 0;
@@ -190,15 +190,31 @@ int check_line_for_chars(char *line, char *charset)
 	c_reset();
 
 	if (ft_strlen(line) == 0)
-		return (printf("  > ret 0\n"), 0);
+		return (/*printf("  > ret 0\n"),*/ 0);
 
 	i = 0;
 	while(line[i])
 	{
 			//printf("  > i: %i      c >%c<      charset >%s<\n", i, line[i], charset);
 		if (!check_char_in_chars(line[i], charset))
-			return (printf("  > ret 0\n"), 0);
+			return (/*printf("  > ret 0\n"),*/ 0);
 		i++;
 	}
-	return (printf("  > ret 1\n"), 1);
+	return (/*printf("  > ret 1\n"),*/ 1);
+}
+
+// returns the max line char count of an array; start/end are the rows where to search
+int get_max_line(char **arr, int start, int end)
+{
+	int max;
+
+	max = 0;
+	while(start < end && arr[start])
+	{
+		if (ft_strlen(arr[start]) > max)
+			max = ft_strlen(arr[start]);
+		start++;
+	}
+	printf("get_max_line: %i\n", max);
+	return (max);
 }
