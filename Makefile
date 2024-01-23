@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/22 19:23:25 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/23 16:57:05 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ LIB_NAME	= libft.a
 MLX_DIR		= libs/minilibx-linux/
 MLX_NAME	= libmlx.a
 CC			= cc
-# CFLAGS		= -Werror -Wall -Wextra -g
-CFLAGS		= -Werror -Wall -Wextra -O3
+CFLAGS		= -Werror -Wall -Wextra -g
+# CFLAGS		= -Werror -Wall -Wextra -O3
 # CFLAGS		= -Werror -Wall -Wextra -fsanitize=address -g
 RM			= rm
 SRC_DIR		= src/
@@ -38,15 +38,17 @@ WHITE = \033[0;97m
 
 SRC_FILES	=	main \
 				init/cub \
+				init/map \
 				init/mlx \
 				init/player \
-				init/map \
+				init/textures \
 				draw/basic_shapes \
 				draw/debug/overlay \
 				draw/draw \
 				draw/line \
 				draw/map \
 				error/error \
+				exit/exit \
 				math/math \
 				player/getters \
 				player/setters \

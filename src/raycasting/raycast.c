@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/22 19:36:24 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/22 20:18:48 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 		}
 		else
 		{
-			step.x = 1;
+			step.x = 1;	
 			ray_length.x = (map_check.x + 1.0f - start_pos.x) * step_size.x;
 		}
 		if (ray_dir_y < 0.0)

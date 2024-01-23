@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/22 19:26:17 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:03:55 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,61 @@ int	render_loop(t_cub *cub)
 	return (0);
 }
 
+void process_texture(t_texture *texture)
+{
+	int x;
+	int y;
+
+	for (y = 0; y < texture->height; ++y)
+	{
+		for (x = 0; x < texture->width; ++x)
+		{
+			// Calculate the offset to access the color of the current pixel
+			int offset = (y * texture->line_length) + (x * (texture->bpp / 8));
+
+			// Access the color values of the current pixel
+			unsigned char blue = texture->addr[offset];
+			unsigned char green = texture->addr[offset + 1];
+			unsigned char red = texture->addr[offset + 2];
+
+			// You can use the color values (red, green, blue) as needed
+			// For example, you can print them
+			printf("Pixel at (%d, %d): R=%u, G=%u, B=%u\n", x, y, red, green, blue);
+		}
+	}
+	printf("Pixel_count: %d\n", x * y);
+}
+
+void copy_texture_pixels_to_position(t_texture *src_texture, t_data *dst_texture, int target_x, int target_y)
+{
+    for (int y = 0; y < src_texture->height; ++y)
+    {
+        for (int x = 0; x < src_texture->width; ++x)
+        {
+            // Calculate the offset for the current pixel in both source and destination textures
+            int src_offset = (y * src_texture->line_length) + (x * (src_texture->bpp / 8));
+            int dst_offset = ((y + target_y) * dst_texture->line_length) + ((x + target_x) * (dst_texture->bpp / 8));
+
+            // Copy the pixel values from source to destination
+            for (int byte = 0; byte < (src_texture->bpp / 8); ++byte)
+            {
+                dst_texture->addr[dst_offset + byte] = src_texture->addr[src_offset + byte];
+            }
+        }
+    }
+}
+
 int	main(void)
 {
 	t_cub cub;
 
 	ft_bzero(&cub, sizeof(t_cub));
-	cub.player.start_direction = EAST;
+	cub.wall_texture_paths[0] = "textures/wall_1.xpm";
+	cub.wall_texture_paths[1] = "textures/wall_2.xpm";
+	cub.wall_texture_paths[2] = "textures/wall_3.xpm";
+	cub.wall_texture_paths[3] = "textures/wall_4.xpm";
+
+	
 	init_cub(&cub);
 	cub.ceilling_color = celling_color;
 	cub.floor_color = floor_color;
@@ -109,6 +158,14 @@ int	main(void)
 	init_mouse(&cub);
 	move_mouse_to_center(&cub);
 	mlx_loop_hook(cub.mlx, render_loop, &cub);
+	// int	img_width;
+	// int	img_height;
+	// copy_texture_pixels_to_position(&cub.wall_textures[0], cub.img, 0, 0);
+	// copy_texture_pixels_to_position(&cub.wall_textures[1], cub.img, 64, 0);
+	// copy_texture_pixels_to_position(&cub.wall_textures[2], cub.img, 128, 0);
+	// copy_texture_pixels_to_position(&cub.wall_textures[3], cub.img, 192, 0);
+	// mlx_put_image_to_window(cub.mlx, cub.win, cub.img->img, 0, 0);
 	mlx_loop(cub.mlx);
+
 	return (0);
 }

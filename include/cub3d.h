@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/22 19:24:28 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/23 16:57:55 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,17 @@ typedef struct s_key
 	int				right;
 }					t_key;
 
+typedef struct s_texture
+{
+	void		*img;
+	char		*addr;
+	int			bpp;
+	int			line_length;
+	int			endian;
+	int			width;
+	int			height;
+}				t_texture;
+
 /* FdF main struct, data that 
 is used everywhere */
 typedef struct s_cub
@@ -233,6 +244,8 @@ typedef struct s_cub
 	t_player		player;
 	t_mouse			mouse;
 	t_key			key;
+	t_texture		wall_textures[4];
+	char			*wall_texture_paths[4];
 	int				ceilling_color;
 	int				floor_color;
 	int				frames;
@@ -249,6 +262,7 @@ typedef struct s_cub
 void	init_mlx_window(t_cub *cub);
 void	init_mlx_image(t_cub *cub, t_data **img, t_vec2i size);
 void	init_mlx(t_cub *cub);
+void	init_textures(t_cub *cub);
 void	init_map(t_cub *cub);
 void	init_cub(t_cub *cub);
 
@@ -375,6 +389,12 @@ double	rad_to_deg(double rad);
 /********************************************************************/
 
 void	error_msg(t_cub *cub, char *msg, int use_errno, int shall_exit);
+void	exit_error(t_cub *cub, char *msg);
 
+/********************************************************************/
+/*                          FREEING/EXIT                            */
+/********************************************************************/
+
+void	free_everything(t_cub *cub);
 
 #endif
