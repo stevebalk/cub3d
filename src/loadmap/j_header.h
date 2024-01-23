@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 15:15:56 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:29:30 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int get_text_paths_master(char **tex_paths, char **splitted_file);
 // show
 void show_arr(char **arr);
 void show_color(t_color color);
+void show_s_map(t_map *s_map);
 
 // util 
 int get_arr_len(char **arr);

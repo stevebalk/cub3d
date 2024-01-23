@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 15:17:44 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:30:40 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int get_line_of_chars(char **arr, char *charset, char *charset2, int rev)
 	int i;
 	int step;
 	
-	c_blue(); printf("\n> get_line_of_chars() \n"); c_reset();
+	//c_blue(); printf("\n> get_line_of_chars() \n"); c_reset();
 	step = 1;
 	if (rev)
 	{
@@ -154,10 +154,10 @@ int get_map(t_map *s_map, char **arr)
 	t_map_lines offset;
 	map_lines = get_map_lines(arr, " 01NESW", "01NESW");
 
-	c_green(); 
-	printf("first map line: %i\nlast  map line: %i\n", map_lines.start, map_lines.end);
-	printf("check map from line: %i till %i\n", map_lines.start, map_lines.end);
-	c_reset();
+	// c_green(); 
+	// printf("first map line: %i\nlast  map line: %i\n", map_lines.start, map_lines.end);
+	// printf("check map from line: %i till %i\n", map_lines.start, map_lines.end);
+	// c_reset();
 
 	if (!check_map_lines(arr, map_lines, " 01NESW", "01NESW"))
 	{
@@ -169,6 +169,6 @@ int get_map(t_map *s_map, char **arr)
 	offset.end = get_max_line(arr, map_lines.start, map_lines.end);
 	
 	copy_arr_to_map(arr, s_map, map_lines, offset.start);
-	show_arr(s_map->map);
+	//show_arr(s_map->map);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 15:13:30 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:31:01 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ char *get_text_path(char **arr, char *find)
 		return (NULL);
 	}
     split = ft_split(arr[line], ' ');
-	c_red();
-    show_arr(split);
-	c_reset();
+	// c_red();
+    // show_arr(split);
+	// c_reset();
 
     //checks if size is ok
     if (get_arr_len(split) != 2)
@@ -89,7 +89,7 @@ char *get_text_path(char **arr, char *find)
 	if (check_path(split[1]))
 	{
 		ret = ft_strdup(split[1]);
-		printf("ret: >%s<\n", ret);
+		//printf("ret: >%s<\n", ret);
 		free_n_null_2D((void ***)split);
 		return (ret);
 	}
@@ -110,8 +110,8 @@ int get_text_paths_master(char **tex_paths, char **splitted_file)
         tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
 
     tex_paths[i] = NULL;
-    show_arr(tex_paths);
+    //show_arr(tex_paths);
     
-    printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
+    //printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
 	return(check_if_arr_entrys_valid(tex_paths, 4));
 }

@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:51:32 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:25:14 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int check_color_section(char *str)
 	int arr_len;
 	
 	tmp = ft_split(str, ' ');
-	c_cyan();printf("check_color_section() >%s<\n", str);c_reset();
-	show_arr(tmp);
+	//c_cyan();printf("check_color_section() >%s<\n", str);c_reset();
+	//show_arr(tmp);
 	arr_len = get_arr_len(tmp);
 
 	free_n_null_2D((void ***)tmp);

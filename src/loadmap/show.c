@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 14:04:45 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:31:59 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,21 @@ void show_color(t_color color)
     c_green();printf(" G: %i\n", color.g);
     c_blue();printf(" B: %i\n", color.b); c_reset();
     printf(" A: %i\n\n", color.a);
+}
+
+void show_s_map(t_map *s_map)
+{
+	printf("--- show s_map ---\n");;
+	
+	printf("\ntexures: ");
+	show_arr(s_map->textures);
+	
+	printf("\nColor F: \n");
+	show_color(s_map->F);
+
+	printf("\nColor C: \n");
+	show_color(s_map->C);
+
+	printf("\nmap:");
+	show_arr(s_map->map);
 }
