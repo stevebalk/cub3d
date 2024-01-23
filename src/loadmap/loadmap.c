@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 15:15:41 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:24:13 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,15 @@ char **J_load_file(char *file)
 
 int load_map(t_map *s_map, char **argv)
 {
+	int ret;
+	
+	ret = 1;
     char **splitted_file = J_load_file(argv[1]);
-
+	
 	if (!get_text_paths_master(s_map->textures, splitted_file))
 	{
+		ret = 0;
+		c_red();
 		printf("Error!\ntexture paths are not valid\n");
 	}
 
@@ -71,18 +76,28 @@ int load_map(t_map *s_map, char **argv)
 	s_map->C = get_color_from_str(splitted_file, 'C');
 
     if (!check_color(s_map->F))
-       printf("Error\ninvalid floor color\n");
+	{
+		ret = 0;
+		c_red();
+		printf("Error\ninvalid floor color\n");
+	}
 	if (!check_color(s_map->C))
-       printf("Error\ninvalid ceil color\n");
-	show_color(s_map->F);
-	show_color(s_map->C);
+	{
+		ret = 0;
+		c_red();
+       	printf("Error\ninvalid ceil color\n");
+	}
+	// show_color(s_map->F);
+	// show_color(s_map->C);
 
 	if (!get_map(s_map, splitted_file))
 	{
+		ret = 0;
+		c_red();
 		printf("Error!\nmap is not valid\n");
 	}	
 	free_n_null_2D((void ***)splitted_file);
-	return (1);
+	return (ret);
 }
 
 void ini_map(t_map *s_map)
@@ -103,7 +118,11 @@ int main(int argc, char **argv)
     printf("huhu\n");
 	t_map map;
 	ini_map(&map);
-	load_map(&map, argv);
+	if (load_map(&map, argv))
+		printf("map loaded OK\n");
+	else
+		printf("map loading failed!\n");
+
 
 	c_cyan(); printf("--- after load map ---\n"); c_reset();
 	//show_arr(map.map);
