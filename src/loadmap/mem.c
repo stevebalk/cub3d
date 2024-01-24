@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 15:15:01 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/24 11:42:25 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:47:56 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ void	free_n_null_2D(void ***ptr)
 	int i;
 
 	i = 0;
-    for (int i = 0; ptr[i] != NULL; i++) 
+	while(ptr[i] != NULL)
 	{
-		//printf("free 2D  i: %i   >%s<\n", i, (char*)ptr[i]);
-        free(ptr[i]);
-    }
+		free(ptr[i]);	
+		i++;
+	}
+	
 	// while(ptr[i] != NULL)
 	// {
 	// 	free_n_null(ptr[i]);
