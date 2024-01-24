@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 15:31:10 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:40:33 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void ini_map(t_map *s_map)
 		s_map->textures[i] = NULL;
 		i++;
 	}
+	s_map->map = NULL;
 }
 
 int main(int argc, char **argv)
@@ -120,13 +121,23 @@ int main(int argc, char **argv)
 	ini_map(&map);
 	if (load_map(&map, argv))
 	{
-		printf("map loaded OK\n");
+		c_green();
+		printf("\n\n ===================\n"); 
+		printf(" => map loaded OK  =\n"); 
+		printf(" ===================\n\n"); c_reset();
+
 		show_s_map(&map);
 
 	}
 	else
-		printf("map loading failed!\n");
+	{
+		c_red();
+		printf("==========================\n");
+		printf("==> map loading failed!  =\n");
+		printf("==========================\n\n");
+		c_reset();
 
+	}
 
 	c_cyan(); printf("--- after load map ---\n"); c_reset();
 

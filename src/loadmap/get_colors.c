@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 15:25:14 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:28:32 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,12 @@ t_color get_color_from_str(char **arr, char find)
         return (get_color(-1, -1, -1, -1));
     }
 
+	// check for not allowed chars
+	if (!check_line_for_chars(arr[line], " ,FC0123456789"))
+	{
+		printf("Line of >%c< contains not allowed characters\n",  find);
+		return (get_color(-1, -1, -1, -1));
+	}
 
     tmp_line = ft_strchr(arr[line],find);
     split = ft_split(++tmp_line, ',');
