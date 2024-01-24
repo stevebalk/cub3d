@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/24 12:02:23 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:04:36 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,14 +124,14 @@ int get_map_offset(char **arr, int start, int end)
 			offset = get_spaces_from_beginning(arr[start]);
 		start++;
 	}
-	printf("map offset: %i \n", offset);
+	//printf("map offset: %i \n", offset);
 	return (offset);
 }
 
 void copy_arr_to_map(char **arr, t_map *s_map, t_map_lines lines, int offset)
 {
 	int i;
-	c_yellow();printf("copy_arr_to_map  (line start: %i  end: %i)   offset: %i\n", lines.start, lines.end, offset); c_reset();
+	//c_yellow();printf("copy_arr_to_map  (line start: %i  end: %i)   offset: %i\n", lines.start, lines.end, offset); c_reset();
 
 	s_map->map = (char **)(ft_calloc(lines.end - lines.start + 2, sizeof(char *)));
 	i = 0;
