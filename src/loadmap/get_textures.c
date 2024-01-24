@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/24 11:57:26 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:41:10 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ char *get_text_path(char **arr, char *find)
     if (arr == NULL || find == NULL)
         return (NULL);
 	// if get_line_of   reverse and not reverse are the same line, than there is only 1 occurence --> good
+	if (get_line_of(arr, find, 0) == -1)
+	{
+		c_red();
+		printf("Error!\nno occurence of >%s< \n", find); c_reset();
+		return (NULL);
+	}
 	if (get_line_of(arr, find, 0) == get_line_of(arr, find, 1))
     	line = get_line_of(arr, find, 0);
 	else
@@ -107,8 +113,10 @@ int get_text_paths_master(char **tex_paths, char **splitted_file)
  	//char *tmp_tex_paths[5];
     int i = -1;
     while(i++, i < 4)
+	{
         tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
-
+	//	printf("i: %i  \n", i);
+	}
     tex_paths[i] = NULL;
     //show_arr(tex_paths);
     

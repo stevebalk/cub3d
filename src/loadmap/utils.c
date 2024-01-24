@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/24 11:53:13 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:38:01 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int get_line_of(char **arr, char *find, int rev)
     //     printf("found more than one !!!\n");
 	// if (found == 0)
 	// 	printf("found NO!!!\n");
+	//printf("get_line_of  line: %i\n", i);
 	
     return (-1);
 }
