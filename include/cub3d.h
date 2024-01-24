@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 21:39:52 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 21:42:51 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,10 +128,10 @@
 #define WIN_TITLE "Cub3D"
 #define MAP_WIDTH 24
 #define MAP_HEIGHT 24
-// #define WIN_WIDTH 1920
-// #define WIN_HEIGHT 1080
-#define WIN_WIDTH 640 * 2
-#define WIN_HEIGHT 480 * 2
+#define WIN_WIDTH 1920
+#define WIN_HEIGHT 1080
+// #define WIN_WIDTH 640 * 2
+// #define WIN_HEIGHT 480 * 2
 #define TILE_SIZE 16
 #define TEST_MAP_SIZE_X 24
 #define TEST_MAP_SIZE_Y 24

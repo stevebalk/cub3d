@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:18:44 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 09:28:35 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 22:10:34 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	collidesWithWall(t_cub *cub, t_vec2 position)
 	int mapX = (int)(position.x);
 	int mapY = (int)(position.y);
 
-	if (mapX >= 0 || mapX <= cub->map_size.x || mapY >= 0 || mapY <= cub->map_size.y)
+	if (mapX >= 0 && mapX < cub->map_size.x && mapY >= 0 && mapY < cub->map_size.y)
 		if (cub->map[mapY][mapX] >= 1)
 			return (1);
 	return (0);
@@ -29,8 +29,8 @@ void	move(t_cub *cub)
 
 	new_pos.x = cub->player.pos.x + cub->player.velocity.x * MOVE_SPEED;
 	new_pos.y = cub->player.pos.y + cub->player.velocity.y * MOVE_SPEED;
-	if (new_pos.x >= 0 && new_pos.x < cub->map_size.x * TILE_SIZE &&
-		new_pos.y >= 0 && new_pos.y < cub->map_size.y * TILE_SIZE)
+	if (new_pos.x >= 0 && new_pos.x < cub->map_size.x &&
+		new_pos.y >= 0 && new_pos.y < cub->map_size.y)
 	{
 		if (!collidesWithWall(cub, new_pos))
 		{

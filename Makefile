@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/24 21:39:27 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/24 22:12:12 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIB_NAME	= libft.a
 MLX_DIR		= libs/minilibx-linux/
 MLX_NAME	= libmlx.a
 CC			= cc
-# CFLAGS		= -Werror -Wall -Wextra
+# CFLAGS		= -Werror -Wall -Wextra -g
 CFLAGS		= -Werror -Wall -Wextra -O3
 # CFLAGS		= -Werror -Wall -Wextra -fsanitize=address -g
 RM			= rm
