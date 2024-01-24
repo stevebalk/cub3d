@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/23 22:18:59 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 12:20:39 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,10 +164,14 @@ int	main(void)
 	t_cub cub;
 
 	ft_bzero(&cub, sizeof(t_cub));
-	cub.wall_texture_paths[0] = "textures/wall_1.xpm";
-	cub.wall_texture_paths[1] = "textures/wall_2.xpm";
-	cub.wall_texture_paths[2] = "textures/wall_3.xpm";
-	cub.wall_texture_paths[3] = "textures/wall_4.xpm";
+	// cub.wall_texture_paths[0] = "textures/wall_1.xpm";
+	// cub.wall_texture_paths[1] = "textures/wall_2.xpm";
+	// cub.wall_texture_paths[2] = "textures/wall_3.xpm";
+	// cub.wall_texture_paths[3] = "textures/wall_4.xpm";
+	cub.wall_texture_paths[0] = "textures/east.xpm";
+	cub.wall_texture_paths[1] = "textures/south.xpm";
+	cub.wall_texture_paths[2] = "textures/west.xpm";
+	cub.wall_texture_paths[3] = "textures/north.xpm";
 
 	
 	init_cub(&cub);

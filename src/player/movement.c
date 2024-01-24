@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:18:44 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/20 01:21:43 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 09:28:35 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ int	collidesWithWall(t_cub *cub, t_vec2 position)
 	int mapX = (int)(position.x);
 	int mapY = (int)(position.y);
 
-	if (cub->map[mapY][mapX] >= 1)
-		return (1);
+	if (mapX >= 0 || mapX <= cub->map_size.x || mapY >= 0 || mapY <= cub->map_size.y)
+		if (cub->map[mapY][mapX] >= 1)
+			return (1);
 	return (0);
 }
 

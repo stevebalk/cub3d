@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/23 20:23:07 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 09:21:34 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,8 @@
 #define MAP_HEIGHT 24
 // #define WIN_WIDTH 1920
 // #define WIN_HEIGHT 1080
-#define WIN_WIDTH 640
-#define WIN_HEIGHT 480
+#define WIN_WIDTH 640 * 2
+#define WIN_HEIGHT 480 * 2
 #define TILE_SIZE 16
 #define TEST_MAP_SIZE_X 24
 #define TEST_MAP_SIZE_Y 24

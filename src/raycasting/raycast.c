@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/23 22:26:44 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 12:28:31 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,15 +184,20 @@ void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir)
 			// Starting texture coordinate
 			double texPos = (draw_start - cub->win_size.y / 2 + line_height / 2) * stepTex;
 			int color;
+			color = 0x00FFFFFF;
 			for(int y = draw_start; y<draw_end; y++)
 			{
 				// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
 				int texY = (int)texPos & (texHeight - 1);
 				texPos += stepTex;
-				if (side == 0)
+				if (side == 0 && start_pos.x > map_check.x)
 					color = get_pixel_color_int(&(cub->wall_textures[0]), texX, texY);
-				else if (side == 1)
+				else if (side == 0 && start_pos.x < map_check.x)
+					color = get_pixel_color_int(&(cub->wall_textures[2]), texX, texY);
+				else if (side == 1 && start_pos.y > map_check.y)
 					color = get_pixel_color_int(&(cub->wall_textures[1]), texX, texY);
+				else if (side == 1 && start_pos.y < map_check.y)
+					color = get_pixel_color_int(&(cub->wall_textures[3]), texX, texY);
 				// color = get_pixel_color_int(&(cub->wall_textures[0]), texX, texY);
 				//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
 				// if(side == 1) color = (color >> 1) & 8355711;
