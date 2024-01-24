@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:55:24 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 23:19:10 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 21:30:45 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,22 @@ void	draw_background(t_data *img, t_vec2i size, int color)
 
 void	draw_ceilling(t_cub *cub)
 {
-	t_vec2i	start;
-	t_vec2i	size;
-
-	start.x = 0;
-	start.y = 0;
-	size.x = cub->img->win_size.x;
-	size.y = cub->img->win_size.y / 2;
-	draw_rectangle(cub->img, start, size, cub->ceilling_color);
+	size_t total_size = WIN_WIDTH * WIN_HEIGHT / 2;
+	size_t i = 0;
+	while (i < total_size)
+	{
+		*((int *)cub->img->addr + i) = cub->ceilling_color;
+		i ++;
+	}
 }
 
 void	draw_floor(t_cub *cub)
 {
-	t_vec2i	start;
-	t_vec2i	size;
-
-	start.x = 0;
-	start.y = cub->img->win_size.y / 2;
-	size.x = cub->img->win_size.x;
-	size.y = cub->img->win_size.y / 2;
-	draw_rectangle(cub->img, start, size, cub->floor_color);
+	size_t total_size = WIN_WIDTH * WIN_HEIGHT;
+	size_t i = WIN_WIDTH * WIN_HEIGHT / 2;
+	while (i < total_size)
+	{
+		*((int *)cub->img->addr + i) = cub->floor_color;
+		i ++;
+	}
 }

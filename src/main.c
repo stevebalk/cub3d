@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 12:51:22 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 21:39:13 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int worldMap[TEST_MAP_SIZE_X][TEST_MAP_SIZE_Y]= {
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 		};
 
-int		celling_color = 0x00000099;
-int		floor_color = 0x00111111;
+int		celling_color = 0x000000FF;
+int		floor_color = 0x00333333;
 
 void	transfers_map(t_cub *cub)
 {
@@ -81,14 +81,12 @@ void	draw_player(t_cub *cub)
 int	render_loop(t_cub *cub)
 {
 	input_handler(cub);
-	ft_bzero(cub->img->addr, cub->img->line_length * WIN_HEIGHT);
 	draw_ceilling(cub);
 	draw_floor(cub);
 	move(cub);
-	// raycast(cub, cub->player.pos, cub->player.dir);
 	raycast(cub);
-	draw_minimap(cub, (t_vec2i){400, 0});
-	draw_player(cub);
+	// draw_minimap(cub, (t_vec2i){400, 0});
+	// draw_player(cub);
 
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img->img, 0, 0);
 	if (DEBUG)

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 16:21:52 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 18:56:00 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,6 +229,7 @@ void	raycast(t_cub *cub)
 			calculate_line_height(&cub->ray, cub);
 			calculate_wall_x(&cub->ray);
 			calculate_texture_x(&cub->ray, cub);
+			// draw_line(cub->img, (t_vec2i){i, cub->ray.draw_start}, (t_vec2i){i, cub->ray.draw_end}, 0x00FF0000);
 			draw_line_from_texture(&cub->ray, cub, i);
 		}
 		i++;
