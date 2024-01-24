@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 15:30:40 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:02:23 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,7 @@ int check_map_lines(char **arr, t_map_lines map_lines, char *charset, char *char
 		if (!check_line_for_chars(arr[i], charset) || !has_at_least_one_occurence_of_charset(arr[i], charset2))
 		{
 			res = 0;
-			c_red();
-			printf("BREAK!!! \n\n");
+			//c_red();printf("BREAK!!! \n\n");
 			break;
 		}
 		i++;
@@ -149,7 +148,7 @@ void copy_arr_to_map(char **arr, t_map *s_map, t_map_lines lines, int offset)
 // returns 1 if map is ok; handles alle map loading
 int get_map(t_map *s_map, char **arr)
 {
-	c_yellow();printf("get_map\n"); c_reset();
+	//c_yellow();printf("get_map\n"); c_reset();
 	t_map_lines map_lines;
 	t_map_lines offset;
 	map_lines = get_map_lines(arr, " 01NESW", "01NESW");
@@ -161,7 +160,7 @@ int get_map(t_map *s_map, char **arr)
 
 	if (!check_map_lines(arr, map_lines, " 01NESW", "01NESW"))
 	{
-		printf("Error!\nMap not valid\n");
+		//printf("Error!\nMap not valid\n");
 		return (0);
 	}
 	

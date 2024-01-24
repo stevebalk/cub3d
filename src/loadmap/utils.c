@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 15:15:00 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:53:13 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int get_arr_len(char **arr)
     i = 0;
     while(arr[i])
         i++;
-    printf("arr len: %i\n", i);
+    //printf("arr len: %i\n", i);
     return (i); 
 }
 
@@ -227,6 +227,6 @@ int get_max_line(char **arr, int start, int end)
 			max = ft_strlen(arr[start]);
 		start++;
 	}
-	printf("get_max_line: %i\n", max);
+	//printf("get_max_line: %i\n", max);
 	return (max);
 }

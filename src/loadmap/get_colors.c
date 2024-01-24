@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/24 11:28:32 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:01:47 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int check_color(t_color color)
 {
-    printf("check color()\n");
+    //printf("check color()\n");
 
     if (color.r < 0 || color.r > 255)
         return (0);
@@ -47,7 +47,7 @@ int check_color_section(char *str)
 
 t_color get_color_from_str(char **arr, char find)
 {
-    printf("get_color_from_str()  find: %c \n", find);
+    //printf("  find: %c \n", find);
 
     int line;
     char str[2];
@@ -63,7 +63,7 @@ t_color get_color_from_str(char **arr, char find)
 		printf("Error!\there are to lines with >%s< \n", str);
 
     //line = get_line_of(arr, str);
-    printf("  > line: %i \n", line);
+    //printf("  > line: %i \n", line);
     // Check if line contains the find char ('F' or 'c') and 3 ','
     if ((count_char_in_str(arr[line], ',') != 2) || (count_char_in_str(arr[line], find) != 1))
     {
@@ -80,7 +80,7 @@ t_color get_color_from_str(char **arr, char find)
 
     tmp_line = ft_strchr(arr[line],find);
     split = ft_split(++tmp_line, ',');
-    show_arr(split);
+    //show_arr(split);
 	if (check_color_section(split[0]) && check_line_for_chars(split[0], " 0123456789"))
     	color.r = ft_atoi(split[0]);
 	if (check_color_section(split[1]) && check_line_for_chars(split[1], " 0123456789"))
