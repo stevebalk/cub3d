@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:53:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/23 17:13:12 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 16:21:35 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_mlx_window(t_cub *cub)
 {
-	cub->win = mlx_new_window(cub->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
+	cub->win = mlx_new_window(cub->mlx, WIN_WIDTH, WIN_HEIGHT, WIN_TITLE);
 	if (cub->win == NULL)
 		error_msg(cub, "Error: mlx_new_window failed", 1, 1);
 }

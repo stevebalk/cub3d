@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 13:31:19 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 16:20:57 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@
 /*                          OWN DEFINES                             */
 /********************************************************************/
 
+#define WIN_TITLE "Cub3D"
 #define MAP_WIDTH 24
 #define MAP_HEIGHT 24
 // #define WIN_WIDTH 1920
@@ -143,6 +144,8 @@
 #define SOUTH 1
 #define WEST 2
 #define NORTH 3
+
+#define MAX_RAY_LENGTH 100
 
 # define PI 3.14159265359
 # define TWO_PI 6.28318530718
@@ -238,13 +241,14 @@ typedef struct ray
 	t_vec2		step_size;
 	t_vec2i		step;
 	t_vec2		length;
+	t_vec2i		tex;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
 	double		perp_wall_dist;
-	int			side;
+	double		wall_x;
 	int			was_hit_vertical;
-	int			is_ray_facing_up;
-	int			is_ray_facing_down;
-	int			is_ray_facing_left;
-	int			is_ray_facing_right;
+	int			hit_direction;
 	int			wall_hit_content;
 }				t_ray;
 
