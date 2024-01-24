@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 12:20:39 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 12:51:22 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ int	render_loop(t_cub *cub)
 	draw_ceilling(cub);
 	draw_floor(cub);
 	move(cub);
-	raycast(cub, cub->player.pos, cub->player.dir);
+	// raycast(cub, cub->player.pos, cub->player.dir);
+	raycast(cub);
 	draw_minimap(cub, (t_vec2i){400, 0});
 	draw_player(cub);
 

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 09:21:34 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/24 13:31:19 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,25 @@ typedef struct s_texture
 	int			height;
 }				t_texture;
 
+typedef struct ray
+{
+	t_vec2		pos;
+	t_vec2		dir;
+	t_vec2i		map_check;
+	t_vec2		step_size;
+	t_vec2i		step;
+	t_vec2		length;
+	double		perp_wall_dist;
+	int			side;
+	int			was_hit_vertical;
+	int			is_ray_facing_up;
+	int			is_ray_facing_down;
+	int			is_ray_facing_left;
+	int			is_ray_facing_right;
+	int			wall_hit_content;
+}				t_ray;
+
+
 /* FdF main struct, data that 
 is used everywhere */
 typedef struct s_cub
@@ -248,6 +267,7 @@ typedef struct s_cub
 	char			*wall_texture_paths[4];
 	int				ceilling_color;
 	int				floor_color;
+	t_ray			ray;
 	int				frames;
 	int				fps;
 	time_t			start_time;
@@ -359,7 +379,8 @@ int		get_pixel_color_int(t_texture *texture, int x, int y);
 /*                          Raycasting                              */
 /********************************************************************/
 
-void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir);
+void	raycast(t_cub *cub);
+// void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir);
 
 /********************************************************************/
 /*                          MATH                                    */
