@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 12:09:49 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 12:29:24 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,7 +309,7 @@ void	move(t_cub *cub);
 
 /* Collision */
 
-
+int		is_colliding(t_cub *cub, t_vec2 position);
 
 /* SETTERS */
 

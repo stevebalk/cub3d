@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:57:42 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 11:10:09 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 12:34:39 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ void	draw_line(t_data *img, t_vec2i start, t_vec2i end, int color)
 	while (get_next_point(&line, &start, end))
 		put_pixel(img, start, color);
 }
-

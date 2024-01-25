@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:01:27 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 12:03:34 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 12:57:14 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	is_ray_hitting(t_cub *cub, t_ray *ray)
 			vertical_step(ray, &dist);
 		if (is_inside_map(cub, ray->map_check))
 		{
-			if (is_cell_occopied(cub, 
+			if (is_cell_occopied(cub,
 					(t_vec2i){ray->map_check.y, ray->map_check.x}))
 				return (1);
 		}

@@ -6,24 +6,11 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/23 17:02:17 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 13:00:15 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// t_vec2i	get_map_size(t_cub *cub)
-// {
-// 	t_vec2i	ret;
-
-// 	ret.x = 0;
-// 	ret.y = 0;
-// 	while (cub->map[ret.x])
-// 		ret.x++;
-// 	while (cub->map[0][ret.y])
-// 		ret.y++;
-// 	return (ret);
-// }
 
 void	init_cub(t_cub *cub)
 {

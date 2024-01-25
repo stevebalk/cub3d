@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:04:48 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 12:40:07 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 12:34:46 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,3 @@ void	draw_triangle(t_data *img, t_vec2i pos, int size, int color)
 		i.x++;
 	}
 }
-

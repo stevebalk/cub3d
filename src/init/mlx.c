@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:53:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 16:21:35 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 12:59:28 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,3 @@ void	init_mlx_hooks(t_cub *cub)
 	mlx_hook(cub->win, 6, 1L << 6, mouse_move, cub);
 	mlx_hook(cub->win, 17, 1L << 17, &close_window, cub);
 }
-
-// void	init_mlx_data(t_cub *cub)
-// {
-// 	init_mlx(cub);
-// 	init_mlx_hooks(cub);
-// }
-

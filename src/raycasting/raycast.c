@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 12:06:35 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 12:52:50 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	raycast(t_cub *cub)
 	i = 0;
 	cub->ray.pos.x = cub->player.pos.x;
 	cub->ray.pos.y = cub->player.pos.y;
-	while(i < cub->win_size.x)
+	while (i < cub->win_size.x)
 	{
 		calculate_ray_dir(&cub->ray, cub, i);
 		calculate_step_size(&cub->ray);
@@ -31,7 +31,8 @@ void	raycast(t_cub *cub)
 			calculate_line_height(&cub->ray, cub);
 			calculate_wall_x(&cub->ray);
 			calculate_texture_x(&cub->ray, cub);
-			// draw_line(cub->img, (t_vec2i){i, cub->ray.draw_start}, (t_vec2i){i, cub->ray.draw_end}, 0x00FF0000);
+			// draw_line(cub->img, (t_vec2i){i, cub->ray.draw_start},
+					// (t_vec2i){i, cub->ray.draw_end}, 0x00FF0000);
 			draw_line_from_texture(&cub->ray, cub, i);
 		}
 		i++;

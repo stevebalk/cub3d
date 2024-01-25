@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:55:24 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 21:30:45 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 12:33:59 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ void	draw_background(t_data *img, t_vec2i size, int color)
 
 void	draw_ceilling(t_cub *cub)
 {
-	size_t total_size = WIN_WIDTH * WIN_HEIGHT / 2;
-	size_t i = 0;
+	size_t	total_size;
+	size_t	i;
+
+	total_size = WIN_WIDTH * WIN_HEIGHT / 2;
+	i = 0;
 	while (i < total_size)
 	{
 		*((int *)cub->img->addr + i) = cub->ceilling_color;
@@ -46,8 +49,11 @@ void	draw_ceilling(t_cub *cub)
 
 void	draw_floor(t_cub *cub)
 {
-	size_t total_size = WIN_WIDTH * WIN_HEIGHT;
-	size_t i = WIN_WIDTH * WIN_HEIGHT / 2;
+	size_t	total_size;
+	size_t	i;
+
+	total_size = WIN_WIDTH * WIN_HEIGHT;
+	i = WIN_WIDTH * WIN_HEIGHT / 2;
 	while (i < total_size)
 	{
 		*((int *)cub->img->addr + i) = cub->floor_color;
