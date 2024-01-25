@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 /* Convert vec2i into a vec2 */
 t_vec2	v2i_to_v2(t_vec2i vec)

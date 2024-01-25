@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 // Returns the side of the wall that was hit
 int	get_compass_hit_direction(t_ray *ray)

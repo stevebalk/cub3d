@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	draw_pixel_from_texture(t_ray *ray, t_cub *cub, int i, int j)
 {

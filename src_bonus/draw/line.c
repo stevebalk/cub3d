@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 /* Sets next point, returns 1 if successful, 0 if not*/ //DEBUG
 static int	get_next_point(t_line *line, t_vec2i *start, t_vec2i end)
