@@ -6,37 +6,79 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 12:52:50 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/26 00:12:45 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	raycast(t_cub *cub)
+void	*raycast_thread(void *arg)
 {
-	int	i;
+	t_ray	*ray;
+	int		i;
+	int		max_range;
 
-	i = 0;
-	cub->ray.pos.x = cub->player.pos.x;
-	cub->ray.pos.y = cub->player.pos.y;
-	while (i < cub->win_size.x)
+	ray = (t_ray *)arg;
+	i = ray->id * (ray->win_size->x / ray->number_of_threads);
+	max_range = (ray->id + 1) * (ray->win_size->x / ray->number_of_threads);
+	while (i < max_range)
 	{
-		calculate_ray_dir(&cub->ray, cub, i);
-		calculate_step_size(&cub->ray);
-		calculate_ray_length(&cub->ray);
-		if (is_ray_hitting(cub, &cub->ray))
+		calculate_ray_dir(ray, i);
+		calculate_step_size(ray);
+		calculate_ray_length(ray);
+		if (is_ray_hitting(ray))
 		{
-			cub->ray.hit_direction = get_compass_hit_direction(&cub->ray);
-			calculate_perpendicular_wall_dist(&cub->ray);
-			calculate_line_height(&cub->ray, cub);
-			calculate_wall_x(&cub->ray);
-			calculate_texture_x(&cub->ray, cub);
-			// draw_line(cub->img, (t_vec2i){i, cub->ray.draw_start},
-					// (t_vec2i){i, cub->ray.draw_end}, 0x00FF0000);
-			draw_line_from_texture(&cub->ray, cub, i);
+			ray->hit_direction = get_compass_hit_direction(ray);
+			calculate_perpendicular_wall_dist(ray);
+			calculate_line_height(ray);
+			calculate_wall_x(ray);
+			calculate_texture_x(ray);
+			draw_line_from_texture(ray, i);
 		}
 		i++;
 	}
+	return (NULL);
+
+}
+
+void	raycast(t_cub *cub)
+{
+	int	i;
+	int number_of_threads;
+
+	i = 0;
+	number_of_threads = cub->rays[0].number_of_threads;
+	// cub->ray.pos.x = cub->player.pos.x;
+	// cub->ray.pos.y = cub->player.pos.y;
+	while (i < number_of_threads)
+	{
+		pthread_create(&cub->rays[i].thread, NULL, raycast_thread, &cub->rays[i]);
+		i++;
+	}
+	i = 0;
+	while (i < number_of_threads)
+	{
+		pthread_join(cub->rays[i].thread, NULL);
+		i++;
+	}
+	// while (i < cub->win_size.x)
+	// {
+	// 	calculate_ray_dir(&cub->ray, cub, i);
+	// 	calculate_step_size(&cub->ray);
+	// 	calculate_ray_length(&cub->ray);
+	// 	if (is_ray_hitting(cub, &cub->ray))
+	// 	{
+	// 		cub->ray.hit_direction = get_compass_hit_direction(&cub->ray);
+	// 		calculate_perpendicular_wall_dist(&cub->ray);
+	// 		calculate_line_height(&cub->ray, cub);
+	// 		calculate_wall_x(&cub->ray);
+	// 		calculate_texture_x(&cub->ray, cub);
+	// 		// draw_line(cub->img, (t_vec2i){i, cub->ray.draw_start},
+	// 				// (t_vec2i){i, cub->ray.draw_end}, 0x00FF0000);
+	// 		draw_line_from_texture(&cub->ray, cub, i);
+	// 	}
+	// 	i++;
+	// }
 }
 
 // void	raycast(t_cub *cub)
