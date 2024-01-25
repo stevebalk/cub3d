@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 21:42:51 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 11:31:13 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,6 @@
 // 	double		offset_y;
 // }				t_sprite_cast;
 
-// typedef struct s_ray
-// {
-// 	double		angle;
-// 	double		distance;
-// 	double		wall_hit_x;
-// 	double		wall_hit_y;
-// 	int			was_hit_vertical;
-// 	int			is_ray_facing_up;
-// 	int			is_ray_facing_down;
-// 	int			is_ray_facing_left;
-// 	int			is_ray_facing_right;
-// 	int			wall_hit_content;
-// }				t_ray;
-
 // typedef struct s_player
 // {
 // 	double		x;
@@ -126,35 +112,31 @@
 /********************************************************************/
 
 #define WIN_TITLE "Cub3D"
-#define MAP_WIDTH 24
-#define MAP_HEIGHT 24
-#define WIN_WIDTH 1920
-#define WIN_HEIGHT 1080
-// #define WIN_WIDTH 640 * 2
-// #define WIN_HEIGHT 480 * 2
-#define TILE_SIZE 16
-#define TEST_MAP_SIZE_X 24
-#define TEST_MAP_SIZE_Y 24
+#define MAP_WIDTH 24 // DELETE LATER
+#define MAP_HEIGHT 24 // DELETE LATER
+#define WIN_WIDTH 640 * 3
+#define WIN_HEIGHT 480 * 3
+#define TILE_SIZE 16 // FOR MINIMAP
+#define TEST_MAP_SIZE_X 24 // DELETE LATER
+#define TEST_MAP_SIZE_Y 24 // DELETE LATER
 #define MOUSE_SENSITIVITY 0.1
 #define FOV 66
 #define MOVE_SPEED 0.05
 #define ROT_SPEED 0.01
-#define DEBUG 1
+#define DEBUG_OVERLAY 1
 #define EAST 0
 #define SOUTH 1
 #define WEST 2
 #define NORTH 3
-
 #define MAX_RAY_LENGTH 100
-
-# define PI 3.14159265359
-# define TWO_PI 6.28318530718
+#define PI 3.14159265359
+#define TWO_PI 6.28318530718
 
 /********************************************************************/
 /*                          OWN STRUCTS                             */
 /********************************************************************/
 
-/* For line calculation */ //DEBUG
+/* For line calculation */
 typedef struct s_line
 {
 	int	dx;
@@ -253,7 +235,7 @@ typedef struct ray
 }				t_ray;
 
 
-/* FdF main struct, data that 
+/* cub3D main struct, data that 
 is used everywhere */
 typedef struct s_cub
 {
@@ -325,6 +307,10 @@ void	move_right(t_cub *cub);
 void	rotate_player(t_cub *cub, double angle);
 void	move(t_cub *cub);
 
+/* Collision */
+
+
+
 /* SETTERS */
 
 void	set_player_pos(t_player *player, t_vec2 pos);
@@ -384,7 +370,12 @@ int		get_pixel_color_int(t_texture *texture, int x, int y);
 /********************************************************************/
 
 void	raycast(t_cub *cub);
-// void	raycast(t_cub *cub, t_vec2 start_pos, t_vec2 dir);
+
+/********************************************************************/
+/*                          CHECKS                                  */
+/********************************************************************/
+
+int		is_inside_map(t_cub *cub, t_vec2i position);
 
 /********************************************************************/
 /*                          MATH                                    */

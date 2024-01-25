@@ -6,19 +6,44 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:18:44 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 22:10:34 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 11:35:33 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	collidesWithWall(t_cub *cub, t_vec2 position)
+int	is_inside_map(t_cub *cub, t_vec2i position)
 {
-	int mapX = (int)(position.x);
-	int mapY = (int)(position.y);
+	if (position.x >= 0 && position.x < cub->map_size.x &&
+		position.y >= 0 && position.y < cub->map_size.y)
+		return (1);
+	return (0);
+}
 
-	if (mapX >= 0 && mapX < cub->map_size.x && mapY >= 0 && mapY < cub->map_size.y)
-		if (cub->map[mapY][mapX] >= 1)
+// int	is_vec2_inside_map(t_cub *cub, t_vec2 position)
+// {
+// 	if (position.x >= 0 && position.x < cub->map_size.x &&
+// 		position.y >= 0 && position.y < cub->map_size.y)
+// 		return (1);
+// 	return (0);
+// }
+
+// int	is_vec2i_inside_map(t_cub *cub, t_vec2i position)
+// {
+// 	if (position.x >= 0 && position.x < cub->map_size.x &&
+// 		position.y >= 0 && position.y < cub->map_size.y)
+// 		return (1);
+// 	return (0);
+// }
+
+int	is_colliding(t_cub *cub, t_vec2 position)
+{
+	t_vec2i	map_pos;
+
+	map_pos.x = (int)(position.x);
+	map_pos.y = (int)(position.y);
+	if (is_inside_map(cub, map_pos))
+		if (cub->map[map_pos.y][map_pos.x] >= 1)
 			return (1);
 	return (0);
 }
@@ -29,14 +54,19 @@ void	move(t_cub *cub)
 
 	new_pos.x = cub->player.pos.x + cub->player.velocity.x * MOVE_SPEED;
 	new_pos.y = cub->player.pos.y + cub->player.velocity.y * MOVE_SPEED;
-	if (new_pos.x >= 0 && new_pos.x < cub->map_size.x &&
-		new_pos.y >= 0 && new_pos.y < cub->map_size.y)
+	// if (new_pos.x >= 0 && new_pos.x < cub->map_size.x &&
+	// 	new_pos.y >= 0 && new_pos.y < cub->map_size.y)
+	// {
+	// 	if (!is_colliding(cub, new_pos))
+	// 	{
+	// 		cub->player.pos.x = new_pos.x;
+	// 		cub->player.pos.y = new_pos.y;
+	// 	}
+	// }
+	if (!is_colliding(cub, new_pos))
 	{
-		if (!collidesWithWall(cub, new_pos))
-		{
-			cub->player.pos.x = new_pos.x;
-			cub->player.pos.y = new_pos.y;
-		}
+		cub->player.pos.x = new_pos.x;
+		cub->player.pos.y = new_pos.y;
 	}
 	cub->player.velocity.x = 0;
 	cub->player.velocity.y = 0;

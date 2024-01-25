@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 22:03:42 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 11:43:09 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,17 @@ void	vertical_step(t_ray *ray, double *dist)
 	ray->was_hit_vertical = 1;
 }
 
-int	is_inside_map(t_ray *ray, t_cub *cub)
+// int	is_inside_map(t_ray *ray, t_cub *cub)
+// {
+// 	if (ray->map_check.x >= 0 && ray->map_check.x < cub->map_size.x
+// 		&& ray->map_check.y >= 0 && ray->map_check.y < cub->map_size.y)
+// 		return (1);
+// 	return (0);
+// }
+
+int	is_cell_occopied(t_cub *cub, t_vec2i pos)
 {
-	if (ray->map_check.x >= 0 && ray->map_check.x < cub->map_size.x
-		&& ray->map_check.y >= 0 && ray->map_check.y < cub->map_size.y)
+	if (cub->map[pos.x][pos.y] >= 1)
 		return (1);
 	return (0);
 }
@@ -201,9 +208,12 @@ int	is_ray_hitting(t_cub *cub, t_ray *ray)
 			horizontal_step(ray, &dist);
 		else
 			vertical_step(ray, &dist);
-		if (is_inside_map(ray, cub))
+		if (is_inside_map(cub, ray->map_check))
 		{
-			if (is_wall(ray, cub))
+			// if (is_wall(ray, cub))
+			// 	return (1);
+			if (is_cell_occopied(cub, 
+					(t_vec2i){ray->map_check.y, ray->map_check.x}))
 				return (1);
 		}
 	}
