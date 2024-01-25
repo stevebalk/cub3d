@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:40:33 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 12:58:59 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 19:48:56 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	init_texture(t_cub *cub, t_texture *texture, char *path)
 {
+	printf("path: %s\n", path);
 	texture->img = mlx_xpm_file_to_image(cub->mlx, path,
 			&texture->width, &texture->height);
 	if (!texture->img)

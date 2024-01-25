@@ -6,12 +6,11 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:27:47 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 20:03:26 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 19:58:06 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include <time.h>
 
 static void	calculate_fps(t_cub *cub)
 {

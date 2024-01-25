@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:35:27 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 16:36:41 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 19:56:50 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,7 +195,6 @@ int	main(void)
 	cub.wall_texture_paths[2] = "textures/wall_3.xpm";
 	cub.wall_texture_paths[3] = "textures/wall_4.xpm";
 
-	
 	init_cub(&cub);
 	mlx_do_key_autorepeatoff(cub.mlx);
 	cub.ceilling_color = celling_color;
