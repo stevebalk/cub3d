@@ -6,14 +6,31 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:59 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/19 20:25:11 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 16:20:29 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int	toggle_mouse_input(t_cub *cub)
+{
+	toggle_flag(&cub->flags, FLAG_MOUSE_CONTROL);
+	if (is_flag_set(cub->flags, FLAG_MOUSE_CONTROL))
+	{
+		mlx_mouse_hide(cub->mlx, cub->win);
+		move_mouse_to_center(cub);
+	}
+	else
+		mlx_mouse_show(cub->mlx, cub->win);
+	return (0);
+}
+
 int	key_press(int keycode, t_cub *cub)
 {
+	if (keycode == XK_grave)
+		toggle_flag(&cub->flags, FLAG_DEBUG_OVERLAY);
+	if (keycode == XK_F1)
+		toggle_mouse_input(cub);
 	if (keycode == XK_w)
 		cub->key.w = 1;
 	if (keycode == XK_s)

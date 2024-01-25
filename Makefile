@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/25 12:29:00 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/25 16:02:50 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC_FILES	=	main \
 				draw/map \
 				error/error \
 				exit/exit \
+				flags/flag_utils \
 				map/checks \
 				math/math \
 				player/checks \

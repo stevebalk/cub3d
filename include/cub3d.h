@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 13:56:03 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 16:25:13 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,29 +108,48 @@
 // }				t_map;
 
 /********************************************************************/
-/*                          OWN DEFINES                             */
+/*                           CONFIG                                 */
 /********************************************************************/
 
+/******************* GENERAL **********************/
+
 #define WIN_TITLE "Cub3D"
-#define MAP_WIDTH 24 // DELETE LATER
-#define MAP_HEIGHT 24 // DELETE LATER
 #define WIN_WIDTH 640 * 3
 #define WIN_HEIGHT 480 * 3
-#define TILE_SIZE 16 // FOR MINIMAP
-#define TEST_MAP_SIZE_X 24 // DELETE LATER
-#define TEST_MAP_SIZE_Y 24 // DELETE LATER
-#define MOUSE_SENSITIVITY 0.1
+
+/******************* PLAYER **********************/
+
+#define MOUSE_SENSITIVITY 0.05
 #define FOV 66
 #define MOVE_SPEED 0.05
-#define ROT_SPEED 0.01
+#define ROT_SPEED 0.015
+
+/******************* DEBUG **********************/
+
 #define DEBUG_OVERLAY 1
+
+/******************* RAYCAST **********************/
+
+#define MAX_RAY_LENGTH 100
+
+
+/********************************************************************/
+/*                          CONST DEFINES                           */
+/********************************************************************/
+
 #define EAST 0
 #define SOUTH 1
 #define WEST 2
 #define NORTH 3
-#define MAX_RAY_LENGTH 100
 #define PI 3.14159265359
 #define TWO_PI 6.28318530718
+#define TILE_SIZE 16 // FOR MINIMAP
+#define MAP_WIDTH 24 // DELETE LATER
+#define MAP_HEIGHT 24 // DELETE LATER
+#define TEST_MAP_SIZE_X 24 // DELETE LATER
+#define TEST_MAP_SIZE_Y 24 // DELETE LATER
+
+
 
 /********************************************************************/
 /*                          OWN STRUCTS                             */
@@ -259,7 +278,20 @@ typedef struct s_cub
 	time_t			start_time;
 	time_t			current_time;
 	double			delta_time;
+	unsigned int	flags;
 }					t_cub;
+
+/********************************************************************/
+/*                          FLAGS                                   */
+/********************************************************************/
+
+#define FLAG_MOUSE_CONTROL 1
+#define FLAG_DEBUG_OVERLAY 2
+
+void	toggle_flag(unsigned int *flags, unsigned int bit_mask);
+void	set_flag(unsigned int *flags, unsigned int bit_mask);
+void	unset_flag(unsigned int *flags, unsigned int bit_mask);
+int		is_flag_set(unsigned int flags, unsigned int bit_mask);
 
 /********************************************************************/
 /*                          INIT                                    */

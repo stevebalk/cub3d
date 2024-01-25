@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 13:18:40 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 16:22:52 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	render_loop(t_cub *cub)
 	// draw_player(cub);
 
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img->img, 0, 0);
-	if (DEBUG_OVERLAY)
+	if (is_flag_set(cub->flags, FLAG_DEBUG_OVERLAY))
 		draw_debug_overlay(cub, (t_vec2i){0, 0});
 
 	return (0);
@@ -194,26 +194,14 @@ int	main(void)
 	cub.wall_texture_paths[1] = "textures/wall_2.xpm";
 	cub.wall_texture_paths[2] = "textures/wall_3.xpm";
 	cub.wall_texture_paths[3] = "textures/wall_4.xpm";
-	// cub.wall_texture_paths[0] = "textures/east.xpm";
-	// cub.wall_texture_paths[1] = "textures/south.xpm";
-	// cub.wall_texture_paths[2] = "textures/west.xpm";
-	// cub.wall_texture_paths[3] = "textures/north.xpm";
 
 	
 	init_cub(&cub);
+	mlx_do_key_autorepeatoff(cub.mlx);
 	cub.ceilling_color = celling_color;
 	cub.floor_color = floor_color;
 	transfers_map(&cub);
-	init_mouse(&cub);
-	move_mouse_to_center(&cub);
 	mlx_loop_hook(cub.mlx, render_loop, &cub);
-	// int	img_width;
-	// int	img_height;
-	// copy_texture_pixels_to_position(&cub.wall_textures[0], cub.img, 0, 0);
-	// copy_texture_pixels_to_position(&cub.wall_textures[1], cub.img, 64, 0);
-	// copy_texture_pixels_to_position(&cub.wall_textures[2], cub.img, 128, 0);
-	// copy_texture_pixels_to_position(&cub.wall_textures[3], cub.img, 192, 0);
-	// mlx_put_image_to_window(cub.mlx, cub.win, cub.img->img, 0, 0);
 	mlx_loop(cub.mlx);
 	return (0);
 }
