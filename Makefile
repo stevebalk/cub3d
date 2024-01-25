@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/24 22:12:12 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/25 12:08:56 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,12 +49,17 @@ SRC_FILES	=	main \
 				draw/map \
 				error/error \
 				exit/exit \
+				map/checks \
 				math/math \
 				player/getters \
 				player/setters \
 				player/rotation \
 				player/movement \
 				raycasting/raycast \
+				raycasting/ray_calculate_ray \
+				raycasting/ray_calculate_texture \
+				raycasting/ray_checks \
+				raycasting/ray_draw \
 				user_input/handler \
 				user_input/keyboard \
 				user_input/mouse \

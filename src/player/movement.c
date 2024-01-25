@@ -6,19 +6,11 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:18:44 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 11:35:33 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 11:48:37 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	is_inside_map(t_cub *cub, t_vec2i position)
-{
-	if (position.x >= 0 && position.x < cub->map_size.x &&
-		position.y >= 0 && position.y < cub->map_size.y)
-		return (1);
-	return (0);
-}
 
 // int	is_vec2_inside_map(t_cub *cub, t_vec2 position)
 // {

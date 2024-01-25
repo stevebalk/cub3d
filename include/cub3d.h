@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 11:31:13 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 12:09:49 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,12 +369,24 @@ int		get_pixel_color_int(t_texture *texture, int x, int y);
 /*                          Raycasting                              */
 /********************************************************************/
 
+void	calculate_step_size(t_ray *ray);
+void	calculate_ray_length(t_ray *ray);
+void	calculate_ray_dir(t_ray *ray, t_cub *cub, int i);
+void	calculate_perpendicular_wall_dist(t_ray *ray);
+void	calculate_line_height(t_ray *ray, t_cub *cub);
+void	calculate_wall_x(t_ray *ray);
+void	calculate_texture_x(t_ray *ray, t_cub *cub);
+int		get_compass_hit_direction(t_ray *ray);
+int		is_ray_hitting(t_cub *cub, t_ray *ray);
+void	draw_pixel_from_texture(t_ray *ray, t_cub *cub, int i, int j);
+void	draw_line_from_texture(t_ray *ray, t_cub *cub, int i);
 void	raycast(t_cub *cub);
 
 /********************************************************************/
 /*                          CHECKS                                  */
 /********************************************************************/
 
+int		is_cell_occopied(t_cub *cub, t_vec2i pos);
 int		is_inside_map(t_cub *cub, t_vec2i position);
 
 /********************************************************************/
