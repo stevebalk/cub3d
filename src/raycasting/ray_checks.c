@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:01:27 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 12:57:14 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 13:55:55 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ static void	vertical_step(t_ray *ray, double *dist)
 
 int	is_ray_hitting(t_cub *cub, t_ray *ray)
 {
-	int		hit;
 	double	dist;
 
-	hit = 0;
 	dist = 0;
-	while (!hit && dist < MAX_RAY_LENGTH)
+	while (dist < MAX_RAY_LENGTH)
 	{
 		if (ray->length.x < ray->length.y)
 			horizontal_step(ray, &dist);

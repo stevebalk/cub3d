@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:09:17 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 15:12:44 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 13:40:20 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_vec2i	v2_to_v2i(t_vec2 vec)
 {
 	t_vec2i	new;
 
-	new.x = (int)round(vec.x);
-	new.y = (int)round(vec.y);
+	new.x = (int)(vec.x);
+	new.y = (int)(vec.y);
 	return (new);
 }
