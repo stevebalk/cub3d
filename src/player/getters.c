@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:20:29 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/17 14:20:44 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/25 12:29:52 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ double	get_player_old_time(t_player *player)
 {
 	return (player->old_time);
 }
-

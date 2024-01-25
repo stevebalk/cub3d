@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player.c                                      :+:      :+:    :+:   */
+/*   flag_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 13:55:38 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/17 14:59:22 by sbalk            ###   ########.fr       */
+/*   Created: 2024/01/25 15:40:56 by sbalk             #+#    #+#             */
+/*   Updated: 2024/01/25 15:45:34 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_player(t_player *player)
+void	toggle_flag(unsigned int *flags, unsigned int bit_mask)
 {
-	
-	player->pos.x = 22;
-	player->pos.y = 12;
-	player->dir.x = -1;
-	player->dir.y = 0;
-	player->plane.x = 0;
-	player->plane.y = 0.66;
-	player->time = 0;
-	player->old_time = 0;
+	*flags ^= bit_mask;
+}
+
+void	set_flag(unsigned int *flags, unsigned int bit_mask)
+{
+	*flags |= bit_mask;
+}
+
+void	unset_flag(unsigned int *flags, unsigned int bit_mask)
+{
+	*flags &= ~bit_mask;
+}
+
+int	is_flag_set(unsigned int flags, unsigned int bit_mask)
+{
+	return ((flags & bit_mask) != 0);
 }

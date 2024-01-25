@@ -3,7 +3,7 @@ INCLUDES	=	include/
 SRCS_DIR 	=	src/
 OBJS_DIR	=	obj/
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -g -I
+CFLAGS		=	-Wall -Werror -Wextra -I
 RM			=	rm -f
 AR			=	ar rcs
 
