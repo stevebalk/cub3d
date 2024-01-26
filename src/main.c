@@ -198,6 +198,7 @@ int	main(void)
 	
 	init_cub(&cub);
 	mlx_do_key_autorepeatoff(cub.mlx);
+	set_flag(&cub.flags, FLAG_DEBUG_OVERLAY);
 	cub.ceilling_color = celling_color;
 	cub.floor_color = floor_color;
 	transfers_map(&cub);

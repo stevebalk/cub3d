@@ -114,8 +114,10 @@
 /******************* GENERAL **********************/
 
 #define WIN_TITLE "Cub3D"
-#define WIN_WIDTH 640 * 3
-#define WIN_HEIGHT 480 * 3
+//#define WIN_WIDTH 640 * 3
+//#define WIN_HEIGHT 480 * 3
+#define WIN_WIDTH 1920
+#define WIN_HEIGHT 1080
 
 /******************* PLAYER **********************/
 

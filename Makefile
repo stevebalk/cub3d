@@ -27,7 +27,7 @@ OBJ_DIR		= obj/
 BSRC_DIR	= src_bonus/
 BOBJ_DIR	= obj_bonus/
 
-INCLUDE		= -I include -I ${LIB_DIR}include -I $(MLX_DIR) -I/opt/X11/include
+INCLUDE		= -I include -I ${LIB_DIR}include -I $(MLX_DIR) -I /opt/X11/include
 
 # Colors
 
@@ -125,18 +125,18 @@ $(NAME):	$(OBJ)
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
 #			Linux
-			@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+#			@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
 #			MacOS
-#			@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft minilibx-linux/libmlx.a minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME)
 			@echo "$(GREEN)Created $(NAME)!$(DEF_COLOR)"
 
 $(BONUS):	$(BOBJ)
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
 #			Linux
-			@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME_BONUS)
+#			@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME_BONUS)
 #			MacOS
-#			@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft minilibx-linux/libmlx.a minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME)
+			@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME_BONUS)
 			@echo "$(GREEN)Created $(NAME_BONUS)!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
