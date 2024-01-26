@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/26 12:25:43 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/26 21:57:45 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,10 @@
 /******************* GENERAL **********************/
 
 #define WIN_TITLE "Cub3D_Bonus"
-// #define WIN_WIDTH 2560
-// #define WIN_HEIGHT 1440
-#define WIN_WIDTH 640
-#define WIN_HEIGHT 480
+#define WIN_WIDTH 2560
+#define WIN_HEIGHT 1440
+// #define WIN_WIDTH 640
+// #define WIN_HEIGHT 480
 
 /******************* PLAYER **********************/
 
@@ -243,6 +243,18 @@ typedef struct ray
 	int			wall_hit_content;
 }				t_ray;
 
+typedef struct s_minimap
+{
+	t_vec2i		pos;
+	int			size;
+	int			zoom;
+	int			range;
+	int			wall_color;
+	int			empty_color;
+	int			player_color;
+	int			border_color;
+	int			border_width;
+}				t_minimap;
 
 /* cub3D main struct, data that 
 is used everywhere */
@@ -258,6 +270,7 @@ typedef struct s_cub
 	t_player		player;
 	t_mouse			mouse;
 	t_key			key;
+	t_minimap		minimap;
 	t_texture		wall_textures[4];
 	char			*wall_texture_paths[4];
 	int				ceilling_color;
@@ -293,6 +306,7 @@ void	init_mlx(t_cub *cub);
 void	init_textures(t_cub *cub);
 void	init_map(t_cub *cub);
 void	init_cub(t_cub *cub);
+void	init_minimap(t_cub *cub);
 
 /********************************************************************/
 /*                          DRAWING                                 */
@@ -304,7 +318,8 @@ void	draw_square(t_data *img, t_vec2i pos, int size, int color);
 void	draw_rectangle(t_data *img, t_vec2i pos, t_vec2i size, int color);
 void	draw_circle(t_data *img, t_vec2i pos, int radius, int color);
 void	draw_triangle(t_data *img, t_vec2i pos, int size, int color);
-void	draw_minimap(t_cub *cub, t_vec2i position);
+// void	draw_minimap(t_cub *cub, t_vec2i position);
+void	draw_minimap(t_cub *cub);
 void	draw_background(t_data *data, t_vec2i size, int color);
 void	draw_ceilling(t_cub *cub);
 void	draw_floor(t_cub *cub);

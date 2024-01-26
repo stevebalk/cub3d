@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/25 19:55:51 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/26 15:02:18 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ BSRC_FILES	=	main \
 				init/cub \
 				init/map \
 				init/mlx \
+				init/init_minimap \
 				init/player \
 				init/textures \
 				draw/basic_shapes \

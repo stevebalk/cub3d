@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.c                                              :+:      :+:    :+:   */
+/*   init_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/26 14:54:43 by sbalk            ###   ########.fr       */
+/*   Created: 2024/01/26 14:54:57 by sbalk             #+#    #+#             */
+/*   Updated: 2024/01/26 19:07:18 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	init_cub(t_cub *cub)
+void	init_minimap(t_cub *cub)
 {
-	cub->win_size = (t_vec2i){WIN_WIDTH, WIN_HEIGHT};
-	cub->map_size.x = TEST_MAP_SIZE_X;
-	cub->map_size.y = TEST_MAP_SIZE_Y;
-	cub->win_center = (t_vec2i){cub->win_size.x / 2, cub->win_size.y / 2};
-	cub->player.start_direction = EAST;
-	init_map(cub);
-	init_player(cub);
-	init_minimap(cub);
-	init_mlx(cub);
-	init_mlx_hooks(cub);
-	init_textures(cub);
-	// init_mlx_hooks(cub);
+	cub->minimap.size = cub->win_size.y / 4;
+	cub->minimap.range = 10;
+	cub->minimap.zoom = 1;
+	cub->minimap.pos.x = 0;
+	cub->minimap.pos.y = 0;
+	// cub->minimap.color = 0x00000000;
 }
