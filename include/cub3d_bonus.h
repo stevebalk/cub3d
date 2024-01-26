@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/26 00:21:39 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/26 12:25:43 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,10 @@
 /******************* GENERAL **********************/
 
 #define WIN_TITLE "Cub3D_Bonus"
-#define WIN_WIDTH 2560
-#define WIN_HEIGHT 1440
+// #define WIN_WIDTH 2560
+// #define WIN_HEIGHT 1440
+#define WIN_WIDTH 640
+#define WIN_HEIGHT 480
 
 /******************* PLAYER **********************/
 

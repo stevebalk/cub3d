@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:35:27 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 19:56:50 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/26 12:22:00 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,8 @@ int	main(void)
 	mlx_do_key_autorepeatoff(cub.mlx);
 	cub.ceilling_color = celling_color;
 	cub.floor_color = floor_color;
+	set_flag(&cub.flags, FLAG_DEBUG_OVERLAY);
+	set_flag(&cub.flags, FLAG_MOUSE_CONTROL);
 	transfers_map(&cub);
 	mlx_loop_hook(cub.mlx, render_loop, &cub);
 	mlx_loop(cub.mlx);
