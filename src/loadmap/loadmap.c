@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/24 11:40:33 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/26 12:07:30 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ int main(int argc, char **argv)
 	}
 
 	c_cyan(); printf("--- after load map ---\n"); c_reset();
+	map.player_start_pos = check_and_get_player(map.map);
+
 
 	free_s_map(&map);
 

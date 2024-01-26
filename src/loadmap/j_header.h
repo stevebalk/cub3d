@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/23 15:29:30 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/26 12:05:52 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,16 @@ int get_line_of(char **arr, char *find, int rev);
 int get_max_of_strlen(char *s1, char *s2);
 int check_if_arr_entrys_valid(char **arr, int arr_len);
 int count_char_in_str(char *str, char c);
+int	count_char_in_arr(char **arr, char c);
 t_color get_color(int r, int g, int b, int a);
 void replace_char_in_arr(char **arr, char find, char replace);
 int check_char_in_chars(char c, char *charset);
 int check_line_for_chars(char *line, char *charset);
 int get_max_line(char **arr, int start, int end);
+
+// get_player
+t_player_pos check_and_get_player(char **arr);
+
 
 // mem
 void	free_s_map(t_map *s_map);

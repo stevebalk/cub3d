@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/24 15:38:01 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/26 11:39:27 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,23 @@ int count_char_in_str(char *str, char c)
     }
     return (count);
 }
+
+// returns the count of a char in an array
+int	count_char_in_arr(char **arr, char c)
+{
+	int count;
+	int i;
+
+	i = -1;
+	count = 0;
+
+	while (arr[++i])
+		count += count_char_in_str(arr[i], c);
+	
+	printf("count %c in array  >> %i\n", c, count);
+
+	return (count);
+}	
 
 // builds a t_color from ints
 t_color get_color(int r, int g, int b, int a)
