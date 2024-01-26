@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/26 00:14:00 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/26 11:46:54 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_rays(t_cub *cub)
 	int number_of_threads;
 
 	i = 0;
-	number_of_threads = 4;
+	number_of_threads = 10;
 	while (i < number_of_threads)
 	{
 		cub->rays[i].id = i;
@@ -29,6 +29,9 @@ void	init_rays(t_cub *cub)
 		cub->rays[i].player_dir = &(cub->player.dir);
 		cub->rays[i].plane = &(cub->player.plane);
 		cub->rays[i].textures = cub->wall_textures;
+		cub->rays[i].ceilling_color = &(cub->ceilling_color);
+		cub->rays[i].floor_color = &(cub->floor_color);
+		cub->rays[i].slice_width = cub->win_size.x / number_of_threads;
 		cub->rays[i].img = cub->img;
 		cub->rays[i].map = cub->map;
 		i++;

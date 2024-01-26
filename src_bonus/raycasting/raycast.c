@@ -6,11 +6,67 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/26 00:12:45 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/26 12:10:41 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+void	draw_ceilling_ray(t_ray *ray, int start, int line_length)
+{
+	int	i;
+	int	j;
+	int rows;
+
+	rows = ray->win_size->y / 2;
+	i = 0;
+	j = 0;
+	while (i < rows)
+	{
+		j = 0;
+		while (j < line_length)
+		{
+			*((int *)ray->img->addr + start + j + i * ray->win_size->x) = *ray->ceilling_color;
+			j++;
+		}
+		i++;
+	}
+}
+
+void	draw_floor_ray(t_ray *ray, int start, int line_length)
+{
+	int	i;
+	int	j;
+	int rows;
+
+	rows = ray->win_size->y / 2;
+	i = 0;
+	j = 0;
+	while (i < rows)
+	{
+		j = 0;
+		while (j < line_length)
+		{
+			*((int *)ray->img->addr + start + j + i * ray->win_size->x + (ray->win_size->x * ray->win_size->y / 2)) = *ray->floor_color;
+			j++;
+		}
+		i++;
+	}
+}
+
+// void	draw_floor_new(t_ray *ray)
+// {
+// 	size_t	total_size;
+// 	size_t	i;
+
+// 	total_size = WIN_WIDTH * WIN_HEIGHT;
+// 	i = WIN_WIDTH * WIN_HEIGHT / 2;
+// 	while (i < total_size)
+// 	{
+// 		*((int *)cub->img->addr + i) = cub->floor_color;
+// 		i ++;
+// 	}
+// }
 
 void	*raycast_thread(void *arg)
 {
@@ -19,8 +75,10 @@ void	*raycast_thread(void *arg)
 	int		max_range;
 
 	ray = (t_ray *)arg;
-	i = ray->id * (ray->win_size->x / ray->number_of_threads);
-	max_range = (ray->id + 1) * (ray->win_size->x / ray->number_of_threads);
+	i = ray->id * ray->slice_width;
+	max_range = (ray->id + 1) * ray->slice_width;
+	draw_ceilling_ray(ray, i, max_range - i);
+	draw_floor_ray(ray, i, max_range - i);
 	while (i < max_range)
 	{
 		calculate_ray_dir(ray, i);
@@ -52,13 +110,15 @@ void	raycast(t_cub *cub)
 	// cub->ray.pos.y = cub->player.pos.y;
 	while (i < number_of_threads)
 	{
-		pthread_create(&cub->rays[i].thread, NULL, raycast_thread, &cub->rays[i]);
+		if (pthread_create(&cub->rays[i].thread, NULL, raycast_thread, &cub->rays[i]) != 0)
+			exit_error(cub, 1, "Error creating thread\n");;
 		i++;
 	}
 	i = 0;
 	while (i < number_of_threads)
 	{
-		pthread_join(cub->rays[i].thread, NULL);
+		if (pthread_join(cub->rays[i].thread, NULL) != 0)
+			exit_error(cub, 1, "Error joining thread\n");
 		i++;
 	}
 	// while (i < cub->win_size.x)

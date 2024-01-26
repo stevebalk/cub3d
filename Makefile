@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/25 23:43:33 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/26 10:48:42 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ MLX_DIR		= libs/minilibx-linux/
 MLX_NAME	= libmlx.a
 CC			= cc
 # CFLAGS		= -Werror -Wall -Wextra -g
-CFLAGS		= -Werror -Wall -Wextra -O3 -pthread
+CFLAGS		= -Werror -Wall -Wextra -pthread -O3 
+# CFLAGS		= -Werror -Wall -Wextra -O3 -pthread -fsanitize=thread
 # CFLAGS		= -Werror -Wall -Wextra -fsanitize=address -g
 RM			= rm
 SRC_DIR		= src/
