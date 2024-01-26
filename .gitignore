@@ -7,7 +7,9 @@ libs/minilibx-linux/libmlx_Linux.a
 libs/minilibx-linux/obj/
 libs/minilibx-linux/test/main.o
 libs/minilibx-linux/test/mlx-test
-cub3d*
+cub3d
+cub3d_bonus
+cub3d.lwp
 obj*/
 .vscode/
 output
