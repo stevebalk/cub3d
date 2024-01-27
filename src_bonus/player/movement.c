@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:18:44 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/27 21:20:07 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/27 21:58:38 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	slide_player(t_cub *cub, t_vec2 total_movement)
 	t_vec2	slide_x;
 	t_vec2	slide_y;
 
-	slide_x = (t_vec2){total_movement.x * MOVE_SPEED, 0};
-	slide_y = (t_vec2){0, total_movement.y * MOVE_SPEED};
+	slide_x = scale_vec2((t_vec2){total_movement.x * MOVE_SPEED, 0}, cub->delta_time);
+	slide_y = scale_vec2((t_vec2){0, total_movement.y * MOVE_SPEED}, cub->delta_time);
 	if (is_inside_map(cub, v2_to_v2i(add_vec2(cub->player.pos, slide_x)))
 		&& !is_colliding(cub, add_vec2(cub->player.pos, slide_x)))
 	{

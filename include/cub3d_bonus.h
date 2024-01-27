@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/27 21:50:10 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/27 22:04:18 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,10 @@
 
 /******************* PLAYER **********************/
 
-#define MOUSE_SENSITIVITY 0.05
+#define MOUSE_SENSITIVITY 1.0
 #define FOV 66
 #define MOVE_SPEED 4
-#define ROT_SPEED 0.015
+#define ROT_SPEED 2
 #define COLLISION_MARGIN 0.001
 
 /******************* MINIMAP **********************/
