@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/27 11:22:30 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/27 11:40:38 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int get_pos_of_char(char *line, char c);
 
 // get_player
 t_player_pos check_and_get_player(char **arr);
-
+int check_player(t_player_pos *player);
 
 // mem
 void	free_s_map(t_map *s_map);

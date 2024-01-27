@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/27 11:33:28 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/27 11:38:40 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,7 +284,7 @@ int get_pos_of_char(char *line, char c)
 {
 	int i;
 
-	c_yellow(); printf("get_pos_of_char  >%c \n", c);
+	//c_yellow(); printf("get_pos_of_char  >%c \n", c);
 
 	i = 0;
 	while(line[i])

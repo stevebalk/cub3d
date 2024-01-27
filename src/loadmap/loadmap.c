@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/27 10:47:48 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/27 11:41:52 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,12 @@ int main(int argc, char **argv)
 
 	c_cyan(); printf("--- after load map ---\n"); c_reset();
 	map.player_start_pos = check_and_get_player(map.map);
-
+	if (!check_player(&map.player_start_pos))
+	{
+		c_red();
+		printf("Error!\nno player or start position\n");
+		c_reset();
+	}
 
 	free_s_map(&map);
 

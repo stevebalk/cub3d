@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:32:38 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/27 11:33:05 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/27 11:42:34 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_player_pos find_player_and_get_pos(char **arr, char player)
 	int row;
 	int row_count;
 	int col;
-	c_yellow(); printf("find_player_and_get_pos player: %c \n", player);
+	//c_yellow(); printf("find_player_and_get_pos player: %c \n", player);
 	fflush(stdout);
 	row_count = get_arr_len(arr);
 	row = 0;
@@ -75,7 +75,7 @@ char get_player_c(int *player_count)
 {
 	int i;
 	i = 0;
-	printf("get_play_c \n");
+	//printf("get_play_c \n");
 	while(i < 4)
 	{
 		if (i == 0 && player_count[i] > 0)
@@ -88,7 +88,7 @@ char get_player_c(int *player_count)
 			return ('W');
 		i++;
 	}
-	printf("xxx");
+	//printf("xxx");
 	return ' ';
 }
 
@@ -114,12 +114,12 @@ t_player_pos check_and_get_player(char **arr)
 	if (nesw[0] == 1 && nesw[1] && 1 || nesw[2] & 1 || nesw[3] && 1)
 		return (get_pos(-1, -1, -1));
 
-	printf("before find_player_and_get_pos\n");
+	//printf("before find_player_and_get_pos\n");
 
 	pos = find_player_and_get_pos(arr, get_player_c(nesw));
-	show_s_player(&pos);
+	//show_s_player(&pos);
 
-	return (get_pos(-1, -1, -1));
+	return (pos);
 }
 
 // t_player_pos get_player_pos(char **arr)
