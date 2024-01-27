@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/27 19:32:01 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/27 20:50:22 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,19 @@
 #define ROT_SPEED 0.015
 #define COLLISION_MARGIN 0.001
 
+/******************* MINIMAP **********************/
+
+// Size of minimap in percent (Calculated with windowsize.y)
+#define MINIMAP_SIZE_PERCENT 25
+// How many tiles are shown in every direction
+#define MINIMAP_VISIBLE_TILES 10
+#define MINIMAP_MARGIN_X_PERCENT 1
+#define MINIMAP_MARGIN_Y_PERCENT 1
+#define MINIMAP_COLOR_BLOCKED 0x00000000
+#define MINIMAP_COLOR_FREE 0x00222222
+#define MINIMAP_COLOR_PLAYER 0x00FFFF00
+
+
 /******************* DEBUG **********************/
 
 #define DEBUG_OVERLAY 1
@@ -126,7 +139,6 @@
 /******************* RAYCAST **********************/
 
 #define MAX_RAY_LENGTH 100
-
 
 /********************************************************************/
 /*                          CONST DEFINES                           */
@@ -249,12 +261,10 @@ typedef struct s_minimap
 	int			size;
 	t_vec2i		global_size_end;
 	int			tile_size;
-	int			range;
-	int			wall_color;
-	int			empty_color;
-	int			player_color;
-	int			border_color;
-	int			border_width;
+	int			visible_tiles;
+	int			color_blocked;
+	int			color_free;
+	int			color_player;
 }				t_minimap;
 
 /* cub3D main struct, data that 
