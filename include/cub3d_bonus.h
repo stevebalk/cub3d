@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/27 20:50:22 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/27 21:50:10 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,16 +106,16 @@
 /******************* GENERAL **********************/
 
 #define WIN_TITLE "Cub3D_Bonus"
-#define WIN_WIDTH 2560
-#define WIN_HEIGHT 1440
-// #define WIN_WIDTH 640
-// #define WIN_HEIGHT 480
+// #define WIN_WIDTH 2560
+// #define WIN_HEIGHT 1440
+#define WIN_WIDTH 640
+#define WIN_HEIGHT 480
 
 /******************* PLAYER **********************/
 
 #define MOUSE_SENSITIVITY 0.05
 #define FOV 66
-#define MOVE_SPEED 0.05
+#define MOVE_SPEED 4
 #define ROT_SPEED 0.015
 #define COLLISION_MARGIN 0.001
 
@@ -255,6 +255,15 @@ typedef struct ray
 	int			wall_hit_content;
 }				t_ray;
 
+typedef struct s_fps
+{
+	int		frames;
+	int		fps;
+	time_t	start_time;
+	time_t	current_time;
+	double	delta_time;
+}				t_fps;
+
 typedef struct s_minimap
 {
 	t_vec2i		pos;
@@ -283,14 +292,14 @@ typedef struct s_cub
 	t_key			key;
 	t_minimap		minimap;
 	t_texture		wall_textures[4];
+	t_fps			fps;
 	char			*wall_texture_paths[4];
 	int				ceilling_color;
 	int				floor_color;
 	t_ray			ray;
 	int				frames;
-	int				fps;
-	time_t			start_time;
-	time_t			current_time;
+	double			last_frame_time;
+	double			current_frame_time;
 	double			delta_time;
 	unsigned int	flags;
 }					t_cub;
@@ -465,6 +474,13 @@ t_vec2	v2i_to_v2(t_vec2i vec);
 t_vec2i	v2_to_v2i(t_vec2 vec);
 double	deg_to_rad(double deg);
 double	rad_to_deg(double rad);
+
+/********************************************************************/
+/*                          TIME                                    */
+/********************************************************************/
+
+double	get_time_seconds();
+void	calculate_delta_time(t_cub *cub);
 
 /********************************************************************/
 /*                          ERROR                                   */

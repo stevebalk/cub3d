@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:35:27 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/27 19:37:39 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/27 21:56:01 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,13 @@ void	draw_player(t_cub *cub)
 
 int	render_loop(t_cub *cub)
 {
+	calculate_delta_time(cub);
 	input_handler(cub);
 	draw_ceilling(cub);
 	draw_floor(cub);
 	move(cub);
 	raycast(cub);
 	draw_minimap(cub);
-	// draw_player(cub);
 
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img->img, 0, 0);
 	if (is_flag_set(cub->flags, FLAG_DEBUG_OVERLAY))
@@ -203,8 +203,8 @@ int	main(void)
 	mlx_do_key_autorepeatoff(cub.mlx);
 	cub.ceilling_color = celling_color;
 	cub.floor_color = floor_color;
-	set_flag(&cub.flags, FLAG_DEBUG_OVERLAY);
-	set_flag(&cub.flags, FLAG_MOUSE_CONTROL);
+	// set_flag(&cub.flags, FLAG_DEBUG_OVERLAY);
+	// set_flag(&cub.flags, FLAG_MOUSE_CONTROL);
 	transfers_map(&cub);
 	mlx_loop_hook(cub.mlx, render_loop, &cub);
 	mlx_loop(cub.mlx);

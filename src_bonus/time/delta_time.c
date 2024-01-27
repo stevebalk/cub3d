@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.c                                              :+:      :+:    :+:   */
+/*   delta_time.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/27 21:42:15 by sbalk            ###   ########.fr       */
+/*   Created: 2024/01/27 21:00:26 by sbalk             #+#    #+#             */
+/*   Updated: 2024/01/27 21:52:08 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	init_cub(t_cub *cub)
+double get_time_seconds()
 {
-	cub->win_size = (t_vec2i){WIN_WIDTH, WIN_HEIGHT};
-	cub->map_size.x = TEST_MAP_SIZE_X;
-	cub->map_size.y = TEST_MAP_SIZE_Y;
-	cub->win_center = (t_vec2i){cub->win_size.x / 2, cub->win_size.y / 2};
-	cub->player.start_direction = EAST;
-	cub->delta_time = 0.0;
+	struct timespec ts;
+	clock_gettime(CLOCK_MONOTONIC, &ts);
+	return (double)ts.tv_sec + (double)ts.tv_nsec / 1e9;
+}
+
+void	calculate_delta_time(t_cub *cub)
+{
 	cub->current_frame_time = get_time_seconds();
+	cub->delta_time = cub->current_frame_time - cub->last_frame_time;
 	cub->last_frame_time = cub->current_frame_time;
-	init_map(cub);
-	init_player(cub);
-	init_minimap(cub);
-	init_mlx(cub);
-	init_mlx_hooks(cub);
-	init_textures(cub);
-	// init_mlx_hooks(cub);
 }

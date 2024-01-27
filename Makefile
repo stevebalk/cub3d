@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/26 15:02:18 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/27 21:07:28 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,7 @@ BSRC_FILES	=	main \
 				raycasting/ray_calculate_texture \
 				raycasting/ray_checks \
 				raycasting/ray_draw \
+				time/delta_time \
 				user_input/handler \
 				user_input/keyboard \
 				user_input/mouse \
