@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:32:38 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/27 11:42:34 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/27 12:56:19 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_player_pos find_player_and_get_pos(char **arr, char player)
 // returns 0 if player pos is not valid
 int check_player(t_player_pos *player)
 {
+	c_yellow(); printf("check_player()\n"); c_reset();
 	if (player->x == -1 || player->y == -1 || player->view == -1)
 		return (0);
 	return (1);
@@ -92,7 +93,7 @@ char get_player_c(int *player_count)
 	return ' ';
 }
 
-t_player_pos check_and_get_player(char **arr)
+t_player_pos get_player(char **arr)
 {
 	t_player_pos pos;
 	int nesw[4];
@@ -111,13 +112,13 @@ t_player_pos check_and_get_player(char **arr)
 	
 	if (nesw[0] > 1 ||  nesw[1] > 1 || nesw[2] > 1 ||  nesw[3] > 1)
 		return (get_pos(-1, -1, -1));
-	if (nesw[0] == 1 && nesw[1] && 1 || nesw[2] & 1 || nesw[3] && 1)
+	if (nesw[0] + nesw[1] + nesw[2] + nesw[0]  > 1)
 		return (get_pos(-1, -1, -1));
 
-	//printf("before find_player_and_get_pos\n");
+	printf("before find_player_and_get_pos\n");
 
 	pos = find_player_and_get_pos(arr, get_player_c(nesw));
-	//show_s_player(&pos);
+	show_s_player(&pos);
 
 	return (pos);
 }

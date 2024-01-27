@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/27 11:41:52 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/27 12:53:19 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,12 +143,23 @@ int main(int argc, char **argv)
 
 	}
 
-	c_cyan(); printf("--- after load map ---\n"); c_reset();
-	map.player_start_pos = check_and_get_player(map.map);
-	if (!check_player(&map.player_start_pos))
+	c_cyan(); printf("--- getting player pos ... has to move to somewhere ---\n"); c_reset();
+	map.player_start_pos = get_player(map.map);
+	
+	if (check_map_valid(&map))
+	{
+		c_green();
+		printf("==============================\n");
+		printf("==> map or player pos valid  =\n");
+		printf("==============================\n\n");
+		c_reset();
+	}
+	else
 	{
 		c_red();
-		printf("Error!\nno player or start position\n");
+		printf("==================================\n");
+		printf("==> map or player pos not valid  =\n");
+		printf("==================================\n\n");
 		c_reset();
 	}
 
