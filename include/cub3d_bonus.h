@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/26 21:57:45 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/27 19:32:01 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,7 +247,8 @@ typedef struct s_minimap
 {
 	t_vec2i		pos;
 	int			size;
-	int			zoom;
+	t_vec2i		global_size_end;
+	int			tile_size;
 	int			range;
 	int			wall_color;
 	int			empty_color;

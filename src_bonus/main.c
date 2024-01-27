@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:35:27 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/26 20:09:33 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/27 19:37:39 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,14 +190,14 @@ int	main(void)
 	t_cub cub;
 
 	ft_bzero(&cub, sizeof(t_cub));
-	cub.wall_texture_paths[0] = "textures/east.xpm";
-	cub.wall_texture_paths[1] = "textures/south.xpm";
-	cub.wall_texture_paths[2] = "textures/west.xpm";
-	cub.wall_texture_paths[3] = "textures/north.xpm";
-	// cub.wall_texture_paths[0] = "textures/wall_1.xpm";
-	// cub.wall_texture_paths[1] = "textures/wall_2.xpm";
-	// cub.wall_texture_paths[2] = "textures/wall_3.xpm";
-	// cub.wall_texture_paths[3] = "textures/wall_4.xpm";
+	// cub.wall_texture_paths[0] = "textures/east.xpm";
+	// cub.wall_texture_paths[1] = "textures/south.xpm";
+	// cub.wall_texture_paths[2] = "textures/west.xpm";
+	// cub.wall_texture_paths[3] = "textures/north.xpm";
+	cub.wall_texture_paths[0] = "textures/wall_1.xpm";
+	cub.wall_texture_paths[1] = "textures/wall_2.xpm";
+	cub.wall_texture_paths[2] = "textures/wall_3.xpm";
+	cub.wall_texture_paths[3] = "textures/wall_4.xpm";
 
 	init_cub(&cub);
 	mlx_do_key_autorepeatoff(cub.mlx);

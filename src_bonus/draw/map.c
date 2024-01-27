@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/26 21:56:43 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/27 19:30:12 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,79 +118,161 @@
 // 	draw_minimap_cells(cub, start_cell, end_cell);
 // }
 
-	// for (int i = cub->player.pos.y - visible_tiles; i <= cub->player.pos.y + visible_tiles; i++) {
-		// for (int j = cub->player.pos.x - visible_tiles; j <= cub->player.pos.x + visible_tiles; j++) {
+// 	for (int i = cub->player.pos.y - visible_tiles; i <= cub->player.pos.y + visible_tiles; i++) {
+// 		for (int j = cub->player.pos.x - visible_tiles; j <= cub->player.pos.x + visible_tiles; j++) {
+// void	draw_minimap(t_cub *cub)
+// {
+// 	int visible_tiles;
+// 	int i;
+// 	int j;
+
+// 	visible_tiles = 5;
+// 	i = round(cub->player.pos.y - visible_tiles);
+// 	j = round(cub->player.pos.x - visible_tiles);
+// 	while (i <= cub->player.pos.y + visible_tiles)
+// 	{
+// 		j = round(cub->player.pos.x - visible_tiles);
+// 		while (j <= cub->player.pos.x + visible_tiles)
+// 		{
+// 			int draw_x = cub->minimap.pos.x + (j - (cub->player.pos.x - visible_tiles)) * (cub->minimap.size / (2 * visible_tiles + 1));
+// 			int draw_y = cub->minimap.pos.y + (i - (cub->player.pos.y - visible_tiles)) * (cub->minimap.size / (2 * visible_tiles + 1));
+
+// 			if (i >= 0 && i < cub->map_size.x && j >= 0 && j < cub->map_size.y)
+// 			{
+// 				if (cub->map[i][j] == 0)
+// 				{
+// 					if (i == (int)(cub->player.pos.y + visible_tiles) && j == (int)(cub->player.pos.x + visible_tiles))
+// 					{
+// 						draw_rectangle(cub->img, (t_vec2i){draw_x, draw_y}, (t_vec2i){(cub->minimap.pos.x + cub->minimap.size - draw_x)  - cub->minimap.size / (visible_tiles * 2 + 1) , (cub->minimap.pos.y + cub->minimap.size - draw_y) - cub->minimap.size / (visible_tiles * 2 + 1)}, 0x00333333);
+// 						// put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFF00);
+// 					}
+// 					else if (i == (int)(cub->player.pos.y + visible_tiles))
+// 					{
+// 						draw_rectangle(cub->img, (t_vec2i){draw_x, draw_y}, (t_vec2i){cub->minimap.size / (visible_tiles * 2 + 1) , (cub->minimap.pos.y + cub->minimap.size - draw_y) - cub->minimap.size / (visible_tiles * 2 + 1)}, 0x00333333);
+// 						// put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFF00);
+
+// 					}
+// 					else if (j == (int)(cub->player.pos.x + visible_tiles))
+// 					{
+// 						draw_rectangle(cub->img, (t_vec2i){draw_x, draw_y}, (t_vec2i){(cub->minimap.pos.x + cub->minimap.size - draw_x)  - cub->minimap.size / (visible_tiles * 2 + 1) ,cub->minimap.size / (visible_tiles * 2  + 1) }, 0x00333333);
+// 						// put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFF00);
+
+// 					}
+// 					else
+// 					{
+// 						draw_square(cub->img, (t_vec2i){draw_x, draw_y}, cub->minimap.size / (visible_tiles * 2 + 1), 0x00333333);
+// 						// put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFF00);
+// 					}
+// 				}
+// 				// else if (cub->map[i][j] >= 1)
+// 				// {
+// 				// 	if (i == (int)(cub->player.pos.y + visible_tiles))
+// 				// 	{
+// 				// 		draw_rectangle(cub->img, (t_vec2i){draw_x, draw_y}, (t_vec2i){cub->minimap.pos.x + cub->minimap.size - draw_x , cub->minimap.pos.y + cub->minimap.size - draw_y}, 0x00000000);
+// 				// 		printf("Draw x: %d\n", cub->minimap.pos.x + cub->minimap.size - draw_x);
+// 				// 	}
+// 				// 	else
+// 				// 	{
+// 				// 		draw_square(cub->img, (t_vec2i){draw_x, draw_y}, cub->minimap.size / (visible_tiles * 2 + 1), 0x00000000);
+// 				// 		put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFFFF);
+// 				// 	}
+// 				// }
+// 			}
+// 			else
+// 			{
+// 				// draw_square(cub->img, (t_vec2i){draw_x, draw_y}, cub->minimap.size / visible_tiles, 0x00000000);
+// 				put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFF00);
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+
+
+// 	int minimap_player_x = cub->minimap.pos.x + (cub->player.pos.x - (cub->player.pos.x - visible_tiles)) * (cub->minimap.size / (2 * visible_tiles + 1));
+// 	int minimap_player_y = cub->minimap.pos.y + (cub->player.pos.y - (cub->player.pos.y - visible_tiles)) * (cub->minimap.size / (2 * visible_tiles + 1));
+// 	draw_circle(cub->img, (t_vec2i){minimap_player_x, minimap_player_y}, cub->minimap.size / visible_tiles / 8, 0x00FFFF00);
+// }
+
+void	draw_minimap_square(t_cub *cub, t_vec2i pos, int color)
+{
+	t_vec2i		start;
+	t_vec2i		end;
+	t_minimap	*minimap;
+
+	minimap = &cub->minimap;
+	start.x = pos.x;
+	start.y = pos.y;
+	end.x = pos.x + minimap->tile_size;
+	end.y = pos.y + minimap->tile_size;
+	while (start.x < end.x)
+	{
+		start.y = pos.y;
+		while (start.y < end.y)
+		{
+			if (start.x >= minimap->pos.x && start.x < minimap->global_size_end.x
+				&& start.y >= minimap->pos.y && start.y < minimap->global_size_end.y)
+			{
+				put_pixel(cub->img, start, color);
+			}
+			// else
+			// 	printf("LOLOL\n");
+			start.y++;
+		}
+		start.x++;
+	}
+}
+
 void	draw_minimap(t_cub *cub)
 {
-	int visible_tiles;
-	int i;
-	int j;
+	t_vec2i		map_pos;
+	int			map_size;
+	int			tile_size;
+	int			visible_tiles;
+	int			i;
+	int			j;
+	// t_vec2i		draw_pos;
+	t_player	*player;
+	t_vec2i		tile_pos;
+	// int			offset;
 
+	map_size = cub->win_size.y * 0.2;
+	map_pos.x = cub->win_size.x - map_size - 0.05 * map_size;
+	map_pos.y = 0 + 0.05 * map_size;
 	visible_tiles = 5;
-	i = round(cub->player.pos.y - visible_tiles);
-	j = round(cub->player.pos.x - visible_tiles);
-	while (i <= cub->player.pos.y + visible_tiles)
+	player = &cub->player;
+	tile_size = map_size / (2 * visible_tiles + 1);
+	cub->minimap.tile_size = tile_size;
+	cub->minimap.pos.x = map_pos.x;
+	cub->minimap.pos.y = map_pos.y;
+	cub->minimap.global_size_end.x = map_pos.x + map_size;
+	cub->minimap.global_size_end.y = map_pos.y + map_size;
+	i = player->pos.x - visible_tiles * 1.5;
+	while (i < player->pos.x + visible_tiles * 1.5)
 	{
-		j = cub->player.pos.x - visible_tiles;
-		while (j <= cub->player.pos.x + visible_tiles)
+		j = player->pos.y - visible_tiles * 1.5;
+		while (j < player->pos.y + visible_tiles * 1.5)
 		{
-			int draw_x = cub->minimap.pos.x + (j - (cub->player.pos.x - visible_tiles)) * (cub->minimap.size / (2 * visible_tiles + 1));
-			int draw_y = cub->minimap.pos.y + (i - (cub->player.pos.y - visible_tiles)) * (cub->minimap.size / (2 * visible_tiles + 1));
-
+			tile_pos.x = map_pos.x + (i - (player->pos.x - visible_tiles)) * tile_size;
+			tile_pos.y = map_pos.y + (j - (player->pos.y - visible_tiles)) * tile_size;
 			if (i >= 0 && i < cub->map_size.x && j >= 0 && j < cub->map_size.y)
 			{
-				if (cub->map[i][j] == 0)
-				{
-					if (i == (int)(cub->player.pos.y + visible_tiles) && j == (int)(cub->player.pos.x + visible_tiles))
-					{
-						draw_rectangle(cub->img, (t_vec2i){draw_x, draw_y}, (t_vec2i){(cub->minimap.pos.x + cub->minimap.size - draw_x)  - cub->minimap.size / (visible_tiles * 2 + 1) , (cub->minimap.pos.y + cub->minimap.size - draw_y) - cub->minimap.size / (visible_tiles * 2 + 1)}, 0x00333333);
-						// put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFF00);
-					}
-					else if (i == (int)(cub->player.pos.y + visible_tiles))
-					{
-						draw_rectangle(cub->img, (t_vec2i){draw_x, draw_y}, (t_vec2i){cub->minimap.size / (visible_tiles * 2 + 1) , (cub->minimap.pos.y + cub->minimap.size - draw_y) - cub->minimap.size / (visible_tiles * 2 + 1)}, 0x00333333);
-						// put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFF00);
-
-					}
-					else if (j == (int)(cub->player.pos.x + visible_tiles))
-					{
-						draw_rectangle(cub->img, (t_vec2i){draw_x, draw_y}, (t_vec2i){(cub->minimap.pos.x + cub->minimap.size - draw_x)  - cub->minimap.size / (visible_tiles * 2 + 1) ,cub->minimap.size / (visible_tiles * 2  + 1) }, 0x00333333);
-						// put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFF00);
-
-					}
-					else
-					{
-						draw_square(cub->img, (t_vec2i){draw_x, draw_y}, cub->minimap.size / (visible_tiles * 2 + 1), 0x00333333);
-						// put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFF00);
-					}
-				}
-				// else if (cub->map[i][j] >= 1)
-				// {
-				// 	if (i == (int)(cub->player.pos.y + visible_tiles))
-				// 	{
-				// 		draw_rectangle(cub->img, (t_vec2i){draw_x, draw_y}, (t_vec2i){cub->minimap.pos.x + cub->minimap.size - draw_x , cub->minimap.pos.y + cub->minimap.size - draw_y}, 0x00000000);
-				// 		printf("Draw x: %d\n", cub->minimap.pos.x + cub->minimap.size - draw_x);
-				// 	}
-				// 	else
-				// 	{
-				// 		draw_square(cub->img, (t_vec2i){draw_x, draw_y}, cub->minimap.size / (visible_tiles * 2 + 1), 0x00000000);
-				// 		put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFFFF);
-				// 	}
-				// }
+				if (cub->map[j][i] >= 1)
+					draw_minimap_square(cub, tile_pos, 0x00000000);
+					// draw_square(cub->img, tile_pos, tile_size, 0x00000000);
+				else
+					draw_minimap_square(cub, tile_pos, 0x00FFFFFF);
+					// draw_square(cub->img, tile_pos, tile_size, 0x00FFFFFF);
 			}
 			else
-			{
-				// draw_square(cub->img, (t_vec2i){draw_x, draw_y}, cub->minimap.size / visible_tiles, 0x00000000);
-				put_pixel(cub->img, (t_vec2i){draw_x, draw_y}, 0x00FFFF00);
-			}
+				draw_minimap_square(cub, tile_pos, 0x00333333);
+				// draw_square(cub->img, tile_pos, tile_size, 0x00333333);
 			j++;
 		}
 		i++;
 	}
-
-
-	int minimap_player_x = cub->minimap.pos.x + (cub->player.pos.x - (cub->player.pos.x - visible_tiles)) * (cub->minimap.size / (2 * visible_tiles + 1));
-	int minimap_player_y = cub->minimap.pos.y + (cub->player.pos.y - (cub->player.pos.y - visible_tiles)) * (cub->minimap.size / (2 * visible_tiles + 1));
+	int minimap_player_x = map_pos.x + (player->pos.x - (player->pos.x - visible_tiles)) * (map_size / (2 * visible_tiles + 1));
+	int minimap_player_y = map_pos.y + (player->pos.y - (player->pos.y - visible_tiles)) * (map_size / (2 * visible_tiles + 1));
 	draw_circle(cub->img, (t_vec2i){minimap_player_x, minimap_player_y}, cub->minimap.size / visible_tiles / 8, 0x00FFFF00);
+	// draw_minimap_square(cub, (t_vec2i){0, 0}, 0x00000000);
 }
-
