@@ -1,7 +1,13 @@
 /* Todo:
+Wednesday:
+- check for a lot of possible map problems. (with leaks)
+- function for player start pos 
+- player start pos in show_s_map
+- floodfill implementing
+
 - save lines of found elements 
 ---> check other lines if they contain only space or tabs ... but no idea if 
-     its needed 
+     its needed  --> it´s needed
      
 - find line with one of ( 01NESW )    find last line with these characters
     -> look if the following lines contais other characters

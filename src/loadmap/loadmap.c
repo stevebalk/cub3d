@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   loadmap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
+/*   Updated: 2024/01/27 10:47:48 by jonas            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "j_header.h"
 
-char *tex_names[5] = {"NO","EA","SO","WE", NULL};
+//static char *tex_names[5] = {"NO","EA","SO","WE", NULL};
 
 char **J_load_file(char *file)
 {
@@ -35,9 +47,9 @@ char **J_load_file(char *file)
         i++;
     }
     tmp[i] = NULL;
-    show_arr(tmp);
+    //show_arr(tmp);
     replace_char_in_arr(tmp, '\n', '\0');
-    show_arr(tmp);
+    //show_arr(tmp);
     
     close(fd);
     return (tmp);
@@ -45,33 +57,106 @@ char **J_load_file(char *file)
 ///////////////////////////////////
 
 
+
+int load_map(t_map *s_map, char **argv)
+{
+	int ret;
+	
+	ret = 1;
+    char **splitted_file = J_load_file(argv[1]);
+	
+	if (!get_text_paths_master(s_map->textures, splitted_file))
+	{
+		ret = 0;
+		c_red();
+		printf("Error!\ntexture paths are not valid\n");
+	}
+
+    s_map->F = get_color_from_str(splitted_file, 'F');
+	s_map->C = get_color_from_str(splitted_file, 'C');
+
+    if (!check_color(s_map->F))
+	{
+		ret = 0;
+		c_red();
+		printf("Error\ninvalid floor color\n");
+	}
+	if (!check_color(s_map->C))
+	{
+		ret = 0;
+		c_red();
+       	printf("Error\ninvalid ceil color\n");
+	}
+	// show_color(s_map->F);
+	// show_color(s_map->C);
+
+	if (!get_map(s_map, splitted_file))
+	{
+		ret = 0;
+		c_red();
+		printf("Error!\nmap is not valid\n");
+	}	
+	free_n_null_2D((void ***)splitted_file);
+	return (ret);
+}
+
+
+
+void ini_map(t_map *s_map)
+{
+	int i;
+
+	i = 0;
+	s_map->textures = (char **)malloc(sizeof(char *) *5);
+	while(i <= 5)
+	{
+		s_map->textures[i] = NULL;
+		i++;
+	}
+	s_map->map = NULL;
+	
+	ini_tex_names(s_map->tex_names);
+}
+
 int main(int argc, char **argv)
 {   
     printf("huhu\n");
-    char **splitted_file = J_load_file(argv[1]);
+	t_map map;
+	ini_map(&map);
+	if (load_map(&map, argv))
+	{
+		c_green();
+		printf("\n\n ===================\n"); 
+		printf(" => map loaded OK  =\n"); 
+		printf(" ===================\n\n"); c_reset();
 
-    char *tex_paths[5];
-    int i = -1;
-    while(i++, i < 4)
-        tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
+		show_s_map(&map);
 
-    tex_paths[i] = NULL;
-    show_arr(tex_paths);
-    
-    printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
+	}
+	else
+	{
+		c_red();
+		printf("==========================\n");
+		printf("==> map loading failed!  =\n");
+		printf("==========================\n\n");
+		c_reset();
 
-    t_color f_color = get_color_from_str(splitted_file, 'F');
-    show_color(f_color);
-    if (!check_color(f_color))
-        printf("Error\ninvalid color\n");
+	}
 
-	get_map(splitted_file);
+	c_cyan(); printf("--- after load map ---\n"); c_reset();
+	map.player_start_pos = check_and_get_player(map.map);
 
+
+	free_s_map(&map);
+
+	
     return(0);
 }
 
 
 /*
 cc -D BUFFER_SIZE=1 loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
-cc -D BUFFER_SIZE=1 loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
+cc loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
+
+leaks -atExit -- ./a.out map1.cub
 */ 
