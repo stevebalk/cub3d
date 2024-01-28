@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/27 20:41:17 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/28 13:20:12 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	draw_tile(t_cub *cub, t_vec2i tile_offset, t_vec2i tile_pos)
 {
 	if (is_inside_map(cub, tile_offset))
 	{
-		if (cub->map[tile_offset.y][tile_offset.x] >= 1)
+		if (cub->map[tile_offset.y][tile_offset.x] == 1)
 			draw_minimap_square(cub, tile_pos, cub->minimap.color_blocked);
 		else
 			draw_minimap_square(cub, tile_pos, cub->minimap.color_free);

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/27 22:04:18 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/28 16:45:46 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,6 @@
 
 # define SPRITE_SCALE 0.5
 
-// typedef struct s_sprite
-// {
-// 	double		x;
-// 	double		y;
-// 	double		distance;
-// }				t_sprite;
-
 // typedef struct s_sprite_cast
 // {
 // 	double		x;
@@ -67,37 +60,6 @@
 // 	double		offset_y;
 // }				t_sprite_cast;
 
-// typedef struct s_player
-// {
-// 	double		x;
-// 	double		y;
-// 	double		width;
-// 	double		height;
-// 	int			turn_direction;
-// 	int			walk_direction;
-// 	double		rotation_angle;
-// 	double		walk_speed;
-// 	double		turn_speed;
-// }				t_player;
-
-// typedef struct s_texture
-// {
-// 	void		*img;
-// 	char		*addr;
-// 	int			bpp;
-// 	int			line_length;
-// 	int			endian;
-// 	int			width;
-// 	int			height;
-// }				t_texture;
-
-// typedef struct s_map
-// {
-// 	int			rows;
-// 	int			cols;
-// 	int			tile_size;
-// 	int			**grid;
-// }				t_map;
 
 /********************************************************************/
 /*                           CONFIG                                 */
@@ -106,18 +68,18 @@
 /******************* GENERAL **********************/
 
 #define WIN_TITLE "Cub3D_Bonus"
-// #define WIN_WIDTH 2560
-// #define WIN_HEIGHT 1440
-#define WIN_WIDTH 640
-#define WIN_HEIGHT 480
+#define WIN_WIDTH 2560
+#define WIN_HEIGHT 1440
+// #define WIN_WIDTH 640
+// #define WIN_HEIGHT 480
 
 /******************* PLAYER **********************/
 
-#define MOUSE_SENSITIVITY 1.0
+#define MOUSE_SENSITIVITY 0.075
 #define FOV 66
 #define MOVE_SPEED 4
 #define ROT_SPEED 2
-#define COLLISION_MARGIN 0.001
+// #define COLLISION_MARGIN 0.001
 
 /******************* MINIMAP **********************/
 
@@ -139,6 +101,10 @@
 /******************* RAYCAST **********************/
 
 #define MAX_RAY_LENGTH 100
+
+/******************* SPRITES **********************/
+
+#define SPRITE_TRANSPARENCY 0x00980088
 
 /********************************************************************/
 /*                          CONST DEFINES                           */
@@ -276,6 +242,28 @@ typedef struct s_minimap
 	int			color_player;
 }				t_minimap;
 
+typedef struct s_sprite
+{
+	int			id;
+	double		x;
+	double		y;
+	double		distance;
+}				t_sprite;
+
+typedef struct s_sprite_calc
+{
+	t_vec2		transform;
+	t_vec2		dir;
+	t_vec2i		size;
+	t_vec2i		screen_pos;
+	t_vec2i		draw_start;
+	t_vec2i		draw_end;
+	t_vec2i		tex;
+	t_vec2i		tex_size;
+	int			sprite_screen_x;
+	int			color;
+}				t_sprite_calc;
+
 /* cub3D main struct, data that 
 is used everywhere */
 typedef struct s_cub
@@ -291,11 +279,17 @@ typedef struct s_cub
 	t_mouse			mouse;
 	t_key			key;
 	t_minimap		minimap;
+	char			*wall_texture_paths[4];
 	t_texture		wall_textures[4];
 	t_fps			fps;
-	char			*wall_texture_paths[4];
 	int				ceilling_color;
 	int				floor_color;
+	double			z_buffer[WIN_WIDTH];
+	t_sprite		*sprites;
+	t_sprite_calc	sc;
+	int 			sprite_count;
+	char			*sprite_paths[4];
+	t_texture		sprite_textures[4];
 	t_ray			ray;
 	int				frames;
 	double			last_frame_time;
@@ -320,13 +314,15 @@ int		is_flag_set(unsigned int flags, unsigned int bit_mask);
 /*                          INIT                                    */
 /********************************************************************/
 
+void	init_cub(t_cub *cub);
+void	init_map(t_cub *cub);
 void	init_mlx_window(t_cub *cub);
 void	init_mlx_image(t_cub *cub, t_data **img, t_vec2i size);
 void	init_mlx(t_cub *cub);
-void	init_textures(t_cub *cub);
-void	init_map(t_cub *cub);
-void	init_cub(t_cub *cub);
 void	init_minimap(t_cub *cub);
+void	init_sprites(t_cub *cub);
+void	init_textures(t_cub *cub);
+int		read_xpm(t_cub *cub, t_texture *texture, char *path);
 
 /********************************************************************/
 /*                          DRAWING                                 */
@@ -346,6 +342,12 @@ void	draw_floor(t_cub *cub);
 
 /* Debug overlay */
 void	draw_debug_overlay(t_cub *cub, t_vec2i pos);
+
+/********************************************************************/
+/*                          DRAWING                                 */
+/********************************************************************/
+
+void	draw_sprites(t_cub *cub);
 
 /********************************************************************/
 /*                          PLAYER                                  */

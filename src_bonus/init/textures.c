@@ -6,15 +6,14 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:40:33 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 19:48:56 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/28 13:06:59 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-int	init_texture(t_cub *cub, t_texture *texture, char *path)
+int	read_xpm(t_cub *cub, t_texture *texture, char *path)
 {
-	printf("path: %s\n", path);
 	texture->img = mlx_xpm_file_to_image(cub->mlx, path,
 			&texture->width, &texture->height);
 	if (!texture->img)
@@ -32,10 +31,10 @@ void	init_textures(t_cub *cub)
 	i = 0;
 	while (i < 4)
 	{
-		if (!init_texture(cub, &cub->wall_textures[i],
+		if (!read_xpm(cub, &cub->wall_textures[i],
 				cub->wall_texture_paths[i]))
 		{
-			exit_error(cub, 0, "Error\nTexture corrupted!\n");
+			exit_error(cub, 0, "Error: Texture could not be read!");
 		}
 		i++;
 	}

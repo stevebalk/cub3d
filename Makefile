@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/27 21:07:28 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/28 13:46:40 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,14 +81,17 @@ BSRC_FILES	=	main \
 				init/init_minimap \
 				init/player \
 				init/textures \
+				init/init_sprites \
 				draw/basic_shapes \
 				draw/debug/overlay \
 				draw/draw \
 				draw/line \
-				draw/map \
+				draw/minimap \
+				draw/sprites \
 				error/error \
 				exit/exit \
 				flags/flag_utils \
+				free/free \
 				map/checks \
 				math/math \
 				player/checks \
