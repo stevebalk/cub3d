@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 13:24:22 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:17:11 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,15 @@ int main(int argc, char **argv)
 
 	c_cyan(); printf("--- getting player pos ... has to move to somewhere ---\n"); c_reset();
 	map.player_start_pos = get_player(map.map);
+	if (!check_player(&map.player_start_pos))
+	{
+		c_red();
+		printf("==================================\n");
+		printf("==> player pos not valid         =\n");
+		printf("==================================\n\n");
+		c_reset();
+		exit (1);
+	}
 	
 	if (check_map_valid(&map))
 	{

@@ -47,7 +47,7 @@ int check_field(char **arr, int x, int y)
 		}
 
 		replace_char_at_pos(arr, y, x, 'F');
-		usleep(10000);
+		usleep(5000);
 		clear_screen();
 		show_map(arr);
 	}
@@ -106,7 +106,7 @@ int check_near_fields(char **arr, int x, int y)
 	}
 
 	// left
-	if (x - 1 <= ft_strlen(arr[y]))
+	if (x - 1 >= 0)
 	{
 		if (y >= 0)
 		{
@@ -121,14 +121,14 @@ int check_near_fields(char **arr, int x, int y)
 
 int flood(char **arr)
 {
-	c_yellow(); printf("flood\n"); c_reset();
+	//c_yellow(); printf("flood\n"); c_reset();
 	int c;
 	int r;
 	int row_count;
 	int col_count;
 
 	row_count = get_arr_len(arr);
-	r =0;
+	r = 0;
 	while(r < row_count)
 	{
 		c = 0;
@@ -160,7 +160,7 @@ int check_map(t_map *s_map)
 	int i = -1;
 	int arr_len = get_arr_len(f_map);
 	int max_col = get_max_line(f_map, 0, arr_len);
-	while (i++ < (arr_len * max_col) -428)
+	while (i++ < (arr_len * max_col))
 		flood(f_map);
 		
 

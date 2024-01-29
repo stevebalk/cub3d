@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:32:38 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 10:26:01 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:15:20 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,6 @@ t_player_pos get_player(char **arr)
 
 	pos = find_player_and_get_pos(arr, get_player_c(nesw));
 	show_s_player(&pos);
-
+	
 	return (pos);
 }
