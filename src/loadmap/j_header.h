@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   j_header.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/27 12:49:00 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/29 10:24:20 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ int check_char_in_chars(char c, char *charset);
 int check_line_for_chars(char *line, char *charset);
 int get_max_line(char **arr, int start, int end);
 char **copy_arr(char **src);
-void ini_tex_names(char **dst);
 int get_pos_of_char(char *line, char c);
+
+// ini
+void ini_tex_names(char **dst);
+void ini_player_pos(t_player_pos *pp);
 
 // get_player
 t_player_pos get_player(char **arr);

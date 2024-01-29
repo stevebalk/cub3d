@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 10:15:58 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 10:17:06 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,7 @@ int load_map(t_map *s_map, char **argv)
 	// show_color(s_map->F);
 	// show_color(s_map->C);
 
-	s_map->player_start_pos.view = -1;
-	s_map->player_start_pos.x = -1;
-	s_map->player_start_pos.y = -1;
+
 
 	if (!get_map(s_map, splitted_file))
 	{

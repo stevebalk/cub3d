@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:32:38 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/27 12:56:50 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/29 10:26:01 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,3 @@ t_player_pos get_player(char **arr)
 
 	return (pos);
 }
-
-// t_player_pos get_player_pos(char **arr)
-// {
-// 	int line;
-// 	line = get_line_of(arr, "")
-// }

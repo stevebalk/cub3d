@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/27 11:38:40 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/29 10:24:32 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,16 +268,7 @@ char **copy_arr(char **src)
 	return (ret);
 }
 
-// inizialize tex short names
-void ini_tex_names(char **dst)
-{
-	dst = (char **)malloc((sizeof(char *) * (5)));
-	dst[0] = ft_strdup("NO");
-	dst[1] = ft_strdup("EA");
-	dst[2] = ft_strdup("SO");
-	dst[3] = ft_strdup("WE");
-	dst[4] = NULL;
-}
+
 
 // returs the index where c is in line the first time
 int get_pos_of_char(char *line, char c)
