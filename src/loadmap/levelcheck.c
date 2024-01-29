@@ -163,7 +163,5 @@ int check_map(t_map *s_map)
 	while (i++ < (arr_len * max_col))
 		flood(f_map);
 		
-
-
 	return (1);
 }

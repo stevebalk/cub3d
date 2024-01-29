@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:32:38 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 15:15:20 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:23:53 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_player_pos find_player_and_get_pos(char **arr, char player)
 // returns 0 if player pos is not valid
 int check_player(t_player_pos *player)
 {
-	c_yellow(); printf("check_player()\n"); c_reset();
+	c_yellow(); printf("check_player()  x: %i   y: %i  view: %i\n", player->x, player->y, player->view); c_reset();
 	if (player->x == -1 || player->y == -1 || player->view == -1)
 		return (0);
 	return (1);
@@ -112,7 +112,7 @@ t_player_pos get_player(char **arr)
 	
 	if (nesw[0] > 1 ||  nesw[1] > 1 || nesw[2] > 1 ||  nesw[3] > 1)
 		return (get_pos(-1, -1, -1));
-	if (nesw[0] + nesw[1] + nesw[2] + nesw[0]  > 1)
+	if (nesw[0] + nesw[1] + nesw[2] + nesw[3]  > 1)
 		return (get_pos(-1, -1, -1));
 
 	printf("before find_player_and_get_pos\n");
