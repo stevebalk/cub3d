@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:59:40 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/28 15:58:10 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/29 13:21:17 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,39 @@ void	set_sprite_ids(t_cub *cub)
 	}
 }
 
+void	set_animatable_sprite(t_cub *cub, int texture_id, int frame_count, double frame_duration)
+{
+	int	i;
+
+	i = 0;
+	while (i < cub->sprite_count)
+	{
+		if (cub->sprites[i].id == texture_id)
+		{
+			cub->sprites[i].animatable = 1;
+			cub->sprites[i].frame_count = frame_count;
+			cub->sprites[i].frame_duration = frame_duration;
+			cub->sprites[i].frame_width = cub->sprite_textures[cub->sprites[i].id].width / frame_count;
+		}
+		i++;
+	}
+}
+
 void	init_sprites(t_cub *cub)
 {
+	int	i;
+
+	i = 0;
 	read_sprite_textures(cub);
 	count_sprites_in_map(cub);
-	cub->sprites = malloc(sizeof(t_sprite) * cub->sprite_count);
-	set_sprite_pos(cub);
+	cub->sprites = ft_calloc(cub->sprite_count, sizeof(t_sprite));
 	set_sprite_ids(cub);
-	// cub->sprite_order = malloc(sizeof(int) * cub->sprite_count);
-	// cub->sprite_distance = malloc(sizeof(double) * cub->sprite_count);
+	set_sprite_pos(cub);
+	set_animatable_sprite(cub, 0, 3, 0.1);
+	while (i < cub->sprite_count)
+	{
+		if (!cub->sprites[i].animatable)
+			cub->sprites[i].frame_width = cub->sprite_textures[cub->sprites[i].id].width;
+		i++;
+	}
 }

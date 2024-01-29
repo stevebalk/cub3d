@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/28 16:45:46 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/29 13:23:28 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,13 @@ typedef struct s_sprite
 	double		x;
 	double		y;
 	double		distance;
+	int			animatable;
+	int			frame_offset_x;
+	int			frame_index;
+	int			frame_width;
+	double		frame_time;
+	int			frame_count;
+	double		frame_duration;
 }				t_sprite;
 
 typedef struct s_sprite_calc
@@ -260,6 +267,7 @@ typedef struct s_sprite_calc
 	t_vec2i		draw_end;
 	t_vec2i		tex;
 	t_vec2i		tex_size;
+	int			stripe;
 	int			sprite_screen_x;
 	int			color;
 }				t_sprite_calc;
