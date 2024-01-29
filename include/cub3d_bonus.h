@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/29 13:23:28 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/29 13:59:39 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,8 @@ typedef struct s_sprite
 	int			id;
 	double		x;
 	double		y;
+	int			is_static;
+	int			orientation;
 	double		distance;
 	int			animatable;
 	int			frame_offset_x;

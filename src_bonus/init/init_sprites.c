@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:59:40 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/29 13:21:17 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/29 14:11:27 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ void	set_animatable_sprite(t_cub *cub, int texture_id, int frame_count, double f
 			cub->sprites[i].frame_count = frame_count;
 			cub->sprites[i].frame_duration = frame_duration;
 			cub->sprites[i].frame_width = cub->sprite_textures[cub->sprites[i].id].width / frame_count;
+			cub->sprites[i].is_static = 1;
+			cub->sprites[i].orientation = EAST;
 		}
 		i++;
 	}

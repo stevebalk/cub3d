@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:48:44 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/29 13:19:12 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/29 15:33:02 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,36 @@ void	sort_sprites(t_cub *cub)
 	}
 }
 
+void sprite_calc_static_transform(t_cub *cub, int i)
+{
+    double inv_det;
+
+    cub->sc.dir.x = cub->sprites[i].x - cub->player.pos.x;
+    cub->sc.dir.y = cub->sprites[i].y - cub->player.pos.y;
+    inv_det = 1.0 / (cub->player.plane.x * cub->player.dir.y);
+
+    if (cub->sprites[i].orientation == NORTH)
+    {
+        cub->sc.transform.x = inv_det * (cub->player.dir.y * cub->sc.dir.x - cub->player.dir.x * cub->sc.dir.y);
+        cub->sc.transform.y = inv_det * (cub->player.plane.y * cub->sc.dir.x - cub->player.plane.x * cub->sc.dir.y);
+    }
+    else if (cub->sprites[i].orientation == SOUTH)
+    {
+        cub->sc.transform.x = inv_det * (cub->player.dir.y * cub->sc.dir.x + cub->player.dir.x * cub->sc.dir.y);
+        cub->sc.transform.y = inv_det * (cub->player.plane.y * cub->sc.dir.x + cub->player.plane.x * cub->sc.dir.y);
+    }
+    else if (cub->sprites[i].orientation == EAST)
+    {
+        cub->sc.transform.x = inv_det * (cub->player.dir.y * cub->sc.dir.x + cub->player.dir.x * cub->sc.dir.y);
+        cub->sc.transform.y = inv_det * (cub->player.plane.y * cub->sc.dir.x + cub->player.plane.x * cub->sc.dir.y);
+    }
+    else if (cub->sprites[i].orientation == WEST)
+    {
+        cub->sc.transform.x = inv_det * (-cub->player.dir.y * cub->sc.dir.x - cub->player.dir.x * cub->sc.dir.y);
+        cub->sc.transform.y = inv_det * (-cub->player.plane.y * cub->sc.dir.x - cub->player.plane.x * cub->sc.dir.y);
+    }
+}
+
 // Calculate the relative position of the sprite to the camera plane
 void	sprite_projection(t_cub *cub, int i)
 {
@@ -67,8 +97,10 @@ void	sprite_projection(t_cub *cub, int i)
 			+ cub->player.plane.x * cub->sc.dir.y);
 	cub->sc.sprite_screen_x = (int)((cub->win_size.x / 2)
 		* (1 + cub->sc.transform.x / cub->sc.transform.y));
+
 }
 
+// Calculate the height of the sprite on screen
 void	sprite_clip_height_calc(t_cub *cub)
 {
 	cub->sc.size.y = abs((int)(cub->win_size.y / (cub->sc.transform.y)));
@@ -80,6 +112,7 @@ void	sprite_clip_height_calc(t_cub *cub)
 		cub->sc.draw_end.y = cub->win_size.y - 1;
 }
 
+// Calculate the width of the sprite on screen
 void	sprite_clip_width_calc(t_cub *cub)
 {
 	cub->sc.size.x = abs((int)(cub->win_size.y / (cub->sc.transform.y)));
@@ -91,26 +124,48 @@ void	sprite_clip_width_calc(t_cub *cub)
 		cub->sc.draw_end.x = cub->win_size.x - 1;
 }
 
+// Calculate the texture x-coordinate for the sprite
+void	sprite_calc_tex_x(t_cub *cub, t_sprite_calc *sc, int i)
+{
+	cub->sc.tex.x = (int)((sc->stripe - (-cub->sc.size.x / 2 + cub->sc.sprite_screen_x)) * cub->sprites[i].frame_width / cub->sc.size.x);
+}
+
+// Calculate the texture y-coordinate for the sprite
+void	sprite_calc_tex_y(t_cub *cub, int i, int y)
+{
+	int	d;
+
+	d = y * 256 - cub->win_size.y * 128 + cub->sc.size.y * 128;
+	cub->sc.tex.y = ((d * cub->sprite_textures[cub->sprites[i].id].height) / cub->sc.size.y) / 256;
+}
+
+int	is_sprite_visible(t_cub *cub, t_sprite_calc *sc)
+{
+	if (cub->sc.transform.y > 0 && sc->stripe > 0 && sc->stripe < cub->win_size.x
+			&& cub->sc.transform.y < cub->z_buffer[sc->stripe])
+		return (1);
+	return (0);
+}
+
 void	sprite_rendering(t_cub *cub, int i)
 {
 	t_sprite_calc	*sc;
 	int				y;
-	int				d;
 	int				color;
 
 	sc = &cub->sc;
 	sc->stripe = cub->sc.draw_start.x;
 	while (sc->stripe < cub->sc.draw_end.x)
 	{
-		cub->sc.tex.x = (int)(256 * (sc->stripe - (-cub->sc.size.x / 2 + cub->sc.sprite_screen_x)) * cub->sprites[i].frame_width / cub->sc.size.x) / 256;
-		if (cub->sc.transform.y > 0 && sc->stripe > 0 && sc->stripe < cub->win_size.x && cub->sc.transform.y < cub->z_buffer[sc->stripe])
+		sprite_calc_tex_x(cub, sc, i);
+		if (is_sprite_visible(cub, sc))
 		{
 			y = cub->sc.draw_start.y;
 			while (y < cub->sc.draw_end.y)
 			{
-				d = (y) * 256 - cub->win_size.y * 128 + cub->sc.size.y * 128;
-				cub->sc.tex.y = ((d * cub->sprite_textures[cub->sprites[i].id].height) / cub->sc.size.y) / 256;
-				color = get_pixel_color_int(&cub->sprite_textures[cub->sprites[i].id], cub->sc.tex.x + cub->sprites[i].frame_offset_x, cub->sc.tex.y);
+				sprite_calc_tex_y(cub, i, y);
+				color = get_pixel_color_int(&cub->sprite_textures[cub->sprites[i].id],
+						cub->sc.tex.x + cub->sprites[i].frame_offset_x, cub->sc.tex.y);
 				if (color != SPRITE_TRANSPARENCY)
 					put_pixel(cub->img, (t_vec2i){sc->stripe, y}, color);
 				y++;
@@ -134,6 +189,8 @@ void	change_sprite_frame(t_cub *cub, int i)
 		cub->sprites[i].frame_offset_x = cub->sprites[i].frame_index * cub->sprites[i].frame_width;
 	}
 }
+
+
 
 void	calculate_sprites(t_cub *cub)
 {
