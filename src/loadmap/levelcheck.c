@@ -30,20 +30,34 @@ int check_field(char **arr, int x, int y)
 
 	col_len = ft_strlen(arr[y]);
 	arr_len = get_arr_len(arr);
+
+    //printf("\ncheck field   col_len: %i   arr_len: %i \n", col_len, arr_len);
+	//printf("check field         x: %i         y: %i \n", x, y);
+	if (x == 0 || x == col_len  || y == 0 || y == arr_len - 1)
+	{
+		if (arr[y][x] != '1')
+		{
+			c_red();
+			printf("Error!\nspace in map or no wall\n"); c_reset();
+			c_reset();
+			exit(1);
+		}
+	}
+
+
 	if (arr[y][x] == '0')
 	{
 		if (x == 0 || x == col_len - 1)
 		{
-			printf("ERROR!   x == 0 || x == col_len\n");
-			sleep(2);
+			c_red();
+			printf("ERROR!\nspace in map or no wall\n"); c_reset();
 			exit(1);
 		}
 		if (y == 0 || y == arr_len - 1)
-		{
-			printf("ERROR!   (y == 0 || y == arr_len)\n");
-			sleep(2);
+		{	
+			c_red();
+			printf("ERROR!\nspace in map or no wall\n"); c_reset();
 			exit(1);
-			
 		}
 
 		replace_char_at_pos(arr, y, x, 'F');
@@ -60,7 +74,8 @@ int check_field(char **arr, int x, int y)
 	}
 	else
 	{
-
+		// printf("else\n");
+		// exit(1);
 	}
 
 	return (1);
@@ -138,10 +153,8 @@ int flood(char **arr)
 			//printf("r: %i   c: %i \n", r, c);
 			if (arr[r][c] == 'F')
 				check_near_fields(arr, c, r);
-
 			c++;
 		}
-
 		r++;
 	}
 
@@ -151,11 +164,16 @@ int flood(char **arr)
 int check_map(t_map *s_map)
 {
 	char **f_map;
+	t_xy tmp_pos;
 
 	f_map = copy_arr(s_map->map);
 	c_yellow(); printf("check_map --> after copy map\n"); c_reset();
 	set_first_f(f_map);
+
+
 	show_map(f_map);
+	tmp_pos = get_pos_of_char_in_arr(f_map, 'F');
+	check_near_fields(f_map, tmp_pos.x, tmp_pos.y);
 
 	int i = -1;
 	int arr_len = get_arr_len(f_map);

@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 13:28:17 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:02:21 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,7 +268,7 @@ int get_max_line(char **arr, int start, int end)
 		}
 		start++;
 	}
-	printf("get_max_line: %i\n", max);
+	//printf("get_max_line: %i\n", max);
 	return (max);
 }
 
@@ -338,4 +338,28 @@ int get_len_without_spaces_from_end(char *line)
 	}
 	//printf("get_spaces_from_end: %i\n", i);
 	return (i+1);
+}
+
+t_xy get_xy_pos(int x, int y)
+{
+	t_xy xy;
+	xy.x = x;
+	xy.y = y;
+	return (xy);
+}
+
+// returs the pos of the first occurence of c in the array
+t_xy get_pos_of_char_in_arr(char **arr, char c)
+{
+	int i;
+	i = 0;
+
+	while(arr[i])
+	{
+		if (get_pos_of_char(arr[i], c) != -1)
+			return(get_xy_pos(get_pos_of_char(arr[i], c), i));
+		i++;
+	}
+
+	return (get_xy_pos(-1, -1));
 }

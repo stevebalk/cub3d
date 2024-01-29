@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   j_structs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:35 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/27 10:27:47 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/29 15:37:05 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ typedef enum e_tex
     SO,
     WE
 } t_tex;
+
+typedef struct s_xy
+{
+	int x;
+	int y;
+}	t_xy;
 
 // coordinates of the player; view in °   0° is norh  90° is east etc.
 typedef struct s_player_pos
