@@ -32,13 +32,13 @@ int check_field(char **arr, int x, int y)
 	arr_len = get_arr_len(arr);
 	if (arr[y][x] == '0')
 	{
-		if (x == 0 || x == col_len)
+		if (x == 0 || x == col_len - 1)
 		{
 			printf("ERROR!   x == 0 || x == col_len\n");
 			sleep(2);
 			exit(1);
 		}
-		if (y == 0 || y == arr_len)
+		if (y == 0 || y == arr_len - 1)
 		{
 			printf("ERROR!   (y == 0 || y == arr_len)\n");
 			sleep(2);
@@ -54,7 +54,7 @@ int check_field(char **arr, int x, int y)
 	else if (arr[y][x] == ' ')
 	{
 		c_red();
-		printf("Error!\nspace in map!\n"); c_reset();
+		printf("Error!\nspace in map or no wall\n"); c_reset();
 		exit(1);
 		return (0);
 	}
@@ -75,9 +75,9 @@ int check_near_fields(char **arr, int x, int y)
 	//printf("check_near_fields  x: %i   y: %i \n", x, y);
 	//printf("arr len: %i\n", arr_len);
 	// UP
-	if (y - 1 > 0)
+	if (y - 1 >= 0)
 	{
-		if (x < ft_strlen(arr[y - 1]))
+		if (x <= ft_strlen(arr[y - 1]))
 		{
 			//printf("up\n");
 			check_field(arr, x, y - 1);
@@ -86,9 +86,9 @@ int check_near_fields(char **arr, int x, int y)
 
 
 	// right
-	if (x + 1< ft_strlen(arr[y]))
+	if (x + 1 <= ft_strlen(arr[y]))
 	{
-		if (y > 0)
+		if (y >= 0)
 		{
 			//printf("right\n");
 			check_field(arr, x + 1, y);
@@ -98,7 +98,7 @@ int check_near_fields(char **arr, int x, int y)
 	// down
 	if (y + 1 < arr_len )
 	{
-		if (x < ft_strlen(arr[y + 1]))
+		if (x <= ft_strlen(arr[y + 1]))
 		{
 			//printf("down\n");
 			check_field(arr, x, y + 1);
@@ -106,9 +106,9 @@ int check_near_fields(char **arr, int x, int y)
 	}
 
 	// left
-	if (x - 1 < ft_strlen(arr[y]))
+	if (x - 1 <= ft_strlen(arr[y]))
 	{
-		if (y > 0)
+		if (y >= 0)
 		{
 			//printf("left\n");
 			check_field(arr, x - 1, y);
