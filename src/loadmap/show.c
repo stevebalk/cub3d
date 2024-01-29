@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/27 11:22:13 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/29 10:12:38 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ void show_s_map(t_map *s_map)
 
 	printf("\nmap:");
 	show_arr(s_map->map);
+
+	printf("\nplayer pos:");
+	show_s_player(&s_map->player_start_pos);
 }
 
 void show_s_player(t_player_pos *s_player)
