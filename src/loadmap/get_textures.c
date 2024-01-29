@@ -6,13 +6,13 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/24 15:41:10 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 10:32:10 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "j_header.h"
 
-static char *tex_names[5] = {"NO","EA","SO","WE", NULL};
+//static char *tex_names[5] = {"NO","EA","SO","WE", NULL};
 
 int check_path(char *path)
 {
@@ -108,7 +108,7 @@ char *get_text_path(char **arr, char *find)
 }
 
 // fills a array of texture paths
-int get_text_paths_master(char **tex_paths, char **splitted_file)
+int get_text_paths_master(char **tex_paths, char **splitted_file, char **tex_names)
 {
  	//char *tmp_tex_paths[5];
     int i = -1;

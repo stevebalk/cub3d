@@ -1,14 +1,19 @@
 #include "j_header.h"
 
 // inizialize tex short names
-void ini_tex_names(char **dst)
+char **ini_tex_names(void)
 {
-	dst = (char **)malloc((sizeof(char *) * (5)));
-	dst[0] = ft_strdup("NO");
-	dst[1] = ft_strdup("EA");
-	dst[2] = ft_strdup("SO");
-	dst[3] = ft_strdup("WE");
-	dst[4] = NULL;
+	char **ret;
+	c_purple(); printf("ini_tex_names\n"); c_reset();
+	ret = (char **)malloc((sizeof(char *) * (5)));
+	ret[0] = ft_strdup("NO");
+	ret[1] = ft_strdup("EA");
+	ret[2] = ft_strdup("SO");
+	ret[3] = ft_strdup("WE");
+	ret[4] = NULL;
+	c_purple(); printf("after ini_tex_names\n"); c_reset();
+	show_arr(ret);
+	return (ret);
 }
 
 // set all vars to -1

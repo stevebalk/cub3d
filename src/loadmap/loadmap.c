@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 10:17:06 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 10:41:14 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int load_map(t_map *s_map, char **argv)
 	ret = 1;
     char **splitted_file = J_load_file(argv[1]);
 	
-	if (!get_text_paths_master(s_map->textures, splitted_file))
+	if (!get_text_paths_master(s_map->textures, splitted_file, s_map->tex_names))
 	{
 		ret = 0;
 		c_red();
@@ -117,7 +117,7 @@ void ini_map(t_map *s_map)
 	}
 	s_map->map = NULL;
 	
-	ini_tex_names(s_map->tex_names);
+	s_map->tex_names = ini_tex_names();
 }
 
 int main(int argc, char **argv)
@@ -125,6 +125,8 @@ int main(int argc, char **argv)
     printf("huhu\n");
 	t_map map;
 	ini_map(&map);
+	c_green(); printf("after ini_map\n"); c_reset();
+	show_arr(map.tex_names);
 	if (load_map(&map, argv))
 	{
 		c_green();

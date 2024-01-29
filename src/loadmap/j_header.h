@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 10:24:20 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 10:41:02 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int get_map(t_map *s_map, char **arr);
 
 // get_textures
 char *get_text_path(char **arr, char *find);
-int get_text_paths_master(char **tex_paths, char **splitted_file);
+int get_text_paths_master(char **tex_paths, char **splitted_file, char **tex_names);
 
 // show
 void show_arr(char **arr);
@@ -55,8 +55,8 @@ char **copy_arr(char **src);
 int get_pos_of_char(char *line, char c);
 
 // ini
-void ini_tex_names(char **dst);
-void ini_player_pos(t_player_pos *pp);
+char **ini_tex_names(void);
+void ini_player_pos(t_map *s_map);
 
 // get_player
 t_player_pos get_player(char **arr);
