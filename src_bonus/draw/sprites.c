@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:48:44 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/29 15:33:02 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/29 15:53:12 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	calculate_sprite_distances(t_cub *cub)
 	i = 0;
 	while (i < cub->sprite_count)
 	{
-		cub->sprites[i].distance = ((cub->player.pos.x - cub->sprites[i].x)
-				* (cub->player.pos.x - cub->sprites[i].x)
-				+ (cub->player.pos.y - cub->sprites[i].y)
-				* (cub->player.pos.y - cub->sprites[i].y));
+		cub->sprites[i].distance = ((cub->player.pos.x - cub->sprites[i].pos.x)
+				* (cub->player.pos.x - cub->sprites[i].pos.x)
+				+ (cub->player.pos.y - cub->sprites[i].pos.y)
+				* (cub->player.pos.y - cub->sprites[i].pos.y));
 		i++;
 	}
 }
@@ -56,8 +56,8 @@ void sprite_calc_static_transform(t_cub *cub, int i)
 {
     double inv_det;
 
-    cub->sc.dir.x = cub->sprites[i].x - cub->player.pos.x;
-    cub->sc.dir.y = cub->sprites[i].y - cub->player.pos.y;
+    cub->sc.dir.x = cub->sprites[i].pos.x - cub->player.pos.x;
+    cub->sc.dir.y = cub->sprites[i].pos.y - cub->player.pos.y;
     inv_det = 1.0 / (cub->player.plane.x * cub->player.dir.y);
 
     if (cub->sprites[i].orientation == NORTH)
@@ -87,8 +87,7 @@ void	sprite_projection(t_cub *cub, int i)
 {
 	double	inv_det;
 
-	cub->sc.dir.x = cub->sprites[i].x - cub->player.pos.x;
-	cub->sc.dir.y = cub->sprites[i].y - cub->player.pos.y;
+	cub->sc.dir = get_target_vec2(cub->player.pos, cub->sprites[i].pos);
 	inv_det = 1.0 / (cub->player.plane.x * cub->player.dir.y
 			- cub->player.dir.x * cub->player.plane.y);
 	cub->sc.transform.x = inv_det * (cub->player.dir.y * cub->sc.dir.x
@@ -175,7 +174,7 @@ void	sprite_rendering(t_cub *cub, int i)
 	}
 }
 
-void	change_sprite_frame(t_cub *cub, int i)
+void	set_sprite_frame(t_cub *cub, int i)
 {
 	if (cub->sprites[i].animatable == 0)
 		return ;
@@ -190,8 +189,6 @@ void	change_sprite_frame(t_cub *cub, int i)
 	}
 }
 
-
-
 void	calculate_sprites(t_cub *cub)
 {
 	int				i;
@@ -201,7 +198,7 @@ void	calculate_sprites(t_cub *cub)
 	i = 0;
 	while (i < cub->sprite_count)
 	{
-		change_sprite_frame(cub, i);
+		set_sprite_frame(cub, i);
 		sprite_projection(cub, i);
 		sprite_clip_height_calc(cub);
 		sprite_clip_width_calc(cub);
@@ -214,79 +211,3 @@ void	draw_sprites(t_cub *cub)
 {
 	calculate_sprites(cub);
 }
-
-
-// calculate_sprites(t_cub *cub)
-// {
-// 	int				i;
-
-// 	calculate_sprite_distances(cub);
-// 	sort_sprites(cub);
-// 	i = 0;
-// 	while (i < cub->sprite_count)
-// 	{
-// 		// double	sprite_x;
-// 		// double	sprite_y;
-// 		// double	inv_det;
-// 		// double	transform_x;
-// 		// double	transform_y;
-// 		// int		sprite_screen_x;
-// 		// int		sprite_height;
-// 		// int		sprite_width;
-// 		// t_vec2i	draw_start;
-// 		// t_vec2i	draw_end;
-// 		// t_vec2i	tex;
-// 		// int		d;
-// 		// int		color;
-// 		// int		y;
-
-// 		// // sprite_calc_dir(cub, i);
-// 		// sprite_x = cub->sprites[i].x - cub->player.pos.x;
-// 		// sprite_y = cub->sprites[i].y - cub->player.pos.y;
-
-// 		// inv_det = 1.0 / (cub->player.plane.x * cub->player.dir.y
-// 		// 		- cub->player.dir.x * cub->player.plane.y);
-
-// 		// transform_x = inv_det * (cub->player.dir.y * sprite_x - cub->player.dir.x * sprite_y);
-// 		// transform_y = inv_det * (-cub->player.plane.y * sprite_x + cub->player.plane.x * sprite_y);
-
-// 		// sprite_screen_x = (int)((cub->win_size.x / 2) * (1 + transform_x / transform_y));
-
-// 		// sprite_height = abs((int)(cub->win_size.y / (transform_y)));
-
-// 		// draw_start.y = -sprite_height / 2 + cub->win_size.y / 2;
-// 		// if (draw_start.y < 0)
-// 		// 	draw_start.y = 0;
-// 		// draw_end.y = sprite_height / 2 + cub->win_size.y / 2;
-// 		// if (draw_end.y >= cub->win_size.y)
-// 		// 	draw_end.y = cub->win_size.y - 1;
-
-// 		// sprite_width = abs((int)(cub->win_size.y / (transform_y)));
-// 		// draw_start.x = -sprite_width / 2 + sprite_screen_x;
-// 		// if (draw_start.x < 0)
-// 		// 	draw_start.x = 0;
-// 		// draw_end.x = sprite_width / 2 + sprite_screen_x;
-// 		// if (draw_end.x >= cub->win_size.x)
-// 		// 	draw_end.x = cub->win_size.x - 1;
-// 		// int stripe = draw_start.x;
-// 		// while (stripe < draw_end.x)
-// 		// {
-// 		// 	tex.x = (int)(256 * (stripe - (-sprite_width / 2 + sprite_screen_x)) * cub->sprite_textures[0].width / sprite_width) / 256;
-// 		// 	if (transform_y > 0 && stripe > 0 && stripe < cub->win_size.x && transform_y < cub->z_buffer[stripe])
-// 		// 	{
-// 		// 		y = draw_start.y;
-// 		// 		while (y < draw_end.y)
-// 		// 		{
-// 		// 			d = (y) * 256 - cub->win_size.y * 128 + sprite_height * 128;
-// 		// 			tex.y = ((d * cub->sprite_textures[cub->sprites[i].id].height) / sprite_height) / 256;
-// 		// 			color = get_pixel_color_int(&cub->sprite_textures[cub->sprites[i].id], tex.x, tex.y);
-// 		// 			if (color != SPRITE_TRANSPARENCY)
-// 		// 				put_pixel(cub->img, (t_vec2i){stripe, y}, color);
-// 		// 			y++;
-// 		// 		}
-// 		// 	}
-// 		// 	stripe++;
-// 		// }
-// 		// i++;
-// 	}
-// }

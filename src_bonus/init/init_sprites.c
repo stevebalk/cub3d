@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:59:40 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/29 14:11:27 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/29 15:50:29 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ static void	set_sprite_pos(t_cub *cub)
 		{
 			if (cub->map[i][j] >= 2 && cub->map[i][j] <= 5)
 			{
-				cub->sprites[k].x = j + 0.5;
-				cub->sprites[k].y = i + 0.5;
+				cub->sprites[k].pos.x = j + 0.5;
+				cub->sprites[k].pos.y = i + 0.5;
 				k++;
 			}
 			j++;

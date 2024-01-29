@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 12:30:35 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/18 15:36:42 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/29 15:43:47 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,13 @@ t_vec2	scale_vec2(t_vec2 a, double scale)
 	c.x = a.x * scale;
 	c.y = a.y * scale;
 	return (c);
+}
+
+t_vec2	get_target_vec2(t_vec2 from, t_vec2 to)
+{
+	t_vec2	dir;
+
+	dir.x = to.x - from.x;
+	dir.y = to.y - from.y;
+	return (dir);
 }

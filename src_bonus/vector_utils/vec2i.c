@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 12:29:15 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 12:57:51 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/29 15:44:05 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,6 @@ t_vec2i	div_vec2i(t_vec2i a, t_vec2i b)
 	return (c);
 }
 
-t_vec2i	mod_vec2i(t_vec2i a, t_vec2i b)
-{
-	t_vec2i	c;
-
-	c.x = a.x % b.x;
-	c.y = a.y % b.y;
-	return (c);
-}
-
 t_vec2i	scale_vec2i(t_vec2i a, int scale)
 {
 	t_vec2i	c;
@@ -64,6 +55,15 @@ t_vec2i	scale_vec2i(t_vec2i a, int scale)
 	c.x = a.x * scale;
 	c.y = a.y * scale;
 	return (c);
+}
+
+t_vec2i	get_target_vec2i(t_vec2i from, t_vec2i to)
+{
+	t_vec2i	dir;
+
+	dir.x = to.x - from.x;
+	dir.y = to.y - from.y;
+	return (dir);
 }
 
 // Rounds a vector to the nearest integer

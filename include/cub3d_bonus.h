@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/29 13:59:39 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/29 15:52:17 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,6 +245,7 @@ typedef struct s_minimap
 typedef struct s_sprite
 {
 	int			id;
+	t_vec2		pos;
 	double		x;
 	double		y;
 	int			is_static;
@@ -470,6 +471,7 @@ t_vec2	mult_vec2(t_vec2 a, t_vec2 b);
 t_vec2	div_vec2(t_vec2 a, t_vec2 b);
 t_vec2	mod_vec2(t_vec2 a, t_vec2 b);
 t_vec2	scale_vec2(t_vec2 a, double scale);
+t_vec2	get_target_vec2(t_vec2 from, t_vec2 to);
 
 /* VECTOR 2 INTEGER */
 
@@ -479,6 +481,7 @@ t_vec2i	mult_vec2i(t_vec2i a, t_vec2i b);
 t_vec2i	div_vec2i(t_vec2i a, t_vec2i b);
 t_vec2i	mod_vec2i(t_vec2i a, t_vec2i b);
 t_vec2i	scale_vec2i(t_vec2i a, int scale);
+t_vec2i	get_target_vec2i(t_vec2i from, t_vec2i to);
 
 /* CONVERT */
 
