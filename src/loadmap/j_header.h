@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 10:41:02 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 10:56:44 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int check_line_for_chars(char *line, char *charset);
 int get_max_line(char **arr, int start, int end);
 char **copy_arr(char **src);
 int get_pos_of_char(char *line, char c);
+int get_spaces_from_beginning(char *line);
+int get_len_without_spaces_from_end(char *line);
 
 // ini
 char **ini_tex_names(void);

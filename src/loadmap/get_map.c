@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/24 12:04:36 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:13:57 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,6 @@ int check_map_lines(char **arr, t_map_lines map_lines, char *charset, char *char
 	return (res);
 }
 
-// returns the space count before a different character 
-int get_spaces_from_beginning(char *line)
-{
-	int i;
-	i = 0;
-	while(line[i] == ' ' && line[i])
-		i++;
-	//printf("spaces: %i\n", i);
-	return (i);
-}
 
 // returns the spaces before the map starts (spaces has to be in alle lines of the map!s)
 int get_map_offset(char **arr, int start, int end)
@@ -131,6 +121,7 @@ int get_map_offset(char **arr, int start, int end)
 void copy_arr_to_map(char **arr, t_map *s_map, t_map_lines lines, int offset)
 {
 	int i;
+	int end_no_space;
 	//c_yellow();printf("copy_arr_to_map  (line start: %i  end: %i)   offset: %i\n", lines.start, lines.end, offset); c_reset();
 
 	s_map->map = (char **)(ft_calloc(lines.end - lines.start + 2, sizeof(char *)));
@@ -138,8 +129,13 @@ void copy_arr_to_map(char **arr, t_map *s_map, t_map_lines lines, int offset)
 	while(i < (lines.end - lines.start + 1))
 	{
 		//printf("i: %i   >%s< \n", i, arr[lines.start + i] + offset);
-		s_map->map[i] = ft_strdup(arr[lines.start + i] + offset);
-		//printf("map[%i] >%s<\n", i, s_map->map[i]);
+		//s_map->map[i] = ft_strdup(arr[lines.start + i] + offset);
+		end_no_space = get_len_without_spaces_from_end(arr[lines.start + i]);
+		printf("end no space: %i\n", end_no_space);
+		s_map->map[i] = ft_calloc(end_no_space - offset + 1, sizeof(char));
+		ft_strlcpy(s_map->map[i], arr[lines.start + i] + offset, end_no_space);
+		
+		printf("map[%i] >%s<\n", i, s_map->map[i]);
 		i++;
 	}
 	s_map->map[i] = NULL;

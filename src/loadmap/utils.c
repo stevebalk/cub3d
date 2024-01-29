@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 10:24:32 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:07:37 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,7 +233,7 @@ int check_line_for_chars(char *line, char *charset)
 	return (/*printf("  > ret 1\n"),*/ 1);
 }
 
-// returns the max line char count of an array; start/end are the rows where to search
+// returns the max line char count of an array; start/end are the rows where to search; spaces at the end of the line will not be counted
 int get_max_line(char **arr, int start, int end)
 {
 	int max;
@@ -241,11 +241,13 @@ int get_max_line(char **arr, int start, int end)
 	max = 0;
 	while(start < end && arr[start])
 	{
-		if (ft_strlen(arr[start]) > max)
-			max = ft_strlen(arr[start]);
+		if (get_len_without_spaces_from_end(arr[start]) > max)
+		{
+			max = get_len_without_spaces_from_end(arr[start]);
+		}
 		start++;
 	}
-	//printf("get_max_line: %i\n", max);
+	printf("get_max_line: %i\n", max);
 	return (max);
 }
 
@@ -286,4 +288,33 @@ int get_pos_of_char(char *line, char c)
 		i++;
 	}
 	return (-1);
+}
+
+// returns the space count before a different character 
+int get_spaces_from_beginning(char *line)
+{
+	int i;
+	i = 0;
+	while(line[i] == ' ' && line[i])
+		i++;
+	//printf("spaces: %i\n", i);
+	return (i);
+}
+
+// returns line length without spaces on the right
+int get_len_without_spaces_from_end(char *line)
+{
+	int i;
+
+	i = ft_strlen(line);
+	//printf("                len: %i\n", i);
+	//printf("line >%s< \n", line);
+	i--;
+	while(line[i] == ' ' && line[i])
+	{
+		//printf("i: %i\n", i);
+		i--;
+	}
+	//printf("get_spaces_from_end: %i\n", i);
+	return (i);
 }
