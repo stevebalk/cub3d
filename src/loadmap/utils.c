@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 11:07:37 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:28:17 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,27 @@ void replace_char_in_arr(char **arr, char find, char replace)
     //printf("--- End ---\n");
 }
 
+// replace char at pos
+void replace_char_at_pos(char **arr, int row, int col, char c)
+{
+    printf("\nreplace_char_at_pos   row(y): %i  col(x): %i  newChar: %c\n", row, col, c);
+
+	int count_row;
+	int len_col;
+
+	count_row = get_arr_len(arr);
+	len_col = ft_strlen(arr[row]);
+	
+	if (row > count_row || col > len_col)
+	{
+		c_red(); printf("replace_char_at_pos  ERROR! count_row: %i   len_col: %i   \n", count_row, len_col); c_reset();
+	}
+    else
+		arr[row][col] = c;
+        
+    //printf("--- End ---\n");
+}
+
 // returns 0 if c != one of the charset
 int check_char_in_chars(char c, char *charset)
 {
@@ -316,5 +337,5 @@ int get_len_without_spaces_from_end(char *line)
 		i--;
 	}
 	//printf("get_spaces_from_end: %i\n", i);
-	return (i);
+	return (i+1);
 }

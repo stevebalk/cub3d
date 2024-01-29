@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 11:29:34 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:24:22 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,10 @@ int main(int argc, char **argv)
 		printf("==================================\n\n");
 		c_reset();
 	}
+
+
+	check_map(&map);
+
 
 	free_s_map(&map);
 

@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 10:12:38 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:27:34 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,45 @@
 
 void show_arr(char **arr)
 {
-    int i = 0;
+    int i;
+	i = 0;
     printf("\nshow array \n");
     while(arr[i] != NULL)
     {
         printf("i: %i  >%s<\n", i, arr[i]);
+        i++;
+    }
+    printf("--- End ---\n\n");
+}
+
+void show_map(char **arr)
+{
+    int i;
+	int j;
+	int len;
+
+	i = 0;
+    printf("\nshow map \n");
+	c_reset();
+    while(arr[i] != NULL)
+    {
+		j = 0;
+		len = ft_strlen(arr[i]);
+		 printf("i: %3i   |", i);
+		while(j < len)
+		{
+			if (arr[i][j] == '0')
+				c_blue();
+			if (arr[i][j] == '1')
+				c_yellow();
+			if (arr[i][j] == 'F')
+				c_green();
+			
+			printf("%c",arr[i][j]);
+			j++;
+		}
+		c_reset();
+		printf("|\n");
         i++;
     }
     printf("--- End ---\n\n");

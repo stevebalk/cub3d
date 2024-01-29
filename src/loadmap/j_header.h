@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 10:56:44 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:22:16 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void show_arr(char **arr);
 void show_color(t_color color);
 void show_s_map(t_map *s_map);
 void show_s_player(t_player_pos *s_player);
+void show_map(char **arr);
 
 // util 
 int get_arr_len(char **arr);
@@ -55,6 +56,7 @@ char **copy_arr(char **src);
 int get_pos_of_char(char *line, char c);
 int get_spaces_from_beginning(char *line);
 int get_len_without_spaces_from_end(char *line);
+void replace_char_at_pos(char **arr, int row, int col, char c);
 
 // ini
 char **ini_tex_names(void);
@@ -66,6 +68,10 @@ int check_player(t_player_pos *player);
 
 // check_map
 int check_map_valid(t_map *s_map);
+
+// level check
+int check_map(t_map *s_map);
+
 
 // mem
 void	free_s_map(t_map *s_map);
