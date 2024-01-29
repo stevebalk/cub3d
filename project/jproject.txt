@@ -1,9 +1,12 @@
 /* Todo:
 Wednesday:
 - check for a lot of possible map problems. (with leaks)
-- function for player start pos 
-- player start pos in show_s_map
+- function for player start pos 		--> finished
+- player start pos in show_s_map		--> finished
 - floodfill implementing
+- map (if after last wall on the right side offset)  --> finished
+- check file ending ".cup"   --> finished
+
 
 - save lines of found elements 
 ---> check other lines if they contain only space or tabs ... but no idea if 
