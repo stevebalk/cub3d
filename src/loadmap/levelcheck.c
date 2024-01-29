@@ -5,13 +5,13 @@ Flood simulation.
 
 1) copy map   	✓
 2) setting startpoint to 'f' 	✓
-3) Check near fields
-	a) 4 Check functions   up, right, down, left	
-	b) if true --> write 'F' in array
-		if 0 --> nothing
+3) Check near fields			✓
+	a) 4 Check functions   up, right, down, left	 ✓
+	b) if true --> write 'F' in array   ✓
+		if 0 --> nothing                
 		if ' ' --> -1 ---> ERROR!
 
-
+Check einbauen, dass alle mit wänden umzingelt ist.
 
 */
 
@@ -25,10 +25,29 @@ void set_first_f(char **arr)
 
 int check_field(char **arr, int x, int y)
 {
+	int col_len;
+	int arr_len;
+
+	col_len = ft_strlen(arr[y]);
+	arr_len = get_arr_len(arr);
 	if (arr[y][x] == '0')
 	{
+		if (x == 0 || x == col_len)
+		{
+			printf("ERROR!   x == 0 || x == col_len\n");
+			sleep(2);
+			exit(1);
+		}
+		if (y == 0 || y == arr_len)
+		{
+			printf("ERROR!   (y == 0 || y == arr_len)\n");
+			sleep(2);
+			exit(1);
+			
+		}
+
 		replace_char_at_pos(arr, y, x, 'F');
-		usleep(50000);
+		usleep(10000);
 		clear_screen();
 		show_map(arr);
 	}
@@ -36,6 +55,7 @@ int check_field(char **arr, int x, int y)
 	{
 		c_red();
 		printf("Error!\nspace in map!\n"); c_reset();
+		exit(1);
 		return (0);
 	}
 	else
