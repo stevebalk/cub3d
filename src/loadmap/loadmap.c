@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 10:41:14 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:29:34 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char **J_load_file(char *file)
     if (fd == -1)
     {
         printf("Error\nfile loading\n");
-        // exit
+        exit(1);
     }
     line_count = get_line_count(file);
     //printf("nach linecount fd: %i    linecount: %i\n",fd, line_count);
@@ -33,6 +33,7 @@ char **J_load_file(char *file)
     if (line_count < 8)
     {
         printf("Error\nnot enought information in map\n");
+		exit(1);
     }
     tmp =(char **)malloc((line_count + 1) * sizeof(char *));
     i = 0;
@@ -120,13 +121,41 @@ void ini_map(t_map *s_map)
 	s_map->tex_names = ini_tex_names();
 }
 
+// return 1 if file ending is ok
+int check_file_ending(char *file, char *ending)
+{
+	c_yellow(); printf("check_file_ending   file >%s<    ending >%s< \n", file, ending);
+	int len_file;
+	int len_ending;
+	
+	len_file = ft_strlen(file);
+	len_ending = ft_strlen(ending);
+	file += len_file-len_ending;
+	printf("file >%s<\n", file);
+	
+	if (ft_strncmp(file, ending, len_file) == 0)
+	{
+		c_green(); printf("file ending ok\n"); c_reset();
+		return (1);
+	}
+	else	
+	{
+		c_red(); printf("file ending NOT ok\n"); c_reset();
+		return (0);
+	}
+}
+
 int main(int argc, char **argv)
 {   
     printf("huhu\n");
 	t_map map;
+	
+
+	if (!check_file_ending(argv[1], ".cub"))
+		exit(1);
+		
 	ini_map(&map);
-	c_green(); printf("after ini_map\n"); c_reset();
-	show_arr(map.tex_names);
+
 	if (load_map(&map, argv))
 	{
 		c_green();

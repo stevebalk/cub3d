@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 15:15:01 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 10:29:38 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:25:40 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void free_s_map(t_map *s_map)
 
 	if (s_map->tex_names)
 	{
-		printf("free text names\n");
+		//printf("free text names\n");
 		free_n_null_2D((void ***)s_map->tex_names);
 	}
 }
