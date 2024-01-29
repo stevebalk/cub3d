@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 13:27:34 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:37:22 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ void show_map(char **arr)
 		while(j < len)
 		{
 			if (arr[i][j] == '0')
-				c_blue();
+				c_cyan();
 			if (arr[i][j] == '1')
 				c_yellow();
 			if (arr[i][j] == 'F')
+				c_purple();
+			if (arr[i][j] == 'N' || arr[i][j] == 'E' || arr[i][j] == 'S' || arr[i][j] == 'W')
 				c_green();
 			
 			printf("%c",arr[i][j]);
