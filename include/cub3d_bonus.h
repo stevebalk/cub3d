@@ -1,111 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 13:09:48 by sbalk            ###   ########.fr       */
+/*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
+/*   Updated: 2024/01/30 13:47:09 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
+
 # include "libft.h"
 # include "mlx.h"
 # include "mlx_int.h"
 # include <math.h>
 # include <fcntl.h>
 # include <errno.h>
-
-# define KEY_ESC 53
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-# define KEY_UP 126
-# define KEY_DOWN 125
-
-# define FOV_RAD 1.0471975512
-# define FOV_HALF 30
-# define FOV_HALF_RAD 0.52359877559
-
-# define MINIMAP_SCALE 0.2
-
-# define TEXTURE_WIDTH 64
-# define TEXTURE_HEIGHT 64
-
-# define SPRITE_WIDTH 64
-# define SPRITE_HEIGHT 64
-
-# define WALL 1
-# define SPRITE 2
-# define ITEM 3
-# define PLAYER 4
-
-# define TRUE 1
-# define FALSE 0
-
-# define ERROR -1
-# define SUCCESS 0
-
-# define SPRITE_SCALE 0.5
-
-// typedef struct s_sprite
-// {
-// 	double		x;
-// 	double		y;
-// 	double		distance;
-// }				t_sprite;
-
-// typedef struct s_sprite_cast
-// {
-// 	double		x;
-// 	double		y;
-// 	double		distance;
-// 	double		angle;
-// 	double		height;
-// 	double		width;
-// 	double		top;
-// 	double		left;
-// 	double		offset_x;
-// 	double		offset_y;
-// }				t_sprite_cast;
-
-// typedef struct s_player
-// {
-// 	double		x;
-// 	double		y;
-// 	double		width;
-// 	double		height;
-// 	int			turn_direction;
-// 	int			walk_direction;
-// 	double		rotation_angle;
-// 	double		walk_speed;
-// 	double		turn_speed;
-// }				t_player;
-
-// typedef struct s_texture
-// {
-// 	void		*img;
-// 	char		*addr;
-// 	int			bpp;
-// 	int			line_length;
-// 	int			endian;
-// 	int			width;
-// 	int			height;
-// }				t_texture;
-
-// typedef struct s_map
-// {
-// 	int			rows;
-// 	int			cols;
-// 	int			tile_size;
-// 	int			**grid;
-// }				t_map;
+# include <time.h>
 
 /********************************************************************/
 /*                           CONFIG                                 */
@@ -113,18 +27,32 @@
 
 /******************* GENERAL **********************/
 
-#define WIN_TITLE "Cub3D"
-//#define WIN_WIDTH 640 * 3
-//#define WIN_HEIGHT 480 * 3
-#define WIN_WIDTH 1920
-#define WIN_HEIGHT 1080
+#define WIN_TITLE "Cub3D_Bonus"
+#define WIN_WIDTH 2560
+#define WIN_HEIGHT 1440
+// #define WIN_WIDTH 640
+// #define WIN_HEIGHT 480
 
 /******************* PLAYER **********************/
 
-#define MOUSE_SENSITIVITY 0.05
+#define MOUSE_SENSITIVITY 0.075
 #define FOV 66
-#define MOVE_SPEED 0.05
-#define ROT_SPEED 0.015
+#define MOVE_SPEED 4
+#define ROT_SPEED 2
+
+/******************* MINIMAP **********************/
+
+// Size of minimap in percent (Calculated with windowsize.y)
+#define MINIMAP_SIZE_PERCENT 25
+// How many tiles are shown in every direction
+#define MINIMAP_VISIBLE_TILES 10
+#define MINIMAP_MARGIN_X_PERCENT 1
+#define MINIMAP_MARGIN_Y_PERCENT 1
+#define MINIMAP_COLOR_BLOCKED 0x00000000
+#define MINIMAP_COLOR_FREE 0x00222222
+#define MINIMAP_COLOR_PLAYER 0x00FFFF00
+#define MINIMAP_COLOR_DIR_VEC 0x00FFFFFF
+
 
 /******************* DEBUG **********************/
 
@@ -134,6 +62,9 @@
 
 #define MAX_RAY_LENGTH 100
 
+/******************* SPRITES **********************/
+
+#define SPRITE_TRANSPARENCY 0x00980088
 
 /********************************************************************/
 /*                          CONST DEFINES                           */
@@ -198,15 +129,10 @@ typedef struct s_player
 	t_vec2			pos;
 	t_vec2			dir;
 	int				start_direction;
-	t_vec2			velocity;
+	t_vec2			move_dir;
 	t_vec2			plane;
 	double			time;
 	double			old_time;
-	int				turn_direction;
-	int				walk_direction;
-	double			rotation_angle;
-	double			walk_speed;
-	double			turn_speed;
 }					t_player;
 
 typedef struct s_mouse
@@ -255,6 +181,57 @@ typedef struct ray
 	int			wall_hit_content;
 }				t_ray;
 
+typedef struct s_fps
+{
+	int		frames;
+	int		fps;
+	time_t	start_time;
+	time_t	current_time;
+	double	delta_time;
+}				t_fps;
+
+typedef struct s_minimap
+{
+	t_vec2i		pos;
+	int			size;
+	t_vec2i		global_size_end;
+	int			tile_size;
+	int			visible_tiles;
+	int			color_blocked;
+	int			color_free;
+	int			color_player;
+}				t_minimap;
+
+typedef struct s_sprite
+{
+	int			id;
+	t_vec2		pos;
+	double		x;
+	double		y;
+	double		distance;
+	int			animatable;
+	int			frame_offset_x;
+	int			frame_index;
+	int			frame_width;
+	double		frame_time;
+	int			frame_count;
+	double		frame_duration;
+}				t_sprite;
+
+typedef struct s_sprite_calc
+{
+	t_vec2		transform;
+	t_vec2		dir;
+	t_vec2i		size;
+	t_vec2i		screen_pos;
+	t_vec2i		draw_start;
+	t_vec2i		draw_end;
+	t_vec2i		tex;
+	t_vec2i		tex_size;
+	int			stripe;
+	int			sprite_screen_x;
+	int			color;
+}				t_sprite_calc;
 
 /* cub3D main struct, data that 
 is used everywhere */
@@ -270,15 +247,22 @@ typedef struct s_cub
 	t_player		player;
 	t_mouse			mouse;
 	t_key			key;
-	t_texture		wall_textures[4];
+	t_minimap		minimap;
 	char			*wall_texture_paths[4];
+	t_texture		wall_textures[4];
+	t_fps			fps;
 	int				ceilling_color;
 	int				floor_color;
+	double			z_buffer[WIN_WIDTH];
+	t_sprite		*sprites;
+	t_sprite_calc	sc;
+	int 			sprite_count;
+	char			*sprite_paths[4];
+	t_texture		sprite_textures[4];
 	t_ray			ray;
 	int				frames;
-	int				fps;
-	time_t			start_time;
-	time_t			current_time;
+	double			last_frame_time;
+	double			current_frame_time;
 	double			delta_time;
 	unsigned int	flags;
 }					t_cub;
@@ -288,6 +272,7 @@ typedef struct s_cub
 /********************************************************************/
 
 #define FLAG_MOUSE_CONTROL 1
+#define FLAG_DEBUG_OVERLAY 2
 
 void	toggle_flag(unsigned int *flags, unsigned int bit_mask);
 void	set_flag(unsigned int *flags, unsigned int bit_mask);
@@ -298,20 +283,39 @@ int		is_flag_set(unsigned int flags, unsigned int bit_mask);
 /*                          INIT                                    */
 /********************************************************************/
 
+void	init_cub(t_cub *cub);
+void	init_map(t_cub *cub);
 void	init_mlx_window(t_cub *cub);
 void	init_mlx_image(t_cub *cub, t_data **img, t_vec2i size);
 void	init_mlx(t_cub *cub);
+void	init_minimap(t_cub *cub);
+void	init_sprites(t_cub *cub);
 void	init_textures(t_cub *cub);
-void	init_map(t_cub *cub);
-void	init_cub(t_cub *cub);
+int		read_xpm(t_cub *cub, t_texture *texture, char *path);
 
 /********************************************************************/
 /*                          DRAWING                                 */
 /********************************************************************/
 
 void	put_pixel(t_data *img, t_vec2i pos, int color);
+void	draw_line(t_data *img, t_vec2i start, t_vec2i end, int color);
+void	draw_square(t_data *img, t_vec2i pos, int size, int color);
+void	draw_rectangle(t_data *img, t_vec2i pos, t_vec2i size, int color);
+void	draw_circle(t_data *img, t_vec2i pos, int radius, int color);
+void	draw_triangle(t_data *img, t_vec2i pos, int size, int color);
+void	draw_minimap(t_cub *cub);
+void	draw_background(t_data *data, t_vec2i size, int color);
 void	draw_ceilling(t_cub *cub);
 void	draw_floor(t_cub *cub);
+void	draw_sprites(t_cub *cub);
+
+/* Debug overlay */
+void	draw_debug_overlay(t_cub *cub, t_vec2i pos);
+
+/********************************************************************/
+/*                          DRAWING                                 */
+/********************************************************************/
+
 
 /********************************************************************/
 /*                          PLAYER                                  */
@@ -329,6 +333,28 @@ void	move_left(t_cub *cub);
 void	move_right(t_cub *cub);
 void	rotate_player(t_cub *cub, double angle);
 void	move(t_cub *cub);
+
+/* Collision */
+
+int		is_colliding(t_cub *cub, t_vec2 position);
+
+/* SETTERS */
+
+void	set_player_pos(t_player *player, t_vec2 pos);
+void	set_player_dir(t_player *player, t_vec2 dir);
+void	set_player_plane(t_player *player, t_vec2 plane);
+void	set_player_time(t_player *player, double time);
+void	set_player_old_time(t_player *player, double old_time);
+void	set_player(t_player *player, t_vec2 pos, t_vec2 dir, t_vec2 plane);
+void	set_player_time_old_time(t_player *player, double time, double old_time);
+
+/* GETTERS */
+
+t_vec2	get_player_pos(t_player *player);
+t_vec2	get_player_dir(t_player *player);
+t_vec2	get_player_plane(t_player *player);
+double	get_player_time(t_player *player);
+double	get_player_old_time(t_player *player);
 
 /********************************************************************/
 /*                          INPUT HANDLING                          */
@@ -398,13 +424,21 @@ int		is_inside_map(t_cub *cub, t_vec2i position);
 
 t_vec2	add_vec2(t_vec2 a, t_vec2 b);
 t_vec2	sub_vec2(t_vec2 a, t_vec2 b);
+t_vec2	mult_vec2(t_vec2 a, t_vec2 b);
+t_vec2	div_vec2(t_vec2 a, t_vec2 b);
+t_vec2	mod_vec2(t_vec2 a, t_vec2 b);
 t_vec2	scale_vec2(t_vec2 a, double scale);
+t_vec2	get_target_vec2(t_vec2 from, t_vec2 to);
 
 /* VECTOR 2 INTEGER */
 
 t_vec2i	add_vec2i(t_vec2i a, t_vec2i b);
 t_vec2i	sub_vec2i(t_vec2i a, t_vec2i b);
+t_vec2i	mult_vec2i(t_vec2i a, t_vec2i b);
+t_vec2i	div_vec2i(t_vec2i a, t_vec2i b);
+t_vec2i	mod_vec2i(t_vec2i a, t_vec2i b);
 t_vec2i	scale_vec2i(t_vec2i a, int scale);
+t_vec2i	get_target_vec2i(t_vec2i from, t_vec2i to);
 
 /* CONVERT */
 
@@ -412,6 +446,13 @@ t_vec2	v2i_to_v2(t_vec2i vec);
 t_vec2i	v2_to_v2i(t_vec2 vec);
 double	deg_to_rad(double deg);
 double	rad_to_deg(double rad);
+
+/********************************************************************/
+/*                          TIME                                    */
+/********************************************************************/
+
+double	get_time_seconds();
+void	calculate_delta_time(t_cub *cub);
 
 /********************************************************************/
 /*                          ERROR                                   */

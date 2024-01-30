@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   delta_time.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 12:28:01 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 12:28:25 by sbalk            ###   ########.fr       */
+/*   Created: 2024/01/27 21:00:26 by sbalk             #+#    #+#             */
+/*   Updated: 2024/01/30 14:08:05 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
-int	is_colliding(t_cub *cub, t_vec2 position)
+double	get_time_seconds(void)
 {
-	t_vec2i	map_pos;
+	struct timespec	ts;
 
-	map_pos.x = (int)(position.x);
-	map_pos.y = (int)(position.y);
-	if (is_inside_map(cub, map_pos))
-		if (cub->map[map_pos.y][map_pos.x] >= 1)
-			return (1);
-	return (0);
+	clock_gettime(CLOCK_MONOTONIC, &ts);
+	return ((double)ts.tv_sec + (double)ts.tv_nsec / 1e9);
+}
+
+void	calculate_delta_time(t_cub *cub)
+{
+	cub->current_frame_time = get_time_seconds();
+	cub->delta_time = cub->current_frame_time - cub->last_frame_time;
+	cub->last_frame_time = cub->current_frame_time;
 }
