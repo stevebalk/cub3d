@@ -111,6 +111,38 @@ int check_up(char **arr, int x, int y)
 	return (1);
 }
 
+// checks if the array is valid
+int check_right(char **arr, int x, int y)
+{
+	int arr_len;
+
+	arr_len = get_arr_len(arr);
+	if (x + 1 >= ft_strlen(arr[y]))
+		return (0);
+	else
+	{
+		if(!check_field(arr, x + 1, y))
+			return (0);
+	}
+	return (1);
+}
+
+// checks if the array is valid
+int check_left(char **arr, int x, int y)
+{
+	int arr_len;
+
+	arr_len = get_arr_len(arr);
+	if (x - 1 < 0)
+		return (0);
+	else
+	{
+		if(!check_field(arr, x - 1, y))
+			return (0);
+	}
+	return (1);
+}
+
 
 // checks all reachable fields of the acutal position and fills with F if possible
 int check_near_fields(char **arr, int x, int y)
@@ -128,27 +160,13 @@ int check_near_fields(char **arr, int x, int y)
 		sleep(3);
 		return (0);
 	}
-		
-	// if (y - 1 >= 0)
-	// {
-	// 	if (x <= ft_strlen(arr[y - 1]))
-	// 	{
-	// 		//printf("up\n");
-	// 		if(!check_field(arr, x, y - 1))
-	// 			return (0);
-	// 	}
-	// }
-
-
+	
 	// right
-	if (x + 1 <= ft_strlen(arr[y]))
+	if (!check_right(arr, x, y))
 	{
-		if (y >= 0)
-		{
-			//printf("right\n");
-			if(!check_field(arr, x + 1, y))
-				return (0);
-		}
+		printf("XXX right\n");
+		sleep(3);
+		return (0);
 	}
 
 	// down
@@ -158,25 +176,12 @@ int check_near_fields(char **arr, int x, int y)
 		sleep(3);
 		return (0);
 	}
-	// if (y + 1 < arr_len )
-	// {
-	// 	if (x <= ft_strlen(arr[y + 1]))
-	// 	{
-	// 		//printf("down\n");
-	// 		if(!check_field(arr, x, y + 1))
-	// 			return (0);
-	// 	}
-	// }
 
-	// left
-	if (x - 1 >= 0)
+	if (!check_left(arr, x, y))
 	{
-		if (y >= 0)
-		{
-			//printf("left\n");
-			if(!check_field(arr, x - 1, y))
-				return (0);
-		}
+		printf("XXX left\n");
+		sleep(3);
+		return (0);
 	}
 
 	return (1);
@@ -239,7 +244,7 @@ int check_map(t_map *s_map)
 	{
 		if (!flood(f_map))
 		{
-			sleep(5);
+			sleep(2);
 			ret = 0;
 			break;
 		}
