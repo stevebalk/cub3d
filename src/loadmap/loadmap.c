@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 13:44:47 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/30 14:09:34 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,89 +140,39 @@ int check_file_ending(char *file, char *ending)
 	}
 	else	
 	{
-		c_red(); printf("file ending NOT ok\n"); c_reset();
+		c_red(); printf("Error!\nfile ending NOT ok\n"); c_reset();
 		return (0);
 	}
+}
+
+int load_and_check(t_map *s_map, int argc, char **argv)
+{
+	if (!check_file_ending(argv[1], ".cub"))
+		return (0);
+		
+	ini_map(s_map);
+
+	if (!load_map(s_map, argv))
+		return (0);
+		
+	s_map->player_start_pos = get_player(s_map->map);
+	
+	if (!check_player(&(s_map->player_start_pos)))
+		return (0);
+	if (!check_map_valid(s_map))
+		return (0);
+	if (!check_map(s_map))
+		return (0);
+
+	return (1);
 }
 
 int main(int argc, char **argv)
 {   
     printf("huhu\n");
 	t_map map;
-	
 
-	if (!check_file_ending(argv[1], ".cub"))
-		exit(1);
-		
-	ini_map(&map);
-
-	if (load_map(&map, argv))
-	{
-		c_green();
-		printf("\n\n ===================\n"); 
-		printf(" => map loaded OK  =\n"); 
-		printf(" ===================\n\n"); c_reset();
-
-		show_s_map(&map);
-
-	}
-	else
-	{
-		c_red();
-		printf("==========================\n");
-		printf("==> map loading failed!  =\n");
-		printf("==========================\n\n");
-		c_reset();
-
-	}
-
-	c_cyan(); printf("--- getting player pos ... has to move to somewhere ---\n"); c_reset();
-	map.player_start_pos = get_player(map.map);
-	if (!check_player(&map.player_start_pos))
-	{
-		c_red();
-		printf("==================================\n");
-		printf("==> player pos not valid         =\n");
-		printf("==================================\n\n");
-		c_reset();
-		exit (1);
-	}
-	
-	if (check_map_valid(&map))
-	{
-		c_green();
-		printf("==============================\n");
-		printf("==> map or player pos valid  =\n");
-		printf("==============================\n\n");
-		c_reset();
-	}
-	else
-	{
-		c_red();
-		printf("==================================\n");
-		printf("==> map or player pos not valid  =\n");
-		printf("==================================\n\n");
-		c_reset();
-	}
-
-
-	if (!check_map(&map))
-	{
-		c_red();
-		printf("========================================\n");
-		printf("==> map flood fill check .. not valid  =\n");
-		printf("========================================\n\n");
-		c_reset();
-	}
-	else
-	{
-		c_green();
-		printf("========================================\n");
-		printf("==> map flood fill check ...    valid  =\n");
-		printf("========================================\n\n");
-		c_reset();
-	}
-
+	load_and_check(&map, argc, argv);
 
 	free_s_map(&map);
 	c_green();
