@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 14:45:10 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/30 14:51:14 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ int load_map(t_map *s_map, char **argv)
 	free_n_null_2D((void ***)splitted_file);
 	return (1);
 }
-
-
 
 void ini_map(t_map *s_map)
 {

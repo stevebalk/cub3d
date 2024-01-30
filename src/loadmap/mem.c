@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mem.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 15:15:01 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 11:25:40 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:53:52 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	free_n_null_2D(void ***ptr)
 	i = 0;
 	while(ptr[i] != NULL)
 	{
-		free(ptr[i]);	
+		free(ptr[i]);
+		ptr[i] = NULL;	
 		i++;
 	}
 	
