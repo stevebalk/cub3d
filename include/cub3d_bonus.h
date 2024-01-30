@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 13:47:09 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 21:51:32 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,27 @@
 # include <time.h>
 
 /********************************************************************/
+/*                           KEYS                                   */
+/********************************************************************/
+
+#define MOUSE_WHEEL_UP 4
+#define MOUSE_WHEEL_DOWN 5
+
+/********************************************************************/
 /*                           CONFIG                                 */
 /********************************************************************/
 
 /******************* GENERAL **********************/
 
 #define WIN_TITLE "Cub3D_Bonus"
-#define WIN_WIDTH 2560
-#define WIN_HEIGHT 1440
-// #define WIN_WIDTH 640
-// #define WIN_HEIGHT 480
+// #define WIN_WIDTH 2560
+// #define WIN_HEIGHT 1440
+#define WIN_WIDTH 640
+#define WIN_HEIGHT 480
 
 /******************* PLAYER **********************/
 
-#define MOUSE_SENSITIVITY 0.075
+#define MOUSE_SENSITIVITY 0.0005
 #define FOV 66
 #define MOVE_SPEED 4
 #define ROT_SPEED 2
@@ -248,6 +255,7 @@ typedef struct s_cub
 	t_mouse			mouse;
 	t_key			key;
 	t_minimap		minimap;
+	int				resolution;
 	char			*wall_texture_paths[4];
 	t_texture		wall_textures[4];
 	t_fps			fps;
@@ -273,6 +281,7 @@ typedef struct s_cub
 
 #define FLAG_MOUSE_CONTROL 1
 #define FLAG_DEBUG_OVERLAY 2
+#define FLAG_RESOLUTION_MODE 3
 
 void	toggle_flag(unsigned int *flags, unsigned int bit_mask);
 void	set_flag(unsigned int *flags, unsigned int bit_mask);

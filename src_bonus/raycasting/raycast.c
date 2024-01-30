@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 11:47:58 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/29 16:02:46 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 21:05:18 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	raycast(t_cub *cub)
 {
 	int	i;
+	int	resolution_offset;
 
 	i = 0;
 	cub->ray.pos.x = cub->player.pos.x;
@@ -32,8 +33,9 @@ void	raycast(t_cub *cub)
 			calculate_line_height(&cub->ray, cub);
 			calculate_wall_x(&cub->ray);
 			calculate_texture_x(&cub->ray, cub);
-			draw_line_from_texture(&cub->ray, cub, i);
+			resolution_offset = i + cub->resolution;
+			while (i < resolution_offset)
+				draw_line_from_texture(&cub->ray, cub, i++);
 		}
-		i++;
 	}
 }
