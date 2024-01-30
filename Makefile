@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/30 14:36:26 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/30 15:08:10 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ LIB_NAME	= libft.a
 MLX_DIR		= libs/minilibx-linux/
 MLX_NAME	= libmlx.a
 CC			= cc
-# CFLAGS		= -Werror -Wall -Wextra -g
-CFLAGS		= -Werror -Wall -Wextra -O3
+CFLAGS		= -Werror -Wall -Wextra -O3 -g
+# CFLAGS		= -Werror -Wall -Wextra -O3
 # CFLAGS		= -Werror -Wall -Wextra -fsanitize=address -g
 RM			= rm
 SRC_DIR		= src/
@@ -66,6 +66,7 @@ SRC_FILES	=	main \
 				vector_utils/convert \
 				vector_utils/vec2 \
 				vector_utils/vec2i \
+				translate_char_to_int_map
 
 BSRC_FILES	=	main \
 				init/cub \
