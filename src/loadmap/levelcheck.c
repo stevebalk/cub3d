@@ -150,7 +150,10 @@ int flood(char **arr)
 		{
 			//printf("r: %i   c: %i \n", r, c);
 			if (arr[r][c] == 'F')
-				check_near_fields(arr, c, r);
+			{
+				if (!check_near_fields(arr, c, r))
+					return (0);
+			}
 			c++;
 		}
 		r++;
@@ -162,6 +165,7 @@ int flood(char **arr)
 int check_map(t_map *s_map)
 {
 	char **f_map;
+	int ret;
 	t_xy tmp_pos;
 
 	f_map = copy_arr(s_map->map);
@@ -171,13 +175,20 @@ int check_map(t_map *s_map)
 
 	show_map(f_map);
 	tmp_pos = get_pos_of_char_in_arr(f_map, 'F');
-	check_near_fields(f_map, tmp_pos.x, tmp_pos.y);
-
+	ret = check_near_fields(f_map, tmp_pos.x, tmp_pos.y);
+	//printf("ret: %i\n", ret);
 	int i = -1;
 	int arr_len = get_arr_len(f_map);
 	int max_col = get_max_line(f_map, 0, arr_len);
 	while (i++ < (arr_len * max_col))
-		flood(f_map);
-		
-	return (1);
+	{
+		if (!flood(f_map))
+		{
+			sleep(5);
+			ret = 0;
+			break;
+		}
+	}
+	free_n_null_2D((void ***)f_map);
+	return (ret);
 }
