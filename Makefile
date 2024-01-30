@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/28 13:46:40 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/30 13:14:10 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,20 +47,13 @@ SRC_FILES	=	main \
 				init/mlx \
 				init/player \
 				init/textures \
-				draw/basic_shapes \
-				draw/debug/overlay \
 				draw/draw \
-				draw/line \
-				draw/map \
 				error/error \
 				exit/exit \
 				flags/flag_utils \
 				map/checks \
 				math/math \
-				player/checks \
-				player/getters \
 				player/movement \
-				player/setters \
 				player/rotation \
 				raycasting/raycast \
 				raycasting/ray_calculate_ray \
@@ -95,9 +88,7 @@ BSRC_FILES	=	main \
 				map/checks \
 				math/math \
 				player/checks \
-				player/getters \
 				player/movement \
-				player/setters \
 				player/rotation \
 				raycasting/raycast \
 				raycasting/ray_calculate_ray \

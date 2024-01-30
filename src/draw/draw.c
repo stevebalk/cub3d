@@ -6,11 +6,27 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:55:24 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 12:33:59 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:14:41 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int get_pixel_color_int(t_texture *texture, int x, int y)
+{
+	int	color;
+	int	offset;
+
+	color = 0;
+	offset = (y * texture->line_length) + (x * (texture->bpp / 8));
+	if (x >= 0 && x < texture->width && y >= 0 && y < texture->height)
+	{
+		color |= ((unsigned char)texture->addr[offset + 2]) << 16;
+		color |= ((unsigned char)texture->addr[offset + 1]) << 8;
+		color |= ((unsigned char)texture->addr[offset]);
+	}
+	return color;
+}
 
 void	put_pixel(t_data *img, t_vec2i pos, int color)
 {
@@ -22,15 +38,6 @@ void	put_pixel(t_data *img, t_vec2i pos, int color)
 	dst = img->addr + (pos.y * img->line_length + pos.x
 			* (img->bpp / 8));
 	*(unsigned int *)dst = color;
-}
-
-void	draw_background(t_data *img, t_vec2i size, int color)
-{
-	t_vec2i	start;
-
-	start.x = 0;
-	start.y = 0;
-	draw_rectangle(img, start, size, color);
 }
 
 void	draw_ceilling(t_cub *cub)

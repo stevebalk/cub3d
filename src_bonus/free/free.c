@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 13:45:40 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/28 13:54:31 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 12:19:41 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,6 @@ void	free_sprites(t_cub *cub)
 {
 	if (cub->sprites)
 		free(cub->sprites);
-	// if (cub->sprite_order)
-	// 	free(cub->sprite_order);
-	// if (cub->sprite_distance)
-	// 	free(cub->sprite_distance);
 }
 
 void	free_mlx(t_cub *cub)

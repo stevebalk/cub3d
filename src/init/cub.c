@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 13:00:15 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:04:14 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,4 @@ void	init_cub(t_cub *cub)
 	init_mlx(cub);
 	init_mlx_hooks(cub);
 	init_textures(cub);
-	// init_mlx_hooks(cub);
 }

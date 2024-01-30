@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 17:51:55 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:09:48 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,7 +286,6 @@ typedef struct s_cub
 /********************************************************************/
 
 #define FLAG_MOUSE_CONTROL 1
-#define FLAG_DEBUG_OVERLAY 2
 
 void	toggle_flag(unsigned int *flags, unsigned int bit_mask);
 void	set_flag(unsigned int *flags, unsigned int bit_mask);
@@ -309,18 +308,8 @@ void	init_cub(t_cub *cub);
 /********************************************************************/
 
 void	put_pixel(t_data *img, t_vec2i pos, int color);
-void	draw_line(t_data *img, t_vec2i start, t_vec2i end, int color);
-void	draw_square(t_data *img, t_vec2i pos, int size, int color);
-void	draw_rectangle(t_data *img, t_vec2i pos, t_vec2i size, int color);
-void	draw_circle(t_data *img, t_vec2i pos, int radius, int color);
-void	draw_triangle(t_data *img, t_vec2i pos, int size, int color);
-void	draw_minimap(t_cub *cub, t_vec2i position);
-void	draw_background(t_data *data, t_vec2i size, int color);
 void	draw_ceilling(t_cub *cub);
 void	draw_floor(t_cub *cub);
-
-/* Debug overlay */
-void	draw_debug_overlay(t_cub *cub, t_vec2i pos);
 
 /********************************************************************/
 /*                          PLAYER                                  */
@@ -338,28 +327,6 @@ void	move_left(t_cub *cub);
 void	move_right(t_cub *cub);
 void	rotate_player(t_cub *cub, double angle);
 void	move(t_cub *cub);
-
-/* Collision */
-
-int		is_colliding(t_cub *cub, t_vec2 position);
-
-/* SETTERS */
-
-void	set_player_pos(t_player *player, t_vec2 pos);
-void	set_player_dir(t_player *player, t_vec2 dir);
-void	set_player_plane(t_player *player, t_vec2 plane);
-void	set_player_time(t_player *player, double time);
-void	set_player_old_time(t_player *player, double old_time);
-void	set_player(t_player *player, t_vec2 pos, t_vec2 dir, t_vec2 plane);
-void	set_player_time_old_time(t_player *player, double time, double old_time);
-
-/* GETTERS */
-
-t_vec2	get_player_pos(t_player *player);
-t_vec2	get_player_dir(t_player *player);
-t_vec2	get_player_plane(t_player *player);
-double	get_player_time(t_player *player);
-double	get_player_old_time(t_player *player);
 
 /********************************************************************/
 /*                          INPUT HANDLING                          */
@@ -429,18 +396,12 @@ int		is_inside_map(t_cub *cub, t_vec2i position);
 
 t_vec2	add_vec2(t_vec2 a, t_vec2 b);
 t_vec2	sub_vec2(t_vec2 a, t_vec2 b);
-t_vec2	mult_vec2(t_vec2 a, t_vec2 b);
-t_vec2	div_vec2(t_vec2 a, t_vec2 b);
-t_vec2	mod_vec2(t_vec2 a, t_vec2 b);
 t_vec2	scale_vec2(t_vec2 a, double scale);
 
 /* VECTOR 2 INTEGER */
 
 t_vec2i	add_vec2i(t_vec2i a, t_vec2i b);
 t_vec2i	sub_vec2i(t_vec2i a, t_vec2i b);
-t_vec2i	mult_vec2i(t_vec2i a, t_vec2i b);
-t_vec2i	div_vec2i(t_vec2i a, t_vec2i b);
-t_vec2i	mod_vec2i(t_vec2i a, t_vec2i b);
 t_vec2i	scale_vec2i(t_vec2i a, int scale);
 
 /* CONVERT */

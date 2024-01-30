@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:37 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 16:06:14 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:11:07 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 int	mouse_press(int button, int x, int y, t_cub *cub)
 {
 	(void)cub;
-	printf("button: %d\n", button);
-	printf("x: %d\n", x);
-	printf("y: %d\n", y);
+	(void)x;
+	(void)y;
+	(void)button;
 	return (0);
 }
 
 int	mouse_release(int button, int x, int y, t_cub *cub)
 {
 	(void)cub;
-	printf("button: %d\n", button);
-	printf("x: %d\n", x);
-	printf("y: %d\n", y);
+	(void)x;
+	(void)y;
+	(void)button;
 	return (0);
 }
 

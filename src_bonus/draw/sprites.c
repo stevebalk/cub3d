@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:48:44 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/29 15:53:12 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 11:15:22 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,36 +50,6 @@ void	sort_sprites(t_cub *cub)
 		}
 		i++;
 	}
-}
-
-void sprite_calc_static_transform(t_cub *cub, int i)
-{
-    double inv_det;
-
-    cub->sc.dir.x = cub->sprites[i].pos.x - cub->player.pos.x;
-    cub->sc.dir.y = cub->sprites[i].pos.y - cub->player.pos.y;
-    inv_det = 1.0 / (cub->player.plane.x * cub->player.dir.y);
-
-    if (cub->sprites[i].orientation == NORTH)
-    {
-        cub->sc.transform.x = inv_det * (cub->player.dir.y * cub->sc.dir.x - cub->player.dir.x * cub->sc.dir.y);
-        cub->sc.transform.y = inv_det * (cub->player.plane.y * cub->sc.dir.x - cub->player.plane.x * cub->sc.dir.y);
-    }
-    else if (cub->sprites[i].orientation == SOUTH)
-    {
-        cub->sc.transform.x = inv_det * (cub->player.dir.y * cub->sc.dir.x + cub->player.dir.x * cub->sc.dir.y);
-        cub->sc.transform.y = inv_det * (cub->player.plane.y * cub->sc.dir.x + cub->player.plane.x * cub->sc.dir.y);
-    }
-    else if (cub->sprites[i].orientation == EAST)
-    {
-        cub->sc.transform.x = inv_det * (cub->player.dir.y * cub->sc.dir.x + cub->player.dir.x * cub->sc.dir.y);
-        cub->sc.transform.y = inv_det * (cub->player.plane.y * cub->sc.dir.x + cub->player.plane.x * cub->sc.dir.y);
-    }
-    else if (cub->sprites[i].orientation == WEST)
-    {
-        cub->sc.transform.x = inv_det * (-cub->player.dir.y * cub->sc.dir.x - cub->player.dir.x * cub->sc.dir.y);
-        cub->sc.transform.y = inv_det * (-cub->player.plane.y * cub->sc.dir.x - cub->player.plane.x * cub->sc.dir.y);
-    }
 }
 
 // Calculate the relative position of the sprite to the camera plane

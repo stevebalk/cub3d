@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 12:30:35 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/29 15:43:47 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 12:39:06 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,36 +29,6 @@ t_vec2	sub_vec2(t_vec2 a, t_vec2 b)
 
 	c.x = a.x - b.x;
 	c.y = a.y - b.y;
-	return (c);
-}
-
-// Multiply a vec2 by a vec2
-t_vec2	mult_vec2(t_vec2 a, t_vec2 b)
-{
-	t_vec2	c;
-
-	c.x = a.x * b.x;
-	c.y = a.y * b.y;
-	return (c);
-}
-
-// Divide a vec2 by a vec2
-t_vec2	div_vec2(t_vec2 a, t_vec2 b)
-{
-	t_vec2	c;
-
-	c.x = a.x / b.x;
-	c.y = a.y / b.y;
-	return (c);
-}
-
-// Modulo a vec2 by a vec2
-t_vec2	mod_vec2(t_vec2 a, t_vec2 b)
-{
-	t_vec2	c;
-
-	c.x = fmod(a.x, b.x);
-	c.y = fmod(a.y, b.y);
 	return (c);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 11:10:37 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 12:08:19 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,46 +20,6 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <time.h>
-
-# define FOV_RAD 1.0471975512
-# define FOV_HALF 30
-# define FOV_HALF_RAD 0.52359877559
-
-# define MINIMAP_SCALE 0.2
-
-# define TEXTURE_WIDTH 64
-# define TEXTURE_HEIGHT 64
-
-# define SPRITE_WIDTH 64
-# define SPRITE_HEIGHT 64
-
-# define WALL 1
-# define SPRITE 2
-# define ITEM 3
-# define PLAYER 4
-
-# define TRUE 1
-# define FALSE 0
-
-# define ERROR -1
-# define SUCCESS 0
-
-# define SPRITE_SCALE 0.5
-
-// typedef struct s_sprite_cast
-// {
-// 	double		x;
-// 	double		y;
-// 	double		distance;
-// 	double		angle;
-// 	double		height;
-// 	double		width;
-// 	double		top;
-// 	double		left;
-// 	double		offset_x;
-// 	double		offset_y;
-// }				t_sprite_cast;
-
 
 /********************************************************************/
 /*                           CONFIG                                 */
@@ -79,7 +39,6 @@
 #define FOV 66
 #define MOVE_SPEED 4
 #define ROT_SPEED 2
-// #define COLLISION_MARGIN 0.001
 
 /******************* MINIMAP **********************/
 
@@ -249,8 +208,6 @@ typedef struct s_sprite
 	t_vec2		pos;
 	double		x;
 	double		y;
-	int			is_static;
-	int			orientation;
 	double		distance;
 	int			animatable;
 	int			frame_offset_x;
@@ -346,7 +303,6 @@ void	draw_square(t_data *img, t_vec2i pos, int size, int color);
 void	draw_rectangle(t_data *img, t_vec2i pos, t_vec2i size, int color);
 void	draw_circle(t_data *img, t_vec2i pos, int radius, int color);
 void	draw_triangle(t_data *img, t_vec2i pos, int size, int color);
-// void	draw_minimap(t_cub *cub, t_vec2i position);
 void	draw_minimap(t_cub *cub);
 void	draw_background(t_data *data, t_vec2i size, int color);
 void	draw_ceilling(t_cub *cub);
