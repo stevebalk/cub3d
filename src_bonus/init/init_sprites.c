@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:59:40 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 11:15:31 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 14:06:29 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	read_sprite_textures(t_cub *cub)
 	}
 }
 
-static void	set_sprite_pos(t_cub *cub)
+void	set_sprite_base_values(t_cub *cub)
 {
 	int	i;
 	int	j;
@@ -65,30 +65,9 @@ static void	set_sprite_pos(t_cub *cub)
 			{
 				cub->sprites[k].pos.x = j + 0.5;
 				cub->sprites[k].pos.y = i + 0.5;
-				k++;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void	set_sprite_ids(t_cub *cub)
-{
-	int	i;
-	int	j;
-	int	k;
-
-	i = 0;
-	k = 0;
-	while (i < cub->map_size.y)
-	{
-		j = 0;
-		while (j < cub->map_size.x)
-		{
-			if (cub->map[i][j] >= 2 && cub->map[i][j] <= 5)
-			{
 				cub->sprites[k].id = cub->map[i][j] - 2;
+				cub->sprites[k].frame_width = cub->sprite_textures[
+					cub->sprites[k].id].width;
 				k++;
 			}
 			j++;
@@ -97,7 +76,8 @@ void	set_sprite_ids(t_cub *cub)
 	}
 }
 
-void	set_animatable_sprite(t_cub *cub, int texture_id, int frame_count, double frame_duration)
+void	set_animatable_sprite(t_cub *cub, int texture_id, int frame_count,
+		double frame_duration)
 {
 	int	i;
 
@@ -109,7 +89,8 @@ void	set_animatable_sprite(t_cub *cub, int texture_id, int frame_count, double f
 			cub->sprites[i].animatable = 1;
 			cub->sprites[i].frame_count = frame_count;
 			cub->sprites[i].frame_duration = frame_duration;
-			cub->sprites[i].frame_width = cub->sprite_textures[cub->sprites[i].id].width / frame_count;
+			cub->sprites[i].frame_width = cub->sprite_textures[
+				cub->sprites[i].id].width / frame_count;
 		}
 		i++;
 	}
@@ -117,19 +98,9 @@ void	set_animatable_sprite(t_cub *cub, int texture_id, int frame_count, double f
 
 void	init_sprites(t_cub *cub)
 {
-	int	i;
-
-	i = 0;
 	read_sprite_textures(cub);
 	count_sprites_in_map(cub);
 	cub->sprites = ft_calloc(cub->sprite_count, sizeof(t_sprite));
-	set_sprite_ids(cub);
-	set_sprite_pos(cub);
+	set_sprite_base_values(cub);
 	set_animatable_sprite(cub, 0, 3, 0.1);
-	while (i < cub->sprite_count)
-	{
-		if (!cub->sprites[i].animatable)
-			cub->sprites[i].frame_width = cub->sprite_textures[cub->sprites[i].id].width;
-		i++;
-	}
 }

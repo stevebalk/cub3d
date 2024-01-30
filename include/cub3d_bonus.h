@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 12:08:19 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:47:09 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,6 +307,7 @@ void	draw_minimap(t_cub *cub);
 void	draw_background(t_data *data, t_vec2i size, int color);
 void	draw_ceilling(t_cub *cub);
 void	draw_floor(t_cub *cub);
+void	draw_sprites(t_cub *cub);
 
 /* Debug overlay */
 void	draw_debug_overlay(t_cub *cub, t_vec2i pos);
@@ -315,7 +316,6 @@ void	draw_debug_overlay(t_cub *cub, t_vec2i pos);
 /*                          DRAWING                                 */
 /********************************************************************/
 
-void	draw_sprites(t_cub *cub);
 
 /********************************************************************/
 /*                          PLAYER                                  */

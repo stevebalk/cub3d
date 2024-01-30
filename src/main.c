@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 13:13:46 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:42:27 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,18 @@ int	render_loop(t_cub *cub)
 	move(cub);
 	raycast(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img->img, 0, 0);
-
 	return (0);
 }
 
 int	main(void)
 {
-	t_cub cub;
+	t_cub	cub;
 
 	ft_bzero(&cub, sizeof(t_cub));
 	cub.wall_texture_paths[0] = "textures/wall_1.xpm";
 	cub.wall_texture_paths[1] = "textures/wall_2.xpm";
 	cub.wall_texture_paths[2] = "textures/wall_3.xpm";
 	cub.wall_texture_paths[3] = "textures/wall_4.xpm";
-
-	
 	init_cub(&cub);
 	mlx_do_key_autorepeatoff(cub.mlx);
 	cub.ceilling_color = celling_color;

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:15:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 11:08:27 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:54:03 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,8 @@ static void	draw_player(t_cub *cub)
 		/ 8, mm->color_player);
 	draw_line(cub->img, player_pos, add_vec2i(player_pos,
 			v2_to_v2i(scale_vec2(player->dir, cub->minimap.tile_size * 2))),
-			MINIMAP_COLOR_DIR_VEC);
+		MINIMAP_COLOR_DIR_VEC);
 }
-
 
 static void	draw_tile(t_cub *cub, t_vec2i tile_offset, t_vec2i tile_pos)
 {

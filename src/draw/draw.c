@@ -6,13 +6,13 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:55:24 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 13:14:41 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:44:18 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int get_pixel_color_int(t_texture *texture, int x, int y)
+int	get_pixel_color_int(t_texture *texture, int x, int y)
 {
 	int	color;
 	int	offset;
@@ -25,7 +25,7 @@ int get_pixel_color_int(t_texture *texture, int x, int y)
 		color |= ((unsigned char)texture->addr[offset + 1]) << 8;
 		color |= ((unsigned char)texture->addr[offset]);
 	}
-	return color;
+	return (color);
 }
 
 void	put_pixel(t_data *img, t_vec2i pos, int color)

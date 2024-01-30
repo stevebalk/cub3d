@@ -6,29 +6,11 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:37 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 12:38:04 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:55:20 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
-int	mouse_press(int button, int x, int y, t_cub *cub)
-{
-	(void)cub;
-	(void)x;
-	(void)y;
-	(void)button;
-	return (0);
-}
-
-int	mouse_release(int button, int x, int y, t_cub *cub)
-{
-	(void)cub;
-	(void)x;
-	(void)y;
-	(void)button;
-	return (0);
-}
 
 int	mouse_move(int x, int y, t_cub *cub)
 {
@@ -41,8 +23,8 @@ int	mouse_move(int x, int y, t_cub *cub)
 		if (rel_pos.x != 0 || rel_pos.y != 0)
 		{
 			if (rel_pos.x != 0)
-				rotate_player(cub, rel_pos.x * ROT_SPEED * MOUSE_SENSITIVITY *
-					cub->delta_time);
+				rotate_player(cub, rel_pos.x * ROT_SPEED * MOUSE_SENSITIVITY
+					* cub->delta_time);
 			mlx_mouse_move(cub->mlx, cub->win,
 				cub->win_center.x, cub->win_center.y);
 		}

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:18:44 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/27 21:58:38 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:46:00 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ void	slide_player(t_cub *cub, t_vec2 total_movement)
 	t_vec2	slide_x;
 	t_vec2	slide_y;
 
-	slide_x = scale_vec2((t_vec2){total_movement.x * MOVE_SPEED, 0}, cub->delta_time);
-	slide_y = scale_vec2((t_vec2){0, total_movement.y * MOVE_SPEED}, cub->delta_time);
+	slide_x = scale_vec2((t_vec2){total_movement.x * MOVE_SPEED, 0},
+			cub->delta_time);
+	slide_y = scale_vec2((t_vec2){0, total_movement.y * MOVE_SPEED},
+			cub->delta_time);
 	if (is_inside_map(cub, v2_to_v2i(add_vec2(cub->player.pos, slide_x)))
 		&& !is_colliding(cub, add_vec2(cub->player.pos, slide_x)))
 	{
@@ -69,8 +71,10 @@ void	move(t_cub *cub)
 	if (cub->player.move_dir.x == 0 && cub->player.move_dir.y == 0)
 		return ;
 	movement_dir = calculate_movement_dir(cub);
-	new_pos.x = cub->player.pos.x + movement_dir.x * MOVE_SPEED * cub->delta_time;
-	new_pos.y = cub->player.pos.y + movement_dir.y * MOVE_SPEED * cub->delta_time;
+	new_pos.x = cub->player.pos.x + movement_dir.x
+		* MOVE_SPEED * cub->delta_time;
+	new_pos.y = cub->player.pos.y + movement_dir.y
+		* MOVE_SPEED * cub->delta_time;
 	if (is_inside_map(cub, v2_to_v2i(new_pos)) && !is_colliding(cub, new_pos))
 	{
 		cub->player.pos.x = new_pos.x;

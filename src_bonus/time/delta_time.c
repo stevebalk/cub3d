@@ -6,17 +6,18 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 21:00:26 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/27 21:52:08 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 14:08:05 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-double get_time_seconds()
+double	get_time_seconds(void)
 {
-	struct timespec ts;
+	struct timespec	ts;
+
 	clock_gettime(CLOCK_MONOTONIC, &ts);
-	return (double)ts.tv_sec + (double)ts.tv_nsec / 1e9;
+	return ((double)ts.tv_sec + (double)ts.tv_nsec / 1e9);
 }
 
 void	calculate_delta_time(t_cub *cub)
