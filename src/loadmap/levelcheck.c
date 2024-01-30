@@ -203,7 +203,11 @@ int flood(char **arr)
 			if (arr[r][c] == 'F')
 			{
 				if (!check_near_fields(arr, c, r))
+				{
+					printf("prob check_new_field\n");
+					sleep(3);
 					return (0);
+				}
 			}
 			c++;
 		}

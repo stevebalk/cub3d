@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 12:37:59 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:44:47 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,22 @@ int main(int argc, char **argv)
 	}
 
 
-	check_map(&map);
+	if (!check_map(&map))
+	{
+		c_red();
+		printf("========================================\n");
+		printf("==> map flood fill check .. not valid  =\n");
+		printf("========================================\n\n");
+		c_reset();
+	}
+	else
+	{
+		c_green();
+		printf("========================================\n");
+		printf("==> map flood fill check ...    valid  =\n");
+		printf("========================================\n\n");
+		c_reset();
+	}
 
 
 	free_s_map(&map);
