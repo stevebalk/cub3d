@@ -37,10 +37,8 @@ int check_field(char **arr, int x, int y)
 	{
 		if (arr[y][x] != '1')
 		{
-			c_red();
-			printf("Error!\nspace in map or no wall\n"); c_reset();
-			c_reset();
-			exit(1);
+			printf("Error!\nspace in map or no wall\n");
+			return (0);
 		}
 	}
 
@@ -49,15 +47,13 @@ int check_field(char **arr, int x, int y)
 	{
 		if (x == 0 || x == col_len - 1)
 		{
-			c_red();
-			printf("ERROR!\nspace in map or no wall\n"); c_reset();
-			exit(1);
+			printf("ERROR!\nspace in map or no wall\n");
+			return (0);
 		}
 		if (y == 0 || y == arr_len - 1)
 		{	
-			c_red();
-			printf("ERROR!\nspace in map or no wall\n"); c_reset();
-			exit(1);
+			printf("ERROR!\nspace in map or no wall\n");
+			return (0);
 		}
 
 		replace_char_at_pos(arr, y, x, 'F');
@@ -67,9 +63,7 @@ int check_field(char **arr, int x, int y)
 	}
 	else if (arr[y][x] == ' ')
 	{
-		c_red();
-		printf("Error!\nspace in map or no wall\n"); c_reset();
-		exit(1);
+		printf("Error!\nspace in map or no wall\n");
 		return (0);
 	}
 	else
