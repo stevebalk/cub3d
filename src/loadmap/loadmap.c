@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 14:43:10 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/30 14:45:10 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void ini_map(t_map *s_map)
 		i++;
 	}
 	s_map->map = NULL;
-	
 	s_map->tex_names = ini_tex_names();
 }
 
