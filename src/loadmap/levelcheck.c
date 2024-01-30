@@ -1,20 +1,5 @@
 #include "j_header.h"
 
-/*
-Flood simulation.
-
-1) copy map   	✓
-2) setting startpoint to 'f' 	✓
-3) Check near fields			✓
-	a) 4 Check functions   up, right, down, left	 ✓
-	b) if true --> write 'F' in array   ✓
-		if 0 --> nothing                
-		if ' ' --> -1 ---> ERROR!
-
-Check einbauen, dass alle mit wänden umzingelt ist.
-
-*/
-
 void set_first_f(char **arr)
 {
 	replace_char_in_arr(arr, 'N', 'F');
@@ -115,7 +100,6 @@ int check_left(char **arr, int x, int y)
 	return (1);
 }
 
-
 // checks all reachable fields of the acutal position and fills with F if possible
 int check_near_fields(char **arr, int x, int y)
 {
@@ -129,7 +113,6 @@ int check_near_fields(char **arr, int x, int y)
 		return (0);
 	return (1);
 }
-
 
 int flood(char **arr)
 {
