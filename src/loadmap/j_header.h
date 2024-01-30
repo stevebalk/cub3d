@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   j_header.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 15:42:55 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:21:15 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int check_map(t_map *s_map);
 
 // mem
 void	free_s_map(t_map *s_map);
-void	free_n_null(void **ptr);
-void	free_n_null_2D(void ***ptr);
+// void	free_n_null(void **ptr);
+// void	free_n_null_2D(void ***ptr);
 
 // colors
 void	c_red(void);

@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 14:51:14 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/30 15:22:39 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ int load_map(t_map *s_map, char **argv)
 	char **splitted_file;
 	splitted_file = load_map_file(argv[1]);
 	if (!get_text_paths_master(s_map->textures, splitted_file, s_map->tex_names))
-		return(printf("Error!\ntexture paths are not valid\n"), free_n_null_2D((void ***)splitted_file), 0);
+		return(printf("Error!\ntexture paths are not valid\n"), ft_free_2darray((void ***)&splitted_file), 0);
     s_map->F = get_color_from_str(splitted_file, 'F');
 	s_map->C = get_color_from_str(splitted_file, 'C');
     if (!check_color(s_map->F))
-		return(printf("Error!\ninvalid floor color\n"), free_n_null_2D((void ***)splitted_file), 0);
+		return(printf("Error!\ninvalid floor color\n"), ft_free_2darray((void ***)&splitted_file), 0);
 	if (!check_color(s_map->C))
-		return(printf("Error!\ninvalid ceil color\n"), free_n_null_2D((void ***)splitted_file), 0);
+		return(printf("Error!\ninvalid ceil color\n"), ft_free_2darray((void ***)&splitted_file), 0);
 	if (!get_map(s_map, splitted_file))
-		return(printf("Error!\nmap is not valid\n"), free_n_null_2D((void ***)splitted_file), 0);
-	free_n_null_2D((void ***)splitted_file);
+		return(printf("Error!\nmap is not valid\n"), ft_free_2darray((void ***)&splitted_file), 0);
+	ft_free_2darray((void ***)&splitted_file);
 	return (1);
 }
 
@@ -65,7 +65,7 @@ void ini_map(t_map *s_map)
 
 	i = 0;
 	s_map->textures = (char **)malloc(sizeof(char *) *5);
-	while(i <= 5)
+	while(i < 5)
 	{
 		s_map->textures[i] = NULL;
 		i++;
@@ -77,25 +77,17 @@ void ini_map(t_map *s_map)
 // return 1 if file ending is ok
 int check_file_ending(char *file, char *ending)
 {
-	c_yellow(); printf("check_file_ending   file >%s<    ending >%s< \n", file, ending);
 	int len_file;
 	int len_ending;
 	
 	len_file = ft_strlen(file);
 	len_ending = ft_strlen(ending);
 	file += len_file-len_ending;
-	printf("file >%s<\n", file);
 	
 	if (ft_strncmp(file, ending, len_file) == 0)
-	{
-		c_green(); printf("file ending ok\n"); c_reset();
 		return (1);
-	}
 	else	
-	{
-		c_red(); printf("Error!\nfile ending NOT ok\n"); c_reset();
-		return (0);
-	}
+		return (printf("Error!\nfile ending NOT ok\n"), 0);
 }
 
 int load_and_check(t_map *s_map, int argc, char **argv)

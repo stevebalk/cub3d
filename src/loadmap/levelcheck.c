@@ -132,17 +132,12 @@ int flood(char **arr)
 			if (arr[r][c] == 'F')
 			{
 				if (!check_near_fields(arr, c, r))
-				{
-					printf("prob check_new_field\n");
-					sleep(3);
-					return (0);
-				}
+					return (0);	
 			}
 			c++;
 		}
 		r++;
 	}
-
 	return (1);
 }
 
@@ -179,6 +174,6 @@ int check_map(t_map *s_map)
 			break;
 		}
 	}
-	free_n_null_2D((void ***)f_map);
+	ft_free_2darray((void ***)&f_map);
 	return (ret);
 }

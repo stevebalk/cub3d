@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/24 12:01:47 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:23:44 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int check_color_section(char *str)
 	//show_arr(tmp);
 	arr_len = get_arr_len(tmp);
 
-	free_n_null_2D((void ***)tmp);
+	ft_free_2darray((void ***)&tmp);
 	if (arr_len > 1)
 		return (0);
 	else
@@ -91,6 +91,6 @@ t_color get_color_from_str(char **arr, char find)
 
 	//free_n_null((void **)tmp_line);
 	//tmp_line = NULL;
-	free_n_null_2D((void ***)split);
+	ft_free_2darray((void ***)&split);
     return (color);
 }
