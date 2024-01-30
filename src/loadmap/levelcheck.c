@@ -114,9 +114,6 @@ int check_up(char **arr, int x, int y)
 // checks if the array is valid
 int check_right(char **arr, int x, int y)
 {
-	int arr_len;
-
-	arr_len = get_arr_len(arr);
 	if (x + 1 >= ft_strlen(arr[y]))
 		return (0);
 	else
@@ -130,9 +127,6 @@ int check_right(char **arr, int x, int y)
 // checks if the array is valid
 int check_left(char **arr, int x, int y)
 {
-	int arr_len;
-
-	arr_len = get_arr_len(arr);
 	if (x - 1 < 0)
 		return (0);
 	else
