@@ -95,7 +95,8 @@ int check_near_fields(char **arr, int x, int y)
 		if (x <= ft_strlen(arr[y - 1]))
 		{
 			//printf("up\n");
-			check_field(arr, x, y - 1);
+			if(!check_field(arr, x, y - 1))
+				return (0);
 		}
 	}
 
@@ -106,7 +107,8 @@ int check_near_fields(char **arr, int x, int y)
 		if (y >= 0)
 		{
 			//printf("right\n");
-			check_field(arr, x + 1, y);
+			if(!check_field(arr, x + 1, y))
+				return (0);
 		}
 	}
 
@@ -116,7 +118,8 @@ int check_near_fields(char **arr, int x, int y)
 		if (x <= ft_strlen(arr[y + 1]))
 		{
 			//printf("down\n");
-			check_field(arr, x, y + 1);
+			if(!check_field(arr, x, y + 1))
+				return (0);
 		}
 	}
 
@@ -126,7 +129,8 @@ int check_near_fields(char **arr, int x, int y)
 		if (y >= 0)
 		{
 			//printf("left\n");
-			check_field(arr, x - 1, y);
+			if(!check_field(arr, x - 1, y))
+				return (0);
 		}
 	}
 
