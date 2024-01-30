@@ -163,29 +163,35 @@ int flood(char **arr)
 	return (1);
 }
 
+int  set_and_fill_first_f(char **arr)
+{
+	t_xy tmp_pos;
+	int ret;
+
+	ret = 1;
+	set_first_f(arr);
+	tmp_pos = get_pos_of_char_in_arr(arr, 'F');
+	ret = check_near_fields(arr, tmp_pos.x, tmp_pos.y);
+
+	return (ret);
+}
+
 int check_map(t_map *s_map)
 {
 	char **f_map;
 	int ret;
 	int i;
 	int len;
-	t_xy tmp_pos;
 
 	f_map = copy_arr(s_map->map);
-	set_first_f(f_map);
+	ret = set_and_fill_first_f(f_map);
 
-
-	show_map(f_map);
-	tmp_pos = get_pos_of_char_in_arr(f_map, 'F');
-	ret = check_near_fields(f_map, tmp_pos.x, tmp_pos.y);
-
-	len =  get_arr_len(f_map) * get_max_line(f_map, 0, get_arr_len(f_map));
+	len = get_arr_len(f_map) * get_max_line(f_map, 0, get_arr_len(f_map));
 	i = -1;
-	while (i++ < (len))
+	while (i++ < len)
 	{
 		if (!flood(f_map))
 		{
-			sleep(2);
 			ret = 0;
 			break;
 		}
