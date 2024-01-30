@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 13:06:22 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/30 18:13:57 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ void copy_arr_to_map(char **arr, t_map *s_map, t_map_lines lines, int offset)
 		//s_map->map[i] = ft_strdup(arr[lines.start + i] + offset);
 		end_no_space = get_len_without_spaces_from_end(arr[lines.start + i]);
 		//printf("end no space: %i\n", end_no_space);
-		s_map->map[i] = ft_calloc(end_no_space - offset + 1, sizeof(char));
-		ft_strlcpy(s_map->map[i], arr[lines.start + i] + offset, end_no_space + 1);
+		s_map->map[i] = ft_calloc(end_no_space - offset + 2, sizeof(char));
+		ft_strlcpy(s_map->map[i], arr[lines.start + i] + offset, end_no_space + 2);
 		
 		//printf("map[%i] >%s<\n", i, s_map->map[i]);
 		i++;

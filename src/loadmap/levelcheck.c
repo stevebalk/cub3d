@@ -15,6 +15,7 @@ int check_field(char **arr, int x, int y)
 
 	col_len = ft_strlen(arr[y]);
 	arr_len = get_arr_len(arr);
+	//printf("------ \n");
 	if (x == 0 || x == col_len  || y == 0 || y == arr_len - 1)
 	{
 		if (arr[y][x] != '1')
