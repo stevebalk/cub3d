@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 14:09:34 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/30 14:15:07 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //static char *tex_names[5] = {"NO","EA","SO","WE", NULL};
 
-char **J_load_file(char *file)
+char **load_map_file(char *file)
 {
     int fd;
     char **tmp;
@@ -25,16 +25,19 @@ char **J_load_file(char *file)
     if (fd == -1)
     {
         printf("Error\nfile loading\n");
-        exit(1);
+        //exit(1);
+		return (NULL);
     }
     line_count = get_line_count(file);
     //printf("nach linecount fd: %i    linecount: %i\n",fd, line_count);
 
     if (line_count < 8)
     {
-        printf("Error\nnot enought information in map\n");
-		exit(1);
+        printf("Error\nnot enough information in map\n");
+		//exit(1);
+		return (NULL);
     }
+	
     tmp =(char **)malloc((line_count + 1) * sizeof(char *));
     i = 0;
     //char *test;
@@ -64,7 +67,7 @@ int load_map(t_map *s_map, char **argv)
 	int ret;
 	
 	ret = 1;
-    char **splitted_file = J_load_file(argv[1]);
+    char **splitted_file = load_map_file(argv[1]);
 	
 	if (!get_text_paths_master(s_map->textures, splitted_file, s_map->tex_names))
 	{

@@ -30,9 +30,6 @@ int check_field(char **arr, int x, int y)
 
 	col_len = ft_strlen(arr[y]);
 	arr_len = get_arr_len(arr);
-
-    //printf("\ncheck field   col_len: %i   arr_len: %i \n", col_len, arr_len);
-	//printf("check field         x: %i         y: %i \n", x, y);
 	if (x == 0 || x == col_len  || y == 0 || y == arr_len - 1)
 	{
 		if (arr[y][x] != '1')
@@ -41,7 +38,6 @@ int check_field(char **arr, int x, int y)
 			return (0);
 		}
 	}
-
 
 	if (arr[y][x] == '0')
 	{
@@ -66,16 +62,11 @@ int check_field(char **arr, int x, int y)
 		printf("Error!\nspace in map or no wall\n");
 		return (0);
 	}
-	else
-	{
-		// printf("else\n");
-		// exit(1);
-	}
 
 	return (1);
 }
 
-// checks if the array is valid
+// checks if the pos is valid
 int check_down(char **arr, int x, int y)
 {
 	int arr_len;
@@ -93,7 +84,7 @@ int check_down(char **arr, int x, int y)
 	return (1);
 }
 
-// checks if the array is valid
+// checks if the pos is valid
 int check_up(char **arr, int x, int y)
 {
 	int arr_len;
@@ -111,7 +102,7 @@ int check_up(char **arr, int x, int y)
 	return (1);
 }
 
-// checks if the array is valid
+// checks if the pos is valid
 int check_right(char **arr, int x, int y)
 {
 	if (x + 1 >= ft_strlen(arr[y]))
@@ -124,7 +115,7 @@ int check_right(char **arr, int x, int y)
 	return (1);
 }
 
-// checks if the array is valid
+// checks if the pos is valid
 int check_left(char **arr, int x, int y)
 {
 	if (x - 1 < 0)
@@ -141,42 +132,14 @@ int check_left(char **arr, int x, int y)
 // checks all reachable fields of the acutal position and fills with F if possible
 int check_near_fields(char **arr, int x, int y)
 {
-	int arr_len;
-
-	arr_len = get_arr_len(arr);
-	//printf("check_near_fields  x: %i   y: %i \n", x, y);
-	//printf("arr len: %i\n", arr_len);
-	
-	// UP
 	if (!check_up(arr, x, y))
-	{
-		printf("XXX UP\n");
-		sleep(3);
 		return (0);
-	}
-	
-	// right
 	if (!check_right(arr, x, y))
-	{
-		printf("XXX right\n");
-		sleep(3);
 		return (0);
-	}
-
-	// down
 	if (!check_down(arr, x, y))
-	{
-		printf("XXX Down\n");
-		sleep(3);
 		return (0);
-	}
-
 	if (!check_left(arr, x, y))
-	{
-		printf("XXX left\n");
-		sleep(3);
 		return (0);
-	}
 
 	return (1);
 }
