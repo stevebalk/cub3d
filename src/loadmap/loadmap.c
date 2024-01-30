@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 15:22:39 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/30 18:03:58 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ int load_map(t_map *s_map, char **argv)
 	char **splitted_file;
 	splitted_file = load_map_file(argv[1]);
 	if (!get_text_paths_master(s_map->textures, splitted_file, s_map->tex_names))
-		return(printf("Error!\ntexture paths are not valid\n"), ft_free_2darray((void ***)&splitted_file), 0);
+		return(printf("Error!\ntexture paths are not valid\n"), ft_free_array((void **)splitted_file), 0);
     s_map->F = get_color_from_str(splitted_file, 'F');
 	s_map->C = get_color_from_str(splitted_file, 'C');
     if (!check_color(s_map->F))
-		return(printf("Error!\ninvalid floor color\n"), ft_free_2darray((void ***)&splitted_file), 0);
+		return(printf("Error!\ninvalid floor color\n"), ft_free_array((void **)splitted_file), 0);
 	if (!check_color(s_map->C))
-		return(printf("Error!\ninvalid ceil color\n"), ft_free_2darray((void ***)&splitted_file), 0);
+		return(printf("Error!\ninvalid ceil color\n"), ft_free_array((void **)splitted_file), 0);
 	if (!get_map(s_map, splitted_file))
-		return(printf("Error!\nmap is not valid\n"), ft_free_2darray((void ***)&splitted_file), 0);
-	ft_free_2darray((void ***)&splitted_file);
+		return(printf("Error!\nmap is not valid\n"), ft_free_array((void **)splitted_file), 0);
+	ft_free_array((void **)splitted_file);
 	return (1);
 }
 

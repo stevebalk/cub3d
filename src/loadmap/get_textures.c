@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 16:22:22 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/30 18:05:18 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ char *get_text_path(char **arr, char *find)
     if (get_arr_len(split) != 2)
     {
         printf("Error\nelement has more then 2 information in the line\n");
-		ft_free_2darray((void ***)&split);
+		ft_free_array((void **)split);
         return (NULL);
     }
     //checks if elemtent name is ok
     if (ft_strncmp(find, split[0], get_max_of_strlen(find, split[0])) != 0)
     {
         printf("Error\nelement is not in the right order or has more characters\n");
-		ft_free_2darray((void ***)&split);
+		ft_free_array((void **)split);
         return (NULL);
     }
 
@@ -92,13 +92,13 @@ char *get_text_path(char **arr, char *find)
 		{
 			ret = ft_strdup(split[1]);
 			printf("ret >%s<\n", ret);
-			ft_free_2darray((void ***)&split);
+			ft_free_array((void **)split);
 			printf("after free \n");
 			return (ret);
 		}
 		else 
 		{
-			ft_free_2darray((void ***)&split);
+			ft_free_array((void **)split);
 			return (NULL);
 		}
 	}

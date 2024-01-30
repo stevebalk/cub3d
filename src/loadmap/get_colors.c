@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 15:23:44 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/30 18:05:34 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int check_color_section(char *str)
 	//show_arr(tmp);
 	arr_len = get_arr_len(tmp);
 
-	ft_free_2darray((void ***)&tmp);
+	ft_free_array((void **)tmp);
 	if (arr_len > 1)
 		return (0);
 	else
@@ -91,6 +91,6 @@ t_color get_color_from_str(char **arr, char find)
 
 	//free_n_null((void **)tmp_line);
 	//tmp_line = NULL;
-	ft_free_2darray((void ***)&split);
+	ft_free_array((void **)split);
     return (color);
 }

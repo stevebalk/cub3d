@@ -174,6 +174,6 @@ int check_map(t_map *s_map)
 			break;
 		}
 	}
-	ft_free_2darray((void ***)&f_map);
+	ft_free_array((void **)f_map);
 	return (ret);
 }
