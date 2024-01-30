@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 18:23:50 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/30 18:25:53 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,32 +165,20 @@ t_color get_color(int r, int g, int b, int a)
     return (color);
 }
 
-int j_strlen(char *str)
-{
-	int i;
-	i = 0;
-
-	while(str[i] != '\0')
-		i++;
-	
-	printf("j_strlen %i\n", i);
-	return (i);
-}
-
 void replace_char_in_arr(char **arr, char find, char replace)
 {
     int i;
     int j;
-    printf("\nreplace_char_in_arr   find: %c   replace: %c \n", find, replace);
-	show_arr(arr);
-	printf("..\n");
+    // printf("\nreplace_char_in_arr   find: %c   replace: %c \n", find, replace);
+	// show_arr(arr);
+	// printf("..\n");
     i = 0;
     while(arr[i])
     {
         j = 0;
-        while(j < j_strlen(arr[i]))
+        while(j < ft_strlen(arr[i]))
         {
-            printf("i: %i   j: %i \n", i, j);
+            //printf("i: %i   j: %i \n", i, j);
             if (arr[i][j] == find)
             {
                 arr[i][j] = replace;
