@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:35:27 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/29 12:40:16 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 11:04:31 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,8 @@ int	main(void)
 	cub.wall_texture_paths[3] = "textures/wall_4.xpm";
 	cub.sprite_paths[3] = "sprites/barrel.xpm";
 	// cub.sprite_paths[0] = "sprites/floor_lamp.xpm";
-	cub.sprite_paths[0] = "sprites/flaming_barrel_spritesheet.xpm";
+	// cub.sprite_paths[0] = "sprites/flaming_barrel_spritesheet.xpm";
+	cub.sprite_paths[0] = "sprites/flaming_barrel_test.xpm";
 	cub.sprite_paths[1] = "sprites/pillar.xpm";
 	cub.sprite_paths[2] = "sprites/knight_statue.xpm";
 

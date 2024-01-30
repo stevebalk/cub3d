@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/29 15:52:17 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 11:10:37 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@
 #define MINIMAP_COLOR_BLOCKED 0x00000000
 #define MINIMAP_COLOR_FREE 0x00222222
 #define MINIMAP_COLOR_PLAYER 0x00FFFF00
+#define MINIMAP_COLOR_DIR_VEC 0x00FFFFFF
 
 
 /******************* DEBUG **********************/
