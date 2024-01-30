@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/25 17:05:36 by sbalk            ###   ########.fr        #
+#    Updated: 2024/01/30 14:36:26 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,20 +47,13 @@ SRC_FILES	=	main \
 				init/mlx \
 				init/player \
 				init/textures \
-				draw/basic_shapes \
-				draw/debug/overlay \
 				draw/draw \
-				draw/line \
-				draw/map \
 				error/error \
 				exit/exit \
 				flags/flag_utils \
 				map/checks \
 				math/math \
-				player/checks \
-				player/getters \
 				player/movement \
-				player/setters \
 				player/rotation \
 				raycasting/raycast \
 				raycasting/ray_calculate_ray \
@@ -78,28 +71,31 @@ BSRC_FILES	=	main \
 				init/cub \
 				init/map \
 				init/mlx \
+				init/init_minimap \
 				init/player \
 				init/textures \
+				init/init_sprites \
 				draw/basic_shapes \
 				draw/debug/overlay \
 				draw/draw \
 				draw/line \
-				draw/map \
+				draw/minimap \
+				draw/sprites \
 				error/error \
 				exit/exit \
 				flags/flag_utils \
+				free/free \
 				map/checks \
 				math/math \
 				player/checks \
-				player/getters \
 				player/movement \
-				player/setters \
 				player/rotation \
 				raycasting/raycast \
 				raycasting/ray_calculate_ray \
 				raycasting/ray_calculate_texture \
 				raycasting/ray_checks \
 				raycasting/ray_draw \
+				time/delta_time \
 				user_input/handler \
 				user_input/keyboard \
 				user_input/mouse \
@@ -125,18 +121,18 @@ $(NAME):	$(OBJ)
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
 #			Linux
-#			@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
-#			MacOS
-			@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+			# MacOS
+			# @$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME)
 			@echo "$(GREEN)Created $(NAME)!$(DEF_COLOR)"
 
 $(BONUS):	$(BOBJ)
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
-#			Linux
-#			@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME_BONUS)
+			# Linux
+			@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME_BONUS)
 #			MacOS
-			@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME_BONUS)
+			# @$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME_BONUS)
 			@echo "$(GREEN)Created $(NAME_BONUS)!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c

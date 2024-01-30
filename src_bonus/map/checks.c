@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:47:51 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 13:22:35 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/28 13:22:51 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	is_inside_map(t_cub *cub, t_vec2i position)
 
 int	is_cell_occopied(t_cub *cub, t_vec2i pos)
 {
-	if (cub->map[pos.x][pos.y] >= 1)
+	if (cub->map[pos.x][pos.y] == 1)
 		return (1);
 	return (0);
 }

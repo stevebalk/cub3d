@@ -6,13 +6,13 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:57:42 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 12:34:39 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 12:11:45 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-/* Sets next point, returns 1 if successful, 0 if not*/ //DEBUG
+/* Sets next point, returns 1 if successful, 0 if not*/
 static int	get_next_point(t_line *line, t_vec2i *start, t_vec2i end)
 {
 	if (start->x == end.x && start->y == end.y)
@@ -31,7 +31,7 @@ static int	get_next_point(t_line *line, t_vec2i *start, t_vec2i end)
 	return (1);
 }
 
-/* Bresenham's algorithm */ //DEBUG
+/* Bresenham's algorithm */
 void	draw_line(t_data *img, t_vec2i start, t_vec2i end, int color)
 {
 	t_line	line;

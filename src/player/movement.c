@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:18:44 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/25 13:13:41 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:06:25 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,6 @@ void	move(t_cub *cub)
 
 	new_pos.x = cub->player.pos.x + cub->player.velocity.x * MOVE_SPEED;
 	new_pos.y = cub->player.pos.y + cub->player.velocity.y * MOVE_SPEED;
-	// if (is_inside_map(cub, v2_to_v2i(new_pos)))
-	// {
-	// 	if (!is_colliding(cub, new_pos))
-	// 	{
-	// 		cub->player.pos.x = new_pos.x;
-	// 		cub->player.pos.y = new_pos.y;
-	// 	}
-	// }
 	cub->player.pos.x = new_pos.x;
 	cub->player.pos.y = new_pos.y;
 	cub->player.velocity.x = 0;
