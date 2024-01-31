@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 15:21:15 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/31 12:37:35 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_color get_color_from_str(char **arr, char find);
 
 // get_map
 int get_map(t_map *s_map, char **arr);
+int check_after_map(t_map *s_map, char **arr);
 
 // get_textures
 char *get_text_path(char **arr, char *find);
@@ -70,6 +71,7 @@ int check_player(t_player_pos *player);
 
 // check_map
 int check_map_valid(t_map *s_map);
+
 
 // level check
 int check_map(t_map *s_map);

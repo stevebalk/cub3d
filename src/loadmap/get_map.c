@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 18:33:36 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/31 12:48:12 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,4 +166,24 @@ int get_map(t_map *s_map, char **arr)
 	copy_arr_to_map(arr, s_map, map_lines, offset.start);
 	//show_arr(s_map->map);
 	return (1);
+}
+
+// returns 1 when there is no information after the map
+int check_after_map(t_map *s_map, char **arr)
+{
+	t_map_lines map_lines;
+	int arr_len;
+	
+	arr_len = get_arr_len(arr);
+	map_lines = get_map_lines(arr, " 01NESW", "01NESW");
+
+	c_yellow();
+	printf("check_after_map   arr_len: %i    map_line start: %i  end: %i \n", arr_len, map_lines.start, map_lines.end);
+	c_reset();
+
+	if (arr_len -1 == map_lines.end)
+		return (printf("arr_len==map_lines.end\n"), 1);
+	
+	return (0);
+	
 }
