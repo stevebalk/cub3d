@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/31 13:00:10 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/31 14:39:54 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,9 +181,87 @@ int check_after_map(t_map *s_map, char **arr)
 	// printf("check_after_map   arr_len: %i    map_line start: %i  end: %i \n", arr_len, map_lines.start, map_lines.end);
 	// c_reset();
 
-	if (arr_len -1 == map_lines.end)
+	if (arr_len - 1 == map_lines.end)
 		return (1);
-	
 	return (0);
+}
+
+// returns 1 if the str contains only c
+int check_line_for_only(char *str, char c)
+{
+	while(*str)
+	{
+		if(*str == c)
+			str++;
+		else
+			return(0);
+	}
+	return (1);	
+}
+
+// return 1 if str is in line
+int check_line_for_str(char *line, char *str)
+{
+	int i;
+
+	i = 0;
+	while(*line)
+	{
+		printf("check_line_for_str >%s<   >%s<\n", line, str);
+		if (ft_strncmp(line, str, ft_strlen(str)) == 0)
+			return (1);
+		line++;
+	}
+	return (0);
+}
+
+
+// return 0 if there are lines other than textures, color or map
+int check_for_bad_lines(char **arr)
+{
+	c_purple(); printf("check_for_bad_lines\n");
+	int arr_len;
+	int i;
+	t_map_lines map_lines;
 	
+	arr_len = get_arr_len(arr);
+	map_lines = get_map_lines(arr, " 01NESW", "01NESW");
+	
+	printf("check map.start: %i \n", map_lines.start);
+	i = -1;
+	//show_arr(arr);
+	while (++i < map_lines.start)
+	{
+		if (check_line_for_str(arr[i], "NO "))
+			continue;
+		if (check_line_for_str(arr[i], "EA "))
+			continue;
+		if (check_line_for_str(arr[i], "SO "))
+			continue;
+		if (check_line_for_str(arr[i], "WE "))
+			continue;
+		if (check_line_for_str(arr[i], "F "))
+			continue;
+		if (check_line_for_str(arr[i], "C "))
+			continue;
+		
+		if (!check_line_for_only(arr[i], ' '))
+			return (printf("END >%s<\n", arr[i]), 0);
+		
+		// printf("i: %i bef >%s< \n", i, arr[i]);
+		// while(*arr[i] == ' ')
+		// 	arr[i]++;
+		
+		// printf("i: %i aft >%s< \n", i, arr[i]);
+
+		// // Check for "NO "
+		
+			
+		//i++;
+	}
+	
+	printf("check_for_bad_lines   END \n"); c_reset();
+
+	sleep(3);
+	return (1);		
 }

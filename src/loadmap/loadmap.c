@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/31 13:18:49 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/31 14:34:16 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int load_map(t_map *s_map, char **argv)
 		return(printf("Error!\nmap is not valid\n"), ft_free_array((void **)splitted_file), 0);
 	if (!check_after_map(s_map, splitted_file))
 		return(printf("Error!\ncontent after map lines\n"), 0);
+	if (!check_for_bad_lines(splitted_file))
+		return(printf("Error!\nbad info lines\n"), 0);
 	sleep(3);
 	ft_free_array((void **)splitted_file);
 	return (1);
