@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 18:05:34 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/31 13:19:42 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,35 @@ t_color get_color_from_str(char **arr, char find)
     char *tmp_line;
     str[0] = find;
     str[1] = '\0';
-    
+	//c_cyan();printf("get_color_from_str  find >%c< \n", find); c_reset();
     t_color color;
 	if (get_line_of(arr, str, 0) == get_line_of(arr, str, 0))
 	    line = get_line_of(arr, str, 0);
 	else
-		printf("Error!\there are to lines with >%s< \n", str);
+	{
+		//printf("Error!\there are 2 lines with >%s< \n", str);
+		return (get_color(-1, -1, -1, -1));
+	}
+	if (line == -1)
+	{
+		//printf("Error!\there is no line with >%s< \n", str);
+		return (get_color(-1, -1, -1, -1));
+	}
 
-    //line = get_line_of(arr, str);
-    //printf("  > line: %i \n", line);
+
+    // printf("  > line: %i \n", line);
+	
     // Check if line contains the find char ('F' or 'c') and 3 ','
     if ((count_char_in_str(arr[line], ',') != 2) || (count_char_in_str(arr[line], find) != 1))
     {
-        printf("Line of >%c< contains not 2 Comma and 1 %c  line >%s<\n", find, find, arr[line]);
+        //printf("Line of >%c< contains not 2 Comma and 1 %c  line >%s<\n", find, find, arr[line]);
         return (get_color(-1, -1, -1, -1));
     }
 
 	// check for not allowed chars
 	if (!check_line_for_chars(arr[line], " ,FC0123456789"))
 	{
-		printf("Line of >%c< contains not allowed characters\n",  find);
+		//printf("Line of >%c< contains not allowed characters\n",  find);
 		return (get_color(-1, -1, -1, -1));
 	}
 
@@ -89,7 +98,7 @@ t_color get_color_from_str(char **arr, char find)
     	color.b = ft_atoi(split[2]);
     color.a = 0;
 
-	//free_n_null((void **)tmp_line);
+	//free(tmp_line);
 	//tmp_line = NULL;
 	ft_free_array((void **)split);
     return (color);

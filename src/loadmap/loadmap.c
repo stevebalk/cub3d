@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/31 12:48:35 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/31 13:18:49 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int load_map(t_map *s_map, char **argv)
 		return(printf("Error!\ntexture paths are not valid\n"), ft_free_array((void **)splitted_file), 0);
     s_map->F = get_color_from_str(splitted_file, 'F');
 	s_map->C = get_color_from_str(splitted_file, 'C');
+
     if (!check_color(s_map->F))
 		return(printf("Error!\ninvalid floor color\n"), ft_free_array((void **)splitted_file), 0);
 	if (!check_color(s_map->C))
@@ -102,15 +103,18 @@ int load_and_check(t_map *s_map, int argc, char **argv)
 
 	if (!load_map(s_map, argv))
 		return (0);
-		
+	sleep(4);
 	s_map->player_start_pos = get_player(s_map->map);
 	
 	if (!check_player(&(s_map->player_start_pos)))
 		return (0);
+	sleep(4);
 	if (!check_map_valid(s_map))
 		return (0);
+	sleep(4);
 	if (!check_map(s_map))
 		return (0);
+	sleep(4);
 
 	return (1);
 }
