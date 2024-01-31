@@ -24,9 +24,9 @@ int check_field(char **arr, int x, int y)
 	if (arr[y][x] == '0')
 	{
 		if (x == 0 || x == col_len - 1)
-			return (printf("ERROR!\nspace in map or no wall\n"), 0);
+			return (printf("Error!\nspace in map or no wall\n"), 0);
 		if (y == 0 || y == arr_len - 1)
-			return (printf("ERROR!\nspace in map or no wall\n"), 0);
+			return (printf("Error!\nspace in map or no wall\n"), 0);
 
 		replace_char_at_pos(arr, y, x, 'F');
 		usleep(5000);
@@ -105,13 +105,13 @@ int check_left(char **arr, int x, int y)
 int check_near_fields(char **arr, int x, int y)
 {
 	if (!check_up(arr, x, y))
-		return (0);
+		return (printf("Error!\nspace in map or no wall\n"), 0);
 	if (!check_right(arr, x, y))
-		return (0);
+		return (printf("Error!\nspace in map or no wall\n"), 0);
 	if (!check_down(arr, x, y))
-		return (0);
+		return (printf("Error!\nspace in map or no wall\n"), 0);
 	if (!check_left(arr, x, y))
-		return (0);
+		return (printf("Error!\nspace in map or no wall\n"), 0);
 	return (1);
 }
 

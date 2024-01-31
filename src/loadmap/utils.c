@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 18:25:53 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/31 15:58:33 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,7 @@ void replace_char_at_pos(char **arr, int row, int col, char c)
 	
 	if (row > count_row || col > len_col)
 	{
-		c_red(); printf("replace_char_at_pos  ERROR! count_row: %i   len_col: %i   \n", count_row, len_col); c_reset();
+		c_red(); printf("replace_char_at_pos  Error! count_row: %i   len_col: %i   \n", count_row, len_col); c_reset();
 	}
     else
 		arr[row][col] = c;

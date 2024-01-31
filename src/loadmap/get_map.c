@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/31 15:11:29 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/31 15:54:15 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,7 @@ int check_line_for_str(char *line, char *str)
 // return 0 if there are lines other than textures, color or map
 int check_for_bad_lines(char **arr)
 {
-	c_purple(); printf("check_for_bad_lines\n");
+	//c_purple(); printf("check_for_bad_lines\n");
 	int arr_len;
 	int i;
 	t_map_lines map_lines;

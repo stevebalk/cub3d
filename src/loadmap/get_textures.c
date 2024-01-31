@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 18:05:18 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/31 15:49:51 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ char *get_text_path(char **arr, char *find)
     	split = ft_split(arr[line], ' ');
 	else
 		return (NULL);
-	c_red();
-    show_arr(split);
-	c_reset();
+	// c_red();
+    // show_arr(split);
+	// c_reset();
 
     //checks if size is ok
     if (get_arr_len(split) != 2)
@@ -91,9 +91,9 @@ char *get_text_path(char **arr, char *find)
 		if (check_path(split[1]))
 		{
 			ret = ft_strdup(split[1]);
-			printf("ret >%s<\n", ret);
+			//printf("ret >%s<\n", ret);
 			ft_free_array((void **)split);
-			printf("after free \n");
+			//printf("after free \n");
 			return (ret);
 		}
 		else 
@@ -116,7 +116,7 @@ int get_text_paths_master(char **tex_paths, char **splitted_file, char **tex_nam
 		printf("i: %i  \n", i);
 	}
     tex_paths[i] = NULL;
-    show_arr(tex_paths);
+    //show_arr(tex_paths);
     
     //printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
 	return(check_if_arr_entrys_valid(tex_paths, 4));

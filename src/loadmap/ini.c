@@ -10,7 +10,7 @@ char **ini_tex_names(void)
 	ret[2] = ft_strdup("SO");
 	ret[3] = ft_strdup("WE");
 	ret[4] = NULL;
-	show_arr(ret);
+	//show_arr(ret);
 	return (ret);
 }
 
