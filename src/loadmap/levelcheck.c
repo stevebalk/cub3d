@@ -105,13 +105,13 @@ int check_left(char **arr, int x, int y)
 int check_near_fields(char **arr, int x, int y)
 {
 	if (!check_up(arr, x, y))
-		return (printf("Error!\nspace in map or no wall\n"), 0);
+		return (0);
 	if (!check_right(arr, x, y))
-		return (printf("Error!\nspace in map or no wall\n"), 0);
+		return (0);
 	if (!check_down(arr, x, y))
-		return (printf("Error!\nspace in map or no wall\n"), 0);
+		return (0);
 	if (!check_left(arr, x, y))
-		return (printf("Error!\nspace in map or no wall\n"), 0);
+		return (0);
 	return (1);
 }
 
@@ -133,7 +133,7 @@ int flood(char **arr)
 			if (arr[r][c] == 'F')
 			{
 				if (!check_near_fields(arr, c, r))
-					return (0);	
+					return (printf("Error!\nspace in map or no wall\n"), 0);	
 			}
 			c++;
 		}
