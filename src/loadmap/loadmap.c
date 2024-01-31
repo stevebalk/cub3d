@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/31 14:34:16 by jonas            ###   ########.fr       */
+/*   Updated: 2024/01/31 15:12:22 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int load_map(t_map *s_map, char **argv)
 		return(printf("Error!\ncontent after map lines\n"), 0);
 	if (!check_for_bad_lines(splitted_file))
 		return(printf("Error!\nbad info lines\n"), 0);
-	sleep(3);
+	sleep(1);
 	ft_free_array((void **)splitted_file);
 	return (1);
 }
@@ -105,18 +105,18 @@ int load_and_check(t_map *s_map, int argc, char **argv)
 
 	if (!load_map(s_map, argv))
 		return (0);
-	sleep(4);
+	sleep(1);
 	s_map->player_start_pos = get_player(s_map->map);
 	
 	if (!check_player(&(s_map->player_start_pos)))
 		return (0);
-	sleep(4);
+	sleep(1);
 	if (!check_map_valid(s_map))
 		return (0);
-	sleep(4);
+	sleep(1);
 	if (!check_map(s_map))
 		return (0);
-	sleep(4);
+	sleep(1);
 
 	return (1);
 }
