@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   j_structs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:35 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 15:37:05 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:12:08 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_map
 
 	t_tex	e_texures;
 	char	**textures;
-	char	**tex_names;
+	//char	**tex_names;
 
 	t_player_pos player_start_pos;
 

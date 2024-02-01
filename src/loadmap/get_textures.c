@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 13:53:33 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 14:13:04 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,20 @@ char *get_text_path(char **arr, char *find)
 }
 
 // fills a array of texture paths
-int get_text_paths_master(char **tex_paths, char **splitted_file, char **tex_names)
+int get_text_paths_master(char **tex_paths, char **splitted_file)
 {
  	//char *tmp_tex_paths[5];
-    int i = -1;
-    while(i++, i < 4)
-	{
-        tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
-		//printf("i: %i  \n", i);
-	}
+    // int i = -1;
+    // while(i++, i < 4)
+	// {
+    //     tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
+	// 	//printf("i: %i  \n", i);
+	// }
+	tex_paths[0] = get_text_path(splitted_file, "NO");
+	tex_paths[1] = get_text_path(splitted_file, "EA");
+	tex_paths[2] = get_text_path(splitted_file, "SO");
+	tex_paths[3] = get_text_path(splitted_file, "WE");
+
     tex_paths[4] = NULL;
     //show_arr(tex_paths);
     

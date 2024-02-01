@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 13:50:14 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 14:13:18 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int load_map(t_map *s_map, char **argv)
 		return (0);
 	if (count_char_in_arr(splitted_file, '\t'))
 		return(printf("Error!\nnot allowed tab in file\n"), ft_free_array((void **)splitted_file), 0);
-	if (!get_text_paths_master(s_map->textures, splitted_file, s_map->tex_names))
+	if (!get_text_paths_master(s_map->textures, splitted_file))
 		return(printf("Error!\ntexture path is not valid\n"), ft_free_array((void **)splitted_file), 0);
 	get_color_master(s_map, splitted_file);
     if (!check_color(s_map->F))
@@ -80,7 +80,7 @@ void ini_map(t_map *s_map)
 		i++;
 	}
 	s_map->map = NULL;
-	s_map->tex_names = ini_tex_names();
+	//s_map->tex_names = ini_tex_names();
 }
 
 // return 1 if file ending is ok

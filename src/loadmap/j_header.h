@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 12:17:46 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 14:13:33 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int check_for_bad_lines(char **arr);
 
 // get_textures
 char *get_text_path(char **arr, char *find);
-int get_text_paths_master(char **tex_paths, char **splitted_file, char **tex_names);
+int get_text_paths_master(char **tex_paths, char **splitted_file);
 
 // show
 void show_arr(char **arr);

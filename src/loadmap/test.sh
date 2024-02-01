@@ -12,11 +12,23 @@ echo ""
 echo -e "${c_cyan}Map Tester 2000${c_purple}"
 echo "===================="
 
+#make san 
+#sleep 3
+# for i in {1..25}
+# do
+#    echo -e "${c_green}Map: ${c_yellow}m$i.cub${c_red}"
+#    ./a.out m$i.cub
+#    echo ""
+#    sleep 0.1
+# done
 
-for i in {1..23}
+# make
+# sleep 3
+
+for i in {1..2}
 do
-   echo -e "${c_green}Map: ${c_yellow}m$i.cub${c_red}"
-   ./a.out m$i.cub
+   echo -e "LEAKS ${c_green}Map: ${c_yellow}m$i.cub${c_red}"
+   leaks -atExit -- ./a.out m$i.cub
    echo ""
-   sleep 0.5
+   sleep 2
 done
