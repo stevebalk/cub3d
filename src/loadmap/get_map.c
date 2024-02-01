@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 12:09:51 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 12:43:42 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,10 @@ int check_map_lines(char **arr, t_map_lines map_lines, char *charset, char *char
 	int i;
 	int res;
 
+	if (map_lines.start == -1 || map_lines.end == -1 )
+		return (0);
 	res = 1;
-	i= map_lines.start;
+	i = map_lines.start;
 	while(i < map_lines.end && arr[i])
 	{
 		//c_purple();printf("\n%i >%s<\n", i, arr[i]);c_reset();
