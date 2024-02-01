@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 13:04:14 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:51:27 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	init_cub(t_cub *cub)
 {
 	cub->win_size = (t_vec2i){WIN_WIDTH, WIN_HEIGHT};
-	cub->map_size.x = TEST_MAP_SIZE_X;
-	cub->map_size.y = TEST_MAP_SIZE_Y;
 	cub->win_center = (t_vec2i){cub->win_size.x / 2, cub->win_size.y / 2};
 	cub->player.start_direction = EAST;
 	init_map(cub);

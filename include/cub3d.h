@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/01 17:31:19 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:55:21 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include <errno.h>
+# include "j_header.h"
 
 /********************************************************************/
 /*                           CONFIG                                 */
@@ -57,13 +58,6 @@
 #define NORTH 3
 #define PI 3.14159265359
 #define TWO_PI 6.28318530718
-#define TILE_SIZE 16 // FOR MINIMAP
-#define MAP_WIDTH 24 // DELETE LATER
-#define MAP_HEIGHT 24 // DELETE LATER
-#define TEST_MAP_SIZE_X 24 // DELETE LATER
-#define TEST_MAP_SIZE_Y 24 // DELETE LATER
-
-
 
 /********************************************************************/
 /*                          OWN STRUCTS                             */
