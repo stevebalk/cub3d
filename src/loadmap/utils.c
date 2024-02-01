@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 12:22:19 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 14:53:53 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,10 @@ int check_if_arr_entrys_valid(char **arr, int arr_len)
     i = -1;
     while (i++, i < arr_len)
     {
-        if (!arr[i])
-            return (0);
+		if (ft_strlen(arr[i]) == 0)
+			return 0;
+        // if (!arr[i])
+        //     return (0);
     }
     return (1);
 }
