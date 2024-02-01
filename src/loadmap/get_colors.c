@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 12:18:12 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 15:57:59 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,20 @@ int check_color_section(char *str)
 		return (1);
 }
 
+// return 1 if only i.e ' ' are before char find
+int check_only_c_before_find(char *str, char c, char find)
+{
+	int i;
+	i = 0;
+	while(str[i] && str[i] != find)
+	{
+		if (str[i] != c)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 t_color get_color_from_str(char **arr, char find)
 {
     //printf("  find: %c \n", find);
@@ -71,7 +85,9 @@ t_color get_color_from_str(char **arr, char find)
 	}
 
 
-    // printf("  > line: %i \n", line);
+    //printf("  > line: %i \n", line);
+	if (!check_only_c_before_find(arr[line], ' ', find))
+		return (get_color(-1, -1, -1, -1));
 	
     // Check if line contains the find char ('F' or 'c') and 3 ','
     if ((count_char_in_str(arr[line], ',') != 2) || (count_char_in_str(arr[line], find) != 1))

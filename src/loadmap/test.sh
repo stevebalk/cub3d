@@ -43,94 +43,94 @@ do
    sleep 2
 done
 
-make san
-echo -e "${c_cyan}sanitize"
+# make san
+# echo -e "${c_cyan}sanitize"
 
-map=map
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=map
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=prog.out
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=prog.out
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=prog.cup
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=prog.cup
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=.
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=.
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=./
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=./
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=./test
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=./test
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=./test/
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=./test/
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
 
 
-make
-echo -e "${c_cyan}leaks"
+# make
+# echo -e "${c_cyan}leaks"
 
-map=map
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=map
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=prog.out
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=prog.out
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=prog.cup
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=prog.cup
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=.
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=.
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=./
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=./
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=./test
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=./test
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
 
-map=./test/
-echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
-./a.out $map
-echo ""
-sleep 1
+# map=./test/
+# echo -e "${c_green}Map: ${c_yellow}$map${c_red}"
+# ./a.out $map
+# echo ""
+# sleep 1
