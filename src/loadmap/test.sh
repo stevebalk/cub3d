@@ -18,4 +18,5 @@ do
    echo -e "${c_green}Map: ${c_yellow}m$i.cub${c_red}"
    ./a.out m$i.cub
    echo ""
+   sleep 0.5
 done

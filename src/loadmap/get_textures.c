@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 12:23:47 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 13:53:33 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ char *get_text_path(char **arr, char *find)
         return (NULL);
 	// if get_line_of   reverse and not reverse are the same line, than there is only 1 occurence --> good
 	if (get_line_of(arr, find, 0) == -1)
-		return (printf("Error!\nno occurence of >%s< \n", find), NULL);
+		return (/*printf("Error!\nno occurence of >%s< \n", find),*/ NULL);
 	if (get_line_of(arr, find, 0) == get_line_of(arr, find, 1))
     	line = get_line_of(arr, find, 0);
 	else
-		return (printf("Error!\nhere are 2 lines with >%s< \n", find), NULL);
+		return (/*printf("Error!\nhere are 2 lines with >%s< \n", find),*/ NULL);
 	
 	if (arr[line])
     	split = ft_split(arr[line], ' ');
