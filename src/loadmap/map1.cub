@@ -1,12 +1,12 @@
-NO ./path_to_the_north_texture
+NO src/loadmap/path_to_the_north_texture
 
-SO ./path_to_the_south_texture
+SO src/loadmap/path_to_the_south_texture
 
    C   42  , 3, 5
 
-WE ./path_to_the_west_texture
+WE src/loadmap/path_to_the_west_texture
 
-EA ./path_to_the_east_texture
+EA src/loadmap/path_to_the_east_texture
  
      F    220,  100  ,  3
 

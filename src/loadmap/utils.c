@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 14:53:53 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:35:33 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ t_color get_color(int r, int g, int b, int a)
 void replace_char_in_arr(char **arr, char find, char replace)
 {
     int i;
-    int j;
+    size_t j;
     // printf("\nreplace_char_in_arr   find: %c   replace: %c \n", find, replace);
 	// show_arr(arr);
 	// printf("..\n");

@@ -50,7 +50,7 @@ int check_down(char **arr, int x, int y)
 	arr_len = get_arr_len(arr);
 	if (y + 1 >= arr_len)
 		return (0);
-	if (x >= ft_strlen(arr[y + 1]))
+	if (x >= (int)ft_strlen(arr[y + 1]))
 		return (0);
 	else
 	{
@@ -63,12 +63,12 @@ int check_down(char **arr, int x, int y)
 // checks if the pos is valid
 int check_up(char **arr, int x, int y)
 {
-	int arr_len;
+	// int arr_len;
 
-	arr_len = get_arr_len(arr);
+	// arr_len = get_arr_len(arr);
 	if (y - 1 < 0)
 		return (0);
-	if (x >= ft_strlen(arr[y - 1]))
+	if (x >= (int)ft_strlen(arr[y - 1]))
 		return (0);
 	else
 	{
@@ -81,7 +81,7 @@ int check_up(char **arr, int x, int y)
 // checks if the pos is valid
 int check_right(char **arr, int x, int y)
 {
-	if (x + 1 >= ft_strlen(arr[y]))
+	if (x + 1 >= (int)ft_strlen(arr[y]))
 		return (0);
 	else
 	{

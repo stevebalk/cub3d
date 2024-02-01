@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   j_header.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 14:13:33 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:30:41 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h> 
+#include "libft.h"
 
-#include "../../libs/libft/include/libft.h"
-#include "../../libs/libft/include/get_next_line.h"
-
+int load_and_check(t_map *s_map, int argc, char **argv);
 
 // get_colors
 int check_color(t_color color);

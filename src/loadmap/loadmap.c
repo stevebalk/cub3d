@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loadmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 16:50:44 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:36:11 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,21 +126,21 @@ int load_and_check(t_map *s_map, int argc, char **argv)
 	return (1);
 }
 
-int main(int argc, char **argv)
-{   
-	t_map map;
+// int main(int argc, char **argv)
+// {   
+// 	t_map map;
 
-	int check_res;
-	check_res = load_and_check(&map, argc, argv);
-	if (check_res)
-		printf("run GAME \n");
+// 	int check_res;
+// 	check_res = load_and_check(&map, argc, argv);
+// 	if (check_res)
+// 		printf("run GAME \n");
 
-	free_s_map(&map);
-	c_green();
-	printf("-- programm END --\n\n");
+// 	free_s_map(&map);
+// 	c_green();
+// 	printf("-- programm END --\n\n");
 	
-    return(check_res);
-}
+//     return(check_res);
+// }
 
 
 /*

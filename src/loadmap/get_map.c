@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 16:50:07 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:33:14 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,10 @@ int check_map_lines(char **arr, t_map_lines map_lines, char *charset, char *char
 int get_map_offset(char **arr, int start, int end)
 {
 	int offset;
-	int i;
+	// int i;
 
 	offset = 99999999;
-	i = 0;
+	// i = 0;
 
 	while(start < end && arr[start])
 	{
@@ -177,6 +177,7 @@ int get_map(t_map *s_map, char **arr)
 // returns 1 when there is no information after the map
 int check_after_map(t_map *s_map, char **arr)
 {
+	(void)s_map;
 	t_map_lines map_lines;
 	int arr_len;
 	
@@ -208,9 +209,9 @@ int check_line_for_only(char *str, char c)
 // return 1 if str is in line
 int check_line_for_str(char *line, char *str)
 {
-	int i;
+	// int i;
 
-	i = 0;
+	// i = 0;
 	while(*line)
 	{
 		//printf("check_line_for_str >%s<   >%s<\n", line, str);
@@ -226,11 +227,11 @@ int check_line_for_str(char *line, char *str)
 int check_for_bad_lines(char **arr)
 {
 	//c_purple(); printf("check_for_bad_lines\n");
-	int arr_len;
+	// int arr_len;
 	int i;
 	t_map_lines map_lines;
 	
-	arr_len = get_arr_len(arr);
+	// arr_len = get_arr_len(arr);
 	map_lines = get_map_lines(arr, " 01NESW", "01NESW");
 	
 	//printf("check map.start: %i \n", map_lines.start);

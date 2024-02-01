@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/01/30 15:08:10 by sbalk            ###   ########.fr        #
+#    Updated: 2024/02/01 17:30:24 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,20 @@ SRC_FILES	=	main \
 				vector_utils/convert \
 				vector_utils/vec2 \
 				vector_utils/vec2i \
-				translate_char_to_int_map
+				loadmap/check_map \
+				loadmap/colors_a \
+				loadmap/colors_b \
+				loadmap/get_colors \
+				loadmap/get_map \
+				loadmap/get_player \
+				loadmap/get_textures \
+				loadmap/ini \
+				loadmap/levelcheck \
+				loadmap/loadmap \
+				loadmap/mem \
+				loadmap/show \
+				loadmap/utils \
+				loadmap/translate_char_to_int_map \
 
 BSRC_FILES	=	main \
 				init/cub \

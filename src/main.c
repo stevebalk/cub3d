@@ -6,59 +6,16 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 14:31:52 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:27:22 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "j_header.h"
 
-int worldMap[TEST_MAP_SIZE_X][TEST_MAP_SIZE_Y]= {
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-		};
 
 int		celling_color = 0x000000FF;
 int		floor_color = 0x00333333;
-
-void	transfers_map(t_cub *cub)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < TEST_MAP_SIZE_X)
-	{
-		j = 0;
-		while (j < TEST_MAP_SIZE_Y)
-		{
-			cub->map[i][j] = worldMap[i][j];
-			j++;
-		}
-		i++;
-	}
-}
 
 int	render_loop(t_cub *cub)
 {
@@ -71,21 +28,28 @@ int	render_loop(t_cub *cub)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	t_cub	cub;
+	// t_cub	cub;
+	t_map	map;
 
-	ft_bzero(&cub, sizeof(t_cub));
-	cub.wall_texture_paths[0] = "textures/wall_1.xpm";
-	cub.wall_texture_paths[1] = "textures/wall_2.xpm";
-	cub.wall_texture_paths[2] = "textures/wall_3.xpm";
-	cub.wall_texture_paths[3] = "textures/wall_4.xpm";
-	init_cub(&cub);
-	mlx_do_key_autorepeatoff(cub.mlx);
-	cub.ceilling_color = celling_color;
-	cub.floor_color = floor_color;
-	transfers_map(&cub);
-	mlx_loop_hook(cub.mlx, render_loop, &cub);
-	mlx_loop(cub.mlx);
+	if (!load_and_check(&map, argc, argv))
+	{
+		free_s_map(&map);
+		return (EXIT_FAILURE);
+	}
+	// ft_bzero(&cub, sizeof(t_cub));
+	// cub.wall_texture_paths[0] = "textures/wall_1.xpm";
+	// cub.wall_texture_paths[1] = "textures/wall_2.xpm";
+	// cub.wall_texture_paths[2] = "textures/wall_3.xpm";
+	// cub.wall_texture_paths[3] = "textures/wall_4.xpm";
+
+	// init_cub(&cub);
+	// mlx_do_key_autorepeatoff(cub.mlx);
+	// cub.ceilling_color = celling_color;
+	// cub.floor_color = floor_color;
+	// transfers_map(&cub);
+	// mlx_loop_hook(cub.mlx, render_loop, &cub);
+	// mlx_loop(cub.mlx);
 	return (0);
 }

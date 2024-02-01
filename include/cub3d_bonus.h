@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 21:51:32 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:00:26 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,8 @@
 // How many tiles are shown in every direction
 #define MINIMAP_VISIBLE_TILES 10
 #define MINIMAP_MARGIN_X_PERCENT 1
-#define MINIMAP_MARGIN_Y_PERCENT 1
-#define MINIMAP_COLOR_BLOCKED 0x00000000
-#define MINIMAP_COLOR_FREE 0x00222222
-#define MINIMAP_COLOR_PLAYER 0x00FFFF00
-#define MINIMAP_COLOR_DIR_VEC 0x00FFFFFF
-
-
-/******************* DEBUG **********************/
-
+#define MINIMAP_MARGIN_Y_PERCENT 1	int x;
+	int y;
 #define DEBUG_OVERLAY 1
 
 /******************* RAYCAST **********************/
