@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 14:13:18 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 14:21:39 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,14 +130,16 @@ int main(int argc, char **argv)
 {   
 	t_map map;
 
-	if (!load_and_check(&map, argc, argv))
-		return (1);
+	int check_res;
+	check_res = load_and_check(&map, argc, argv);
+	if (check_res)
+		printf("run GAME \n");
 
 	free_s_map(&map);
 	c_green();
 	printf("-- programm END --\n\n");
 	
-    return(0);
+    return(check_res);
 }
 
 
