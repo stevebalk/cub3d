@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/01 17:51:27 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/01 18:13:36 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_cub(t_cub *cub)
 	cub->win_size = (t_vec2i){WIN_WIDTH, WIN_HEIGHT};
 	cub->win_center = (t_vec2i){cub->win_size.x / 2, cub->win_size.y / 2};
 	cub->player.start_direction = EAST;
-	init_map(cub);
+	// init_map(cub);
 	init_player(cub);
 	init_mlx(cub);
 	init_mlx_hooks(cub);

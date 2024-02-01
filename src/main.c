@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/01 17:55:29 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/01 18:17:14 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	main(int argc, char **argv)
 	cub.wall_texture_paths[2] = "textures/wall_3.xpm";
 	cub.wall_texture_paths[3] = "textures/wall_4.xpm";
 
-	init_cub(&cub);
 	cub.map = translate_char_to_int_map(&cub, map.map);
+	init_cub(&cub);
 	mlx_do_key_autorepeatoff(cub.mlx);
 	cub.ceilling_color = celling_color;
 	cub.floor_color = floor_color;
