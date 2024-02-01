@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/31 15:58:06 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 12:02:39 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int load_map(t_map *s_map, char **argv)
 {
 	char **splitted_file;
 	splitted_file = load_map_file(argv[1]);
+	if (count_char_in_arr(splitted_file, '\t'))
+		return(printf("Error!\nnot allowed tab in file\n"), ft_free_array((void **)splitted_file), 0);
 	if (!get_text_paths_master(s_map->textures, splitted_file, s_map->tex_names))
 		return(printf("Error!\ntexture paths are not valid\n"), ft_free_array((void **)splitted_file), 0);
     s_map->F = get_color_from_str(splitted_file, 'F');
@@ -70,8 +72,8 @@ void ini_map(t_map *s_map)
 	int i;
 
 	i = 0;
-	s_map->textures = (char **)malloc(sizeof(char *) *5);
-	while(i < 5)
+	s_map->textures = (char **)malloc(sizeof(char *) * 5);
+	while (i < 5)
 	{
 		s_map->textures[i] = NULL;
 		i++;
@@ -98,6 +100,8 @@ int check_file_ending(char *file, char *ending)
 
 int load_and_check(t_map *s_map, int argc, char **argv)
 {
+	if (argc != 2)
+		return (printf("Error!\nwrong amout of arguments ... only 1 map.cub argument is allowed\n"), 0);
 	if (!check_file_ending(argv[1], ".cub"))
 		return (0);
 		
@@ -123,10 +127,10 @@ int load_and_check(t_map *s_map, int argc, char **argv)
 
 int main(int argc, char **argv)
 {   
-    printf("huhu\n");
 	t_map map;
 
-	load_and_check(&map, argc, argv);
+	if (!load_and_check(&map, argc, argv))
+		return (1);
 
 	free_s_map(&map);
 	c_green();

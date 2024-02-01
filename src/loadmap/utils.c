@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/31 15:58:33 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 11:59:46 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ int	count_char_in_arr(char **arr, char c)
 	while (arr[++i])
 		count += count_char_in_str(arr[i], c);
 	
-	printf("count %c in array  >> %i\n", c, count);
+	//printf("count %c in array  >> %i\n", c, count);
 
 	return (count);
 }	
@@ -190,13 +190,13 @@ void replace_char_in_arr(char **arr, char find, char replace)
         }
         i++;
     }
-    printf("--- End  replace_char_in_arr ---\n");
+    //printf("--- End  replace_char_in_arr ---\n");
 }
 
 // replace char at pos
 void replace_char_at_pos(char **arr, int row, int col, char c)
 {
-    printf("\nreplace_char_at_pos   row(y): %i  col(x): %i  newChar: %c\n", row, col, c);
+    //printf("\nreplace_char_at_pos   row(y): %i  col(x): %i  newChar: %c\n", row, col, c);
 
 	int count_row;
 	int len_col;
@@ -206,7 +206,7 @@ void replace_char_at_pos(char **arr, int row, int col, char c)
 	
 	if (row > count_row || col > len_col)
 	{
-		c_red(); printf("replace_char_at_pos  Error! count_row: %i   len_col: %i   \n", count_row, len_col); c_reset();
+		//c_red(); printf("replace_char_at_pos  Error! count_row: %i   len_col: %i   \n", count_row, len_col); c_reset();
 	}
     else
 		arr[row][col] = c;

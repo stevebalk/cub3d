@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/31 15:49:51 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 11:53:19 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,8 @@ int get_text_paths_master(char **tex_paths, char **splitted_file, char **tex_nam
         tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
 		printf("i: %i  \n", i);
 	}
-    tex_paths[i] = NULL;
-    //show_arr(tex_paths);
+    tex_paths[4] = NULL;
+    show_arr(tex_paths);
     
     //printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
 	return(check_if_arr_entrys_valid(tex_paths, 4));
