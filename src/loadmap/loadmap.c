@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 16:29:13 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:50:44 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ int load_and_check(t_map *s_map, int argc, char **argv)
 		return (0);
 	//sleep(1);
 	s_map->player_start_pos = get_player(s_map->map);
-	
 	if (!check_player(&(s_map->player_start_pos)))
 		return (0);
 	//sleep(1);
