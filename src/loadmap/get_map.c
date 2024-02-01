@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 16:32:08 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:40:24 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,24 +82,23 @@ int check_map_lines(char **arr, t_map_lines map_lines, char *charset, char *char
 {
 	int i;
 	int res;
-
-	if ((map_lines.start == -1 || map_lines.end == -1) || (map_lines.start == map_lines.end))
+	//printf("sum: %i\n", map_lines.end - map_lines.start + 1);
+	if ((map_lines.start == -1 || map_lines.end == -1) || (map_lines.start == map_lines.end) || (map_lines.end - map_lines.start + 1< 3))
 		return (0);
 	res = 1;
 	i = map_lines.start;
 	while(i < map_lines.end && arr[i])
 	{
-		c_purple();printf("\n%i >%s<\n", i, arr[i]);c_reset();
+		//c_purple();printf("\n%i >%s<\n", i, arr[i]);c_reset();
 		if (!check_line_for_chars(arr[i], charset) || !has_at_least_one_occurence_of_charset(arr[i], charset2))
 		{
 			res = 0;
-			c_red();printf("BREAK!!! \n\n");
+			//c_red();printf("BREAK!!! \n\n");
 			break;
 		}
 		i++;
 	}
-	c_red();
-	printf("check_map_lines  line: %i   res: %i\n", i, res);
+	//c_red(); printf("check_map_lines  line: %i   res: %i\n", i, res);
 	return (res);
 }
 
