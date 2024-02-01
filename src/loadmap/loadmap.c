@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 14:21:39 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 15:32:02 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,13 @@ int check_file_ending(char *file, char *ending)
 
 int load_and_check(t_map *s_map, int argc, char **argv)
 {
+	ini_map(s_map);
+
 	if (argc != 2)
 		return (printf("Error!\nwrong amout of arguments ... only 1 map.cub argument is allowed\n"), 0);
 	if (!check_file_ending(argv[1], ".cub"))
 		return (0);
 		
-	ini_map(s_map);
-
 	if (!load_map(s_map, argv))
 		return (0);
 	//sleep(1);
