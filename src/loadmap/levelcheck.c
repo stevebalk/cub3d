@@ -19,22 +19,25 @@ int check_field(char **arr, int x, int y)
 	if (x == 0 || x == col_len  || y == 0 || y == arr_len - 1)
 	{
 		if (arr[y][x] != '1')
-			return (printf("Error!\nspace in map or no wall\n"), 0);
+			return (/*printf("Error!\nspace in map or no wall\n"),*/ 0);
 	}
 	if (arr[y][x] == '0')
 	{
 		if (x == 0 || x == col_len - 1)
-			return (printf("Error!\nspace in map or no wall\n"), 0);
+			return (/*printf("Error!\nspace in map or no wall\n"),*/ 0);
 		if (y == 0 || y == arr_len - 1)
-			return (printf("Error!\nspace in map or no wall\n"), 0);
+			return (/*printf("Error!\nspace in map or no wall\n"),*/ 0);
+
 
 		replace_char_at_pos(arr, y, x, 'F');
+		#ifdef FLOOD
 		usleep(5000);
 		clear_screen();
 		show_map(arr);
+		#endif
 	}
 	else if (arr[y][x] == ' ')	
-		return (printf("Error!\nspace in map or no wall\n"), 0);
+		return (/*printf("Error!\nspace in map or no wall\n"),*/ 0);
 
 	return (1);
 }
