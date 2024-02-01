@@ -2,7 +2,7 @@
 
 int check_map_valid(t_map *s_map)
 {
-	show_s_player(&s_map->player_start_pos);
+	//show_s_player(&s_map->player_start_pos);
 	if (!check_player(&s_map->player_start_pos))
 	{
 		c_red();

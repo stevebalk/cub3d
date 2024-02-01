@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:32:38 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 16:49:37 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:53:40 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_player_pos find_player_and_get_pos(char **arr, char player)
 	int row;
 	int row_count;
 	int col;
-	c_yellow(); printf("find_player_and_get_pos player: %c \n", player);
+	//c_yellow(); printf("find_player_and_get_pos player: %c \n", player);
 	fflush(stdout);
 	row_count = get_arr_len(arr);
 	row = 0;
@@ -50,7 +50,7 @@ t_player_pos find_player_and_get_pos(char **arr, char player)
 	while(row < row_count)
 	{
 		col = get_pos_of_char(arr[row], player);
-		printf("col: %i\n", col);
+		//printf("col: %i\n", col);
 		if (col > -1)
 		{
 			ret_pos.view = get_player_view(player);
