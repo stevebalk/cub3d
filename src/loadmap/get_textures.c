@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 12:09:01 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 12:23:47 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int check_path(char *path)
     fd = open(path, O_RDONLY);
     if (fd == -1)
     {
-		c_red();
-        printf("Error\ntexture file: %s is not valid\n", path);
-		c_reset();
+		// c_red();
+        // printf("Error\ntexture file: %s is not valid\n", path);
+		// c_reset();
         res = 0;
     }
 	else

@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 11:59:46 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 12:22:19 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,9 +265,7 @@ int get_max_line(char **arr, int start, int end)
 	while(start < end && arr[start])
 	{
 		if (get_len_without_spaces_from_end(arr[start]) > max)
-		{
 			max = get_len_without_spaces_from_end(arr[start]);
-		}
 		start++;
 	}
 	//printf("get_max_line: %i\n", max);

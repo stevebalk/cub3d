@@ -159,16 +159,16 @@ int check_map(t_map *s_map)
 {
 	char **f_map;
 	int ret;
-	int i;
-	int len;
+	unsigned long i;
+	unsigned long len;
 	sleep(1);
 
 	f_map = copy_arr(s_map->map);
 	ret = set_and_fill_first_f(f_map);
 
 	len = get_arr_len(f_map) * get_max_line(f_map, 0, get_arr_len(f_map));
-	i = -1;
-	while (i++ < len)
+	i = 0;
+	while (i++ <= len)
 	{
 		if (!flood(f_map))
 		{
