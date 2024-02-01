@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 15:15:01 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 14:56:28 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 15:02:42 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void free_s_map(t_map *s_map)
 {
-	show_arr(s_map->textures);
+	//show_arr(s_map->textures);
 	
 	if (s_map->textures)
 		ft_free_array((void **)s_map->textures);

@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 14:52:43 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 15:04:12 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char *get_text_path(char **arr, char *find)
 		return (ret);
 	}
 
-	show_arr(split);
+	//show_arr(split);
 
     // copy file to output if path is valid
 	//if (split[1] != NULL)
@@ -96,7 +96,7 @@ char *get_text_path(char **arr, char *find)
 		if (check_path(split[1]))
 		{
 			ret = ft_strdup(split[1]);
-			printf("ret >%s<\n", ret);
+			//printf("ret >%s<\n", ret);
 			ft_free_array((void **)split);
 			//printf("after free \n");
 			return (ret);
