@@ -161,6 +161,7 @@ int check_map(t_map *s_map)
 	int ret;
 	int i;
 	int len;
+	sleep(1);
 
 	f_map = copy_arr(s_map->map);
 	ret = set_and_fill_first_f(f_map);

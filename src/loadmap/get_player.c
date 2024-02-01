@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:32:38 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/30 14:06:01 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 12:13:07 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,9 @@ t_player_pos find_player_and_get_pos(char **arr, char player)
 // returns 0 if player pos is not valid
 int check_player(t_player_pos *player)
 {
-	c_yellow(); printf("check_player()  x: %i   y: %i  view: %i\n", player->x, player->y, player->view); c_reset();
+	//c_yellow(); printf("check_player()  x: %i   y: %i  view: %i\n", player->x, player->y, player->view); c_reset();
 	if (player->x == -1 || player->y == -1 || player->view == -1)
-	{
-		printf("Error!\nno player or player position not valid\n");
-		return (0);
-	}
+		return (printf("Error!\nno player or player position not valid\n"), 0);
 	return (1);
 }
 
@@ -108,20 +105,20 @@ t_player_pos get_player(char **arr)
 	while(i++, i < 4)
 		nesw[i] = count_char_in_arr(arr, chr[i]);
 
-	c_yellow(); printf("check_only_one_player \n");
-	c_blue();
-	printf("N: %i\nE: %i\nS: %i\nW: %i\n\n", nesw[0], nesw[1], nesw[2], nesw[3]);
-	c_reset();
+	// c_yellow(); printf("check_only_one_player \n");
+	// c_blue();
+	// printf("N: %i\nE: %i\nS: %i\nW: %i\n\n", nesw[0], nesw[1], nesw[2], nesw[3]);
+	// c_reset();
 	
 	if (nesw[0] > 1 ||  nesw[1] > 1 || nesw[2] > 1 ||  nesw[3] > 1)
 		return (get_pos(-1, -1, -1));
 	if (nesw[0] + nesw[1] + nesw[2] + nesw[3]  > 1)
 		return (get_pos(-1, -1, -1));
 
-	printf("before find_player_and_get_pos\n");
+	//printf("before find_player_and_get_pos\n");
 
 	pos = find_player_and_get_pos(arr, get_player_c(nesw));
-	show_s_player(&pos);
+	//show_s_player(&pos);
 	
 	return (pos);
 }
