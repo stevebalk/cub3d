@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/31 15:54:15 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 12:09:51 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int has_at_least_one_occurence_of_charset(char *line, char *charset)
 			res++;
 		i++;
 	}
-	c_cyan();
+	//c_cyan();
 	return (/*printf("     > res %i\n", res),*/ res);
 }
 
@@ -149,10 +149,10 @@ int get_map(t_map *s_map, char **arr)
 	t_map_lines offset;
 	map_lines = get_map_lines(arr, " 01NESW", "01NESW");
 
-	c_green(); 
-	printf("first map line: %i\nlast  map line: %i\n", map_lines.start, map_lines.end);
-	printf("check map from line: %i till %i\n", map_lines.start, map_lines.end);
-	c_reset();
+	// c_green(); 
+	// printf("first map line: %i\nlast  map line: %i\n", map_lines.start, map_lines.end);
+	// printf("check map from line: %i till %i\n", map_lines.start, map_lines.end);
+	// c_reset();
 
 	if (!check_map_lines(arr, map_lines, " 01NESW", "01NESW"))
 	{
@@ -245,7 +245,7 @@ int check_for_bad_lines(char **arr)
 		if (check_line_for_str(arr[i], "C "))
 			continue;
 		if (!check_line_for_only(arr[i], ' '))
-			return (printf("END >%s<\n", arr[i]), 0);
+			return (/*printf("END >%s<\n", arr[i]),*/ 0);
 	}
 	return (1);		
 }

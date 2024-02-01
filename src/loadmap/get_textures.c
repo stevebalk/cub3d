@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 11:53:19 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 12:09:01 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int check_path(char *path)
 // return the path of of the find argument, size is the array size i.e. 2 if ("NO ./texure")
 char *get_text_path(char **arr, char *find)
 {
-    c_yellow(); printf("\nget_text_path of: %s\n", find); c_reset();
+    //c_yellow(); printf("\nget_text_path of: %s\n", find); c_reset();
     /*
     1. Split ' ' 
     2. wenn array len != 2 ist --> Error
@@ -113,10 +113,10 @@ int get_text_paths_master(char **tex_paths, char **splitted_file, char **tex_nam
     while(i++, i < 4)
 	{
         tex_paths[i] = get_text_path(splitted_file, tex_names[i]);
-		printf("i: %i  \n", i);
+		//printf("i: %i  \n", i);
 	}
     tex_paths[4] = NULL;
-    show_arr(tex_paths);
+    //show_arr(tex_paths);
     
     //printf(" > check arr: %i\n", check_if_arr_entrys_valid(tex_paths, 4));
 	return(check_if_arr_entrys_valid(tex_paths, 4));
