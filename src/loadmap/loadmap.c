@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 15:32:02 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:03:16 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int load_map(t_map *s_map, char **argv)
 	if (!get_map(s_map, splitted_file))
 		return(printf("Error!\nmap is not valid\n"), ft_free_array((void **)splitted_file), 0);
 	if (!check_after_map(s_map, splitted_file))
-		return(printf("Error!\ncontent after map lines\n"), 0);
+		return(printf("Error!\ncontent after map lines\n"), ft_free_array((void **)splitted_file), 0);
 	if (!check_for_bad_lines(splitted_file))
-		return(printf("Error!\nline with non game related content\n"), 0);
+		return(printf("Error!\nline with non game related content\n"), ft_free_array((void **)splitted_file), 0);
 	
 	ft_free_array((void **)splitted_file);
 	return (1);
