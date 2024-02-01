@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 12:06:00 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 12:19:46 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char **load_map_file(char *file)
     return (tmp);
 }
 
+
 int load_map(t_map *s_map, char **argv)
 {
 	char **splitted_file;
@@ -49,9 +50,7 @@ int load_map(t_map *s_map, char **argv)
 		return(printf("Error!\nnot allowed tab in file\n"), ft_free_array((void **)splitted_file), 0);
 	if (!get_text_paths_master(s_map->textures, splitted_file, s_map->tex_names))
 		return(printf("Error!\ntexture paths are not valid\n"), ft_free_array((void **)splitted_file), 0);
-    s_map->F = get_color_from_str(splitted_file, 'F');
-	s_map->C = get_color_from_str(splitted_file, 'C');
-
+	get_color_master(s_map, splitted_file);
     if (!check_color(s_map->F))
 		return(printf("Error!\ninvalid floor color\n"), ft_free_array((void **)splitted_file), 0);
 	if (!check_color(s_map->C))
