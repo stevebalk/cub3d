@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 12:43:42 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:32:08 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int get_line_of_chars(char **arr, char *charset, char *charset2, int rev)
 		if (check_line_for_chars(arr[i], charset) && has_at_least_one_occurence_of_charset(arr[i], charset2))
 			return (/*printf("> ret %i   arr[%i] >%s< \n", i, i, arr[i]),*/ i);
 		i += step;
+		if (step == -1)
+			break;
 	}
 	return (/*printf("> ret -1\n"),*/ -1);
 }
@@ -67,6 +69,7 @@ int get_line_of_chars(char **arr, char *charset, char *charset2, int rev)
 // returns the start and end line number of the map
 t_map_lines get_map_lines(char **arr, char *charset, char *charset2)
 {
+	//printf("get_map_lines\n");
 	t_map_lines lines;
 	lines.start = get_line_of_chars(arr, charset, charset2, 0);
 	lines.end = get_line_of_chars(arr, charset, charset2, 1);
@@ -80,23 +83,23 @@ int check_map_lines(char **arr, t_map_lines map_lines, char *charset, char *char
 	int i;
 	int res;
 
-	if (map_lines.start == -1 || map_lines.end == -1 )
+	if ((map_lines.start == -1 || map_lines.end == -1) || (map_lines.start == map_lines.end))
 		return (0);
 	res = 1;
 	i = map_lines.start;
 	while(i < map_lines.end && arr[i])
 	{
-		//c_purple();printf("\n%i >%s<\n", i, arr[i]);c_reset();
+		c_purple();printf("\n%i >%s<\n", i, arr[i]);c_reset();
 		if (!check_line_for_chars(arr[i], charset) || !has_at_least_one_occurence_of_charset(arr[i], charset2))
 		{
 			res = 0;
-			//c_red();printf("BREAK!!! \n\n");
+			c_red();printf("BREAK!!! \n\n");
 			break;
 		}
 		i++;
 	}
-	//c_red();
-	//printf("check_map_lines  line: %i   res: %i\n", i, res);
+	c_red();
+	printf("check_map_lines  line: %i   res: %i\n", i, res);
 	return (res);
 }
 
@@ -146,15 +149,17 @@ void copy_arr_to_map(char **arr, t_map *s_map, t_map_lines lines, int offset)
 // returns 1 if map is ok; handles alle map loading
 int get_map(t_map *s_map, char **arr)
 {
-	//c_yellow();printf("get_map\n"); c_reset();
+	// c_yellow();printf("get_map\n"); c_reset();
+	// if (arr)
+	// 	printf("arr\n");
 	t_map_lines map_lines;
 	t_map_lines offset;
 	map_lines = get_map_lines(arr, " 01NESW", "01NESW");
 
-	// c_green(); 
-	// printf("first map line: %i\nlast  map line: %i\n", map_lines.start, map_lines.end);
-	// printf("check map from line: %i till %i\n", map_lines.start, map_lines.end);
-	// c_reset();
+	c_green(); 
+	printf("first map line: %i\nlast  map line: %i\n", map_lines.start, map_lines.end);
+	printf("check map from line: %i till %i\n", map_lines.start, map_lines.end);
+	c_reset();
 
 	if (!check_map_lines(arr, map_lines, " 01NESW", "01NESW"))
 	{

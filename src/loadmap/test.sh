@@ -18,7 +18,7 @@ end=$2
 make san
 echo -e "${c_cyan}sanitize"
 
-sleep 3
+sleep 1
 for (( i=start; i<=end; i++ ))
 do
    echo -e "${c_green}Map: ${c_yellow}m$i.cub${c_red}"
@@ -33,7 +33,7 @@ done
 make
 echo -e "${c_cyan}leaks"
 
-sleep 3
+sleep 1
 for (( i=start; i<=end; i++ ))
 do
    echo -e "LEAKS ${c_green}Map: ${c_yellow}m$i.cub${c_red}"

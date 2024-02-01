@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 16:03:16 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:29:13 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int load_map(t_map *s_map, char **argv)
 		return(printf("Error!\ninvalid floor color\n"), ft_free_array((void **)splitted_file), 0);
 	if (!check_color(s_map->C))
 		return(printf("Error!\ninvalid ceil color\n"), ft_free_array((void **)splitted_file), 0);
+	//printf("---------------\n");
 	if (!get_map(s_map, splitted_file))
 		return(printf("Error!\nmap is not valid\n"), ft_free_array((void **)splitted_file), 0);
 	if (!check_after_map(s_map, splitted_file))

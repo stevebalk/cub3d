@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 16:14:13 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:18:00 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_color get_color_from_str(char **arr, char find)
 
     tmp_line = ft_strchr(arr[line],find);
     split = ft_split(++tmp_line, ',');
-    show_arr(split);
+    //show_arr(split);
 	if (get_arr_len(split) == 3)
 	{
 		if (check_color_section(split[0]) && check_line_for_chars(split[0], " 0123456789"))
