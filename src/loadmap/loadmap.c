@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 12:24:29 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/01 13:50:14 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int load_map(t_map *s_map, char **argv)
 {
 	char **splitted_file;
 	splitted_file = load_map_file(argv[1]);
+	if (!splitted_file)
+		return (0);
 	if (count_char_in_arr(splitted_file, '\t'))
 		return(printf("Error!\nnot allowed tab in file\n"), ft_free_array((void **)splitted_file), 0);
 	if (!get_text_paths_master(s_map->textures, splitted_file, s_map->tex_names))
