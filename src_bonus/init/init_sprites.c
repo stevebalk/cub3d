@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:59:40 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 14:06:29 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 15:36:57 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	read_sprite_textures(t_cub *cub)
 		if (!read_xpm(cub, &cub->sprite_textures[i],
 				cub->sprite_paths[i]))
 		{
-			exit_error(cub, 0, "Error: Texture could not be read!");
+			exit_error(cub, 0, "Error\nSprite texture invalid!");
 		}
 		i++;
 	}

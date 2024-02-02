@@ -6,22 +6,11 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:32:38 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 15:42:25 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:56:45 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "j_header.h"
-
-// t_player_pos	get_pos(int x, int y, int view)
-// {
-// 	t_player_pos	pos;
-
-// 	pos.x = x;
-// 	pos.y = y;
-// 	pos.view = view;
-// 	//return (pos);
-// 	return ((t_player_pos){x, y, view});
-// }
 
 // return i.e. 90 if c == E
 int	get_player_view(char c)
