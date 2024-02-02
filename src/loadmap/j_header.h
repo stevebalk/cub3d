@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 15:05:47 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:26:32 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ void get_color_master(t_map *s_map, char **splitted_file);
 int get_map(t_map *s_map, char **arr);
 int check_after_map(t_map *s_map, char **arr);
 int check_for_bad_lines(char **arr);
+t_map_lines	get_map_lines(char **arr, char *charset, char *charset2);
+
+// check_map
+int check_map_valid(t_map *s_map);
+int	check_map_lines(char **arr, t_map_lines map_lines,
+	char *charset, char *charset2);
+int	check_after_map(t_map *s_map, char **arr);
 
 // get_textures
 char *get_text_path(char **arr, char *find);
@@ -62,6 +69,9 @@ void replace_char_at_pos(char **arr, int row, int col, char c);
 t_xy get_xy_pos(int x, int y);
 t_xy get_pos_of_char_in_arr(char **arr, char c);
 int	check_only_c_before_find(char *str, char c, char find);
+int	check_line_for_only(char *str, char c);
+int check_line_for_str(char *line, char *str);
+int	has_at_least_one_occurence_of_charset(char *line, char *charset);
 
 // ini
 char **ini_tex_names(void);
@@ -71,8 +81,7 @@ void ini_player_pos(t_map *s_map);
 t_player_pos get_player(char **arr);
 int check_player(t_player_pos *player);
 
-// check_map
-int check_map_valid(t_map *s_map);
+
 
 
 // level check
