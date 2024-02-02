@@ -24,7 +24,13 @@ for (( i=start; i<=end; i++ ))
 do
    echo -e "${c_green}Map: ${c_yellow}m$i.cub${c_red}"
    sleep 0.5
-   ./a.out m$i.cub >> ${out}
+   if [ $# -ge 3 ]; then
+   	   echo "file: ${out}"
+   	  ./a.out m$i.cub >> ${out}
+   else
+      ./a.out m$i.cub
+   fi
+
    echo ""
    sleep 0.5
 done
@@ -39,7 +45,12 @@ for (( i=start; i<=end; i++ ))
 do
    echo -e "LEAKS ${c_green}Map: ${c_yellow}m$i.cub${c_red}"
    sleep 0.5
-   leaks -atExit -- ./a.out m$i.cub >> ${out}
+   if [ $# -ge 3 ]; then
+   	   echo "file: ${out}"
+       leaks -atExit -- ./a.out m$i.cub >> ${out}
+   else
+       leaks -atExit -- ./a.out m$i.cub
+   fi
    echo ""
    sleep 0.5
 done
