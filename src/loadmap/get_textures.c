@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 16:12:32 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:21:17 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ int	check_path(char *path)
 	return (res);
 }
 
+int	tmp_get_line(char **arr, char *find)
+{
+	int	line;
+
+	if (get_line_of(arr, find, 0) == get_line_of(arr, find, 1))
+		line = get_line_of(arr, find, 0);
+	else
+		line = -1;
+	return (line);
+}
+
 /* return the path of of the find argument, size is the
 array size i.e. 2 if ("NO ./texure") */
 char	*get_text_path(char **arr, char *find)
@@ -36,9 +47,8 @@ char	*get_text_path(char **arr, char *find)
 
 	if (arr == NULL || find == NULL || get_line_of(arr, find, 0) == -1)
 		return (ret = ft_strdup(""), ret);
-	if (get_line_of(arr, find, 0) == get_line_of(arr, find, 1))
-		line = get_line_of(arr, find, 0);
-	else
+	line = tmp_get_line(arr, find);
+	if (line == -1)
 		return (ret = ft_strdup(""), ret);
 	if (arr[line])
 		split = ft_split(arr[line], ' ');
