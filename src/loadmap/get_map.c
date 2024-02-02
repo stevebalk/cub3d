@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 15:26:18 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:27:43 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,3 @@ int	get_map(t_map *s_map, char **arr)
 	copy_arr_to_map(arr, s_map, map_lines, offset.start);
 	return (1);
 }
-
-
-
