@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
+#    By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/02 15:52:14 by sbalk            ###   ########.fr        #
+#    Updated: 2024/02/02 16:43:56 by jopeters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,8 @@ SRC_FILES	=	main \
 				loadmap/mem \
 				loadmap/show \
 				loadmap/utils \
+				loadmap/check_fields_a \
+				loadmap/check_fields_b \
 				loadmap/translate_char_to_int_map \
 
 BSRC_FILES	=	main \

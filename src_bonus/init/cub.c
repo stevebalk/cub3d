@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/02 15:41:35 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 16:24:48 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	convert_map(t_cub *cub, t_map *map)
 	cub->wall_texture_paths[SOUTH] = map->textures[SO];
 	cub->wall_texture_paths[WEST] = map->textures[WE];
 	cub->wall_texture_paths[NORTH] = map->textures[NO];
-	cub->ceilling_color = convert_rgb_to_int(&map->C);
-	cub->floor_color = convert_rgb_to_int(&map->F);
+	cub->ceilling_color = convert_rgb_to_int(&map->c);
+	cub->floor_color = convert_rgb_to_int(&map->f);
 	cub->player.pos = (t_vec2){map->player_start_pos.x + 0.5,
 		map->player_start_pos.y + 0.5};
 	cub->player.start_direction = convert_map_dir_to_render_dir(

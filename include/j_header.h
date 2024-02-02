@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   j_header.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 17:30:41 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 16:54:03 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 #include <unistd.h>
 #include <fcntl.h> 
 #include "libft.h"
+
+# ifdef FLOOD
+#  define SHOWFLOOD 1
+# else
+#  define SHOWFLOOD 0
+# endif
 
 int load_and_check(t_map *s_map, int argc, char **argv);
 
@@ -29,10 +35,21 @@ void get_color_master(t_map *s_map, char **splitted_file);
 int get_map(t_map *s_map, char **arr);
 int check_after_map(t_map *s_map, char **arr);
 int check_for_bad_lines(char **arr);
+t_map_lines	get_map_lines(char **arr, char *charset, char *charset2);
+
+// check_map
+int check_map_valid(t_map *s_map);
+int	check_map_lines(char **arr, t_map_lines map_lines,
+	char *charset, char *charset2);
+int	check_after_map(t_map *s_map, char **arr);
 
 // get_textures
 char *get_text_path(char **arr, char *find);
 int get_text_paths_master(char **tex_paths, char **splitted_file);
+
+// check_fields
+int	check_near_fields(char **arr, int x, int y);
+int	check_field(char **arr, int x, int y);
 
 // show
 void show_arr(char **arr);
@@ -61,6 +78,10 @@ int get_len_without_spaces_from_end(char *line);
 void replace_char_at_pos(char **arr, int row, int col, char c);
 t_xy get_xy_pos(int x, int y);
 t_xy get_pos_of_char_in_arr(char **arr, char c);
+int	check_only_c_before_find(char *str, char c, char find);
+int	check_line_for_only(char *str, char c);
+int check_line_for_str(char *line, char *str);
+int	has_at_least_one_occurence_of_charset(char *line, char *charset);
 
 // ini
 char **ini_tex_names(void);
@@ -70,8 +91,7 @@ void ini_player_pos(t_map *s_map);
 t_player_pos get_player(char **arr);
 int check_player(t_player_pos *player);
 
-// check_map
-int check_map_valid(t_map *s_map);
+
 
 
 // level check
