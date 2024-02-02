@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 17:35:33 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 15:05:13 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,4 +366,19 @@ t_xy get_pos_of_char_in_arr(char **arr, char c)
 	}
 
 	return (get_xy_pos(-1, -1));
+}
+
+// return 1 if only i.e ' ' are before char find
+int	check_only_c_before_find(char *str, char c, char find)
+{
+	int	i;
+
+	i = 0;
+	while(str[i] && str[i] != find)
+	{
+		if (str[i] != c)
+			return (0);
+		i++;
+	}
+	return (1);
 }

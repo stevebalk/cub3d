@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 14:22:16 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:05:47 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int get_len_without_spaces_from_end(char *line);
 void replace_char_at_pos(char **arr, int row, int col, char c);
 t_xy get_xy_pos(int x, int y);
 t_xy get_pos_of_char_in_arr(char **arr, char c);
+int	check_only_c_before_find(char *str, char c, char find);
 
 // ini
 char **ini_tex_names(void);
