@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/01/29 13:37:22 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:24:48 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ void show_s_map(t_map *s_map)
 	show_arr(s_map->textures);
 	
 	printf("\nColor F: \n");
-	show_color(s_map->F);
+	show_color(s_map->f);
 
 	printf("\nColor C: \n");
-	show_color(s_map->C);
+	show_color(s_map->c);
 
 	printf("\nmap:");
 	show_arr(s_map->map);

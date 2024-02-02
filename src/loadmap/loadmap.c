@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 14:23:45 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:24:48 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int load_map(t_map *s_map, char **argv)
 	if (!get_text_paths_master(s_map->textures, splitted_file))
 		return(printf("Error!\ntexture path is not valid\n"), ft_free_array((void **)splitted_file), 0);
 	get_color_master(s_map, splitted_file);
-    if (!check_color(s_map->F))
+    if (!check_color(s_map->f))
 		return(printf("Error!\ninvalid floor color\n"), ft_free_array((void **)splitted_file), 0);
-	if (!check_color(s_map->C))
+	if (!check_color(s_map->c))
 		return(printf("Error!\ninvalid ceil color\n"), ft_free_array((void **)splitted_file), 0);
 	//printf("---------------\n");
 	if (!get_map(s_map, splitted_file))

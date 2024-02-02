@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 15:10:23 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:24:48 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_color	check_array_for_color(char *line, char find)
 	return (color);
 }
 
-// returns the color of find ('C' or 'F') if not color is (-1, -1, -1, -1)
+// returns the color of find ('C' or 'f') if not color is (-1, -1, -1, -1)
 t_color	get_color_from_str(char **arr, char find)
 {
 	int		line;
@@ -96,6 +96,6 @@ t_color	get_color_from_str(char **arr, char find)
 
 void	get_color_master(t_map *s_map, char **splitted_file)
 {
-	s_map->F = get_color_from_str(splitted_file, 'F');
-	s_map->C = get_color_from_str(splitted_file, 'C');
+	s_map->f = get_color_from_str(splitted_file, 'F');
+	s_map->c = get_color_from_str(splitted_file, 'C');
 }

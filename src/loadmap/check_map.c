@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 14:05:59 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 15:26:41 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:24:48 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_for_bad_lines(char **arr)
 			continue ;
 		if (check_line_for_str(arr[i], "F "))
 			continue ;
-		if (check_line_for_str(arr[i], "C "))
+		if (check_line_for_str(arr[i], "c "))
 			continue ;
 		if (!check_line_for_only(arr[i], ' '))
 			return (0);
