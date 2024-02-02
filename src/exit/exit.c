@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:52:59 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/28 12:36:10 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 13:29:46 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	free_everything(t_cub *cub)
 	{
 		if (cub->wall_textures[i].img)
 			mlx_destroy_image(cub->mlx, cub->wall_textures[i].img);
+		if (cub->wall_texture_paths[i])
+			free(cub->wall_texture_paths[i]);
 		i++;
 	}
 	if (cub->mlx && cub->win)

@@ -6,7 +6,7 @@
 #    By: jonas <jonas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/01 17:46:11 by jonas            ###   ########.fr        #
+#    Updated: 2024/02/02 14:04:15 by jonas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ WHITE = \033[0;97m
 
 SRC_FILES	=	main \
 				init/cub \
-				init/map \
 				init/mlx \
 				init/player \
 				init/textures \
