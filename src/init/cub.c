@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/02 13:50:34 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 13:55:16 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	convert_map(t_cub *cub, t_map *map)
 	cub->ceilling_color = convert_rgb_to_int(&map->C);
 	cub->floor_color = convert_rgb_to_int(&map->F);
 	cub->player.pos = (t_vec2){map->player_start_pos.x + 0.5,
-			map->player_start_pos.y + 0.5};
+		map->player_start_pos.y + 0.5};
 	cub->player.start_direction = convert_map_dir_to_render_dir(
 			&map->player_start_pos);
 	ft_free_array((void **)map->map);

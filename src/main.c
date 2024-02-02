@@ -6,14 +6,11 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/02 12:39:44 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 13:54:53 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// int		celling_color = 0x000000FF;
-// int		floor_color = 0x00333333;
 
 int	render_loop(t_cub *cub)
 {
