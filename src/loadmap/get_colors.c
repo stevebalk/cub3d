@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 14:20:00 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:27:40 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_color check_array_for_color(char *line, char find)
 	else
 		color = get_color(-1, -1, -1, -1);
 	ft_free_array((void **)split);
-	free(tmp_line);
+	//free(tmp_line);
 	return (color);
 }
 
