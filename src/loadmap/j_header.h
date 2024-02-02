@@ -6,17 +6,23 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 15:26:32 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:43:12 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef J_HEADER_H
 # define J_HEADER_H
-#include "j_structs.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h> 
-#include "../../libs/libft/include/libft.h"
+# include "j_structs.h"
+# include <stdio.h>
+# include <unistd.h>
+# include <fcntl.h> 
+# include "../../libs/libft/include/libft.h"
+
+# ifdef FLOOD
+#  define SHOWFLOOD 1
+# else
+#  define SHOWFLOOD 0
+# endif
 
 int load_and_check(t_map *s_map, int argc, char **argv);
 
@@ -40,6 +46,10 @@ int	check_after_map(t_map *s_map, char **arr);
 // get_textures
 char *get_text_path(char **arr, char *find);
 int get_text_paths_master(char **tex_paths, char **splitted_file);
+
+// check_fields
+int	check_near_fields(char **arr, int x, int y);
+int	check_field(char **arr, int x, int y);
 
 // show
 void show_arr(char **arr);
