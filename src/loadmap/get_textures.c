@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 16:06:34 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:12:32 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ char	*get_text_path(char **arr, char *find)
 	char	*ret;
 	int		line;
 
-	ret = NULL;
-	if (arr == NULL || find == NULL)
-		return (ret = ft_strdup(""), ret);
-	if (get_line_of(arr, find, 0) == -1)
+	if (arr == NULL || find == NULL || get_line_of(arr, find, 0) == -1)
 		return (ret = ft_strdup(""), ret);
 	if (get_line_of(arr, find, 0) == get_line_of(arr, find, 1))
 		line = get_line_of(arr, find, 0);
@@ -47,35 +44,13 @@ char	*get_text_path(char **arr, char *find)
 		split = ft_split(arr[line], ' ');
 	else
 		return (ret = ft_strdup(""), ret);
-	if (get_arr_len(split) != 2)
-	{
-		// ft_free_array((void **)split);
-		// ret = ft_strdup("");
-		// return (ret);
+	if (get_arr_len(split) != 2
+		|| ft_strncmp(find, split[0], get_max_of_strlen(find, split[0])) != 0)
 		return (ret = ft_strdup(""), ft_free_array((void **)split), ret);
-	}
-	if (ft_strncmp(find, split[0], get_max_of_strlen(find, split[0])) != 0)
-	{
-		// ft_free_array((void **)split);
-		// ret = ft_strdup("");
-		// return (ret);
-		return (ret = ft_strdup(""), ft_free_array((void **)split), ret);
-	}
 	if (check_path(split[1]))
-	{
-		// ret = ft_strdup(split[1]);
-		// ft_free_array((void **)split);
-		// return (ret);
 		return (ret = ft_strdup(split[1]), ft_free_array((void **)split), ret);
-	}
 	else
-	{
-		// ft_free_array((void **)split);
-		// ret = ft_strdup("");
-		// return (ret);
 		return (ret = ft_strdup(""), ft_free_array((void **)split), ret);
-
-	}
 	ret = ft_strdup("");
 	return (ret);
 }
