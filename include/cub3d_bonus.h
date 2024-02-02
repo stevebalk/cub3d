@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/01 17:00:26 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 15:47:01 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "mlx.h"
 # include "mlx_int.h"
+# include "j_header.h"
 # include <math.h>
 # include <fcntl.h>
 # include <errno.h>
@@ -54,8 +55,13 @@
 // How many tiles are shown in every direction
 #define MINIMAP_VISIBLE_TILES 10
 #define MINIMAP_MARGIN_X_PERCENT 1
-#define MINIMAP_MARGIN_Y_PERCENT 1	int x;
-	int y;
+#define MINIMAP_MARGIN_Y_PERCENT 1
+
+#define MINIMAP_COLOR_BLOCKED 0x00FF0000
+#define MINIMAP_COLOR_FREE 0x00666666
+#define MINIMAP_COLOR_PLAYER 0x00FFFF00
+#define MINIMAP_COLOR_DIR_VEC 0x00FFFFFF
+
 #define DEBUG_OVERLAY 1
 
 /******************* RAYCAST **********************/
@@ -76,13 +82,6 @@
 #define NORTH 3
 #define PI 3.14159265359
 #define TWO_PI 6.28318530718
-#define TILE_SIZE 16 // FOR MINIMAP
-#define MAP_WIDTH 24 // DELETE LATER
-#define MAP_HEIGHT 24 // DELETE LATER
-#define TEST_MAP_SIZE_X 24 // DELETE LATER
-#define TEST_MAP_SIZE_Y 24 // DELETE LATER
-
-
 
 /********************************************************************/
 /*                          OWN STRUCTS                             */
@@ -285,7 +284,7 @@ int		is_flag_set(unsigned int flags, unsigned int bit_mask);
 /*                          INIT                                    */
 /********************************************************************/
 
-void	init_cub(t_cub *cub);
+void	init_cub(t_cub *cub, t_map *map);
 void	init_map(t_cub *cub);
 void	init_mlx_window(t_cub *cub);
 void	init_mlx_image(t_cub *cub, t_data **img, t_vec2i size);
