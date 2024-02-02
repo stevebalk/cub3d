@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:55:38 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/24 12:03:30 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 12:59:56 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	init_player(t_cub *cub)
 {
-	cub->player.pos.x = 2;
-	cub->player.pos.y = 2;
 	cub->player.velocity.x = 0;
 	cub->player.velocity.y = 0;
 	cub->player.dir.x = 1;

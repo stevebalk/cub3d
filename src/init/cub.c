@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/02 12:49:19 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 13:50:34 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,18 @@ int	convert_map_dir_to_render_dir(t_player_pos *player)
 void	convert_map(t_cub *cub, t_map *map)
 {
 	cub->map = translate_char_to_int_map(cub, map->map);
-	cub->wall_texture_paths[0] = map->textures[EA];
-	cub->wall_texture_paths[1] = map->textures[SO];
-	cub->wall_texture_paths[2] = map->textures[WE];
-	cub->wall_texture_paths[3] = map->textures[NO];
+	cub->wall_texture_paths[EAST] = map->textures[EA];
+	cub->wall_texture_paths[SOUTH] = map->textures[SO];
+	cub->wall_texture_paths[WEST] = map->textures[WE];
+	cub->wall_texture_paths[NORTH] = map->textures[NO];
 	cub->ceilling_color = convert_rgb_to_int(&map->C);
 	cub->floor_color = convert_rgb_to_int(&map->F);
-	cub->player.pos = (t_vec2){map->player_start_pos.x,
-			map->player_start_pos.y};
-	cub->player.start_direction = map->player_start_pos.view;
+	cub->player.pos = (t_vec2){map->player_start_pos.x + 0.5,
+			map->player_start_pos.y + 0.5};
+	cub->player.start_direction = convert_map_dir_to_render_dir(
+			&map->player_start_pos);
+	ft_free_array((void **)map->map);
+	free(map->textures);
 }
 
 void	init_cub(t_cub *cub, t_map *map)
@@ -52,6 +55,6 @@ void	init_cub(t_cub *cub, t_map *map)
 	cub->win_center = (t_vec2i){cub->win_size.x / 2, cub->win_size.y / 2};
 	init_player(cub);
 	init_mlx(cub);
-	init_mlx_hooks(cub);
 	init_textures(cub);
+	init_mlx_hooks(cub);
 }
