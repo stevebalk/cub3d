@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 16:24:48 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:57:44 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ int load_and_check(t_map *s_map, int argc, char **argv)
 	return (1);
 }
 
+#ifdef TEST
 int main(int argc, char **argv)
 {   
 	t_map map;
@@ -141,7 +142,7 @@ int main(int argc, char **argv)
 	
     return(check_res);
 }
-
+#endif
 
 /*
 cc -D BUFFER_SIZE=1 loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
