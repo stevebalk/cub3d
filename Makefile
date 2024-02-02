@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
+#    By: jonas <jonas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/01 17:30:24 by sbalk            ###   ########.fr        #
+#    Updated: 2024/02/01 17:46:11 by jonas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIB_NAME	= libft.a
 MLX_DIR		= libs/minilibx-linux/
 MLX_NAME	= libmlx.a
 CC			= cc
-CFLAGS		= -Werror -Wall -Wextra -O3 -g
+CFLAGS		= -O3#-Werror -Wall -Wextra -O3 -g
 # CFLAGS		= -Werror -Wall -Wextra -O3
 # CFLAGS		= -Werror -Wall -Wextra -fsanitize=address -g
 RM			= rm
@@ -135,18 +135,18 @@ $(NAME):	$(OBJ)
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
 #			Linux
-			@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+			#@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
 			# MacOS
-			# @$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME)
 			@echo "$(GREEN)Created $(NAME)!$(DEF_COLOR)"
 
 $(BONUS):	$(BOBJ)
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
 			# Linux
-			@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME_BONUS)
+			#@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME_BONUS)
 #			MacOS
-			# @$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME_BONUS)
+			@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME_BONUS)
 			@echo "$(GREEN)Created $(NAME_BONUS)!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
