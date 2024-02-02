@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/01 17:55:21 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 12:07:11 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 # include "libft.h"
 # include "mlx.h"
 # include "mlx_int.h"
+# include "j_header.h"
 # include <math.h>
 # include <fcntl.h>
 # include <errno.h>
-# include "j_header.h"
 
 /********************************************************************/
 /*                           CONFIG                                 */
@@ -209,7 +209,7 @@ void	init_mlx_image(t_cub *cub, t_data **img, t_vec2i size);
 void	init_mlx(t_cub *cub);
 void	init_textures(t_cub *cub);
 void	init_map(t_cub *cub);
-void	init_cub(t_cub *cub);
+void	init_cub(t_cub *cub, t_map *map);
 
 /********************************************************************/
 /*                          DRAWING                                 */

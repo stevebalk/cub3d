@@ -6,14 +6,14 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:16:55 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/01 18:17:14 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 12:39:44 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		celling_color = 0x000000FF;
-int		floor_color = 0x00333333;
+// int		celling_color = 0x000000FF;
+// int		floor_color = 0x00333333;
 
 int	render_loop(t_cub *cub)
 {
@@ -36,17 +36,8 @@ int	main(int argc, char **argv)
 		free_s_map(&map);
 		return (EXIT_FAILURE);
 	}
-	ft_bzero(&cub, sizeof(t_cub));
-	cub.wall_texture_paths[0] = "textures/wall_1.xpm";
-	cub.wall_texture_paths[1] = "textures/wall_2.xpm";
-	cub.wall_texture_paths[2] = "textures/wall_3.xpm";
-	cub.wall_texture_paths[3] = "textures/wall_4.xpm";
-
-	cub.map = translate_char_to_int_map(&cub, map.map);
-	init_cub(&cub);
+	init_cub(&cub, &map);
 	mlx_do_key_autorepeatoff(cub.mlx);
-	cub.ceilling_color = celling_color;
-	cub.floor_color = floor_color;
 	mlx_loop_hook(cub.mlx, render_loop, &cub);
 	mlx_loop(cub.mlx);
 	return (0);

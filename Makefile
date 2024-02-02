@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/01 17:30:24 by sbalk            ###   ########.fr        #
+#    Updated: 2024/02/02 11:55:02 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ WHITE = \033[0;97m
 
 SRC_FILES	=	main \
 				init/cub \
-				init/map \
 				init/mlx \
 				init/player \
 				init/textures \
