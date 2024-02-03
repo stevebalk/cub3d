@@ -1,9 +1,12 @@
 /* Todo:
-Wednesday:
+
+- nur 1 ARGV 
+- Checken ob .cup ein programm ist ... directory etc.
+
 - check for a lot of possible map problems. (with leaks)
 - function for player start pos 		--> finished
 - player start pos in show_s_map		--> finished
-- floodfill implementing
+- floodfill implementing				--> finished
 - map (if after last wall on the right side offset)  --> finished
 - check file ending ".cup"   --> finished
 
