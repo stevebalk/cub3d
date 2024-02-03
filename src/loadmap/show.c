@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 16:24:48 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/03 16:02:01 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void show_s_map(t_map *s_map)
 	show_s_player(&s_map->player_start_pos);
 }
 
-void show_s_player(t_player_pos *s_player)
+void show_s_player(t_play_pos *s_player)
 {
 	printf("\n--- show_s_player ---\n");;
 	printf("Player    X: %i\n", s_player->x);
