@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:02:39 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/03 16:09:30 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int			has_at_least_one_occurence_of_charset(char *line, char *charset);
 // ini
 char		**ini_tex_names(void);
 void		ini_player_pos(t_map *s_map);
+void		ini_map(t_map *s_map);
 
 // get_player
 t_play_pos	get_player(char **arr);
