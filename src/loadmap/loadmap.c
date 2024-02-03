@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:17:40 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/03 16:19:07 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	load_map(t_map *s_map, char **argv)
 			ft_free_array((void **)splitted_file), 0);
 	if (!get_text_paths_master(s_map->textures, splitted_file))
 		return (ft_free_array((void **)splitted_file), 0);
-	if (!get_color_master(s_map, splitted_file))
+	if (!get_check_color_master(s_map, splitted_file))
 		return (ft_free_array((void **)splitted_file), 0);
 	if (!get_map(s_map, splitted_file))
 		return (printf("Error!\nmap is not valid\n"),
