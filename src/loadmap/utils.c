@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 15:25:29 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/03 16:13:04 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,19 +106,17 @@ int get_max_of_strlen(char *s1, char *s2)
 }
 
 // return 1 if all entry till arr_len are !NULL
-int check_if_arr_entrys_valid(char **arr, int arr_len)
+int	check_if_arr_entrys_valid(char **arr, int arr_len)
 {
-    int i;
+	int	i;
 
-    i = -1;
-    while (i++, i < arr_len)
-    {
+	i = -1;
+	while (i++, i < arr_len)
+	{
 		if (ft_strlen(arr[i]) == 0)
-			return 0;
-        // if (!arr[i])
-        //     return (0);
-    }
-    return (1);
+			return (printf("Error!\ntexture path is not valid\n"), 0);
+	}
+	return (1);
 }
 
 // returns the count of a char in a string

@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:09:30 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/03 16:15:02 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			load_and_check(t_map *s_map, int argc, char **argv);
 // get_colors
 int			check_color(t_color color);
 t_color		get_color_from_str(char **arr, char find);
-void		get_color_master(t_map *s_map, char **splitted_file);
+int			get_check_color_master(t_map *s_map, char **splitted_file);
 
 // get_map
 int			get_map(t_map *s_map, char **arr);
