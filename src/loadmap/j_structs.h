@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:35 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:02:01 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/03 16:03:31 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_xy
 }	t_xy;
 
 // coordinates of the player; view in °   0° is norh  90° is east etc.
-typedef struct s_player_pos
+typedef struct s_play_pos
 {
 	int	x;
 	int	y;
@@ -55,7 +55,7 @@ typedef struct s_map
 	t_color			c;
 	t_tex			e_texures;
 	char			**textures;
-	t_play_pos	player_start_pos;
+	t_play_pos		player_start_pos;
 	char			**map;
 }	t_map;
 

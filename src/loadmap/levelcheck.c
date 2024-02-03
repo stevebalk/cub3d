@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   levelcheck.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:25:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 16:42:58 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/03 16:04:33 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	set_first_f(char **arr)
 	replace_char_in_arr(arr, 'S', 'F');
 	replace_char_in_arr(arr, 'W', 'F');
 }
-
-
 
 int	flood(char **arr)
 {
@@ -70,7 +68,6 @@ int	check_map(t_map *s_map)
 
 	f_map = copy_arr(s_map->map);
 	ret = set_and_fill_first_f(f_map);
-
 	len = get_arr_len(f_map) * get_max_line(f_map, 0, get_arr_len(f_map));
 	i = 0;
 	while (i++ <= len)
