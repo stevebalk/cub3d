@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   j_structs.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:35 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 16:53:11 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:09:17 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ typedef struct s_xy
 }	t_xy;
 
 // coordinates of the player; view in °   0° is norh  90° is east etc.
-typedef struct s_player_pos
+typedef struct s_play_pos
 {
 	int	x;
 	int	y;
 	int	view;
-}	t_player_pos;
+}	t_play_pos;
 
 typedef struct s_color
 {
@@ -51,12 +51,12 @@ typedef struct s_color
 
 typedef struct s_map
 {
-	t_color			f;
-	t_color			c;
-	t_tex			e_texures;
-	char			**textures;
-	t_player_pos	player_start_pos;
-	char			**map;
+	t_color		f;
+	t_color		c;
+	t_tex		e_texures;
+	char		**textures;
+	t_play_pos	player_start_pos;
+	char		**map;
 }	t_map;
 
 #endif
