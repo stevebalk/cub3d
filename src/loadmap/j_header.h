@@ -6,17 +6,17 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 16:54:03 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:43:12 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef J_HEADER_H
 # define J_HEADER_H
-#include "j_structs.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h> 
-#include "libft.h"
+# include "j_structs.h"
+# include <stdio.h>
+# include <unistd.h>
+# include <fcntl.h> 
+# include "../../libs/libft/include/libft.h"
 
 # ifdef FLOOD
 #  define SHOWFLOOD 1

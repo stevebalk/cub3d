@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jonas <jonas@student.42.fr>                +#+  +:+       +#+         #
+#    By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/02 14:04:15 by jonas            ###   ########.fr        #
+#    Updated: 2024/02/02 16:43:56 by jopeters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIB_NAME	= libft.a
 MLX_DIR		= libs/minilibx-linux/
 MLX_NAME	= libmlx.a
 CC			= cc
-CFLAGS		= -O3#-Werror -Wall -Wextra -O3 -g
+CFLAGS		= -Werror -Wall -Wextra -O3
 # CFLAGS		= -Werror -Wall -Wextra -O3
 # CFLAGS		= -Werror -Wall -Wextra -fsanitize=address -g
 RM			= rm
@@ -78,6 +78,8 @@ SRC_FILES	=	main \
 				loadmap/mem \
 				loadmap/show \
 				loadmap/utils \
+				loadmap/check_fields_a \
+				loadmap/check_fields_b \
 				loadmap/translate_char_to_int_map \
 
 BSRC_FILES	=	main \

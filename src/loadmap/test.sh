@@ -14,6 +14,7 @@ echo "===================="
 
 start=$1
 end=$2
+out=$3
 
 make san
 echo -e "${c_cyan}sanitize"
@@ -22,10 +23,16 @@ sleep 1
 for (( i=start; i<=end; i++ ))
 do
    echo -e "${c_green}Map: ${c_yellow}m$i.cub${c_red}"
-   sleep 1
-   ./a.out m$i.cub
+   sleep 0.5
+   if [ $# -ge 3 ]; then
+   	   echo "file: ${out}"
+   	  ./a.out m$i.cub >> ${out}
+   else
+      ./a.out m$i.cub
+   fi
+
    echo ""
-   sleep 0.1
+   sleep 0.5
 done
 
 
@@ -37,10 +44,15 @@ sleep 1
 for (( i=start; i<=end; i++ ))
 do
    echo -e "LEAKS ${c_green}Map: ${c_yellow}m$i.cub${c_red}"
-   sleep 1
-   leaks -atExit -- ./a.out m$i.cub
+   sleep 0.5
+   if [ $# -ge 3 ]; then
+   	   echo "file: ${out}"
+       leaks -atExit -- ./a.out m$i.cub >> ${out}
+   else
+       leaks -atExit -- ./a.out m$i.cub
+   fi
    echo ""
-   sleep 2
+   sleep 0.5
 done
 
 # make san

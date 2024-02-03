@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 17:35:33 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 15:25:29 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,4 +366,67 @@ t_xy get_pos_of_char_in_arr(char **arr, char c)
 	}
 
 	return (get_xy_pos(-1, -1));
+}
+
+// return 1 if only i.e ' ' are before char find
+int	check_only_c_before_find(char *str, char c, char find)
+{
+	int	i;
+
+	i = 0;
+	while(str[i] && str[i] != find)
+	{
+		if (str[i] != c)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+// returns 1 if the str contains only c
+int	check_line_for_only(char *str, char c)
+{
+	while (*str)
+	{
+		if (*str == c)
+			str++;
+		else
+			return (0);
+	}
+	return (1);	
+}
+
+// return 1 if str is in line
+int check_line_for_str(char *line, char *str)
+{
+	// int i;
+
+	// i = 0;
+	while(*line)
+	{
+		//printf("check_line_for_str >%s<   >%s<\n", line, str);
+		if (ft_strncmp(line, str, ft_strlen(str)) == 0)
+			return (1);
+		line++;
+	}
+	return (0);
+}
+
+// return the number of chars of charset in line
+int	has_at_least_one_occurence_of_charset(char *line, char *charset)
+{
+	int	i;
+	int	res;
+
+	res = 0;
+	if (ft_strlen(line) == 0)
+		return (0);
+	i = 0;
+	while (line[i])
+	{
+		if (check_char_in_chars(line[i], charset))
+			res++;
+		i++;
+	}
+	return (res);
 }

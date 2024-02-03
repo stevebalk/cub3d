@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loadmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/01 17:36:11 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/02 16:57:44 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int load_map(t_map *s_map, char **argv)
 	if (!get_text_paths_master(s_map->textures, splitted_file))
 		return(printf("Error!\ntexture path is not valid\n"), ft_free_array((void **)splitted_file), 0);
 	get_color_master(s_map, splitted_file);
-    if (!check_color(s_map->F))
+    if (!check_color(s_map->f))
 		return(printf("Error!\ninvalid floor color\n"), ft_free_array((void **)splitted_file), 0);
-	if (!check_color(s_map->C))
+	if (!check_color(s_map->c))
 		return(printf("Error!\ninvalid ceil color\n"), ft_free_array((void **)splitted_file), 0);
 	//printf("---------------\n");
 	if (!get_map(s_map, splitted_file))
@@ -126,22 +126,23 @@ int load_and_check(t_map *s_map, int argc, char **argv)
 	return (1);
 }
 
-// int main(int argc, char **argv)
-// {   
-// 	t_map map;
+#ifdef TEST
+int main(int argc, char **argv)
+{   
+	t_map map;
 
-// 	int check_res;
-// 	check_res = load_and_check(&map, argc, argv);
-// 	if (check_res)
-// 		printf("run GAME \n");
+	int check_res;
+	check_res = load_and_check(&map, argc, argv);
+	if (check_res)
+		printf("run GAME \n");
 
-// 	free_s_map(&map);
-// 	c_green();
-// 	printf("-- programm END --\n\n");
+	free_s_map(&map);
+	c_green();
+	printf("-- programm END --\n\n");
 	
-//     return(check_res);
-// }
-
+    return(check_res);
+}
+#endif
 
 /*
 cc -D BUFFER_SIZE=1 loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
