@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:15:02 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/03 16:46:17 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int			check_field(char **arr, int x, int y);
 void		show_arr(char **arr);
 void		show_color(t_color color);
 void		show_s_map(t_map *s_map);
-void		show_s_player(t_play_pos *s_player);
 void		show_map(char **arr);
 
 // util 
