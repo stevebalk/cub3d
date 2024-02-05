@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:59 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 21:07:31 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/05 16:42:27 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	toggle_mouse_input(t_cub *cub)
 
 int	key_press(int keycode, t_cub *cub)
 {
-	if (keycode == XK_F3)
-		toggle_flag(&cub->flags, FLAG_RESOLUTION_MODE);
-	if (keycode == XK_F2)
-		toggle_flag(&cub->flags, FLAG_DEBUG_OVERLAY);
 	if (keycode == XK_F1)
 		toggle_mouse_input(cub);
+	else if (keycode == XK_F2)
+		toggle_flag(&cub->flags, FLAG_DEBUG_OVERLAY);
+	else if (keycode == XK_F3)
+		toggle_flag(&cub->flags, FLAG_RESOLUTION_MODE);
 	if (keycode == XK_w)
 		cub->key.w = 1;
 	if (keycode == XK_s)
