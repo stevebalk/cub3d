@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/02 16:24:48 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:13:27 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	convert_rgb_to_int(t_color *color)
 	return (color->r << 16 | color->g << 8 | color->b);
 }
 
-int	convert_map_dir_to_render_dir(t_player_pos *player)
+int	convert_map_dir_to_render_dir(t_play_pos *player)
 {
 	if (player->view == 0)
 		return (NORTH);
