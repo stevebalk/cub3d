@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 14:05:59 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/05 14:29:15 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/05 14:48:34 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_map_lines	get_map_lines_master(char **arr)
 		map_lines = get_map_lines(arr, " 01NESW", "01NESW");
 	else if (BONUS_ == 1)
 		map_lines = get_map_lines(arr, " 012345NESW", "012345NESW");
-	
 	return (map_lines);
 }
 
