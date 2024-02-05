@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/05 16:11:19 by sbalk            ###   ########.fr        #
+#    Updated: 2024/02/05 16:28:20 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,6 +109,8 @@ BSRC_FILES	=	main \
 				draw/line \
 				draw/minimap \
 				draw/sprites \
+				draw/sprite_utils \
+				draw/sprite_calc \
 				error/error \
 				exit/exit \
 				flags/flag_utils \

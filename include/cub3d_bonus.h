@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/02 16:00:26 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/05 16:31:32 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 /*                           KEYS                                   */
 /********************************************************************/
 
-#define MOUSE_WHEEL_UP 4
-#define MOUSE_WHEEL_DOWN 5
+# define MOUSE_WHEEL_UP 4
+# define MOUSE_WHEEL_DOWN 5
 
 /********************************************************************/
 /*                           CONFIG                                 */
@@ -35,53 +35,53 @@
 
 /******************* GENERAL **********************/
 
-#define WIN_TITLE "Cub3D_Bonus"
-// #define WIN_WIDTH 2560
-// #define WIN_HEIGHT 1440
-#define WIN_WIDTH 640
-#define WIN_HEIGHT 480
+# define WIN_TITLE "Cub3D_Bonus"
+// # define WIN_WIDTH 2560
+// # define WIN_HEIGHT 1440
+# define WIN_WIDTH 640
+# define WIN_HEIGHT 480
 
 /******************* PLAYER **********************/
 
-#define MOUSE_SENSITIVITY 0.0005
-#define FOV 66
-#define MOVE_SPEED 4
-#define ROT_SPEED 2
+# define MOUSE_SENSITIVITY 0.0005
+# define FOV 66
+# define MOVE_SPEED 4
+# define ROT_SPEED 2
 
 /******************* MINIMAP **********************/
 
 // Size of minimap in percent (Calculated with windowsize.y)
-#define MINIMAP_SIZE_PERCENT 25
+# define MINIMAP_SIZE_PERCENT 25
 // How many tiles are shown in every direction
-#define MINIMAP_VISIBLE_TILES 10
-#define MINIMAP_MARGIN_X_PERCENT 1
-#define MINIMAP_MARGIN_Y_PERCENT 1
+# define MINIMAP_VISIBLE_TILES 10
+# define MINIMAP_MARGIN_X_PERCENT 1
+# define MINIMAP_MARGIN_Y_PERCENT 1
 
-#define MINIMAP_COLOR_BLOCKED 0x00FF0000
-#define MINIMAP_COLOR_FREE 0x00666666
-#define MINIMAP_COLOR_PLAYER 0x00FFFF00
-#define MINIMAP_COLOR_DIR_VEC 0x00FFFFFF
+# define MINIMAP_COLOR_BLOCKED 0x00FF0000
+# define MINIMAP_COLOR_FREE 0x00666666
+# define MINIMAP_COLOR_PLAYER 0x00FFFF00
+# define MINIMAP_COLOR_DIR_VEC 0x00FFFFFF
 
-#define DEBUG_OVERLAY 1
+# define DEBUG_OVERLAY 1
 
 /******************* RAYCAST **********************/
 
-#define MAX_RAY_LENGTH 100
+# define MAX_RAY_LENGTH 100
 
 /******************* SPRITES **********************/
 
-#define SPRITE_TRANSPARENCY 0x00980088
+# define SPRITE_TRANSPARENCY 0x00980088
 
 /********************************************************************/
 /*                          CONST DEFINES                           */
 /********************************************************************/
 
-#define EAST 0
-#define SOUTH 1
-#define WEST 2
-#define NORTH 3
-#define PI 3.14159265359
-#define TWO_PI 6.28318530718
+# define EAST 0
+# define SOUTH 1
+# define WEST 2
+# define NORTH 3
+# define PI 3.14159265359
+# define TWO_PI 6.28318530718
 
 /********************************************************************/
 /*                          OWN STRUCTS                             */
@@ -256,7 +256,7 @@ typedef struct s_cub
 	double			z_buffer[WIN_WIDTH];
 	t_sprite		*sprites;
 	t_sprite_calc	sc;
-	int 			sprite_count;
+	int				sprite_count;
 	char			*sprite_paths[4];
 	t_texture		sprite_textures[4];
 	t_ray			ray;
@@ -271,9 +271,9 @@ typedef struct s_cub
 /*                          FLAGS                                   */
 /********************************************************************/
 
-#define FLAG_MOUSE_CONTROL 1
-#define FLAG_DEBUG_OVERLAY 2
-#define FLAG_RESOLUTION_MODE 3
+# define FLAG_MOUSE_CONTROL 1
+# define FLAG_DEBUG_OVERLAY 2
+# define FLAG_RESOLUTION_MODE 3
 
 void	toggle_flag(unsigned int *flags, unsigned int bit_mask);
 void	set_flag(unsigned int *flags, unsigned int bit_mask);
@@ -314,9 +314,17 @@ void	draw_sprites(t_cub *cub);
 void	draw_debug_overlay(t_cub *cub, t_vec2i pos);
 
 /********************************************************************/
-/*                          DRAWING                                 */
+/*                          SPRITES                                 */
 /********************************************************************/
 
+int		is_sprite_visible(t_cub *cub, t_sprite_calc *sc);
+void	calculate_sprite_distances(t_cub *cub);
+void	sort_sprites(t_cub *cub);
+void	sprite_calc_tex_y(t_cub *cub, int i, int y);
+void	sprite_calc_tex_x(t_cub *cub, t_sprite_calc *sc, int i);
+void	sprite_projection(t_cub *cub, int i);
+void	sprite_clip_height_calc(t_cub *cub);
+void	sprite_clip_width_calc(t_cub *cub);
 
 /********************************************************************/
 /*                          PLAYER                                  */
@@ -347,7 +355,8 @@ void	set_player_plane(t_player *player, t_vec2 plane);
 void	set_player_time(t_player *player, double time);
 void	set_player_old_time(t_player *player, double old_time);
 void	set_player(t_player *player, t_vec2 pos, t_vec2 dir, t_vec2 plane);
-void	set_player_time_old_time(t_player *player, double time, double old_time);
+void	set_player_time_old_time(t_player *player, double time,
+			double old_time);
 
 /* GETTERS */
 
@@ -452,14 +461,14 @@ double	rad_to_deg(double rad);
 /*                          TIME                                    */
 /********************************************************************/
 
-double	get_time_seconds();
+double	get_time_seconds(void);
 void	calculate_delta_time(t_cub *cub);
 
 /********************************************************************/
 /*                          MAP FILE HANDLING                       */
 /********************************************************************/
 
-int	**translate_char_to_int_map(t_cub *cub, char **map);
+int		**translate_char_to_int_map(t_cub *cub, char **map);
 
 /********************************************************************/
 /*                          ERROR                                   */

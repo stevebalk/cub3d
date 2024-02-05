@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:10:12 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/02 16:00:17 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/05 16:32:26 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,38 +26,37 @@
 
 /******************* GENERAL **********************/
 
-#define WIN_TITLE "Cub3D"
-//#define WIN_WIDTH 640 * 3
-//#define WIN_HEIGHT 480 * 3
-#define WIN_WIDTH 1920
-#define WIN_HEIGHT 1080
+# define WIN_TITLE "Cub3D"
+//# define WIN_WIDTH 640 * 3
+//# define WIN_HEIGHT 480 * 3
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 /******************* PLAYER **********************/
 
-#define MOUSE_SENSITIVITY 0.05
-#define FOV 66
-#define MOVE_SPEED 0.05
-#define ROT_SPEED 0.015
+# define MOUSE_SENSITIVITY 0.05
+# define FOV 66
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 0.015
 
 /******************* DEBUG **********************/
 
-#define DEBUG_OVERLAY 1
+# define DEBUG_OVERLAY 1
 
 /******************* RAYCAST **********************/
 
-#define MAX_RAY_LENGTH 100
-
+# define MAX_RAY_LENGTH 100
 
 /********************************************************************/
 /*                          CONST DEFINES                           */
 /********************************************************************/
 
-#define EAST 0
-#define SOUTH 1
-#define WEST 2
-#define NORTH 3
-#define PI 3.14159265359
-#define TWO_PI 6.28318530718
+# define EAST 0
+# define SOUTH 1
+# define WEST 2
+# define NORTH 3
+# define PI 3.14159265359
+# define TWO_PI 6.28318530718
 
 /********************************************************************/
 /*                          OWN STRUCTS                             */
@@ -161,7 +160,6 @@ typedef struct ray
 	int			wall_hit_content;
 }				t_ray;
 
-
 /* cub3D main struct, data that 
 is used everywhere */
 typedef struct s_cub
@@ -193,7 +191,7 @@ typedef struct s_cub
 /*                          FLAGS                                   */
 /********************************************************************/
 
-#define FLAG_MOUSE_CONTROL 1
+# define FLAG_MOUSE_CONTROL 1
 
 void	toggle_flag(unsigned int *flags, unsigned int bit_mask);
 void	set_flag(unsigned int *flags, unsigned int bit_mask);
@@ -323,7 +321,7 @@ double	rad_to_deg(double rad);
 /*                          MAP FILE HANDLING                       */
 /********************************************************************/
 
-int	**translate_char_to_int_map(t_cub *cub, char **map);
+int		**translate_char_to_int_map(t_cub *cub, char **map);
 
 /********************************************************************/
 /*                          ERROR                                   */

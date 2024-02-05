@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:37 by sbalk             #+#    #+#             */
-/*   Updated: 2024/01/30 21:49:51 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/05 16:20:31 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	mouse_press(int button, int x, int y, t_cub *cub)
 	{
 		if (is_flag_set(cub->flags, FLAG_RESOLUTION_MODE)
 			&& cub->resolution >= 2)
-				cub->resolution /= 2;;
+				cub->resolution /= 2;
 	}
 	return (0);
 }

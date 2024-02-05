@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:35:27 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/05 15:45:15 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/05 16:21:11 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,14 @@ int	render_loop(t_cub *cub)
 
 int	main(int argc, char **argv)
 {
-	t_cub cub;
-	t_map map;
+	t_cub	cub;
+	t_map	map;
 
 	if (!load_and_check(&map, argc, argv))
 	{
 		free_s_map(&map);
 		return (EXIT_FAILURE);
 	}
-
 	init_cub(&cub, &map);
 	mlx_do_key_autorepeatoff(cub.mlx);
 	mlx_loop_hook(cub.mlx, render_loop, &cub);
