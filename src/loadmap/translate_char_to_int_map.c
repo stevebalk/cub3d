@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:48:48 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/02 12:14:48 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/05 12:06:13 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,5 @@ int		**translate_char_to_int_map(t_cub *cub, char **map)
 		}
 		i++;
 	}
-	// printf_int_map(int_map, cub);
-	// ft_free_2darray((void ***) &map);
 	return (int_map);
 }

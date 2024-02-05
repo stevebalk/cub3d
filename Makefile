@@ -3,31 +3,41 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+         #
+#    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/02 16:43:56 by jopeters         ###   ########.fr        #
+#    Updated: 2024/02/05 12:33:18 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3d
 NAME_BONUS	= cub3d_bonus
+UNAME_S		:= $(shell uname -s)
 LIB_DIR		= libs/libft/
 LIB_NAME	= libft.a
 MLX_DIR		= libs/minilibx-linux/
 MLX_NAME	= libmlx.a
 CC			= cc
+RM			= rm
 CFLAGS		= -Werror -Wall -Wextra -O3
 # CFLAGS		= -Werror -Wall -Wextra -O3
 # CFLAGS		= -Werror -Wall -Wextra -fsanitize=address -g
-RM			= rm
 SRC_DIR		= src/
 OBJ_DIR		= obj/
-
 BSRC_DIR	= src_bonus/
 BOBJ_DIR	= obj_bonus/
 
-INCLUDE		= -I include -I ${LIB_DIR}include -I $(MLX_DIR) -I /opt/X11/include
+INCLUDE		:= -I include -I ${LIB_DIR}include -I $(MLX_DIR)
+LIBS		:= -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx 
+ifeq ($(UNAME_S), Linux)
+	LIBS		+= -L/usr/lib -lXext -lX11 -lm -lz
+	INCLUDE		+= -I /opt/X11/include
+else ifeq ($(UNAME_S), Darwin)
+	LIBS		+= -L $(MLX_DIR) -lmlx_Darwin -L /usr/X11/lib -lX11 -lXext -lm
+	INCLUDE		+= -I /usr/X11/include
+else
+	$(error "OS not supported")
+endif
 
 # Colors
 
@@ -65,22 +75,27 @@ SRC_FILES	=	main \
 				vector_utils/convert \
 				vector_utils/vec2 \
 				vector_utils/vec2i \
+				loadmap/get_textures \
 				loadmap/check_map \
 				loadmap/colors_a \
 				loadmap/colors_b \
-				loadmap/get_colors \
-				loadmap/get_map \
-				loadmap/get_player \
-				loadmap/get_textures \
-				loadmap/ini \
-				loadmap/levelcheck \
-				loadmap/loadmap \
 				loadmap/mem \
-				loadmap/show \
-				loadmap/utils \
-				loadmap/check_fields_a \
-				loadmap/check_fields_b \
+				loadmap/levelcheck \
+				loadmap/utils_e \
+				loadmap/get_colors \
+				loadmap/loadmap \
+				loadmap/utils_a \
+				loadmap/get_map \
+				loadmap/utils_d \
 				loadmap/translate_char_to_int_map \
+				loadmap/get_player \
+				loadmap/test/test \
+				loadmap/check_fields_b \
+				loadmap/utils_c \
+				loadmap/show \
+				loadmap/ini \
+				loadmap/check_fields_a \
+				loadmap/utils_b \
 
 BSRC_FILES	=	main \
 				init/cub \
@@ -135,19 +150,13 @@ bonus:		$(BONUS)
 $(NAME):	$(OBJ)
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
-#			Linux
-			#@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
-			# MacOS
-			@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBS) $(INCLUDE)
 			@echo "$(GREEN)Created $(NAME)!$(DEF_COLOR)"
 
 $(BONUS):	$(BOBJ)
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
-			# Linux
-			#@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME_BONUS)
-#			MacOS
-			@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft libs/minilibx-linux/libmlx.a libs/minilibx-linux/libmlx_Darwin.a -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lm -o $(NAME_BONUS)
+			@$(CC) $(CFLAGS) $(BOBJ) -o $(NAME_BONUS) $(LIBS) $(INCLUDE)
 			@echo "$(GREEN)Created $(NAME_BONUS)!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c

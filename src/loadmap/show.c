@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:45:34 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/05 11:50:29 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	show_arr(char **arr)
 
 void	show_line(char *line)
 {
-	int	j;
+	size_t	j;
 
 	j = 0;
 	while (j < ft_strlen(line))

@@ -11,25 +11,25 @@ void show_iarr(int **arr)
 		printf("i: %i   = %i\n", i, arr[i][0]);
 }
 
-int main(void)
-{
-	int count = 10;
-	int i = 0;
-	int **iarr;
+// int main(void)
+// {
+// 	int count = 10;
+// 	int i = 0;
+// 	int **iarr;
 
-	iarr = (int **)malloc(sizeof(int *)*count);
+// 	iarr = (int **)malloc(sizeof(int *)*count);
 
-	iarr[9] = NULL;
+// 	iarr[9] = NULL;
 
-	while (i < 9)
-	{
-		iarr[i] = malloc(sizeof(int));
-		iarr[i][0] = i;
-		i++;
-	}
+// 	while (i < 9)
+// 	{
+// 		iarr[i] = malloc(sizeof(int));
+// 		iarr[i][0] = i;
+// 		i++;
+// 	}
 	
-	show_iarr(iarr);
+// 	show_iarr(iarr);
 
 
-	return 0;
-}
+// 	return 0;
+// }
