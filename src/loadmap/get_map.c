@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:06 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 15:27:43 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/05 12:11:47 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,19 @@ int	get_map(t_map *s_map, char **arr)
 	t_map_lines	map_lines;
 	t_map_lines	offset;
 
-	map_lines = get_map_lines(arr, " 01NESW", "01NESW");
-	if (!check_map_lines(arr, map_lines, " 01NESW", "01NESW"))
-		return (0);
+	if (BONUS_ == 0)
+	{
+		map_lines = get_map_lines(arr, " 01NESW", "01NESW");
+		if (!check_map_lines(arr, map_lines, " 01NESW", "01NESW"))
+			return (0);
+	}
+	else if (BONUS_ == 1)
+	{
+		map_lines = get_map_lines(arr, " 012345NESW", "012345NESW");
+		if (!check_map_lines(arr, map_lines, " 012345NESW", "012345NESW"))
+			return (0);
+	}
+
 	offset.start = get_map_offset(arr, map_lines.start, map_lines.end);
 	offset.end = get_max_line(arr, map_lines.start, map_lines.end);
 	copy_arr_to_map(arr, s_map, map_lines, offset.start);

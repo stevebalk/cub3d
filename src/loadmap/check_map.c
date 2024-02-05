@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 14:05:59 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 16:48:27 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/05 12:12:32 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	check_for_bad_lines(char **arr)
 	int			i;
 	t_map_lines	map_lines;
 
-	map_lines = get_map_lines(arr, " 01NESW", "01NESW");
+	if (BONUS_ == 0)
+		map_lines = get_map_lines(arr, " 01NESW", "01NESW");
+	else if (BONUS_ == 1)
+		map_lines = get_map_lines(arr, " 012345NESW", "012345NESW");
 	i = -1;
 	while (++i < map_lines.start)
 	{
