@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loadmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/05 12:36:37 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/05 14:35:42 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,10 @@ int main(int argc, char **argv)
 	c_green();
 	printf("-- programm END --\n\n");
 	c_reset();
+	if (check_res == 0)
+		check_res++;
+	if (check_res == 1)
+		check_res--;
     return(check_res);
 }
 #endif

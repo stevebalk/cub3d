@@ -45,22 +45,24 @@ do
   if [ -f "$file" ]; then
 		if [ "$string_to_check" == "LEAKS" ]; then
 
-    	echo -e "${c_purple}LEAKS ${c_green}Map: $file${c_reset}"
+    	#echo -e "${c_purple}LEAKS ${c_green}Map: $file${c_reset}"
     	#echo -e "${c_purple}file: $file${c_reset}"
-		sleep 0.2
+		#sleep 0.2
 		leaks -atExit -- ./a.out $file
-		echo -e "${c_reset}"
+		echo -e "${c_purple}LEAKS ${c_green}Map: $file${c_reset}"
+		echo -e "\n"
 		sleep 1
 
 		fi
 
 		if [ "$string_to_check" == "SAN" ]; then
 
-    	echo -e "${c_purple}SAN ${c_green}Map: $file${c_reset}"
+    	#echo -e "${c_purple}SAN ${c_green}Map: $file${c_reset}"
     	#echo -e "${c_purple}file: $file${c_reset}"
-		sleep 0.2
+		#sleep 0.2
 		./a.out $file
-		echo -e "${c_reset}"
+		echo -e "${c_purple}SAN ${c_green}Map: $file${c_reset}"
+		echo -e "\n"
 		sleep 1
 
 		fi
