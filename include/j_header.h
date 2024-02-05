@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/05 15:17:46 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:18:27 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,4 @@ void		c_cyan(void);
 void		clear_screen(void);
 void		c_reset(void);
 
-translate_char_to_int_map
 #endif
