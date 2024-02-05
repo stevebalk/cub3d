@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_e.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:17 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 17:04:51 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/05 11:59:19 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,25 @@ int	has_at_least_one_occurence_of_charset(char *line, char *charset)
 		i++;
 	}
 	return (res);
+}
+
+//return 1 if arr contains only printable characters
+int	check_arr_for_printable_chars(char **arr)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (arr[i])
+	{
+		j = 0;
+		while (arr[i][j])
+		{
+			if (!ft_isprint(arr[i][j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

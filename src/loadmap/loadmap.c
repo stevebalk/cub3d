@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loadmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 17:46:28 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/05 12:00:57 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	load_map(t_map *s_map, char **argv)
 	splitted_file = load_map_file(argv[1]);
 	if (!splitted_file)
 		return (0);
-	if (count_char_in_arr(splitted_file, '\t'))
-		return (printf("Error!\nnot allowed tab in file\n"),
+	if (!check_arr_for_printable_chars(splitted_file))
+		return (printf("Error!\nnot allowed char in file\n"),
 			ft_free_array((void **)splitted_file), 0);
 	if (!get_text_paths_master(s_map->textures, splitted_file))
 		return (ft_free_array((void **)splitted_file), 0);

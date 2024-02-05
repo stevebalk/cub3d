@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   j_header.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:46:17 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/05 11:59:44 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int			check_only_c_before_find(char *str, char c, char find);
 int			check_line_for_only(char *str, char c);
 int			check_line_for_str(char *line, char *str);
 int			has_at_least_one_occurence_of_charset(char *line, char *charset);
+int			check_arr_for_printable_chars(char **arr);
 
 // ini
 char		**ini_tex_names(void);
