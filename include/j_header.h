@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/05 15:18:27 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:21:44 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h> 
-# include "../../libs/libft/include/libft.h"
+# include "../libs/libft/include/libft.h"
 
 # ifdef FLOOD
 #  define SHOWFLOOD 1

@@ -6,7 +6,7 @@
 #    By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/05 15:12:40 by jopeters         ###   ########.fr        #
+#    Updated: 2024/02/05 15:27:08 by jopeters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -156,7 +156,7 @@ $(NAME):	$(OBJ)
 $(BONUS):	$(BOBJ)
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
-			@$(CC) $(CFLAGS) $(BOBJ) -o $(NAME_BONUS) $(LIBS) $(INCLUDE) -D BONUS
+			@$(CC) $(CFLAGS) $(BOBJ) -o $(NAME_BONUS) $(LIBS) $(INCLUDE) 
 			@echo "$(GREEN)Created $(NAME_BONUS)!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
