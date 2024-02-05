@@ -6,7 +6,7 @@
 #    By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/05 15:27:08 by jopeters         ###   ########.fr        #
+#    Updated: 2024/02/05 15:50:46 by jopeters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,6 @@ SRC_FILES	=	main \
 				loadmap/utils_d \
 				loadmap/translate_char_to_int_map \
 				loadmap/get_player \
-				loadmap/test/test \
 				loadmap/check_fields_b \
 				loadmap/utils_c \
 				loadmap/show \
@@ -132,6 +131,26 @@ BSRC_FILES	=	main \
 				vector_utils/convert \
 				vector_utils/vec2 \
 				vector_utils/vec2i \
+				loadmap/get_textures \
+				loadmap/check_map \
+				loadmap/colors_a \
+				loadmap/colors_b \
+				loadmap/mem \
+				loadmap/levelcheck \
+				loadmap/utils_e \
+				loadmap/get_colors \
+				loadmap/loadmap \
+				loadmap/utils_a \
+				loadmap/get_map \
+				loadmap/utils_d \
+				loadmap/translate_char_to_int_map \
+				loadmap/get_player \
+				loadmap/check_fields_b \
+				loadmap/utils_c \
+				loadmap/show \
+				loadmap/ini \
+				loadmap/check_fields_a \
+				loadmap/utils_b 
 
 SRC				=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ				=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -156,7 +175,7 @@ $(NAME):	$(OBJ)
 $(BONUS):	$(BOBJ)
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
-			@$(CC) $(CFLAGS) $(BOBJ) -o $(NAME_BONUS) $(LIBS) $(INCLUDE) 
+			@$(CC) $(CFLAGS) $(BOBJ) -o $(NAME_BONUS) $(LIBS) $(INCLUDE) -D BONUS
 			@echo "$(GREEN)Created $(NAME_BONUS)!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
