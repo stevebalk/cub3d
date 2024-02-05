@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:36:57 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/05 16:31:32 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/05 16:41:39 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@
 # define MINIMAP_MARGIN_X_PERCENT 1
 # define MINIMAP_MARGIN_Y_PERCENT 1
 
-# define MINIMAP_COLOR_BLOCKED 0x00FF0000
-# define MINIMAP_COLOR_FREE 0x00666666
+# define MINIMAP_COLOR_BLOCKED 0x00000000
+# define MINIMAP_COLOR_FREE 0x00999999
 # define MINIMAP_COLOR_PLAYER 0x00FFFF00
 # define MINIMAP_COLOR_DIR_VEC 0x00FFFFFF
 
@@ -273,7 +273,7 @@ typedef struct s_cub
 
 # define FLAG_MOUSE_CONTROL 1
 # define FLAG_DEBUG_OVERLAY 2
-# define FLAG_RESOLUTION_MODE 3
+# define FLAG_RESOLUTION_MODE 4
 
 void	toggle_flag(unsigned int *flags, unsigned int bit_mask);
 void	set_flag(unsigned int *flags, unsigned int bit_mask);
