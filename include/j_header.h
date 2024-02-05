@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:29 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/05 15:15:08 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:17:46 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 #  define SHOWFLOOD 1
 # else
 #  define SHOWFLOOD 0
+# endif
+
+# ifdef BONUS
+#  define BONUS_ 1
+# else
+#  define BONUS_ 0
 # endif
 
 int			load_and_check(t_map *s_map, int argc, char **argv);
