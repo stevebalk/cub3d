@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:54:02 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/05 15:13:27 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:08:00 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	init_cub(t_cub *cub, t_map *map)
 	cub->current_frame_time = get_time_seconds();
 	cub->last_frame_time = cub->current_frame_time;
 	cub->resolution = 1;
-	init_map(cub);
 	init_player(cub);
 	init_minimap(cub);
 	init_mlx(cub);

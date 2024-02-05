@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:35:27 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/02 15:48:09 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/05 15:45:15 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ int	main(int argc, char **argv)
 		free_s_map(&map);
 		return (EXIT_FAILURE);
 	}
-	cub.sprite_paths[3] = "sprites/barrel.xpm";
-	cub.sprite_paths[0] = "sprites/flaming_barrel_test.xpm";
-	cub.sprite_paths[1] = "sprites/pillar.xpm";
-	cub.sprite_paths[2] = "sprites/knight_statue.xpm";
 
 	init_cub(&cub, &map);
 	mlx_do_key_autorepeatoff(cub.mlx);

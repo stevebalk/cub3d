@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+         #
+#    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/05 15:50:46 by jopeters         ###   ########.fr        #
+#    Updated: 2024/02/05 16:11:19 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ MLX_DIR		= libs/minilibx-linux/
 MLX_NAME	= libmlx.a
 CC			= cc
 RM			= rm
-CFLAGS		= -Werror -Wall -Wextra -O3
+CFLAGS		= -Werror -Wall -Wextra -O3 -g
 # CFLAGS		= -Werror -Wall -Wextra -O3
 # CFLAGS		= -Werror -Wall -Wextra -fsanitize=address -g
 SRC_DIR		= src/
@@ -98,7 +98,6 @@ SRC_FILES	=	main \
 
 BSRC_FILES	=	main \
 				init/cub \
-				init/map \
 				init/mlx \
 				init/init_minimap \
 				init/player \

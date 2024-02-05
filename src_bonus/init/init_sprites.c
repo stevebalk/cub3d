@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:59:40 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/02 15:36:57 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/05 15:46:26 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	read_sprite_textures(t_cub *cub)
 		if (!read_xpm(cub, &cub->sprite_textures[i],
 				cub->sprite_paths[i]))
 		{
+			ft_putendl_fd(cub->sprite_paths[i], 2);
 			exit_error(cub, 0, "Error\nSprite texture invalid!");
 		}
 		i++;
@@ -98,6 +99,10 @@ void	set_animatable_sprite(t_cub *cub, int texture_id, int frame_count,
 
 void	init_sprites(t_cub *cub)
 {
+	cub->sprite_paths[3] = "sprites/barrel.xpm";
+	cub->sprite_paths[0] = "sprites/flaming_barrel_test.xpm";
+	cub->sprite_paths[1] = "sprites/pillar.xpm";
+	cub->sprite_paths[2] = "sprites/knight_statue.xpm";
 	read_sprite_textures(cub);
 	count_sprites_in_map(cub);
 	cub->sprites = ft_calloc(cub->sprite_count, sizeof(t_sprite));
