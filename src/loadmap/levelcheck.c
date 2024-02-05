@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:25:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:41:00 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/03 17:44:16 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int	check_map(t_map *s_map)
 			break ;
 		}
 	}
-	show_map(s_map->map);
 	ft_free_array((void **)f_map);
 	return (ret);
 }

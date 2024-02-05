@@ -6,7 +6,7 @@
 /*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:57 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:19:07 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/03 17:46:28 by jonas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int main(int argc, char **argv)
 	free_s_map(&map);
 	c_green();
 	printf("-- programm END --\n\n");
-	
+	c_reset();
     return(check_res);
 }
 #endif
