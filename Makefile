@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
+#    By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/05 16:28:20 by sbalk            ###   ########.fr        #
+#    Updated: 2024/02/06 13:55:22 by jopeters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC_DIR		= src/
 OBJ_DIR		= obj/
 BSRC_DIR	= src_bonus/
 BOBJ_DIR	= obj_bonus/
+ARCH		:= $(shell uname -m)
 
 INCLUDE		:= -I include -I ${LIB_DIR}include -I $(MLX_DIR)
 LIBS		:= -L $(LIB_DIR) -lft -L $(MLX_DIR) -lmlx 
@@ -163,11 +164,11 @@ BOBJ_DIRS		=	$(addprefix $(BOBJ_DIR), $(BSRC_FILES))
 
 BONUS		= bonus
 
-all:		$(NAME)
+all:		$(NAME) 
 
 bonus:		$(BONUS)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) check_arch
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
 			@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBS) $(INCLUDE)
@@ -209,5 +210,7 @@ norm:
 			@norminette $(SRC) include/$(NAME).h| grep -v Norme -B1 || true
 			@norminette $(BSRC) include/$(NAME).h| grep -v Norme -B1 || true
 
+check_arch:
+			@echo "compiling $(BLUE)cub3d $(DEF_COLOR)for $(GREEN)$(ARCH)$(DEF_COLOR)"
 
-.PHONY:		all clean fclean re norm bonus
+.PHONY:		all clean fclean re norm bonus check_arch

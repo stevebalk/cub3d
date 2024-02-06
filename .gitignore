@@ -13,3 +13,4 @@ cub3d.lwp
 obj*/
 .vscode/
 output
+*.gen
