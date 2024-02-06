@@ -13,4 +13,7 @@ cub3d.lwp
 obj*/
 .vscode/
 output
-*.gen
+testmap_util
+testmap_util_bonus
+testmap_util_san
+testmap_util_sanbonus

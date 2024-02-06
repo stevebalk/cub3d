@@ -6,7 +6,7 @@
 #    By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/06 13:55:22 by jopeters         ###   ########.fr        #
+#    Updated: 2024/02/06 14:26:48 by jopeters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -201,6 +201,10 @@ fclean:		clean
 			@make fclean -C $(LIB_DIR)
 			@$(RM) -f $(NAME)
 			@$(RM) -f $(NAME_BONUS)
+			@$(RM) -f testmap/testmap_util
+			@$(RM) -f testmap/testmap_util_bonus
+			@$(RM) -f testmap/testmap_util_san
+			@$(RM) -f testmap/testmap_util_sanbonus
 			@echo "$(CYAN)$(NAME) executable files cleaned!$(DEF_COLOR)"
 
 re:			fclean all
@@ -213,4 +217,11 @@ norm:
 check_arch:
 			@echo "compiling $(BLUE)cub3d $(DEF_COLOR)for $(GREEN)$(ARCH)$(DEF_COLOR)"
 
-.PHONY:		all clean fclean re norm bonus check_arch
+testmap: 	$(testmap/testmap_util) $(testmap/testmap_util_bonus) $(testmap/testmap_util_san) $(testmap/testmap_util_sanbonus)
+			cc  $(INCLUDE) -o testmap/testmap_util src/loadmap/check_fields_a.c src/loadmap/check_fields_b.c src/loadmap/levelcheck.c src/loadmap/ini.c src/loadmap/get_player.c src/loadmap/check_map.c src/loadmap/loadmap.c src/loadmap/mem.c src/loadmap/colors_a.c src/loadmap/colors_b.c src/loadmap/get_colors.c src/loadmap/get_map.c src/loadmap/get_textures.c src/loadmap/show.c src/loadmap/utils_a.c src/loadmap/utils_b.c src/loadmap/utils_c.c src/loadmap/utils_d.c src/loadmap/utils_e.c libs/libft/libft.a -g -D TEST -D FLOOD
+			cc  $(INCLUDE) -o testmap/testmap_util_bonus src/loadmap/check_fields_a.c src/loadmap/check_fields_b.c src/loadmap/levelcheck.c src/loadmap/ini.c src/loadmap/get_player.c src/loadmap/check_map.c src/loadmap/loadmap.c src/loadmap/mem.c src/loadmap/colors_a.c src/loadmap/colors_b.c src/loadmap/get_colors.c src/loadmap/get_map.c src/loadmap/get_textures.c src/loadmap/show.c src/loadmap/utils_a.c src/loadmap/utils_b.c src/loadmap/utils_c.c src/loadmap/utils_d.c src/loadmap/utils_e.c libs/libft/libft.a -g -D TEST -D FLOOD -D BONUS
+			cc  $(INCLUDE) -o testmap/testmap_util_san src/loadmap/check_fields_a.c src/loadmap/check_fields_b.c src/loadmap/levelcheck.c src/loadmap/ini.c src/loadmap/get_player.c src/loadmap/check_map.c src/loadmap/loadmap.c src/loadmap/mem.c src/loadmap/colors_a.c src/loadmap/colors_b.c src/loadmap/get_colors.c src/loadmap/get_map.c src/loadmap/get_textures.c src/loadmap/show.c src/loadmap/utils_a.c src/loadmap/utils_b.c src/loadmap/utils_c.c src/loadmap/utils_d.c src/loadmap/utils_e.c libs/libft/libft.a -g -fsanitize=address -D TEST -D FLOOD
+			cc  $(INCLUDE) -o testmap/testmap_util_sanbonus src/loadmap/check_fields_a.c src/loadmap/check_fields_b.c src/loadmap/levelcheck.c src/loadmap/ini.c src/loadmap/get_player.c src/loadmap/check_map.c src/loadmap/loadmap.c src/loadmap/mem.c src/loadmap/colors_a.c src/loadmap/colors_b.c src/loadmap/get_colors.c src/loadmap/get_map.c src/loadmap/get_textures.c src/loadmap/show.c src/loadmap/utils_a.c src/loadmap/utils_b.c src/loadmap/utils_c.c src/loadmap/utils_d.c src/loadmap/utils_e.c libs/libft/libft.a -g -fsanitize=address -D TEST -D FLOOD -D BONUS
+
+ 
+.PHONY:		all clean fclean re norm bonus check_arch testmap
