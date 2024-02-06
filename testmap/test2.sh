@@ -30,14 +30,14 @@ fi
 directory=$1
 string_to_check=$2
 
-if [ "$string_to_check" == "SAN" ]; then
-	make san
-fi
+# if [ "$string_to_check" == "SAN" ]; then
+# 	make san
+# fi
 
-if [ "$string_to_check" == "LEAKS" ]; then
-	echo "LEAKS"
-	make
-fi
+# if [ "$string_to_check" == "LEAKS" ]; then
+# 	echo "LEAKS"
+# 	make
+# fi
 
 # Loop through the files in the directory
 for file in "$directory"/*
@@ -54,7 +54,9 @@ do
 		echo -e "${c_purple}LEAKS ${c_green}Map: $file${c_reset}"
 		echo -e "\n"
 		sleep 2
-
+		fi
+		
+		if [ "$string_to_check" == "SANBONUS" ]; then
 		leaks -atExit -- ./testmap_util_bonus $file
 		echo -e "${c_purple}LEAKS ${c_red}BONUS ${c_green}Map: $file${c_reset}"
 		echo -e "\n"
@@ -72,7 +74,9 @@ do
 		echo -e "${c_purple}SAN ${c_green}Map: $file${c_reset}"
 		echo -e "\n"
 		sleep 2
+		fi
 
+		if [ "$string_to_check" == "SANBONUS" ]; then
 		./testmap_util_sanbonus $file
 		echo -e "${c_purple}SAN ${c_red}BONUS ${c_green}Map: $file${c_reset}"
 		echo -e "\n"

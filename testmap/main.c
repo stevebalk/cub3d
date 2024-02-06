@@ -5,8 +5,10 @@ int main(int argc, char **argv)
 	t_map map;
 	#ifdef BONUS
 		printf(" --- Check BONUS ---\n");
+		usleep(500000);
 	#else
 		printf(" --- Check ---\n");
+		usleep(500000);
 	#endif
 
 	int check_res;
