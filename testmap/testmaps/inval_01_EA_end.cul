@@ -1,8 +1,8 @@
-    WE ./path_to_the_west_texture
+    WE ../../textures/west.xpm
 	 F    220,  100  ,  3
-   SO         ./path_to_the_south_texture
+   SO         ../../textures/south.xpm
    C   42  ,   3,   5
-             NO      ./path_to_the_north_texture
+             NO      ../../textures/north.xpm
  
  
         1111111111111111111111111   
@@ -20,4 +20,4 @@
 11111111 1110101 101111010001
 1111 111 1111111 111111111111
 
-        EA ./path_to_the_east_texture
+        EA ../../textures/east.xpm
