@@ -43,15 +43,22 @@ fi
 for file in "$directory"/*
 do
   if [ -f "$file" ]; then
+		echo -e "${c_cyan}=====================================${c_reset}"
 		if [ "$string_to_check" == "LEAKS" ]; then
 
     	#echo -e "${c_purple}LEAKS ${c_green}Map: $file${c_reset}"
     	#echo -e "${c_purple}file: $file${c_reset}"
 		#sleep 0.2
-		leaks -atExit -- ./a.out $file
+		echo -e "${c_cyan}=====================================${c_reset}"
+		leaks -atExit -- ./testmap_util $file
 		echo -e "${c_purple}LEAKS ${c_green}Map: $file${c_reset}"
 		echo -e "\n"
-		sleep 1
+		sleep 2
+
+		leaks -atExit -- ./testmap_util_bonus $file
+		echo -e "${c_purple}LEAKS ${c_red}BONUS ${c_green}Map: $file${c_reset}"
+		echo -e "\n"
+		sleep 2
 
 		fi
 
@@ -60,10 +67,16 @@ do
     	#echo -e "${c_purple}SAN ${c_green}Map: $file${c_reset}"
     	#echo -e "${c_purple}file: $file${c_reset}"
 		#sleep 0.2
-		./a.out $file
+		echo -e "${c_cyan}=====================================${c_reset}"
+		./testmap_util_san $file
 		echo -e "${c_purple}SAN ${c_green}Map: $file${c_reset}"
 		echo -e "\n"
-		sleep 1
+		sleep 2
+
+		./testmap_util_sanbonus $file
+		echo -e "${c_purple}SAN ${c_red}BONUS ${c_green}Map: $file${c_reset}"
+		echo -e "\n"
+		sleep 2
 
 		fi
   fi

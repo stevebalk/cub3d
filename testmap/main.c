@@ -3,6 +3,11 @@
 int main(int argc, char **argv)
 {   
 	t_map map;
+	#ifdef BONUS
+		printf(" --- Check BONUS ---\n");
+	#else
+		printf(" --- Check ---\n");
+	#endif
 
 	int check_res;
 	check_res = load_and_check(&map, argc, argv);

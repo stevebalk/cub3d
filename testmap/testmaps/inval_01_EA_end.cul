@@ -1,8 +1,8 @@
-    WE ../../textures/west.xpm
+    WE ../textures/west.xpm
 	 F    220,  100  ,  3
-   SO         ../../textures/south.xpm
+   SO         ../textures/south.xpm
    C   42  ,   3,   5
-             NO      ../../textures/north.xpm
+             NO      ../textures/north.xpm
  
  
         1111111111111111111111111   
@@ -20,4 +20,4 @@
 11111111 1110101 101111010001
 1111 111 1111111 111111111111
 
-        EA ../../textures/east.xpm
+        EA ../textures/east.xpm

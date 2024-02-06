@@ -41,7 +41,7 @@ Map:
 
 elements:
 - first info is type (NO SO WE EA C F) 
-- NO ../../textures/north.xpm    and SO WE EA
+- NO ../textures/north.xpm    and SO WE EA
 - F 220,100,0       same with C 
 - can be separated by one or more empty lines 
 - can have different order 
@@ -116,19 +116,19 @@ My first RayCaster with miniLibX
 posed by one or two character(s)), followed by all specific informations for each
 object in a strict order such as :
 ∗ North texture:
-NO ../../textures/north.xpm
+NO ../textures/north.xpm
 · identifier: NO
 · path to the north texure
 ∗ South texture:
-SO ../../textures/south.xpm
+SO ../textures/south.xpm
 · identifier: SO
 · path to the south texure
 ∗ West texture:
-WE ../../textures/west.xpm
+WE ../textures/west.xpm
 · identifier: WE
 · path to the west texure
 ∗ East texture:
-EA ../../textures/east.xpm
+EA ../textures/east.xpm
 · identifier: EA
 · path to the east texure
 ∗ Floor color:
@@ -142,10 +142,10 @@ C 225,30,0
 · identifier: C
 · R,G,B colors in range [0,255]: 0, 255, 255
 ◦ Example of the mandatory part with a minimalist .cub scene:
-NO ../../textures/north.xpm
-SO ../../textures/south.xpm
-WE ../../textures/west.xpm
-EA ../../textures/east.xpm
+NO ../textures/north.xpm
+SO ../textures/south.xpm
+WE ../textures/west.xpm
+EA ../textures/east.xpm
 F 220,100,0
 C 225,30,0
 1111111111111111111111111
