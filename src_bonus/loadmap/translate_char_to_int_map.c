@@ -12,7 +12,7 @@
 
 #include "cub3d_bonus.h"
 
-int		**translate_char_to_int_map(t_cub *cub, char **map)
+int	**translate_char_to_int_map(t_cub *cub, char **map)
 {
 	int		i;
 	int		j;

@@ -93,7 +93,6 @@ int	get_map(t_map *s_map, char **arr)
 	map_lines = get_map_lines(arr, " 012345NESW", "012345NESW");
 	if (!check_map_lines(arr, map_lines, " 012345NESW", "012345NESW"))
 		return (0);
-
 	offset.start = get_map_offset(arr, map_lines.start, map_lines.end);
 	offset.end = get_max_line(arr, map_lines.start, map_lines.end);
 	copy_arr_to_map(arr, s_map, map_lines, offset.start);
