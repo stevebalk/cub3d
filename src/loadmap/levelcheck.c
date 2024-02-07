@@ -68,6 +68,8 @@ int	check_map(t_map *s_map)
 
 	f_map = copy_arr(s_map->map);
 	ret = set_and_fill_first_f(f_map);
+	if (!ret)
+		return (0);
 	len = get_arr_len(f_map) * get_max_line(f_map, 0, get_arr_len(f_map));
 	i = 0;
 	while (i++ <= len)
