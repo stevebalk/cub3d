@@ -31,9 +31,9 @@ int	get_player_view(char c)
 t_play_pos	find_player_and_get_pos(char **arr, char player)
 {
 	t_play_pos	ret_pos;
-	int				row;
-	int				row_count;
-	int				col;
+	int			row;
+	int			row_count;
+	int			col;
 
 	row_count = get_arr_len(arr);
 	row = 0;
@@ -83,9 +83,9 @@ char	get_player_c(int *player_count)
 t_play_pos	get_player(char **arr)
 {
 	t_play_pos	pos;
-	int				nesw[4];
-	int				i;
-	char			*chr;
+	int			nesw[4];
+	int			i;
+	char		*chr;
 
 	chr = "NESW";
 	i = -1;

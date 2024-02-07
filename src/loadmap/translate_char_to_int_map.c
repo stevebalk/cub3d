@@ -34,7 +34,7 @@ void	printf_int_map(int **map, t_cub *cub)
 	printf("--- End ---\n\n");
 }
 
-int		**translate_char_to_int_map(t_cub *cub, char **map)
+int	**translate_char_to_int_map(t_cub *cub, char **map)
 {
 	int		i;
 	int		j;

@@ -22,6 +22,7 @@ void	show_flood(char **arr)
 	}
 }
 #ifndef BONUS
+
 int	check_field(char **arr, int x, int y)
 {
 	int	col_len;

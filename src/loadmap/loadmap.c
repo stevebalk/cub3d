@@ -101,32 +101,3 @@ int	load_and_check(t_map *s_map, int argc, char **argv)
 		return (0);
 	return (1);
 }
-
-#ifdef TEST
-int main(int argc, char **argv)
-{   
-	t_map map;
-
-	int check_res;
-	check_res = load_and_check(&map, argc, argv);
-	if (check_res)
-		printf("run GAME \n");
-
-	free_s_map(&map);
-	c_green();
-	printf("-- programm END --\n\n");
-	c_reset();
-	if (check_res == 0)
-		check_res++;
-	if (check_res == 1)
-		check_res--;
-    return(check_res);
-}
-#endif
-
-/*
-cc -D BUFFER_SIZE=1 loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
-cc loadmap.c ../../libs/libft/libft.a && ./a.out map1.cub
-
-leaks -atExit -- ./a.out map1.cub
-*/ 
