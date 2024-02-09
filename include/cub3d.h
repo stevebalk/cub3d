@@ -27,17 +27,19 @@
 /******************* GENERAL **********************/
 
 # define WIN_TITLE "Cub3D"
+# define WIN_WIDTH 3840
+# define WIN_HEIGHT 2160
 //# define WIN_WIDTH 640 * 3
 //# define WIN_HEIGHT 480 * 3
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+// # define WIN_WIDTH 1920
+// # define WIN_HEIGHT 1080
 
 /******************* PLAYER **********************/
 
 # define MOUSE_SENSITIVITY 0.05
 # define FOV 66
 # define MOVE_SPEED 0.05
-# define ROT_SPEED 0.015
+# define ROT_SPEED 0.05
 
 /******************* DEBUG **********************/
 

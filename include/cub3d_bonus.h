@@ -36,10 +36,12 @@
 /******************* GENERAL **********************/
 
 # define WIN_TITLE "Cub3D_Bonus"
+# define WIN_WIDTH 3840
+# define WIN_HEIGHT 2160
 // # define WIN_WIDTH 2560
 // # define WIN_HEIGHT 1440
-# define WIN_WIDTH 640
-# define WIN_HEIGHT 480
+// # define WIN_WIDTH 640
+// # define WIN_HEIGHT 480
 
 /******************* PLAYER **********************/
 

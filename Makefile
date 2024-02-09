@@ -19,7 +19,7 @@ MLX_DIR		= libs/minilibx-linux/
 MLX_NAME	= libmlx.a
 CC			= cc
 RM			= rm
-CFLAGS		= -Werror -Wall -Wextra -O3 -g
+CFLAGS		= -Werror -Wall -Wextra -O3
 # CFLAGS		= -Werror -Wall -Wextra -O3
 # CFLAGS		= -Werror -Wall -Wextra -fsanitize=address -g
 SRC_DIR		= src/
