@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   levelcheck.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:25:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 17:44:16 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/09 15:42:39 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,27 +59,33 @@ int	set_and_fill_first_f(char **arr)
 	return (ret);
 }
 
+static int	check_enclosure(char **map, int x, int y)
+{
+	if (map[y][x] == ' ' || map[y] == NULL || map[y][x] == 0)
+		return (printf("Error!\nmap has empty space or no wall\n"), 0);
+	if (x < 0 || y < 0)
+		return (0);
+	if (map[y][x] == 'F' || map[y][x] == '1')
+		return (1);
+	map[y][x] = 'F';
+	return (check_enclosure(map, x - 1, y) && check_enclosure(map, x, y - 1)
+		&& check_enclosure(map, x + 1, y) && check_enclosure(map, x, y + 1));
+}
+
 int	check_map(t_map *s_map)
 {
 	char			**f_map;
 	int				ret;
-	unsigned long	i;
-	unsigned long	len;
+	t_play_pos		pos;
 
 	f_map = copy_arr(s_map->map);
-	ret = set_and_fill_first_f(f_map);
-	if (!ret)
-		return (0);
-	len = get_arr_len(f_map) * get_max_line(f_map, 0, get_arr_len(f_map));
-	i = 0;
-	while (i++ <= len)
-	{
-		if (!flood(f_map))
-		{
-			ret = 0;
-			break ;
-		}
-	}
+	pos = get_player(f_map);
+	if (!check_enclosure(f_map, pos.x, pos.y))
+		ret = 0;
+	else
+		ret = 1;
+	if (SHOWFLOOD == 1)
+		show_arr(f_map);
 	ft_free_array((void **)f_map);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:42:45 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/05 14:51:50 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:42:07 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	show_flood(char **arr)
 {
 	if (SHOWFLOOD == 1)
 	{
-		usleep(5000);
 		clear_screen();
 		show_map(arr);
 	}
