@@ -56,7 +56,7 @@ do
 		sleep 2
 		fi
 		
-		if [ "$string_to_check" == "SANBONUS" ]; then
+		if [ "$string_to_check" == "LEAKSBONUS" ]; then
 		leaks -atExit -- ./testmap_util_bonus $file
 		echo -e "${c_purple}LEAKS ${c_red}BONUS ${c_green}Map: $file${c_reset}"
 		echo -e "\n"

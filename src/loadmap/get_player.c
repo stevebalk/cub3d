@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:32:38 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:02:01 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/09 15:55:36 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_play_pos	find_player_and_get_pos(char **arr, char player)
 int	check_player(t_play_pos *player)
 {
 	if (player->x == -1 || player->y == -1 || player->view == -1)
-		return (printf("Error!\nno player or player position not valid\n"), 0);
+		return (printf("Error\nno player or player position not valid\n"), 0);
 	return (1);
 }
 

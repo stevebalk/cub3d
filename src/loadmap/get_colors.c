@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:04:16 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:16:05 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/09 15:55:36 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ int	get_check_color_master(t_map *s_map, char **splitted_file)
 	s_map->f = get_color_from_str(splitted_file, 'F');
 	s_map->c = get_color_from_str(splitted_file, 'C');
 	if (!check_color(s_map->f))
-		return (printf("Error!\ninvalid floor color\n"), 0);
+		return (printf("Error\ninvalid floor color\n"), 0);
 	if (!check_color(s_map->c))
-		return (printf("Error!\ninvalid ceil color\n"), 0);
+		return (printf("Error\ninvalid ceil color\n"), 0);
 	return (1);
 }

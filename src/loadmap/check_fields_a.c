@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_fields_a.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:32:52 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/03 16:30:17 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/09 15:55:36 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ and fills with F if possible */
 int	check_near_fields(char **arr, int x, int y)
 {
 	if (!check_up(arr, x, y))
-		return (printf("Error!\nmap has empty space or no wall\n"), 0);
+		return (printf("Error\nmap has empty space or no wall\n"), 0);
 	if (!check_right(arr, x, y))
-		return (printf("Error!\nmap has empty space or no wall\n"), 0);
+		return (printf("Error\nmap has empty space or no wall\n"), 0);
 	if (!check_down(arr, x, y))
-		return (printf("Error!\nmap has empty space or no wall\n"), 0);
+		return (printf("Error\nmap has empty space or no wall\n"), 0);
 	if (!check_left(arr, x, y))
-		return (printf("Error!\nmap has empty space or no wall\n"), 0);
+		return (printf("Error\nmap has empty space or no wall\n"), 0);
 	return (1);
 }

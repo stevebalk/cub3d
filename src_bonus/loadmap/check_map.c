@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 14:05:59 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/05 16:12:51 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/09 15:55:36 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_map_valid(t_map *s_map)
 {
 	if (!check_player(&s_map->player_start_pos))
-		return (printf("Error!\nno player or start position\n"), 0);
+		return (printf("Error\nno player or start position\n"), 0);
 	return (1);
 }
 

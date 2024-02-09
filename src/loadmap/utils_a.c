@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_a.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonas <jonas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:59:46 by jonas             #+#    #+#             */
-/*   Updated: 2024/02/03 17:03:33 by jonas            ###   ########.fr       */
+/*   Updated: 2024/02/09 15:55:36 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	check_if_arr_entrys_valid(char **arr, int arr_len)
 	while (i++, i < arr_len)
 	{
 		if (ft_strlen(arr[i]) == 0)
-			return (printf("Error!\ntexture path is not valid\n"), 0);
+			return (printf("Error\ntexture path is not valid\n"), 0);
 	}
 	return (1);
 }
