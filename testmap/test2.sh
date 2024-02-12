@@ -83,5 +83,26 @@ do
 		sleep 2
 
 		fi
+
+
+		if [ "$string_to_check" == "VAL" ]; then
+
+    	#echo -e "${c_purple}SAN ${c_green}Map: $file${c_reset}"
+    	#echo -e "${c_purple}file: $file${c_reset}"
+		#sleep 0.2
+		echo -e "${c_cyan}=====================================${c_reset}"
+		valgrind --track-origins=yes ./testmap_util $file
+		echo -e "${c_purple}VAL ${c_green}Map: $file${c_reset}"
+		echo -e "\n"
+		sleep 2
+		fi
+
+		if [ "$string_to_check" == "VALBONUS" ]; then
+		valgrind --track-origins=yes ./testmap_util_bonus $file
+		echo -e "${c_purple}VAL ${c_red}BONUS ${c_green}Map: $file${c_reset}"
+		echo -e "\n"
+		sleep 2
+
+		fi
   fi
 done

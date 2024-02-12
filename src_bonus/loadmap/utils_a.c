@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:59:46 by jonas             #+#    #+#             */
-/*   Updated: 2024/02/09 15:55:36 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:53:14 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	get_line_count(char *file)
 	char	buf;
 	int		re;
 
+	buf = 0;
 	re = 1;
 	count = 0;
 	fd = open(file, O_RDONLY);
