@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:59:40 by sbalk             #+#    #+#             */
-/*   Updated: 2024/02/05 15:46:26 by sbalk            ###   ########.fr       */
+/*   Updated: 2024/02/12 11:29:05 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	read_sprite_textures(t_cub *cub)
 		if (!read_xpm(cub, &cub->sprite_textures[i],
 				cub->sprite_paths[i]))
 		{
-			ft_putendl_fd(cub->sprite_paths[i], 2);
 			exit_error(cub, 0, "Error\nSprite texture invalid!");
 		}
 		i++;
