@@ -6,7 +6,7 @@
 #    By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 11:18:26 by sbalk             #+#    #+#              #
-#    Updated: 2024/02/12 10:59:55 by jopeters         ###   ########.fr        #
+#    Updated: 2024/02/12 11:22:07 by jopeters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -168,7 +168,7 @@ all:		$(NAME)
 
 bonus:		$(BONUS)
 
-$(NAME):	$(OBJ) check_arch
+$(NAME):	$(OBJ)
 			@make -C $(LIB_DIR)
 			@make -C $(MLX_DIR)
 			@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBS) $(INCLUDE)
