@@ -6,7 +6,7 @@
 /*   By: jopeters <jopeters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:03:43 by jopeters          #+#    #+#             */
-/*   Updated: 2024/02/02 16:21:17 by jopeters         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:13:03 by jopeters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ int	check_path(char *path)
 	if (fd == -1)
 		res = 0;
 	else
+	{
 		res = 1;
-	close(fd);
+		close(fd);
+	}
 	return (res);
 }
 
